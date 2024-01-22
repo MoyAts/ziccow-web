@@ -1,4 +1,3 @@
-import infoIcon from "../../assets/images/info.svg"
 
 const generalInformation = () => {
   return (
