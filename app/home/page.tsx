@@ -1,3 +1,4 @@
+"use client"
 import Hero from "./components/hero"
 import Enjoy from "./components/enjoy"
 import Difference from "./components/difference"

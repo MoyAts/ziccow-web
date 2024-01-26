@@ -52,8 +52,8 @@ const nav = ({ withsearch } : Props) => {
                               <MegaMenu />
                             </div>
                         </div>
-                        <Link href={"/properties"}  className={`hover:text-blue-500 cursor-pointer text-sm ${pathname == "/properties" && "text-blue-500"}`}  >properties</Link>
-                        <Link href={"/contact"}  className={`hover:text-blue-500 cursor-pointer text-sm ${pathname == "/contact" && "text-blue-500"}`}  >contact us</Link>
+                        <Link href={"/properties"} className='hover:text-blue-500 cursor-pointer text-sm ' >properties</Link>
+                        <Link href={"/contact"} className='hover:text-blue-500 cursor-pointer text-sm ' >contact us</Link>
                     </div>
                     {
                       isLogedIn ? 
