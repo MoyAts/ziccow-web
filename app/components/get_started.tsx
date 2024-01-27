@@ -1,19 +1,22 @@
-import Image from "next/image"
-import Button from '../components/button'
-import { FaCheck as CheckIcon } from "react-icons/fa6";
+"use client" 
+import Image from "next/image"; 
 import diskImg from "../assets/images/disk.svg"
+import checkIcon from "../assets/images/Group (2).svg"
 
 const GetStarted = () => {
   return (
-    <div className='w-full bg-mainDark  sticky top-0 z-[2000]'>
-      <div className='w-full max-w-[1700px] mx-auto   px-20 h-10  bg-mainDark text-white font-light text-xs top-0 flex justify-between'>
+    <div className='w-full bg-mainDark sticky top-0 z-[2000] h-12 flex'>
+      <div className='w-full max-w-[1700px]  m-auto   px-20  bg-mainDark text-white font-light text-sm top-0 flex justify-between'>
           <div className='flex '>
               <p className='my-auto me-2'>Ready, and looking for properties?</p>
-              <Button text='get started' buttonClass='my-2 px-2 ' iconClass='text-sm' textClass='text-xs m-auto capitalize' action={()=>{}} Icon={CheckIcon}  />
+              <button  className={` flex  text-lg  hover:bg-blue-600 rounded-lg px-3 py-1 gap-2 bg-mainBlue w-fit text-white m-auto  `}>
+                <span className="text-sm my-auto capitalize ">Get Started</span>
+                <Image src={checkIcon} className='my-auto' alt="" />
+            </button> 
           </div>
           <div className='my-auto flex gap-1'>
             <Image src={diskImg} alt="" />
-            Having Troubles? Get Help
+            Having Troubles? Call 0000
           </div>
       </div>
     </div>

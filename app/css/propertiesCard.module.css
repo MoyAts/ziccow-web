@@ -1,0 +1,29 @@
+@keyframes showAnimation {
+  0% {
+    transform: translateY(-100%);
+    opacity : 0;
+
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes hideAnimation {
+  0% {
+    transform: translateY(0);
+    opacity : 100;
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.showPopup {
+  animation: showAnimation 200ms ease-in-out;
+}
+
+
+.hidePopUp {
+  animation: hideAnimation 200ms ease-in-out;
+  transform : scale(0%);
+}

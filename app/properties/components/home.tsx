@@ -1,3 +1,5 @@
+"use client" 
+import Image from "next/image"; 
 import locationIcon from "../../assets/images/Group.png"
 import img from "../../assets/images/card-header.png"
 import bookMarkSvg from "../../assets/images/bookmark.svg"
@@ -5,7 +7,6 @@ import bookMarkSvg from "../../assets/images/bookmark.svg"
 import img3 from "../../assets/images/Group (1).png"
 import img4 from "../../assets/images/Group (2).png"
 import img5 from "../../assets/images/Group (3).png"
-import Image from "next/image"
 
 interface Props {
     isGrid : boolean   

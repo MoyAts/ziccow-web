@@ -1,5 +1,4 @@
-
-// import "next/"
+"use client" 
 
 interface Props {
     buttonClass? : string,
@@ -13,12 +12,12 @@ interface Props {
 
 const button = ( { Icon,action,text,buttonClass,iconClass,iconDivClass,textClass} : Props) => {
   return (
-    <div  className={` flex gap-2 text-lg  hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white m-auto  ${buttonClass}`}>
+    <button onClick={() => action()} className={` flex gap-2 text-lg  hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white m-auto  ${buttonClass}`}>
         <span className={textClass}>{text}</span>
         <div className={`m-auto border p-[1px] rounded ${iconDivClass}`}>
           <Icon className={`m-auto ${iconClass}`} />
         </div>
-    </div> 
+    </button> 
   )
 }
 

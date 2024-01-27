@@ -1,7 +1,7 @@
+"use client" 
+import Image from "next/image"; 
 import bg from "../../assets/images/unsplash_B0aCvAVSX8E.png"
 import Nav from "../../components/nav"
-
-import Image from "next/image"
 
 const hero = () => {
   return (

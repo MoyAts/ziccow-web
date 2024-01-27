@@ -1,5 +1,6 @@
+"use client" 
+import Image from "next/image"; 
 import moyatsImg from "../../assets/images/Frame 10.svg"
-import Image from "next/image"
 const about = () => {
   return (
     <div className="bg-mainDark w-full">

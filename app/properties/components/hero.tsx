@@ -1,3 +1,5 @@
+"use client" 
+import Image from "next/image"; 
 import rentalIcon from "../../assets/images/rentalIcon.svg"
 import SelectOption from "./select_option"
 import { IoIosArrowBack as ListIcon} from "react-icons/io";
@@ -6,15 +8,13 @@ import listSvg from  "../../assets/images/listSvg.svg"
 import Home from "./home";
 import { useState } from "react";
 import collapseImg from "../../assets/images/collapse.svg"
-import Image from "next/image";
-
 interface filterInf {
     list : string[],
     img : any 
 }
 
-const hero = () => {
-    const [isGrid,setIsGrid] = useState(true)
+const Hero = () => {
+    const [isGrid,setIsGrid] = useState(false)
     const sortList = ["Default" , "temporary1","temporary2"] 
     const filters : filterInf[] = [
         {
@@ -51,7 +51,7 @@ const hero = () => {
             </div>
             <div className="flex  py-2 w-full justify-between gap-2">
                 {filters.map((data : filterInf) => (
-                    <SelectOption list={data.list} img={data.img}  />
+                    <SelectOption key={data.list[0]} list={data.list} img={data.img}  />
                 ))}
 
             </div>
@@ -72,7 +72,7 @@ const hero = () => {
                         </div>
                         <div className="absolute z-10 group-hover:flex hidden flex-col top-6  w-full text-black bg-white rounded p-1">
                             {sortList.map((data : string) => (
-                                <div className="flex hover:bg-blue-200 cursor-pointer duration-150 gap-2  px-1 py-1">
+                                <div key={data} className="flex hover:bg-blue-200 cursor-pointer duration-150 gap-2  px-1 py-1">
                                     <span className="text-xs text-black ">{data}</span>
                                 </div>
                             ) )}
@@ -81,8 +81,8 @@ const hero = () => {
                      </div>
                      <div className="h-4/6 my-auto w-[1px] mx-5 bg-gray-400"></div>
                      <div className="flex gap-3">
-                        <Image onClick={() => setIsGrid(true)} src={gridSvg} width={27} className={`cursor-pointer px-1 rounded-lg ${isGrid && "bg-blue-100"}`} alt="" />
-                        <Image onClick={() => setIsGrid(false)} src={listSvg}  width={27} className={`cursor-pointer px-1 rounded-lg ${!isGrid && "bg-blue-100"}`} alt="" />
+                        <Image onClick={() => setIsGrid(true)} src={gridSvg} className={`cursor-pointer px-1 rounded-lg ${isGrid && "bg-blue-100"}`} alt="" />
+                        <Image onClick={() => setIsGrid(false)} src={listSvg} className={`cursor-pointer px-1 rounded-lg ${!isGrid && "bg-blue-100"}`} alt="" />
                      </div>
                 </div>
 
@@ -96,10 +96,6 @@ const hero = () => {
               <Home isGrid={isGrid} />
               <Home isGrid={isGrid} />
               <Home isGrid={isGrid} />
-              <Home isGrid={isGrid} />
-              <Home isGrid={isGrid} />
-              <Home isGrid={isGrid} />
-              <Home isGrid={isGrid} />
 
             </div>
 
@@ -108,4 +104,4 @@ const hero = () => {
   )
 }
 
-export default hero
+export default Hero

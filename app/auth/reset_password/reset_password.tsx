@@ -2,22 +2,22 @@
 import logoG from "../../../assets/images/googleLogo.svg"
 import img from "../../../assets/images/Widget 5.svg"
 import CustomeInput from "../components/customeInput"
-import { Link } from 'react-router-dom'
 import { IoArrowForwardSharp as LoginIcon } from "react-icons/io5";
 import bg from "../../../assets/images/Background.png"
-
+import Image from "next/image";
+import Link from "next/link";
 
 const index = () => {
   return (
     <div className='h-fit min-h-[100vh] bg-red w-full relative flex text-sm' style={{background:"#CCE3FC"}}>
-        <img src={bg} alt="" className='absolute left-0 top-0 bottom-0 right-0 w-full h-full' />
+        <Image src={bg} alt="" className='absolute left-0 top-0 bottom-0 right-0 w-full h-full' />
         <div className='absolute left-0 right-0 top-0 bottom-0 bg-opacity-30 bg-lightBlue'></div>
         <div className='h-fit min-h-[100vh] w-3/5 max-lg:w-4/5 max-md:px-12 max-sm:w-full max-sm:px-5 flex z-10 mx-auto px-40 pb-20 pt-12' style={{background: "#F3EFF5"}}>
 
             <div className='mx-auto'>
                 
                 <div className='w-full my-auto justify-center flex gap-2 cursor-pointer' onClick={() => location.href = "#home"}>
-                    <img src={img} alt="" />
+                    <Image src={img} alt="" />
                     <h1 className='font-semibold text-g my-auto'>
                         Ziccow General Trading
                     </h1>
@@ -57,7 +57,7 @@ const index = () => {
                     </div>
 
                     <button className='w-full border flex gap-3 justify-center bg-white py-3  rounded-xl'>
-                        <img src={logoG} alt="" />
+                        <Image src={logoG} alt="" />
                         <p className='font-semibold'>
                             Sign up with Google
                         </p>
@@ -65,7 +65,7 @@ const index = () => {
 
                     <p className='flex justify-center gap-2'>
                         Not registered yet? 
-                        <Link to={"/register"} className='text-blue-800 font-bold'>
+                        <Link href={"/register"} className='text-blue-800 font-bold'>
                             Create an account 
                         </Link>
                     </p>

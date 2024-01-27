@@ -1,6 +1,8 @@
+"use client" 
+import Image from "next/image"; 
 import img1 from "../../assets/images/solar_shield-check-bold-duotone.svg"
 import img2 from "../../assets/images/solar_medal-ribbons-star-bold-duotone.png"
-import Image from "next/image"
+
 const help = () => {
   return (
     <div className="w-full bg-lightBg">

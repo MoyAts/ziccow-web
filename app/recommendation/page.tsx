@@ -1,3 +1,4 @@
+"use client" 
 import Hero from "./components/hero"
 import PropertyTypes from './components/property_types'
 import Realestates from './components/realestates'

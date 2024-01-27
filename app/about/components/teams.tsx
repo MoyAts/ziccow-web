@@ -1,5 +1,6 @@
+"use client" 
+import Image from "next/image"; 
 import photo from "../../assets/images/Photo.png"
-import Image from "next/image"
 const teams = () => {
   return (
     <div className="w-full bg-lightBg">

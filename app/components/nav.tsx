@@ -1,37 +1,29 @@
-"use client"
-import { useState } from "react";
-
+import img from "../assets/images/Widget 5.svg"
 import { IoIosArrowBack as ListIcon} from "react-icons/io";
 import { PiSignInBold as SignInIcon} from "react-icons/pi";
+import MegaMenu from "./mega_menu";
 import { GoLocation  as LocationIcon} from "react-icons/go";
 import { FaRegBuilding as BuildingIcon } from "react-icons/fa";
 import { CiSearch as SearchIcon } from "react-icons/ci";
+import Button from "./button";
 import { IoIosAddCircleOutline as AddIcon } from "react-icons/io";
-
-import img from "../assets/images/Widget 5.svg"
+import Notification from "./notification";
 import notificationIcon from '../assets/images/notification.svg';
 import messageIcon from '../assets/images/message.svg';
-
-import MegaMenu from "./mega_menu";
-import Button from "./button";
-import Notification from "./notification";
-import ProfileCard from "./profileCard";
-
-import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from 'next/navigation';
-
+import ProfileCard from "./profileCard";
+import { useState } from "react";
+import Link from "next/link";
 interface Props {
   withsearch : boolean 
 }
 
-const nav = ({ withsearch } : Props) => {
-  const pathname = usePathname();
+const Nav = ({ withsearch } : Props) => {
   const [showProfile,setShowProfile] = useState(false)
   const [showNotification,setShowNotification] = useState(false)
   const isLogedIn = true;
   return (
-        <div className='w-full  z-[1000] bg-lightBg bg-transparent relative'>
+        <div className='w-full z-[1000] bg-lightBg bg-transparent relative'>
           <div className="flex w-full bg-lightBg rounded-b-3xl justify-center">
             <div className={`w-full max-w-[1700px] pb-4 flex flex-col ${withsearch == false  && "rounded-b-3xl"} `} >
                 <div className={"flex  pt-3 h-fit min-h-14  justify-between px-20"}>
@@ -42,8 +34,8 @@ const nav = ({ withsearch } : Props) => {
                       </Link>
                     </div>
                     <div className='flex capitalize my-auto  gap-12'>
-                        <Link href={"/about"} className={`hover:text-blue-500 cursor-pointer text-sm ${pathname == "/about" && "text-blue-500"}`} >About</Link>
-                        <div className=' group text-sm flex gap-2 ' >
+                        <Link href={"/about"} className='hover:text-blue-500 cursor-pointer ' >About</Link>
+                        <div className=' group flex gap-2 ' >
                             <span className="group-hover:text-blue-500">
                               services
                             </span>
@@ -52,8 +44,8 @@ const nav = ({ withsearch } : Props) => {
                               <MegaMenu />
                             </div>
                         </div>
-                        <Link href={"/properties"} className='hover:text-blue-500 cursor-pointer text-sm ' >properties</Link>
-                        <Link href={"/contact"} className='hover:text-blue-500 cursor-pointer text-sm ' >contact us</Link>
+                        <Link href={"/properties"} className='hover:text-blue-500 cursor-pointer ' >properties</Link>
+                        <Link href={"/contactus"} className='hover:text-blue-500 cursor-pointer ' >contact us</Link>
                     </div>
                     {
                       isLogedIn ? 
@@ -130,4 +122,4 @@ const nav = ({ withsearch } : Props) => {
   )
 }
 
-export default nav
+export default Nav

@@ -1,3 +1,4 @@
+"use client" 
 import { IoIosArrowBack as ListIcon} from "react-icons/io";
 import Box from './box';
 const realestates = () => {

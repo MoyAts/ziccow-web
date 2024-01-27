@@ -1,5 +1,7 @@
+"use client" 
+import Image from "next/image"; 
 import InputIcon from "../assets/images/inputIcon.svg"
-import Image from "next/image"
+
 interface Props {
   label : string,
   name : string,
