@@ -76,7 +76,7 @@ const detail = () => (
         <ImageSlider />
         <About />
         <Features />
-        <Graph />
+        {/* {typeof window !== "undefined" && <Graph />} */}
         <Nearby />
       </div>
       <div className="w-5/12 flex flex-col">

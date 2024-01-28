@@ -1,6 +1,5 @@
 "use client" 
 import Image from "next/image"; 
-import Link from "next/link";
 import locationIcon from "../../assets/images/Group.png"
 import img from "../../assets/images/card-header.png"
 import bookMarkSvg from "../../assets/images/bookmark.svg"

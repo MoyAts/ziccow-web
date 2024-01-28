@@ -1,16 +1,14 @@
 "use client" 
-import { Line , LineChart, XAxis} from "recharts"
-// import { ApexOptions } from 'apexcharts'
+// import { Line , LineChart, XAxis} from "recharts"
 import ReactApexChart from 'react-apexcharts';
-
-const data = [
-    { name: "2017", react: 0, angular: 37, vue: 160 },
-    { name: "2018", react: 82,  angular: 42, vue: 54 },
-    { name: "2019", react: 51, angular: 41, vue: 54 },
-    { name: "2020", react: 160, angular: 37, vue: 28 },
-    { name: "2021", react: 51, angular: 31, vue: 27 },
-    { name: "2022", react: 95,  angular: 44, vue: 149 },
-];
+// const data = [
+//     { name: "2017", react: 0, angular: 37, vue: 160 },
+//     { name: "2018", react: 82,  angular: 42, vue: 54 },
+//     { name: "2019", react: 51, angular: 41, vue: 54 },
+//     { name: "2020", react: 160, angular: 37, vue: 28 },
+//     { name: "2021", react: 51, angular: 31, vue: 27 },
+//     { name: "2022", react: 95,  angular: 44, vue: 149 },
+// ];
 const datas = {
     series: [{
         name: "Properties",
@@ -44,8 +42,14 @@ const series : any = {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
     }
   }
-const graph = () => {
+const Graph = () => {
+  const isWindowExist = typeof window !== "undefined"
+ 
+  
   return (
+    isWindowExist == false ?
+    <>waiting</>
+    : 
     <div className='mt-7 h-fit'>
         <div>Market Value Projection</div>
         <div className='flex justify-between mt-5'>
@@ -63,10 +67,10 @@ const graph = () => {
 
         </div>
         
-        <LineChart data={data} className="w-full h-[60vh] mt-12" width={700} height={400} >
+        {/* <LineChart data={data} className="w-full h-[60vh] mt-12" width={700} height={400} >
             <Line type={"monotone"} dataKey={"react"} strokeWidth={3} stroke="rgb(71 132 196)" />
             <XAxis dataKey={"name"}  />
-        </LineChart>
+        </LineChart> */}
 
         <div className="w-full mt-12">
             <ReactApexChart  width={"100%"} options={series} series={datas.series} type="line" height={350} />
@@ -76,4 +80,4 @@ const graph = () => {
   )
 }
 
-export default graph
+export default Graph
