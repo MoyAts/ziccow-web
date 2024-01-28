@@ -4,7 +4,7 @@ import rentalIcon from "../../assets/images/rentalIcon.svg"
 import SelectOption from "./select_option"
 import { IoIosArrowBack as ListIcon} from "react-icons/io";
 import gridSvg from  "../../assets/images/gridsvg.svg"
-import listSvg from  "../../assets/images/listSvg.svg"
+import listSvg from  "../../assets/images/listsvg.svg"
 import Home from "./home";
 import { useState } from "react";
 import collapseImg from "../../assets/images/collapse.svg"
