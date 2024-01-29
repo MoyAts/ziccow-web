@@ -16,7 +16,7 @@ const GetStarted = () => {
           </div>
           <div className='my-auto flex gap-1'>
             <Image src={diskImg} alt="" />
-            Having Troubles? Call 0000
+            Having Troubles? Call 8990
           </div>
       </div>
     </div>
