@@ -1,6 +1,6 @@
 "use client" 
 import Image from "next/image"; 
-import phone from "../../assets/images/phone.svg"
+import phone from "../assets/images/phone.svg"
 import { MdOutlineMail as EmailIcon } from "react-icons/md";
 const join = () => {
   return (

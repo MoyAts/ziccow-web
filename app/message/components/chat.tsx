@@ -9,7 +9,7 @@ interface Props {
 
 const chat = ({ isCurrentUser } : Props) => {
   return (
-    <div className={`w-full flex gap-2 ${isCurrentUser && "flex-row-reverse"} `}>
+    <div className={`w-full flex gap-2 ${isCurrentUser && "flex-row-reverse"} bg-red-00`}>
        { isCurrentUser ? 
         <div className="cursor-pointer bg-blue-200  p-2 w-10 h-10 rounded-full flex items-center justify-center">
             JD

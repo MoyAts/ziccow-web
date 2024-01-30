@@ -17,7 +17,8 @@ const config: Config = {
         lightGray : "#6D6C6E",
         mainDark : "#161925",
         onDark : "#B7B8BB",
-        lightBg : "#F3EFF5" 
+        lightBg : "#F3EFF5",
+        danger : "#b16d0e"
      },
     },
   },
