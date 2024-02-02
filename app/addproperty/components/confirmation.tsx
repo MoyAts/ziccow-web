@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from "next/image"
-import img from "../../assets/images/image (5).png"
+import img from "../../assets/images/image.png"
 import Features from "./features"
 import goImg from "../../assets/images/go.svg"
 

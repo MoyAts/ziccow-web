@@ -2,7 +2,7 @@
 import Image from "next/image"; 
 import Link from "next/link";
 import React from 'react'
-import img from "../../assets/images/image (5).png"
+import img from "../../assets/images/image.png"
 
 const images = () => {
   return (
