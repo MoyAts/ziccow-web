@@ -1,6 +1,6 @@
 "use client" 
 import Image from "next/image"; 
-import img from "../../assets/images/Image.png"
+import img from "../../assets/images/image.png"
 import { FaArrowUp as ArrowIcon } from "react-icons/fa6";
 
 const box = () => {
