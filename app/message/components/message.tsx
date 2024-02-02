@@ -4,16 +4,18 @@ import person from "../../assets/images/person.png"
 import Image from "next/image"
 import Chat from './chat'
 import sendImg from "../../assets/images/sendBlue.svg"
+import style from "../style/message.module.css"
+
 const message = () => {
   return (
     <div className='basis-2/3  relative flex flex-col ps-12  justify-between'>
         
-        <div className='flex   w-full z-20 items-center gap-2 sticky bg-lightBg  bg-opacity-80 top-0'>
+        <div className='flex   w-full z-20 items-center gap-2    bg-opacity-80 '>
             <Image src={person} className='w-14 h-14 rounded-full' alt='user' />
             <div>Chantel Shelburne</div>
         </div>
 
-        <div className='h-fit overflow-auto   w-full flex flex-col pt-4  px-4 gap-7 pb-12 '>
+        <div className={` scroller h-fit overflow-auto  w-full flex flex-col pt-4  px-4 gap-10 pb-12 `}>
             <Chat isCurrentUser={false} />
             <Chat isCurrentUser={true} />
             <Chat isCurrentUser={false} />

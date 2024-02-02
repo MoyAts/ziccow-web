@@ -29,21 +29,17 @@ const Detail = () => {
       
       {nothingFound ?
         <div className='flex h-[80vh] max-h-[700px] w-full pb-16'>
-
           <div className='m-auto flex flex-col gap-2 justify-center items-center'> 
             <Image src={emptyImg} alt='nothing found' />
             <div className='text-[30px] font-semibold'>You don’t have any messages yet.</div>
             <div>When you have messages you’ll see them here.</div>
-
           </div>
-
-
         </div>
       :
-      <div id="message-top" className='flex h-[100vh]  max-h-[1000px] mt-8 w-full mb-16'>
+      <div id="message-top" className='flex h-[100vh]  max-h-[800px] mt-8 w-full mb-16'>
   
         <Users />
-        <div className='h-full w-[1px] mx-2 bg-gray-300'></div>
+        <div className='h-full w-[1px] mx-2 bg-gray-300 '></div>
         <Message />
       </div>}
     </div>

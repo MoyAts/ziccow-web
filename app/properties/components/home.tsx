@@ -16,14 +16,14 @@ const home = ( { isGrid } : Props) => {
     
   return (
     
-    <div className={`flex  text-sm gap-2 bg-white border shadow p-1 rounded-lg text-lightGray ${isGrid && "flex-col"}`}>
-        <div className="rounded-lg asis-1/3 flex">
+    <div className={`flex  text-sm gap-2 bg-white border shadow p-1 rounded-lg text-lightGray ${isGrid && "flex-col "}`}>
+        <div className="rounded-lg basis-1/3 flex">
             <Image src={img} className="rounded-lg w-full object-cover my-auto" alt="" />
         </div>
-        <div className={`flex flex-col basis-2/3 py-2 ${isGrid && "px-1"}`}>
+        <div className={`flex flex-col basis-2/3 py-2 ${isGrid ? "px-1" : " w-full"}`}>
             <div className={`${!isGrid && 'hidden'} flex flex-row-reverse`}>
                 <div className={`  w-fit  bg-blue-300 text-black text-[10px] px-2 rounded-lg h-fit my-auto bg-opacity-55`}>
-                        Big house
+                        Big house 
                 </div>
             </div>
             <div className={` ${isGrid && "hidden"} flex w-full justify-between pe-2`}>
