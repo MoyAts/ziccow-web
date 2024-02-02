@@ -18,7 +18,8 @@ const config: Config = {
         mainDark : "#161925",
         onDark : "#B7B8BB",
         lightBg : "#F3EFF5",
-        danger : "#b16d0e"
+        danger : "#b16d0e",
+        accept : "#6C8F52"
      },
     },
   },

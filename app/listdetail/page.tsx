@@ -1,13 +1,12 @@
 "use client" 
-import Image from "next/image"; 
-import Link from "next/link";
-import Nav from "../components/nav"
+import Nav from '../components/nav' 
+import GetStarted from "../components/get_started"
 import Footer from "../components/footer"
 import Hero from "./components/hero"
-import GetStarted from "../components/get_started"
+
 const page = () => {
   return (
-    <div className='bg-lightBg'>
+    <div className='bg-lightBg relative'>
         <GetStarted />
         <Nav withsearch={false} />
         <Hero />

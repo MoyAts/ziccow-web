@@ -1,26 +1,18 @@
 "use client" 
 import Image from "next/image"; 
-import Link from "next/link";
 import CustomeInput from "../../components/customeInput"
 import searachImg from "../../assets/images/searchLocation.svg"
 import { MdNavigateNext } from "react-icons/md";
-import { LuMinus } from "react-icons/lu";
-import { MdAdd } from "react-icons/md";
 import { GrLinkNext } from "react-icons/gr";
 import CustomeInputNumber from "./customeInputNumber";
 import CheckBoxDiv from "./checkboxdiv";
 import dropimg from "../../assets/images/dropimg.svg"
-import locImg from "../../assets/images/detailLocation.svg"
-import hashTagImg from "../../assets/images/hashTag.svg"
-import propertyImg from "../../assets/images/propertyLight.svg"
-import builtImg from "../../assets/images/built.svg"
 import img3 from "../../assets/images/bed.svg"
 import img4 from "../../assets/images/bathroom.svg"
-import img5 from "../../assets/images/space.svg"
 
 const propertyDetail = () => {
   return (
-    <div className='w-full h-fit pb-56'>
+    <div className='w-full h-fit pb-32'>
         <div className='text-2xl mb-8'>Tell us a bit about your home</div>
         <CustomeInput label='Property Name' name='label' placeholder='Tourist Plus Apartment' divClass='mb-5' />
         <CustomeInput label='Parcel Number' name='label' placeholder='012671164'  divClass='mb-5' />

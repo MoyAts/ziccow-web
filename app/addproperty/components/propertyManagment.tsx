@@ -6,10 +6,11 @@ import RadioDiv from './radioboxdiv'
 import CustomeInput from '../../components/customeInput' 
 import { MdNavigateNext } from "react-icons/md";
 import { GrLinkNext } from "react-icons/gr";
+import goImg from "../../assets/images/go.svg"
 
 const propertyManagment = () => {
   return (
-    <div className='w-full h-fit pb-56'>
+    <div className='w-full h-fit pb-32'>
         <div className='text-2xl mb-8'>Add property management options...</div>
         <div>Which one of the following apply to you?</div>
         <div className='pt-4 flex w-full justify-between '>
@@ -33,10 +34,8 @@ const propertyManagment = () => {
         </div>
         <div className="flex mt-8 justify-between ">
           <button className="text-mainBlue">Cancel</button>
-          <button className="px-5 py-3 rounded-lg bg-mainBlue hover:bg-blue-500 text-white flex gap-3">
-            <div className="border border-blue-300 rounded  my-auto w-6 h-6 py-[2px] px-[2px]">
-              <GrLinkNext />
-            </div>
+          <button className="px-5 py-2 rounded-lg bg-mainBlue hover:bg-blue-500 text-white flex gap-3">
+            <Image src={goImg} className="my-auto" alt="" />
             <p>Next Step</p>
           </button>
 
