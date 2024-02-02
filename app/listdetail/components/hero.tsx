@@ -10,7 +10,7 @@ import { IoIosArrowBack  as NextIcon } from "react-icons/io";
 import About from './about' 
 import Images from "./images"
 import Features from "./features"
-import Graph from './graph'
+// import Graph from './graph'
 import Location from './location'
 
 const hero = () => {
