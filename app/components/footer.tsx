@@ -14,9 +14,9 @@ const footer = () => {
   return (
     <div className="w-full bg-mainDark ">
 
-        <div id='contactus' className='h-fit pb-12 max-w-[1700px] mx-auto text-white px-20 pt-20 bg-mainDark'>
+        <div id='contactus' className='h-fit pb-12 max-w-[1700px] mx-auto text-white px-20 pt-20 max-tablet:px-10 bg-mainDark'>
 
-                <div className='flex justify-between'>
+                <div className='flex justify-between max-tablet:flex-col'>
                     
                     <div className='basis-4/12 flex flex-col gap-3 mb-4'>
                         <div className='flex gap-3 my-2'>
@@ -32,54 +32,55 @@ const footer = () => {
                             <div className="text-lightGray">Bole, Addis Ababa</div>
                             <LeftIcon className="text-mainBlue -rotate-90 my-auto" />
                         </div>
-                        {/* <select title="select" id="" className="p-2 mb-4 text-black rounded-xl px-3 outline-none" >
-                        </select> */}
                     </div>
                     <div className="basis-1/12"> </div>
 
-                    <div className='flex flex-col gap-3 basis-2/12'>
-                        <h3 className="text-xl">Company</h3>
-                        <ul className=' flex flex-col gap-5 mt-3 text-gray-400 capitalize'>
-                            <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#home"}>About us</li>
-                            <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#services"}>Team</li>
-                            <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#properties"}>Real Estate</li>
-                            <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#contactus"}>Properties</li>
-                            <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#contactus"}>service</li>
-                            <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#contactus"}>contact us</li>
-                        </ul>
-                    </div>
+                    <div className="flex basis-7/12 justify-between max-tablet:mt-10">
 
-                    <div className='flex flex-col gap-3 basis-2/12'>
-                        <h3 className="text-xl">Legal</h3>
-                        <ul className=' flex flex-col gap-5 mt-3 text-gray-400'>
-                            <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#home"}>Terms of service</li>
-                            <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#services"}>Privacy policy</li>
-                        </ul>
-                    </div>
+                        <div className='flex flex-col gap-3 w-2/6'>
+                            <h3 className="text-xl">Company</h3>
+                            <ul className=' flex flex-col gap-5 mt-3 text-gray-400 capitalize'>
+                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#home"}>About us</li>
+                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#services"}>Team</li>
+                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#properties"}>Real Estate</li>
+                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#contactus"}>Properties</li>
+                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#contactus"}>service</li>
+                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#contactus"}>contact us</li>
+                            </ul>
+                        </div>
 
-                    <div className='flex flex-col gap-3 basis-3/12'>
-                        <h3 className="text-xl">Contacts</h3>
-                        <ul className=' flex flex-col gap-5 mt-3 text-gray-400'>
-                            <li className='hover:text-blue-500 cursor-pointer duration-200 flex gap-3'>
-                                <Image src={locationImg} alt="" />
-                                <p>
-                                    ABC Building, 3rd Floor.
-                                    123 Main St, Addis Ababa, Ethiopia
-                                </p>
-                            </li>
-                            <li className='hover:text-blue-500 cursor-pointer duration-200 flex gap-3'>
-                                <Image src={emailImg} alt="" />
-                                <p>
-                                    info@ziccowgt.com
-                                </p>
-                            </li>
-                            <li className='hover:text-blue-500 cursor-pointer duration-200 flex gap-3'>
-                                <Image src={phoneImg} alt="" />
-                                <p>
-                                    (123) 456-7890
-                                </p>
-                            </li>
-                        </ul>
+                        <div className='flex flex-col gap-3  w-2/6'>
+                            <h3 className="text-xl">Legal</h3>
+                            <ul className=' flex flex-col gap-5 mt-3 text-gray-400'>
+                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#home"}>Terms of service</li>
+                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#services"}>Privacy policy</li>
+                            </ul>
+                        </div>
+
+                        <div className='flex flex-col gap-3  w-2/6'>
+                            <h3 className="text-xl">Contacts</h3>
+                            <ul className=' flex flex-col gap-5 mt-3 text-gray-400'>
+                                <li className='hover:text-blue-500 cursor-pointer duration-200 flex gap-3'>
+                                    <Image src={locationImg} alt="" />
+                                    <p>
+                                        ABC Building, 3rd Floor.
+                                        123 Main St, Addis Ababa, Ethiopia
+                                    </p>
+                                </li>
+                                <li className='hover:text-blue-500 cursor-pointer duration-200 flex gap-3'>
+                                    <Image src={emailImg} alt="" />
+                                    <p>
+                                        info@ziccowgt.com
+                                    </p>
+                                </li>
+                                <li className='hover:text-blue-500 cursor-pointer duration-200 flex gap-3'>
+                                    <Image src={phoneImg} alt="" />
+                                    <p>
+                                        (123) 456-7890
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>

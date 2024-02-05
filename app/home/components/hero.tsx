@@ -10,35 +10,35 @@ import Nav from '../../components/nav';
 
 const hero = () => {
   return (
-    <div className="w-full bg-[#6b6d77] tablet:h-[112vh] max-tablet:h-fit  mx-auto  tablet:max-h-[800px] relative flex flex-col ">
-        <Nav withsearch={false} />h
-            <div className="absolute w-full max-tablet:h-full h-[112v] mx-auto tablet:max-h-[800px]">
+    <div className="w-full bg-[#6b6d77] tablet:h-[112vh] max-tablet:h-fit max-tablet:pb-32     mx-auto  tablet:max-h-[800px] relative flex flex-col ">
+        <Nav withsearch={false} />
+            <div className="absolute w-full tablet:h-[112vh] max-tablet:h-full  mx-auto  tablet:max-h-[800px]">
                 <Image src={bg} alt="" className='w-full mx-auto  h-full object-cover'/>
             </div>
-            <div className='flex max-mobile:pt-32  px-10 flex-col items-center justify-center  max-h-[850px] max-tablet:h-fit z-[500]  h-[112vh] w-full max-w-[1700px] mx-auto  '>
+            <div className='flex max-tablet:pt-32  px-10 flex-col items-center justify-center  tablet:max-h-[850px] max-tablet:h-full z-[500]  h-[112vh] w-full max-w-[1700px] mx-auto  '>
                 <h1 className=' text-[50px]  flex flex-col gap-0  text-white text-center'>Find a home that suits you.</h1>
                 <p className=' text-white font-light text-center' style={{color : "#E8E8E9"}}>Want to find a suitable home? We are ready to help you find one that suits your lifestyle and needs</p>
                 <div className='w-8/12 max-tablet:w-10/12 mt-10 mx-auto  bg-white py-2 flex justify-between rounded-2xl px-2'>
                     <div className='flex gap-2 px-2 w-full '>
-                        <Image src={img2} className='w-[25px]' alt="" />
+                        <Image src={img2} className='w-[27px]' alt="" />
                         <input className='outline-none my-auto w-full py-3' style={{color:"#6D6C6E"}} placeholder='Enter a location, property type or budget' />
                     </div>
                     <Link href={"/properties"} className='flex gap-2 w-fit bg-mainBlue text-white px-6 text-sm justify-center hover:bg-blue-500 py-3 rounded-lg'>
                         <CiSearch className='my-auto text-xl'/>
-                        <span className='my-auto w-full'>See&nbsp;Suggestions</span>
+                        <span className='my-auto w-full max-mobile:hidden'>See&nbsp;Suggestions</span>
                     </Link>
                 </div>
 
                 <p className='text-[#E8E8E9] mt-32 text-lg font-light'>Or browse through the highlights</p>
-                <div className='flex max-mobile:flex-col justify-center max-mobile:gap-5 gap-12 w-full mt-16 xl:mt-10 z-[1000] '>
+                <div className='flex  justify-center max-mobile:justify-between gap-12 w-full mt-16 xl:mt-10 z-[1000] '>
                     <div className='flex flex-col justify-center gap-4 items-center px-5 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
                         <Image src={img3} width={50} alt="" />
-                        <p className='text-white text-smfont-light'>Buy a property</p>
+                        <p className='text-white  font-light'>Buy a property</p>
                     </div>
                     <div className='h-10 my-auto bg-gray-200 w-[1px] max-mobile:hidden'></div>
                     <div className='flex flex-col justify-center gap-4 items-center px-5 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
                         <Image src={img3} width={50} alt="" />
-                        <p className='text-white text-smfont-light'>Rent a property</p>
+                        <p className='text-white  font-light'>Rent a property</p>
                     </div>
                     <div className='h-10 my-auto bg-gray-200 w-[1px] max-mobile:hidden'></div>
                     <div className='flex flex-col justify-center gap-4 items-center px-5 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>

@@ -9,14 +9,14 @@ import img2 from "../../assets/images/image (3).png"
 
 const properties = () => {
   return (
-    <div className="w-full mb-12 h-[105vh]  max-h-[800px]">
-      <div id='properties' className='h-full max-w-[1700px]   max-h-[800px] mx-auto px-20' >
+    <div className="w-full mb-12 max-tablet:mb-5 h-[105vh]  max-h-[800px] max-tablet:min-h-fit">
+      <div id='properties' className='h-full max-w-[1700px]   max-h-[800px] mx-auto max-tablet:mx-none  px-20 max-tablet:px-10' >
         <div className='py-5 flex justify-between  '>
           <div className='my-auto flex flex-col'>
-            <h1 className='text-[38px]'>
+            <h1 className='text-[38px] max-tablet:text-[27px]'>
               Properties in <span className='text-blue-500'>your area</span> 
             </h1>
-            <p className='text-light text-lg'>
+            <p className='text-lightGray text-lg'>
               Suggested based on homes you recently viewed
             </p>
           </div>

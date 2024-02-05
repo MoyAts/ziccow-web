@@ -10,31 +10,31 @@ import goImage from "../../assets/images/go.svg"
 
 const view = () => {
   return (
-    <div className="h-fit  pt-10 flex mb-[8em] ">
-        <div className=' w-full max-w-[1700px] mx-auto flex flex-col items-center px-20'>
+    <div className="h-fit  pt-10 max-tablet:pt-32 flex mb-[8em] ">
+        <div className=' w-full max-w-[1700px] mx-auto flex flex-col items-center px-20 max-tablet:px-10'>
         <p className='text-blue-400 text-center text-lg font-light'>Real estates across the town</p>
-        <h1 className='text-[45px] font-semibold '>View our featured top <span className='text-blue-600'>real estates.</span>  </h1>
+        <h1 className='text-[45px] max-tablet:text-[35px]  font-semibold text-center'>View our featured top <span className='text-blue-600'>real estates.</span>  </h1>
         <Link href={"/recommendation"}  className='flex gap-2 mt-8 px-4 py-2 hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white mx-auto text-lg'>
             <span>view real state</span>
             <Image src={goImage} alt="" className="my-auto w-6" />
          </Link>
-        <div className='flex  gap-7 mt-12  w-full '>
+        <div className='flex  gap-7 mt-12  w-full max-tablet:flex-col '>
 
-                <div className='flex flex-col gap-10 w-1/2 '>
+                <div className='flex flex-col gap-10 w-1/2 max-tablet:w-full '>
                     
                     <div className='flex justify-between gap-10'>
                         <div className='relative w-full '>
-                            <Image src={img1} alt="" className="w-full" />
+                            <Image src={img1} alt="" className="w-full " />
                             <div className='absolute bottom-5 left-5 text-white'>
-                                <h1 className='text-[35px]'>234</h1>
-                                <p className='text-xl font-light '>Flintstone Homes</p>
+                                <h1 className='text-[35px]  max-mobile:text-[25px]'>234</h1>
+                                <p className='text-xl max-tablet:lg font-light '>Flintstone Homes</p>
                             </div>
                         </div>
                         <div className='relative w-full '>
                             <Image src={img2} alt="" className="w-full" />
                             <div className='absolute bottom-5 left-5 text-white'>
-                                <h1 className='text-[35px]'>234</h1>
-                                <p className='text-xl font-light '>Flintstone Homes</p>
+                                <h1 className='text-[35px]  max-mobile:text-[25px]'>234</h1>
+                                <p className='text-xl max-tablet:lg font-light '>Flintstone Homes</p>
                             </div>
                         </div>
                     </div>
@@ -42,28 +42,28 @@ const view = () => {
                     <div className='relative w-full  '>
                         <Image src={img4} alt="" className="w-full" />
                         <div className='absolute bottom-5 left-5 text-white'>
-                            <h1 className='text-[35px]'>234</h1>
-                            <p className='text-xl font-light '>Flintstone Homes</p>
+                            <h1 className='text-[35px]  max-mobile:text-[25px]'>234</h1>
+                            <p className='text-xl max-tablet:lg font-light '>Flintstone Homes</p>
                         </div>
                     </div>
 
                 </div>
 
-                <div className='flex flex-col gap-10 my-auto  w-1/2'>
+                <div className='flex flex-col gap-10 my-auto max-tablet:w-full w-1/2'>
 
                     <div className='relative w-full '>
                         <Image src={img4} alt="" className="w-full" />
                         <div className='absolute bottom-5 left-5 text-white'>
-                            <h1 className='text-[35px]'>234</h1>
-                            <p className='text-xl font-light '>Flintstone Homes</p>
+                            <h1 className='text-[35px]  max-mobile:text-[25px]'>234</h1>
+                            <p className='text-xl max-tablet:lg font-light '>Flintstone Homes</p>
                         </div>
                     </div>
 
                     <div className='relative w-full '>
                         <Image src={img5} alt="" className="w-full" />
                         <div className='absolute bottom-5 left-5 text-white'>
-                            <h1 className='text-[35px]'>234</h1>
-                            <p className='text-xl font-light '>Flintstone Homes</p>
+                            <h1 className='text-[35px]  max-mobile:text-[25px]'>234</h1>
+                            <p className='text-xl max-tablet:lg font-light '>Flintstone Homes</p>
                         </div>
                     </div>
 
