@@ -10,6 +10,8 @@ const config: Config = {
     extend: {
       screens: {
         bigScreen: '1700px',
+        tablet : '1050px',
+        mobile : '770px',
       },
       colors: {
         lightBlue: '#CCE3FC',

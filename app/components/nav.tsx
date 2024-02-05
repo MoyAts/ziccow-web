@@ -14,6 +14,7 @@ import Image from "next/image";
 import ProfileCard from "./profileCard";
 import { useState } from "react";
 import Link from "next/link";
+import { IoMdMenu as MenuIcon } from "react-icons/io";
 interface Props {
   withsearch : boolean 
 }
@@ -26,14 +27,21 @@ const Nav = ({ withsearch } : Props) => {
         <div className='w-full z-[1000] bg-lightBg bg-transparent relative'>
           <div className="flex w-full bg-lightBg rounded-b-3xl justify-center">
             <div className={`w-full max-w-[1700px] pb-4 flex flex-col ${withsearch == false  && "rounded-b-3xl"} `} >
-                <div className={"flex  pt-3 h-fit min-h-14  justify-between px-20"}>
+                <div className={"flex  pt-3 h-fit min-h-14  justify-between px-20 max-tablet:px-10 "}>
                     <div className='my-auto  flex gap-2 cursor-pointer' >
                         <Image src={img} alt="" />
                         <Link href={"/"} className='font-semibold text-g'>
-                          Ziccow General Trading
-                      </Link>
+                          <p className="tablet:hidden">Ziccow</p>
+                          <p className="max-tablet:hidden">Ziccow General Trading</p>
+                        </Link>
                     </div>
-                    <div className='flex capitalize my-auto  gap-12'>
+                    
+                    <div className="h-full cursor-pointer mobile:hidden flex">
+                      <MenuIcon className="text-3xl my-auto" />
+                    </div>
+
+
+                    <div className='flex capitalize my-auto max-mobile:hidden gap-12 max-tablet:gap-8 max-tablet:text-[16px]'>
                         <Link href={"/about"} className='hover:text-blue-500 cursor-pointer ' >About</Link>
                         <div className=' group flex gap-2 ' >
                             <span className="group-hover:text-blue-500">
@@ -49,8 +57,8 @@ const Nav = ({ withsearch } : Props) => {
                     </div>
                     {
                       isLogedIn ? 
-                      <div  className="relative">
-                        <div onClick={() => setShowProfile(data => !data)} className="flex gap-5" >
+                      <div  className="relative max-tablet:text-[16px] max-mobile:hidden">
+                        <div onClick={() => setShowProfile(data => !data)} className="flex gap-5 max-tablet:gap-3" >
                           <div className="cursor-pointer bg-blue-200 my-auto p-2 w-10 h-10 rounded-full flex items-center justify-center">
                             JD
                           </div>
@@ -60,7 +68,7 @@ const Nav = ({ withsearch } : Props) => {
                       </div>
                     :
 
-                      <Link href={'/auth/login'} className='text-blue-500 capitalize flex gap-3'>
+                      <Link href={'/auth/login'} className='text-blue-500 max-mobile:hidden capitalize flex gap-3'>
                         <SignInIcon className="text-xl m-auto" />
                         <span className="m-auto">
                           Sign in
@@ -73,7 +81,7 @@ const Nav = ({ withsearch } : Props) => {
                 <>
                   <div className="w-full mb-2 mt-2  h-[1px] bg-slate-300"></div>
                   
-                  <div className="flex pt-2 justify-between px-[5em] ">
+                  <div className="flex pt-2 justify-between px-[5em] max-mobile:hidden ">
 
                       <div className="flex gap-4">
                           <div className="border w-fit flex px-2 rounded-xl font-light bg-white">

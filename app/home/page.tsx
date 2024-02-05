@@ -14,13 +14,13 @@ const home = () => {
     <div className='relative bg-lightBg' id="home">
         <GetStarted />
         <Hero />
-        <Enjoy />
+        {/* <Enjoy />
         <Difference />
         <View /> 
         <Properties />
         <DowloadApp />
         <Join />
-        <Footer />
+        <Footer /> */}
     </div>
     )
 }
