@@ -15,6 +15,7 @@ import ProfileCard from "./profileCard";
 import { useState } from "react";
 import Link from "next/link";
 import { IoMdMenu as MenuIcon } from "react-icons/io";
+import navaddImg from "../assets/images/navadd.svg"
 interface Props {
   withsearch : boolean 
 }
@@ -27,7 +28,7 @@ const Nav = ({ withsearch } : Props) => {
         <div className='w-full z-[1000] bg-lightBg bg-transparent relative'>
           <div className="flex w-full bg-lightBg rounded-b-3xl justify-center">
             <div className={`w-full max-w-[1700px] pb-4 flex flex-col ${withsearch == false  && "rounded-b-3xl"} `} >
-                <div className={"flex  pt-3 h-fit min-h-14  justify-between px-20 max-tablet:px-10 "}>
+                <div className={"flex  pt-3 h-fit min-h-14  justify-between px-20 max-small:px-5 max-tablet:px-10 "}>
                     <div className='my-auto  flex gap-2 cursor-pointer' >
                         <Image src={img} alt="" />
                         <Link href={"/"} className='font-semibold text-g'>
@@ -79,9 +80,9 @@ const Nav = ({ withsearch } : Props) => {
                 {
                 withsearch &&
                 <>
-                  <div className="w-full mb-2 mt-2  h-[1px] bg-slate-300"></div>
+                  <div className="w-full mb-2 mt-2 max-mobile:hidden h-[1px] bg-slate-300"></div>
                   
-                  <div className="flex pt-2 justify-between px-[5em] max-mobile:hidden ">
+                  <div className="flex pt-2 justify-between px-20 max-small:px-5 max-tablet:px-10 max-mobile:hidden ">
 
                       <div className="flex gap-4">
                           <div className="border w-fit flex px-2 rounded-xl font-light bg-white">
@@ -93,7 +94,12 @@ const Nav = ({ withsearch } : Props) => {
                             <input type="text" className="px-3 py-2 outline-none" placeholder="Enter location" />
                           </div>
 
-                          <Button text="Search" buttonClass="px-3 py-2 text-sm  flex-row-reverse" iconClass="text-lg " iconDivClass="border-none" Icon={SearchIcon} action={()=>{}} />
+                          <button onClick={() => {}} className={` flex gap-2  hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white m-auto  px-3 py-2 text-sm  flex-row-reverse`}>
+                            <span className="max-tablet:hidden" >Search</span>
+                            <div className={`m-auto border p-[1px] rounded border-none`}>
+                              <SearchIcon className={`m-auto text-lg`} />
+                            </div>
+                          </button>
 
                       </div>
 
@@ -101,16 +107,16 @@ const Nav = ({ withsearch } : Props) => {
                      {showNotification && <Notification />}
                      {isLogedIn &&
                         <>
-                          <div onClick={()=>setShowNotification(data => !data)} className="flex relative cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
+                          <div onClick={()=>setShowNotification(data => !data)} className="flex max-tablet:hidden  relative cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
                             <Image src={notificationIcon} width={20} alt="" className="" />
                           </div>
-                          <div className="flex cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
+                          <div className="flex max-tablet:hidden cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
                             <Image src={messageIcon} width={20} alt="" />
                           </div>
                         </>
                       }
                       <div className="flex text-mainBlue gap-1 text-sm">
-                        <AddIcon className="m-auto text-lg" />
+                        <Image src={navaddImg} className="m-auto" alt="" />
                         <p className="m-auto ">
                           Add new Listing
                         </p>

@@ -21,10 +21,6 @@ const home = () => {
         <DowloadApp />
         <Join />
         <Footer /> 
-
-
-        {/*
-        */}
     </div>
     )
 }

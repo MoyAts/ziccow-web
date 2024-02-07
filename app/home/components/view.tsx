@@ -11,9 +11,9 @@ import goImage from "../../assets/images/go.svg"
 const view = () => {
   return (
     <div className="h-fit  pt-10 max-tablet:pt-32 flex mb-[8em] ">
-        <div className=' w-full max-w-[1700px] mx-auto flex flex-col items-center px-20 max-tablet:px-10'>
+        <div className=' w-full max-w-[1700px] mx-auto flex flex-col items-center px-20 max-small:px-5 max-tablet:px-10'>
         <p className='text-blue-400 text-center text-lg font-light'>Real estates across the town</p>
-        <h1 className='text-[45px] max-tablet:text-[35px]  font-semibold text-center'>View our featured top <span className='text-blue-600'>real estates.</span>  </h1>
+        <h1 className='text-[45px] max-tablet:text-[35px] max-small:text-[27px]  font-semibold text-center'>View our featured top <span className='text-blue-600'>real estates.</span>  </h1>
         <Link href={"/recommendation"}  className='flex gap-2 mt-8 px-4 py-2 hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white mx-auto text-lg'>
             <span>view real state</span>
             <Image src={goImage} alt="" className="my-auto w-6" />

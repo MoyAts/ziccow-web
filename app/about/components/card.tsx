@@ -4,7 +4,7 @@ import photoImg from "../../assets/images/person.png"
 
 const card = () => {
   return (
-    <div className='w-full bg-red-30 h-1/3'>
+    <div className='w-1/3 max-tablet:w-1/2 max-sm:w-full shrink-0  h-1/3 max-tablet:h-full'>
         <div className="w-full relative ">
             <Image src={photoImg} className="w-full" alt="" />
             <div className="absolute top-0 right-0 border border-[#C2BFC4] text-[#555456] px-3 py-1 rounded-3xl">CEO and Founder</div>

@@ -35,9 +35,9 @@ const footer = () => {
                     </div>
                     <div className="basis-1/12"> </div>
 
-                    <div className="flex basis-7/12 justify-between max-tablet:mt-10">
+                    <div className="flex basis-7/12 justify-between max-tablet:mt-10 max-sm:flex-col max-sm:gap-7">
 
-                        <div className='flex flex-col gap-3 w-2/6'>
+                        <div className='flex flex-col gap- max-sm:w-full3 w-2/6 '>
                             <h3 className="text-xl">Company</h3>
                             <ul className=' flex flex-col gap-5 mt-3 text-gray-400 capitalize'>
                                 <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#home"}>About us</li>
@@ -49,7 +49,7 @@ const footer = () => {
                             </ul>
                         </div>
 
-                        <div className='flex flex-col gap-3  w-2/6'>
+                        <div className='flex flex-col gap-3 max-sm:w-full  w-2/6'>
                             <h3 className="text-xl">Legal</h3>
                             <ul className=' flex flex-col gap-5 mt-3 text-gray-400'>
                                 <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#home"}>Terms of service</li>
@@ -57,7 +57,7 @@ const footer = () => {
                             </ul>
                         </div>
 
-                        <div className='flex flex-col gap-3  w-2/6'>
+                        <div className='flex flex-col gap-3 max-sm:w-full  w-2/6'>
                             <h3 className="text-xl">Contacts</h3>
                             <ul className=' flex flex-col gap-5 mt-3 text-gray-400'>
                                 <li className='hover:text-blue-500 cursor-pointer duration-200 flex gap-3'>
@@ -94,7 +94,7 @@ const footer = () => {
                         <FaInstagram className='text-2xl text-blue-500 cursor-pointer hover:text-white duration-200' />
                         <CiFacebook className='text-2xl text-blue-500 cursor-pointer hover:text-white duration-200' />
                     </div>
-                    <p className=''>Ziccow General Trading Â© 2024. All Rights Reserved.</p>
+                    <p className='max-mobile:hidden'>Ziccow General Trading Â© 2024. All Rights Reserved.</p>
                     <button onClick={() => location.href = "#home"} className="capitalize flex gap-2 hover:text-white">
                         <UpArrowIcon className="m-auto" />
                         <span className="m-auto">
@@ -103,6 +103,9 @@ const footer = () => {
                     </button>
                    
                 </div>
+
+                <p className='mobile:hidden text-gray-400 text-center mt-12'>Ziccow General Trading Â© 2024. All Rights Reserved.</p>
+
 
         </div>
 </div>

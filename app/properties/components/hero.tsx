@@ -14,7 +14,7 @@ interface filterInf {
 }
 
 const Hero = () => {
-    const [isGrid,setIsGrid] = useState(false)
+    const [isGrid,setIsGrid] = useState(true)
     const sortList = ["Default" , "temporary1","temporary2"] 
     const filters : filterInf[] = [
         {
@@ -37,11 +37,11 @@ const Hero = () => {
   
   return (
 
-    <div className='h-[100vh] max-w-[1700px] mx-auto max-h-[800px] relative z-20  bg-lightBg flex border-t border-gray-300'>
-        <div className="basis-3/5 h-full bg-white">
+    <div className='h-[100vh] max-w-[1700px] mx-auto  max-tablet:h-fit  max-tablet:max-h-fit max-h-[800px] relative z-20  bg-lightBg flex border-t border-gray-300'>
+        <div className="basis-3/5 h-full bg-white  max-tablet:basis-0">
             <iframe className="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15761.155759235115!2d38.744371077855796!3d9.037385747868658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8f5efcffebd3%3A0xda821c73ef928f93!2sPiazza%2C%20Addis%20Ababa!5e0!3m2!1sen!2set!4v1705580274602!5m2!1sen!2set" width="600" height="450"   loading="lazy" ></iframe>
         </div>
-        <div className="basis-2/5  h-full  flex flex-col px-5 ">
+        <div className="basis-2/5  max-tablet:basis-full  max-tablet:px-10  max-small:px-5 max-tablet:w-full    h-full  flex flex-col px-5 ">
             <div className="flex text-sm justify-between my-3">
                     <div className="font-semibold">Property Listing</div>
                     <div className="flex gap-2">
@@ -49,17 +49,17 @@ const Hero = () => {
                         <Image src={collapseImg} alt="" />
                     </div>
             </div>
-            <div className="flex  py-2 w-full justify-between gap-2">
+            <div className="flex  max-small:flex-wrap py-2 w-full tablet:justify-between   max-tablet:gap-5 gap-2">
                 {filters.map((data : filterInf) => (
                     <SelectOption key={data.list[0]} list={data.list} img={data.img}  />
                 ))}
 
             </div>
 
-            <div className="flex text-gray-500 mt-3 justify-between ">
+            <div className="flex text-gray-500 mt-3 justify-between  max-small:flex-col  ">
                 
-                <p className="text-sm">showing <span className="font-bold">64</span>  search result</p>
-                <div className="flex  ">
+                <p className="text-sm max-small:mb-3">showing <span className="font-bold">64</span>  search result</p>
+                <div className="flex  max-small:place-self-end">
                     <span>
                         sort : 
                     </span>
@@ -79,10 +79,10 @@ const Hero = () => {
                 
                         </div>
                      </div>
-                     <div className="h-4/6 my-auto w-[1px] mx-5 bg-gray-400"></div>
-                     <div className="flex gap-3">
-                        <Image onClick={() => setIsGrid(true)} src={gridSvg} className={`cursor-pointer px-1 rounded-lg ${isGrid && "bg-blue-100"}`} alt="" />
-                        <Image onClick={() => setIsGrid(false)} src={listSvg} className={`cursor-pointer px-1 rounded-lg ${!isGrid && "bg-blue-100"}`} alt="" />
+                     <div className="h-4/6 my-auto w-[1px] mx-5 bg-gray-400 max-small:hidden"></div>
+                     <div className="flex gap-3 max-small:hidden">
+                        <Image onClick={() => setIsGrid(true)} src={gridSvg} className={`cursor-pointer px-1 rounded-lg w-full  ${isGrid && "bg-blue-100"}`} alt="" />
+                        <Image onClick={() => setIsGrid(false)} src={listSvg} className={`cursor-pointer px-1 rounded-lg w-full ${!isGrid && "bg-blue-100"}`} alt="" />
                      </div>
                 </div>
 
@@ -90,7 +90,7 @@ const Hero = () => {
 
             <div className="w-full my-3 mx-auto bg-gray-500 h-[2px] opacity-50 "></div>
             
-            <div className={`${isGrid ? "grid grid-cols-2" : "flex flex-col gap-2"} overflow-scroll gap-2 pb-10`}>
+            <div className={`${isGrid ? "grid grid-cols-2 max-small:grid max-small:grid-cols-1" : "flex flex-col gap-2  max-small:grid max-small:grid-cols-1"} tablet:overflow-scroll gap-2 pb-10`}>
               <Home isGrid={isGrid} />
               <Home isGrid={isGrid} />
               <Home isGrid={isGrid} />

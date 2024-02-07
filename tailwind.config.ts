@@ -12,6 +12,9 @@ const config: Config = {
         bigScreen: '1700px',
         tablet : '1050px',
         mobile : '770px',
+        small : '500px',
+        vsmall : '400px',
+        xsmall : '350px',
       },
       colors: {
         lightBlue: '#CCE3FC',

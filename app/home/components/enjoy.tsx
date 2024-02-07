@@ -2,8 +2,8 @@
 
 const index = () => {
   return (
-    <div className="w-full bg-mainDark h-[45vh] max-tablet:min-h:fit tablet:max-h-[300px] flex">
-      <div className='w-full max-w-[1700px]  m-auto  flex max-tablet:flex-col max-tablet:gap-4 gap-12 py-20 max-tablet:px-10 px-20 text-white' >
+    <div className="w-full bg-mainDark h-[45vh] max-tablet:h-fit tablet:max-h-[300px] flex">
+      <div className='w-full max-w-[1700px]  m-auto  flex max-tablet:flex-col max-tablet:gap-4 gap-12 py-20 max-vsmall:px-5 max-tablet:px-10 px-20 text-white' >
         <div className='basis-3/12 text-[25px] max-tablet:text-center'  >
               Enjoy quality life with our housing services.
         </div>

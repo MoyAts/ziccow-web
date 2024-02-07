@@ -3,11 +3,11 @@ import Card from './card'
 import { IoMdArrowForward as ArrowIcon } from "react-icons/io";
 const honor = () => {
   return (
-    <div className='w-full px-20 h-fit py-16 pb-32 bg-lightBg max-w-[1700px] mx-auto'>
+    <div className='w-full px-20 max-tablet:px-10 h-fit py-16 pb-32 bg-lightBg max-w-[1700px] mx-auto'>
         <div className='w-full text-center text-[45px]'>
             Our <span className='text-mainBlue'>Honorary Partners.</span> 
         </div>
-        <div className='flex justify-between gap-10 pt-16'>
+        <div className='flex tablet:justify-between gap-10   pt-16 overflow-auto'>
             <Card />
             <Card />
             <Card />

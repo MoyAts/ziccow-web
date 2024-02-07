@@ -18,7 +18,7 @@ const page = () => {
       <Teams />
       <Honor />
       <Contact />
-      <Footer />
+      <Footer /> 
     </div>
   )
 }

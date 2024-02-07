@@ -11,9 +11,10 @@ const page = () => {
       <GetStarted />
       <Hero />
       <PropertyTypes />
+      {/* 
       <Realestates />
       <Join />
-      <Footer />
+      <Footer /> */}
     </div>
   )
 }
