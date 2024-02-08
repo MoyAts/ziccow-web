@@ -8,7 +8,7 @@ import Form from "./form"
 import cancelImg from "../../assets/images/cancelentry.svg"
 const hero = () => {
   return (
-    <div className="h-fit px-20 mx-auto border-t border-gray-300 pt-5 max-w-[1700px]">
+    <div className="h-fit px-20 mx-auto max-tablet:px-10 max-mobile:px-5 border-t border-gray-300 pt-5 max-w-[1700px]">
         <div className='flex text-sm gap-2'>
             <div className="flex gap-1">
                 <Image src={propertyImg} alt="" />
@@ -23,7 +23,7 @@ const hero = () => {
             <h1 className="text-[35px] mt-10 mb-1">Add a new listing</h1>
             <p className="text-lightGray">Answer a few questions and get your selling options in as little as 3 minutes.</p>
           </div>
-          <button className="my-auto flex gap-3">
+          <button className="my-auto flex gap-3 max-mobile:hidden">
             <Image src={cancelImg} alt="" className="my-auto" />
             <p className="text-[#b16d0e] font-semibold">Cancel Entry</p>
           </button>

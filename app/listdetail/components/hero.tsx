@@ -17,11 +17,11 @@ const hero = () => {
   return (
     <div className='h-fit min-h-[100vh]  w-full relative flex   bg-[#547b87] ' >
         <Image src={bg} alt="" className='absolute left-0 top-0 bottom-0 right-0 w-full h-full' />
-        <div className='h-fit min-h-fit w-full z-10 border-t border-gray-300 px-20 max-w-[1700px] mx-auto' >
+        <div className='h-fit min-h-fit w-full z-10 border-t border-gray-300 px-20 max-tablet:px-0 max-w-[1700px] mx-auto' >
 
                 
-            <div className='w-full h-full z-[1000] bg-lightBg   py-3 px-10'>
-                <div className='flex text-sm gap-4 pt-4'>
+            <div className='w-full h-full z-[1000] bg-lightBg   py-3 px-10 max-mobile:px-5 '>
+                <div className='flex text-sm gap-2 pt-4 max-mobile:text-xs '>
                     <div className="flex gap-1">
                         <Image src={propertyImg} alt="" />
                         <div>Property</div>
@@ -32,9 +32,9 @@ const hero = () => {
                     <div className="text-lightGray">Glam Apartment No.3</div>
                 </div>
 
-                <div className='flex justify-between mt-5'>
-                    <h1 className='text-[35px]'>Glam Apartment No.3</h1>
-                    <div className='flex gap-8'>
+                <div className='flex justify-between mt-5 max-mobile:flex-col-reverse'>
+                    <h1 className='text-[35px] max-mobile:text-[27px]'>Glam Apartment No.3</h1>
+                    <div className='flex gap-8 max-mobile:place-items-end max-mobile:my-3'>
                         <div className='flex gap-2 cursor-pointer'>
                             <Image src={shareImg} className='my-auto w-4' alt="" />
                             <p className='my-auto'>Share</p>

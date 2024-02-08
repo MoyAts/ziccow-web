@@ -4,7 +4,7 @@ const confirmed = () => {
   return (
     <div className='w-full'>
       <div className='text-lg font-semibold'>All done ...</div>
-      <div className='text-[40px] font-semibold mt-1 mb-4'>Successful registration...</div>
+      <div className='text-[40px] max-mobile:text-3xl max-mobile:text-center w-full font-semibold mt-1 mb-4'>Successful registration...</div>
       <div className='text-lightGray'> 
         <div className='mb-3'>
           Your property has been successfully added to the listing. 

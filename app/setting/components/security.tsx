@@ -6,7 +6,7 @@ const security = () => {
     <div className='w-full '>
         <h2 className='text-2xl font-semibold mb-8'>Sign-in & Security</h2>  
         <form action=" mt-8">
-            <div className='flex w-full gap-5 mb-7'>
+            <div className='flex max-tablet:flex-col w-full gap-5 mb-7'>
                 <CustomeInput label='Create Password' name='fullName' placeholder='Enter your password' divClass='w-full' pass={true}  />
                 <CustomeInput label='Confirm Password' name='fullName' placeholder='Enter your password' divClass='w-full' pass={true}  />
             </div>

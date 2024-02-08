@@ -7,20 +7,20 @@ import goImg from "../../assets/images/go.svg"
 const Confirmation = () => {
   return (
     <div className='w-full h-fit pb-32'>
-        <div className='text-2xl mb-3'>Preview your entry before confirmation.</div>
-        <div className='text-[28px] text-lightGray'>Glam Apartment No.3</div>
-        <div className='flex  gap-8 mt-3 mb-5 '>
-            <div className='basis-5/12'>
+        <div className='text-2xl max-mobile:text-xl mb-3'>Preview your entry before confirmation.</div>
+        <div className='text-[28px] max-mobile:text-2xl text-lightGray'>Glam Apartment No.3</div>
+        <div className='flex  gap-8 mt-3 mb-5 max-tablet:flex-col'>
+            <div className='tablet:basis-5/12'>
                 <Image src={img} alt='home' className='w-full object-cover rounded-lg h-full ' />
             </div>
-            <div className='flex basis-7/12 gap-8  h-full'>
-                <div className='flex flex-col gap-8'>
-                    <Image src={img} alt='home' className='object-cover rounded-lg h-full' />
-                    <Image src={img} alt='home' className='object-cover rounded-lg h-full' />
+            <div className='flex tablet:basis-7/12 gap-8 h-full max-tablet:gap-8'>
+                <div className='flex flex-col mobile:justify-between gap-8'>
+                    <Image src={img} alt='home' className='object-cover rounded-lg  tablet:h-full' />
+                    <Image src={img} alt='home' className='object-cover rounded-lg  tablet:h-full' />
                 </div>
-                <div className='flex flex-col gap-8'>
-                    <Image src={img} alt='home' className='object-cover rounded-lg h-full' />
-                    <Image src={img} alt='home' className='object-cover rounded-lg h-full' />
+                <div className='flex flex-col mobile:justify-between gap-8'>
+                    <Image src={img} alt='home' className='object-cover rounded-lg  tablet:h-full' />
+                    <Image src={img} alt='home' className='object-cover rounded-lg  tablet:h-full' />
                 </div>
             </div>
 
@@ -28,7 +28,7 @@ const Confirmation = () => {
 
         <div className='mt-5 flex flex-col gap-3' >
             
-            <div className='text-3xl text-lightGray'>About the Property</div>
+            <div className='text-3xl max-mobile:text-xl text-lightGray'>About the Property</div>
             <Info detail='Apartment, High rise' topic='Home Type' />
             <Info detail='Glam Apartment No.3, 4 Kilo Parliament, Addis Ababa.' topic='Address' />
             <Info detail='2020' topic='Year Built' />

@@ -30,7 +30,7 @@ const propertyDetail = () => {
           ReactIcon={MdNavigateNext}
           IconClass={"text-3xl my-auto text-mainBlue rotate-90"}
         />
-        <div className='flex gap-5 mb-8 w-full'>
+        <div className='flex gap-5 mb-8 w-full max-mobile:flex-col'>
             <CustomeInput label='Year Built' name='label' placeholder='1989' divClass='w-full'   />
             <CustomeInput 
               label='Square footage (above ground)' 
@@ -45,7 +45,7 @@ const propertyDetail = () => {
             <div className="text-xl">Facilities</div>
             <MdNavigateNext className="text-3xl my-auto text-mainBlue -rotate-90" />
         </div>
-        <div className='grid grid-cols-2 gap-5 mb-8 w-full'>
+        <div className='grid grid-cols-2 gap-5 mb-8 w-full max-tablet:grid-cols-1'>
             <CustomeInputNumber preImg={img3} label={"No. of Bedrooms"} />
             <CustomeInputNumber preImg={img4} label={"No. of Bathrooms"} />
             <CustomeInputNumber preImg={img4} label={"No. of Kitchen"} />
@@ -88,7 +88,7 @@ const propertyDetail = () => {
         <p className="text-lightGray text-sm mt-2">Please select an option.</p>
 
         <div className="text-xl mb-4 mt-8">Community</div>
-        <div className="flex gap-5">
+        <div className="flex gap-5 flex-wrap">
           <CheckBoxDiv label="Near Park" />
           <CheckBoxDiv label="Shopping District" />
           <CheckBoxDiv label="Shopping District" />
@@ -104,7 +104,7 @@ const propertyDetail = () => {
         </p>
 
         <div className="text-xl mb-4 mt-8">Upload Image(s)</div>
-        <div className="mt-5 grid grid-cols-2 h-[350px] gap-5">
+        <div className="mt-5 grid grid-cols-2 max-mobile:grid-cols-1 h-[350px] max-mobile:h-fit gap-5">
           
             <ImagePicker divClass="" />
 
@@ -120,7 +120,7 @@ const propertyDetail = () => {
             </div>
 
         </div>
-        <p className="text-lightGray text-sm mt-2">
+        <p className="text-lightGray text-sm mt-2 max-mobile:mt-5">
           Start with a brief overview that describes your item’s finest features.
         </p>
 

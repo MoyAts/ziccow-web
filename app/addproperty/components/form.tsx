@@ -12,12 +12,12 @@ import goImg from "../../assets/images/goBlack.svg"
 import CancelImg from "../../assets/images/cancelentry.svg"
 
 const Form = () => {
-   const [page,setPage] = useState(4)
+   const [page,setPage] = useState(3)
    return (
     <div className='min-h-[400px]'>
-         <div className='flex justify-between mt-12'>
-            <div className='flex flex-col gap-12 basis-5/12 text-lightGray'>
-                <p onClick={() => setPage(1)} className={`${page == 1 && "font-semibold text-black"}    duration-200 flex justify-between`}>
+         <div className='flex justify-between mt-12 max-tablet:flex-col'>
+            <div className='flex tablet:flex-col mobile:gap-12 max-mobile:flex-col max-mobile:gap-4 basis-5/12 text-lightGray max-tablet:mb-7 '>
+                <p onClick={() => setPage(1)} className={`${page == 1 && "font-semibold text-black"} gap-3    duration-200 flex justify-between`}>
                     <p className={`cursor-pointer ${page > 1 && "text-accept"} `}>
                         1. Property details
                     </p>
@@ -29,7 +29,7 @@ const Form = () => {
                         }
                     </div>
                 </p>
-                <p onClick={() => setPage(2)} className={`${page == 2 && "font-semibold text-black"}    duration-200 flex justify-between`}>
+                <p onClick={() => setPage(2)} className={`${page == 2 && "font-semibold text-black"} gap-3    duration-200 flex justify-between`}>
                     <p className={`cursor-pointer ${page > 2 && "text-accept"} `}>
                         2. Selling options
                     </p>
@@ -45,7 +45,7 @@ const Form = () => {
                     </div>
                 </p>
 
-                <p onClick={() => setPage(3)} className={`${page == 3 && "font-semibold text-black"}  cursor-pointer duration-200 flex justify-between`}>
+                <p onClick={() => setPage(3)} className={`${page == 3 && "font-semibold text-black"} gap-3  cursor-pointer duration-200 flex justify-between`}>
                     <p className="cursor-pointer">
                         3. Confirmation
                     </p>

@@ -13,14 +13,14 @@ const propertyManagment = () => {
     <div className='w-full h-fit pb-32'>
         <div className='text-2xl mb-8'>Add property management options...</div>
         <div>Which one of the following apply to you?</div>
-        <div className='pt-4 flex w-full justify-between '>
+        <div className='pt-4 flex w-full justify-between max-mobile:flex-col max-mobile:gap-2'>
            <RadioDiv label='I am a real estate agent' name='Which one of the following apply to you?' />
            <RadioDiv label='I am the property ownert' name='Which one of the following apply to you?' />
            <RadioDiv label='None of these apply to me' name='Which one of the following apply to you?' />
         </div>
         <p className="text-danger mt-3 text-sm">Please select an option.</p>
         <div className="mt-8">How soon would you like to sell?</div>
-        <div className='pt-4 flex w-full justify-between '>
+        <div className='pt-4 flex w-full justify-between max-mobile:flex-col max-mobile:gap-2'>
            <RadioDiv label='As soon as possible' name='How soon would you like to sell?' />
            <RadioDiv label='Within a month' name='How soon would you like to sell?' />
            <RadioDiv label='2-3 months' name='How soon would you like to sell?' />

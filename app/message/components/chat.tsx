@@ -17,7 +17,7 @@ const chat = ({ isCurrentUser } : Props) => {
             : 
             <Image src={person} className='w-10 h-10 rounded-full' alt='user' />
         }
-        <div className={`w-fit  max-w-[50%] ${isCurrentUser ? "bg-white  rounded-b-xl rounded-l-xl" : "bg-[#EEF6FE] rounded-b-xl rounded-r-xl"}  px-4 py-3 flex flex-col gap-2 `}>
+        <div className={`w-fit  max-w-[50%] max-mobile:max-w-[75%] ${isCurrentUser ? "bg-white  rounded-b-xl rounded-l-xl" : "bg-[#EEF6FE] rounded-b-xl rounded-r-xl"}  px-4 py-3 flex flex-col gap-2 `}>
             <p className={`${isCurrentUser && "text-right"} `}>That's awesome. I think our users will really appreciate the improvements.</p>
             <p className={`text-sm ${isCurrentUser && "self-end"}  `}>1 hr. ago</p>
         </div>
