@@ -56,21 +56,21 @@ const propertyDetail = () => {
             <MdNavigateNext className="text-3xl my-auto text-mainBlue -rotate-90" />
         </div>
         <div className="text-xl mb-4">Interior</div>
-        <div className="flex gap-24">
+        <div className="flex tablet:gap-24 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
           <CheckBoxDiv label="Appliances are not included" />
           <CheckBoxDiv label="Appliances included" />
         </div>
         <p className="text-lightGray text-sm mt-2">Please select an option.</p>
         
         <div className="text-xl mb-4 mt-8">Property</div>
-        <div className="flex gap-24">
+        <div className="flex tablet:gap-24 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
           <CheckBoxDiv label="Parking features" />
           <CheckBoxDiv label="Lot features" />
         </div>
         <p className="text-lightGray text-sm mt-2">Please select an option.</p>
 
         <div className="text-xl mb-4 mt-8">Utilities</div>
-        <div className="flex gap-32">
+        <div className="flex tablet:gap-32 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
 
           <div className="flex flex-col gap-5">
             <CheckBoxDiv label="Room in a home" />
