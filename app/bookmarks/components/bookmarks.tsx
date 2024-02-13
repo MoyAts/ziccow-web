@@ -9,15 +9,15 @@ import { IoIosArrowBack as ListIcon} from "react-icons/io";
 
 const bookmarks = () => {
   return (
-    <div className='flex flex-col px-20 max-w-[1700px] mx-auto border-t border-gray-300'>
-      <div className='flex justify-between border-b border-gray-300 mb-4 py-4'>
-        <div className='flex gap-5'>
+    <div className='flex flex-col px-20 max-w-[1700px] max-tablet:px-10 max-mobile:px-5 mx-auto border-t border-gray-300'>
+      <div className='flex justify-between border-b border-gray-300 mb-4 py-4 max-tablet:flex-col'>
+        <div className='flex gap-5 flex-wrap  '>
           <SelectOption list={["Rental","Sell","new"]} img={rentalIcon}  />
           <SelectOption list={["House","Sell","new"]} img={houseIcon}  />
           <SelectOption list={["$15k - $30k","Sell","new"]} img={amountIcon}  />
           <SelectOption list={["125 sq ft","Sell","new"]} img={spaceIcon}  />
         </div>
-        <div className='flex gap-2 text-lightGray me-12'>
+        <div className='flex gap-2 text-lightGray me-12 place-self-end max-mobile:mt-5'>
           <p>
             Sort:
           </p>
@@ -38,7 +38,7 @@ const bookmarks = () => {
         </div>
 
       </div>
-      <div className='w-full grid grid-cols-3  2xl:grid-cols-4  gap-5 pb-32 max-xl:grid-cols-3 justify-between '>
+      <div className='w-full grid grid-cols-3  2xl:grid-cols-4 max-tablet:grid-cols-2 max-mobile:grid-cols-1  gap-5 pb-32 max-xl:grid-cols-3 justify-between '>
           <Property  />
           <Property  />
           <Property  />

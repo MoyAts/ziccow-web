@@ -26,8 +26,8 @@ const Nav = ({ withsearch } : Props) => {
   const isLogedIn = true;
   return (
         <div className='w-full z-[1000] bg-lightBg bg-transparent relative'>
-          <div className="flex w-full bg-lightBg rounded-b-3xl justify-center">
-            <div className={`w-full max-w-[1700px] pb-4 flex flex-col ${withsearch == false  && "rounded-b-3xl"} `} >
+          <div className="flex w-full bg-lightBg  mobile:rounded-b-3xl justify-center">
+            <div className={`w-full max-w-[1700px] pb-4 flex flex-col ${withsearch == false  && " mobile:rounded-b-3xl"} `} >
                 <div className={"flex  pt-3 h-fit min-h-14  justify-between px-20 max-small:px-5 max-tablet:px-10 "}>
                     <div className='my-auto  flex gap-2 cursor-pointer' >
                         <Image src={img} alt="" />
@@ -38,7 +38,7 @@ const Nav = ({ withsearch } : Props) => {
                     </div>
                     
                     <div className="h-full cursor-pointer mobile:hidden flex">
-                      <MenuIcon className="text-3xl my-auto" />
+                      <MenuIcon className="text-3xl my-auto text-mainBlue" />
                     </div>
 
 

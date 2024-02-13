@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from 'react'
 import RadioDiv from './radioboxdiv'
-import CustomeInput from '../../components/customeInput' 
+import CustomeInput from '../../_components/customeInput' 
 import { MdNavigateNext } from "react-icons/md";
 import { GrLinkNext } from "react-icons/gr";
 import goImg from "../../assets/images/go.svg"

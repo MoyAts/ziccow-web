@@ -15,7 +15,7 @@ interface Props {
 const box = ({img} : Props) => {
   
   return (
-    <Link href={"/propertiesDetail"}  className='bg-rd-300 w-fit cursor-pointer shrink-0 rounded-xl overflow-hidden text-black flex flex-col gap-3'>
+    <Link href={"/propertiesDetail"}  className='bg-rd-300 w-fit cursor-pointer shrink-0 max-mobile:w-full rounded-xl overflow-hidden text-black flex flex-col gap-3'>
           <div className='rounded-xl group relative border w-full h-2/3 overflow-hidden'>
             <Image src={img} className='rounded-xl group-hover:scale-110 w-full object-cover h-full cursor-pointer duration-300 hover:scale-105' alt="" />
             <div className="absolute bottom-0 top-0 left-0 right-0 bg-gradient-to-t from-mainDardk via-transparent to-transparent"></div>

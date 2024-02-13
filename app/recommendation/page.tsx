@@ -2,9 +2,9 @@
 import Hero from "./components/hero"
 import PropertyTypes from './components/property_types'
 import Realestates from './components/realestates'
-import Footer from "../components/footer"
-import Join from "../components/join"
-import GetStarted from "../components/get_started"
+import Footer from "../_components/footer"
+import Join from "../_components/join"
+import GetStarted from "../_components/get_started"
 const page = () => {
   return (
     <div className='relative' >

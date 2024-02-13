@@ -1,8 +1,8 @@
 "use client" 
 
-import Footer from "../components/footer"
-import GetStarted from "../components/get_started"
-import Nav from "../components/nav"
+import Footer from "../_components/footer"
+import GetStarted from "../_components/get_started"
+import Nav from "../_components/nav"
 import Hero from "./components/hero"
 const page = () => {
   return (

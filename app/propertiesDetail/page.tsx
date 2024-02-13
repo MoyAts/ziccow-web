@@ -1,5 +1,5 @@
 "use client" 
-import GetStarted from "../components/get_started"
+import GetStarted from "../_components/get_started"
 import Hero from "./components/hero"
 import Detail from "./components/detail"
 const page = () => {

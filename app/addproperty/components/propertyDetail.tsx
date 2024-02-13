@@ -1,6 +1,6 @@
 "use client" 
 import Image from "next/image"; 
-import CustomeInput from "../../components/customeInput"
+import CustomeInput from "../../_components/customeInput"
 import searachImg from "../../assets/images/searchLocation.svg"
 import { MdNavigateNext } from "react-icons/md";
 import { GrLinkNext } from "react-icons/gr";

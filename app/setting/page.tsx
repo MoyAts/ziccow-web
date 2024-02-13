@@ -1,8 +1,8 @@
 "use client"
 import React from 'react'
-import Nav from '../components/nav'
+import Nav from '../_components/nav'
 import SettingInfo from './components/setting'
-import Footer from "../components/footer"
+import Footer from "../_components/footer"
 
 const page = () => {
   return (

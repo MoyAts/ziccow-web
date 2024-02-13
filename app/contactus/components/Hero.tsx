@@ -2,9 +2,9 @@
 import Image from "next/image"; 
 import Link from "next/link";
 
-import Nav from "../../components/nav"
+import Nav from "../../_components/nav"
 import bg from "../../assets/images/Background_-_Copy-removebg-preview.png"
-import CustomeInput from "../../components/customeInput"
+import CustomeInput from "../../_components/customeInput"
 const Hero = () => {
   return (
     <div className='w-full bg-[#547b87] bg-opacity-[85%]  '>

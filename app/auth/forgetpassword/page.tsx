@@ -1,9 +1,10 @@
 "use client"
 import logoG from "../../assets/images/googleLogo.svg"
 import img from "../../assets/images/Widget 5.svg"
-import CustomeInput from "../../components/customeInput"
+import CustomeInput from "../../_components/customeInput"
 import { FaCheck as CheckIcon } from "react-icons/fa6";
 import bg from "../../assets/images/Background.png"
+import checkImg from "../../assets/images/confirm.svg"
 
 import Link from "next/link";
 import Image from "next/image";
@@ -32,20 +33,13 @@ const index = () => {
                 </div>
                 
                 <form className='flex flex-col gap-7' onSubmit={e => e.preventDefault()}>
-                    <CustomeInput name='a' label={"email address"} placeholder={"email"}/>
-                    <div className='ps-2 flex justify-between'>
-                        <div className='flex gap-2'>
-                            <input placeholder='s' type="checkbox" />
-                            <p className='text-lightGray'>Remember this device</p>
-                        </div>
-                    </div>
-                    <Link href={"/auth/reset"} className='w-full flex  gap-3 justify-center hover:bg-blue-600 duration-200 bg-mainBlue py-3 text-white rounded-xl'>
+                    <CustomeInput name='a' label={"OTP"} placeholder={"OTP"}/>
+                    
+                    <Link href={"/auth/reset"} className='w-full flex mt-12 gap-3 justify-center hover:bg-blue-600 duration-200 bg-mainBlue py-3 text-white rounded-xl'>
                         <p className='font-semibold'>
                             create an account
                         </p>
-                        <div className='border my-auto rounded p-'>
-                            <CheckIcon />
-                        </div> 
+                        <Image src={checkImg} alt={""}/>
                     </Link>
 
                     <div className='flex gap-10 '>

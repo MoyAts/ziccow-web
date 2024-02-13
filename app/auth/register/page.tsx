@@ -2,11 +2,13 @@
 
 import logoG from "../../assets/images/googleLogo.svg";
 import img from "../../assets/images/Widget 5.svg"
-import CustomeInput from "../../components/customeInput"
+import CustomeInput from "../../_components/customeInput"
 import { IoArrowForwardSharp as LoginIcon } from "react-icons/io5";
 import bg from "../../assets/images/Background.png"
 import Link from "next/link";
 import Image from "next/image";
+import goImage from "../../assets/images/go.svg"
+
 const register = () => {
   return (
     <div className='h-fit min-h-[100vh] bg-red w-full relative flex text-sm' style={{background:"#CCE3FC"}}>
@@ -43,9 +45,8 @@ const register = () => {
                         <p>
                             create an account
                         </p>
-                        <div className='border my-auto rounded '>
-                            <LoginIcon />
-                        </div> 
+                        <Image src={goImage} alt="" className="my-auto w-6" />
+
                     </button>
 
                     <div className='flex gap-10'>

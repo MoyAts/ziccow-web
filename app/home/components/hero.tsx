@@ -2,15 +2,15 @@
 import Image from "next/image"; 
 import Link from "next/link";
 import bg from "../../assets/images/Background (4).png"
-import { CiSearch } from "react-icons/ci";
 import img2 from "../../assets/images/a.svg"
 import img3 from "../../assets/images/solar_city-bold-duotone.svg"
-import Nav from '../../components/nav';
-
+import Nav from '../../_components/nav';
+import searchImg from "../../assets/images/search.svg"
+import mobileSearchImg from "../../assets/images/mobilesearch.svg"
 
 const hero = () => {
   return (
-    <div className="w-full bg-[#6b6d77] tablet:h-[112vh] max-tablet:h-fit max-tablet:pb-32     mx-auto  tablet:max-h-[800px] relative flex flex-col ">
+    <div className="w-full bg-[#6b6d77] tablet:h-[112vh] max-tablet:h-fit max-tablet:pb-32 max-mobile:pb-8     mx-auto  tablet:max-h-[800px] relative flex flex-col ">
         <Nav withsearch={false} />
             <div className="absolute w-full tablet:h-[112vh] max-tablet:h-full  mx-auto  tablet:max-h-[800px]">
                 <Image src={bg} alt="" className='w-full mx-auto  h-full object-cover'/>
@@ -23,25 +23,28 @@ const hero = () => {
                         <Image src={img2} className='w-[27px]' alt="" />
                         <input className='outline-none my-auto w-full py-3' style={{color:"#6D6C6E"}} placeholder='Enter a location, property type or budget' />
                     </div>
-                    <Link href={"/properties"} className='flex gap-2 w-fit bg-mainBlue text-white px-6 text-sm justify-center hover:bg-blue-500 py-3 rounded-lg'>
-                        <CiSearch className='my-auto text-xl'/>
+                    <div className="mobile:hidden w-fit px-6 flex justify-center ">
+                        <Image src={mobileSearchImg} className="w-6" alt="" />
+                    </div>
+                    <Link href={"/properties"} className='flex gap-2 w-fit max-mobile:hidden  bg-mainBlue text-white px-6 text-sm justify-center hover:bg-blue-500 py-3 rounded-lg'>
+                        <Image src={searchImg} className="" alt="" />
                         <span className='my-auto w-full max-mobile:hidden'>See&nbsp;Suggestions</span>
                     </Link>
                 </div>
 
                 <p className='text-[#E8E8E9] mt-32 text-lg font-light'>Or browse through the highlights</p>
-                <div className='flex  justify-center max-mobile:justify-between mobile:gap-12 w-full mt-16 xl:mt-10 z-[1000] '>
-                    <div className='flex flex-col justify-center gap-4 items-center px-5 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
+                <div className='flex   justify-center max-mobile:flex-col max-mobile:gap-4 gap-12 w-full mt-16 xl:mt-10 z-[1000] '>
+                    <div className='flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
                         <Image src={img3} width={50} alt="" />
                         <p className='text-white max-sm:text-center  font-light'>Buy a property</p>
                     </div>
                     <div className='h-10 my-auto bg-gray-200 w-[1px] max-mobile:hidden'></div>
-                    <div className='flex flex-col justify-center gap-4 items-center px-5 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
+                    <div className='flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
                         <Image src={img3} width={50} alt="" />
                         <p className='text-white max-sm:text-center  font-light'>Rent a property</p>
                     </div>
                     <div className='h-10 my-auto bg-gray-200 w-[1px] max-mobile:hidden'></div>
-                    <div className='flex flex-col justify-center gap-4 items-center px-5 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
+                    <div className='flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
                         <Image src={img3} width={50} alt="" />
                         <p className='text-white max-sm:text-center  text-s font-light'>Sell a property</p>
                     </div>

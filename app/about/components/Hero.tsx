@@ -1,7 +1,7 @@
 "use client" 
 import Image from "next/image"; 
 
-import Nav from "../../components/nav"
+import Nav from "../../_components/nav"
 import bg from "../../assets/images/about_bg.png"
 const Hero = () => {
   return (

@@ -2,11 +2,11 @@
 
 import logoG from "../../assets/images/googleLogo.svg"
 import img from "../../assets/images/Widget 5.svg"
-import CustomeInput from "../../components/customeInput"
-import { IoArrowForwardSharp as LoginIcon } from "react-icons/io5";
+import CustomeInput from "../../_components/customeInput"
 import bg from "../../assets/images/Background.png"
 import Link from "next/link";
 import Image from "next/image";
+import goImage from "../../assets/images/go.svg"
 
 const login = () => {
   return (
@@ -42,9 +42,8 @@ const login = () => {
                         <p className='font-semibold'>
                             Login
                         </p>
-                    <div className='border my-auto rounded p-'>
-                        <LoginIcon />
-                    </div> 
+                        <Image src={goImage} alt="" className="my-auto w-6" />
+
                     </button>
 
                     <div className='flex gap-10'>

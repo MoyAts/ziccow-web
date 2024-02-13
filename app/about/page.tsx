@@ -4,9 +4,9 @@ import Hero from "./components/Hero"
 import About from "./components/about"
 import Help from "./components/help"
 import Teams from "./components/teams"
-import Contact from "../components/contact"
-import Footer from "../components/footer"
-import GetStarted from "../components/get_started"
+import Contact from "../_components/contact"
+import Footer from "../_components/footer"
+import GetStarted from "../_components/get_started"
 import Honor from "./components/honor"
 const page = () => {
   return (

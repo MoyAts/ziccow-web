@@ -33,7 +33,7 @@ const home = ( ) => {
                     </p>
                 </p>
             </div>
-            <div className='justify-between font-semibold text-black grid grid-cols-3 gap-3' >
+            <div className='justify-between font-semibold text-black flex gap-y-2 flex-wrap' >
                 <div className='flex mt-2 gap-1'>
                     <Image src={img5} width={15} className="my-auto"  alt="" />
                     <span className='text-sm my-auto'>1 Bathroom</span>

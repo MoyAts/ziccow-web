@@ -1,9 +1,10 @@
 "use client"
 import logoG from "../../assets/images/googleLogo.svg"
 import img from "../../assets/images/Widget 5.svg"
-import CustomeInput from "../../components/customeInput"
+import CustomeInput from "../../_components/customeInput"
 import { IoArrowForwardSharp as LoginIcon } from "react-icons/io5";
 import bg from "../../assets/images/Background.png"
+import goImage from "../../assets/images/go.svg"
 
 import Link from "next/link";
 import Image from "next/image";
@@ -31,23 +32,27 @@ const index = () => {
                 </div>
                 
                 <form className='flex flex-col gap-7' onSubmit={e => e.preventDefault()}>
-                    
-                    <CustomeInput name='s' label={"create password"} placeholder={"password"} pass={true}/>
-                    <CustomeInput name='s' label={"confirm password"} placeholder={"password"} pass={true}/>
-
-                    <div className='ps-2 flex justify-between'>
-                        <div className='flex gap-2'>
-                            <input placeholder='s' type="checkbox" />
-                            <p className='text-lightGray'>Remember this device</p>
-                        </div>
+                    <div className="w-full flex flex-col gap-2">
+                        <CustomeInput name='s' label={"create password"} placeholder={"password"} pass={true}/>
+                        <label htmlFor="checkbox2" className='text-lightGray select-none flex gap-2'>
+                            <input placeholder='s' type="checkbox" id="checkbox2"  />
+                            <div>show password</div>
+                        </label>    
                     </div>
-                    <button className='w-full flex gap-3 justify-center hover:bg-blue-600 duration-200 bg-mainBlue py-3 text-white rounded-xl'>
+                    <div className="w-full flex flex-col gap-2">
+                        <CustomeInput name='s' label={"confirm password"} placeholder={"password"} pass={true}/>
+                        <label htmlFor="checkbox1" className='text-lightGray select-none flex gap-2'>
+                            <input placeholder='s' type="checkbox" id="checkbox1"  />
+                            <div>show password</div>
+                        </label>
+                    </div>
+
+                    <button className='w-full flex gap-3 mt-5 justify-center hover:bg-blue-600 duration-200 bg-mainBlue py-3 text-white rounded-xl'>
                         <p className='font-semibold'>
                             Confirm Email
                         </p>
-                        <div className='border my-auto rounded '>
-                            <LoginIcon className='' />
-                        </div> 
+                        <Image src={goImage} alt="" className="my-auto w-6" />
+
                     </button>
 
                     <div className='flex gap-10 '>
