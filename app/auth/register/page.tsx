@@ -12,8 +12,17 @@ import { useMutation } from "@apollo/client";
 import {REGISTER_GQL} from "../../../graphql/auth"
 import Error from "@/app/_components/error";
 
+interface DataInt {
+    firstName : "",
+    lastName : "",
+    phone : "",
+    email : "",
+    password : "",
+    confirm : "",
+}
+
 const register = () => {
-    const initialData = {
+    const initialData : { [key: string]: string } = {
         firstName : "",
         lastName : "",
         phone : "",
@@ -21,10 +30,33 @@ const register = () => {
         password : "",
         confirm : "",
     }
+    const initialError = {
+        firstName : null,
+        lastName : null,
+        phone : null,
+        email : null,
+        password : null,
+        confirm : null,
+    }
     const [form,setForm] = useState(initialData)
+    const [formError,setFormError] = useState("")
+
     const setChange = ({ target } : any) =>{ 
         setForm(data => ({...data,[target.name] : target.value}))
     }
+
+    const checkError = () : boolean =>{
+        for (let key in form) {
+            if (form.hasOwnProperty(key)) {
+                console.log(key + ': ' + form[key]);
+                if(form[key] == ""){
+                    return false
+                }
+            }
+        }
+        return true
+    }    
+
 
     const [signup,{loading,error,data}] = useMutation(REGISTER_GQL)
     
@@ -34,6 +66,11 @@ const register = () => {
     }
 
     const submit = () => {
+        if(!checkError()){
+            alert("Nop")
+        }else{
+            alert("Yep")
+        }
         signup({
             variables : {
                 ...form,
