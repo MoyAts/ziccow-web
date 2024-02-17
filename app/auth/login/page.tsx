@@ -22,8 +22,9 @@ const LoginPage = () => {
    
     if(data) {
         const token = data.loginEmail.token
-        saveUser(token)
-        location.href = "/"
+        console.log(data)
+        // saveUser(token)
+        // location.href = "/"
     }
     const submit = () => {
         login({ variables: { email, password },})

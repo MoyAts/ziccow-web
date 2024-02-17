@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
-import ApollowLayout from "./_components/layout"
+import Provider from "../layouts/provider"
 const inter = Lexend({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ApollowLayout children={children} />
+        <Provider >
+          {children}
+        </Provider>
       </body>
     </html>
   );

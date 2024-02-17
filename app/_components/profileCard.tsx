@@ -4,10 +4,11 @@ import Link from "next/link";
 import style from "../css/propertiesCard.module.css"
 
 interface Props {
-  show : boolean
+  show : boolean,
+  logoutUser : Function
 }
 
-const profileCard = ({ show } : Props) => {
+const profileCard = ({ show,logoutUser } : Props) => {
   return (
     <div className={`${show ? style.showPopup : "hidden"} duration-0 w-fit flex min-w-[200px] shadow text-lightGray flex-col text-sm  bg-white rounded-lg absolute z-[3000] right-0 top-12 `}>
         <div className='px-3 py-2 mt-2 '>
@@ -22,7 +23,7 @@ const profileCard = ({ show } : Props) => {
         </div>
         <div className='w-full h-[1px] my-1 bg-gray-300'></div>
         <div className='px-3 font-semibold pb-3 mt-1 text-[#8C560A]'>
-          <Link href={""}>Sign Out</Link>
+          <button onClick={() => logoutUser()} >Sign Out</button>
         </div>
       
     </div>

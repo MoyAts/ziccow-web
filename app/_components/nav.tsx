@@ -16,14 +16,22 @@ import { useState } from "react";
 import Link from "next/link";
 import { IoMdMenu as MenuIcon } from "react-icons/io";
 import navaddImg from "../assets/images/navadd.svg"
+
+import type { RootState } from '../../store/store'
+import { AuthInf } from "../../store/features/auth/authSlice";
+import { useSelector, useDispatch } from 'react-redux'
+import { setUser,getState,logoutUser} from '../../store/features/auth/authSlice'
+
 interface Props {
   withsearch : boolean 
 }
 
 const Nav = ({ withsearch } : Props) => {
+  const state : AuthInf = useSelector(getState)
+  const dispatch = useDispatch()
   const [showProfile,setShowProfile] = useState(false)
   const [showNotification,setShowNotification] = useState(false)
-  const isLogedIn = true;
+  
   return (
         <div className='w-full z-[1000] bg-lightBg bg-transparent relative'>
           <div className="flex w-full bg-lightBg  mobile:rounded-b-3xl justify-center">
@@ -45,8 +53,8 @@ const Nav = ({ withsearch } : Props) => {
                     <div className='flex capitalize my-auto max-mobile:hidden gap-12 max-tablet:gap-8 max-tablet:text-[16px]'>
                         <Link href={"/about"} className='hover:text-blue-500 cursor-pointer ' >About</Link>
                         <div className=' group flex gap-2 ' >
-                            <span className="group-hover:text-blue-500">
-                              services
+                            <span  className="group-hover:text-blue-500">
+                              services 
                             </span>
                             <ListIcon className="-rotate-90 group-hover:text-blue-500 group-hover:rotate-90 duration-200 my-auto" />
                             <div className={`absolute duration-200 scale-0 origin-top z-[1000] w-full left-0 top-[3.3em] group-hover:scale-100 `}>
@@ -57,7 +65,7 @@ const Nav = ({ withsearch } : Props) => {
                         <Link href={"/contactus"} className='hover:text-blue-500 cursor-pointer ' >contact us</Link>
                     </div>
                     {
-                      isLogedIn ? 
+                      state.doesTalkenExist ? 
                       <div  className="relative max-tablet:text-[16px] max-mobile:hidden">
                         <div onClick={() => setShowProfile(data => !data)} className="flex gap-5 max-tablet:gap-3" >
                           <div className="cursor-pointer bg-blue-200 my-auto p-2 w-10 h-10 rounded-full flex items-center justify-center">
@@ -65,7 +73,7 @@ const Nav = ({ withsearch } : Props) => {
                           </div>
                           <p className="cursor-pointer my-auto text-lightGray">John Doe</p>
                         </div>
-                       <ProfileCard show={showProfile} />
+                       <ProfileCard logoutUser={() => {console.log("loging out"); dispatch(logoutUser())}} show={showProfile} />
                       </div>
                     :
 
@@ -105,7 +113,7 @@ const Nav = ({ withsearch } : Props) => {
 
                     <div className="flex gap-5 relative">
                      {showNotification && <Notification />}
-                     {isLogedIn &&
+                     {state.doesTalkenExist &&
                         <>
                           <div onClick={()=>setShowNotification(data => !data)} className="flex max-tablet:hidden  relative cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
                             <Image src={notificationIcon} width={20} alt="" className="" />

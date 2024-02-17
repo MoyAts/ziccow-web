@@ -11,6 +11,7 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import {REGISTER_GQL} from "../../../graphql/auth"
 import Error from "@/app/_components/error";
+import ClientError from "@/app/_components/clientError";
 
 interface DataInt {
     firstName : "",
@@ -21,7 +22,7 @@ interface DataInt {
     confirm : "",
 }
 
-const register = () => {
+const Register = () => {
     const initialData : { [key: string]: string } = {
         firstName : "",
         lastName : "",
@@ -48,12 +49,17 @@ const register = () => {
     const checkError = () : boolean =>{
         for (let key in form) {
             if (form.hasOwnProperty(key)) {
-                console.log(key + ': ' + form[key]);
-                if(form[key] == ""){
+                if(form[key] == "" && key != "phone"){
+                    setFormError(`${key} is required`)
                     return false
                 }
             }
         }
+        if(form.confirm != form.password){
+            setFormError(`Wrong confirm password is required`)
+            return false
+        }
+        setFormError("")
         return true
     }    
 
@@ -66,16 +72,13 @@ const register = () => {
     }
 
     const submit = () => {
-        if(!checkError()){
-            alert("Nop")
-        }else{
-            alert("Yep")
+        if(checkError()){
+            signup({
+                variables : {
+                    ...form,
+                }
+            })
         }
-        signup({
-            variables : {
-                ...form,
-            }
-        })
     }
 
     return (
@@ -97,6 +100,7 @@ const register = () => {
                     </p>
                     <h3 className='capitalize text-xl my-5 font-semibold'>Sign up</h3>
                     <Error error={error} />
+                    {formError && <ClientError error={formError} />}
                     <form className='flex flex-col gap-7' onSubmit={e => e.preventDefault()}>
                         <div className="flex justify-between gap-7 max-mobile:flex-col">
                             <CustomeInput name='firstName' onChange={setChange} label={"First Name"} placeholder={"first name"} divClass="w-full"/>
@@ -155,4 +159,4 @@ const register = () => {
   )
 }
 
-export default register
+export default Register
