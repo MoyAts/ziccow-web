@@ -76,7 +76,7 @@ const Nav = ({ withsearch } : Props) => {
                           </div>
                           <p className="cursor-pointer my-auto text-lightGray">{state.user?.firstName}</p>
                         </div>
-                       <ProfileCard logoutUser={() => {console.log("loging out"); dispatch(logoutUser())}} show={showProfile} />
+                       <ProfileCard logoutUser={() => { dispatch(logoutUser())}} show={showProfile} state={state} />
                       </div>
                     :
 
