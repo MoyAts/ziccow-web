@@ -8,14 +8,14 @@ const join = () => {
 
         <div className='w-full h-fit   max-w-[1700px] mx-auto  flex max-tablet:flex-col max-tablet:gap-4 gap-12 py-12 px-20  max-small:px-5 max-tablet:px-10 text-white' >
             <div className='basis-1/2  '  >
-                <h1 className='w-/3 text-[38px]  max-mobile:text-[25px]   mb-10 text-center'>
+                <div className='w-/3 text-[38px]  max-mobile:text-[25px]   mb-10 text-center'>
                     <span className='text-mainBlue '>
                         Have questions 
                     </span>
                     <span >
                     ? Contact us by email or telephone.
                     </span> 
-                </h1>
+                </div>
             </div>
             <p className='basis-1/2 text-sm my-auto flex max-sm:flex-col justify-center gap-10 max-sm:gap-5  text-gray-400 '>
                 

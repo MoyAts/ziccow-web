@@ -1,15 +1,14 @@
 "use client";
-
+import { isTokenExist } from "../../lib/auth"
 const layout = ({ children } : any) => {
 
-    const token = localStorage.getItem('token');
-
-    if (token) {
-        window.location.href = "/";
+    if (isTokenExist()) {
+        if (typeof window !== "undefined") {
+            window.location.href = "/";
+        }
         return <></>
     }
- 
-   return <>{children}</>;
+    return <>{children}</>;
 };
 
 export default layout;

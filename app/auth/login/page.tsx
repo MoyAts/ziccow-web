@@ -11,9 +11,13 @@ import goImage from "../../assets/images/go.svg"
 import { useMutation } from "@apollo/client"
 import { LOGIN_GQL } from "../../../graphql/auth"
 import { saveUser } from "../../../lib/auth"
+import { useDispatch } from "react-redux"
+import { loginUser } from "@/store/features/auth/authSlice"
+// import { useRouter } from 'next/router';
 
 const LoginPage = () => {
-
+    const dispatch = useDispatch()
+    // const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [login,{loading,error,data}] = useMutation(LOGIN_GQL, {
@@ -21,9 +25,11 @@ const LoginPage = () => {
     })
    
     if(data) {
-        const token = data.loginEmail.token
         console.log(data)
-        saveUser(token)
+        dispatch(loginUser({token:data.loginEmail.token, userId : data.loginEmail.user.user_id}))
+        // const token = data.loginEmail.token
+        // console.log(data)
+        // saveUser(token)
         location.href = "/"
     }
     const submit = () => {

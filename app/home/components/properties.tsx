@@ -13,9 +13,9 @@ const properties = () => {
       <div id='properties' className='h-full max-w-[1700px]   tablet:max-h-[800px]  max-tablet:h-fit mx-auto max-tablet:mx-none  px-20 max-small:px-5 max-tablet:px-10' >
         <div className='py-5 flex justify-between  '>
           <div className='my-auto flex flex-col'>
-            <h1 className='text-[38px] max-mobile:text-center'>
+            <div className='text-[38px] max-mobile:text-center'>
               Properties in <span className='text-blue-500'>your area</span> 
-            </h1>
+            </div>
             <p className='text-lightGray text-lg max-mobile:hidden'>
               Suggested based on homes you recently viewed
             </p>

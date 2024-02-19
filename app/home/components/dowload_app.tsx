@@ -11,10 +11,10 @@ const DowloadApp = () => {
             <Image src={mockupimg} className="object-contain w-[65%] max-tablet:w-full max-mobile:w-[100vh]  mobile:mx-auto h-full" alt="" />
             <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-b from-transparent to-lightBg"></div>
         </div>
-        <h1 className="text-[45px]  max-sm:text-center  mt-12 font-normal">
+        <div className="text-[45px]  max-sm:text-center  mt-12 font-normal">
            <span className="text-mainBlue">Download&#32;</span> 
            Our App Now.
-        </h1>
+        </div>
         <p className=" text-center my-3">
             Please feel free to download our app on the app store or google play store to evaluate our product.
         </p>

@@ -1,53 +1,94 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction,Slice } from '@reduxjs/toolkit'
+import { saveUser,getUser,logout, isTokenExist } from "../../../lib/auth"
+import type { UserInf } from "../../../lib/auth"
+
+export interface UserFromApi {
+  first_name : string,
+  last_name : string ,
+  user_id : string ,
+  email : string ,
+} 
 
 export interface DatasInf {
   firstName : string | null,
   lastName : string  | null,
   userId : string  | null,
+  email : string  | null,
 } 
 
-export interface AuthInf {
-  doesTalkenExist : boolean
-  isLogedIn : boolean | null,
-  data : DatasInf | null,
-  loading : string | null,
-  isDataFetched : boolean,
-  error: string | null
+export enum LogInf {
+  LOGED_IN,
+  LOADING,
+  NO_USER,
 }
 
-const initialState: AuthInf = {
-  data : {
+export interface loginDataInf {
+  token : string,
+  userId : string
+}
+
+export interface AuthInf {
+  doesTokenExist : boolean
+  isLogedIn : LogInf,
+  user : DatasInf | null,
+  error: string | null,
+  isDataFetched : boolean
+}
+
+export const initialState: AuthInf = {
+  user : {
     userId : null,
     firstName : null,
-    lastName : null
+    lastName : null,
+    email : null
   },
-  isLogedIn : false,
-  doesTalkenExist : window.localStorage.getItem("token") != null,
-  loading : null,
+  isLogedIn : LogInf.NO_USER,
+  doesTokenExist : isTokenExist(),
+  isDataFetched : false,
   error : null,
-  isDataFetched : false
 }
 
 export const authSlice : any = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<number>) => {
+    loginUser: (state, action: PayloadAction<loginDataInf>) => {
       const data = action.payload
-      console.log(data)
+      saveUser({ token : data.token , userId : data.userId })
     },
     logoutUser: (state) => {
-      
-        window.localStorage.removeItem("token")
-        state.data = null
-        state.isLogedIn = false
-        state.doesTalkenExist = false
+        logout()
+        state.user = null
+        state.isLogedIn = LogInf.NO_USER
+        state.doesTokenExist = false
     },
+    fetchingUser : (state) => {
+      state.isLogedIn = LogInf.LOADING
+    },
+    userFetched : (state,action : PayloadAction<UserFromApi>) => {
+      const user = action.payload
+      console.log(user,"usering")
+      state.user = {
+        userId : user.user_id,
+        firstName : user.first_name,
+        lastName : user.last_name,
+        email : user.email
+      }
+      state.isLogedIn = LogInf.LOGED_IN
+      state.doesTokenExist =true
+      state.error = null
+      state.isDataFetched = true
+
+    },
+    userFetchedError : (state,action : any) => {
+      console.log(action.data)
+      state.isLogedIn = LogInf.NO_USER
+    } 
   },
 })
 
-export const { setUser,logoutUser } = authSlice.actions
+export const { loginUser,logoutUser,fetchingUser,userFetched,userFetchedError } = authSlice.actions
 
 export const getState = (state : any) => {
     return state.auth

@@ -23,7 +23,7 @@ const box = ({img} : Props) => {
           <div className='flex flex-col capitalize'>
 
             <div className='flex justify-between mt-2 '>
-              <h1 className="text-xl">Modernica Apartment</h1>
+              <div className="text-xl">Modernica Apartment</div>
               <div className='px-2 text-normal my-auto  rounded-xl' style={{background:"#CCE3FC"}}>appartment</div>
             </div>
 

@@ -16,7 +16,7 @@ const hero = () => {
                 <Image src={bg} alt="" className='w-full mx-auto  h-full object-cover'/>
             </div>
             <div className='flex max-tablet:pt-32  px-10 max-small:px-5 flex-col items-center justify-center  tablet:max-h-[850px] max-tablet:h-full z-[500]  h-[112vh] w-full max-w-[1700px] mx-auto  '>
-                <h1 className=' text-[50px] max-mobile:text-[35px]  flex flex-col gap-0  text-white text-center'>Find a home that suits you.</h1>
+                <div className=' text-[50px] max-mobile:text-[35px]  flex flex-col gap-0  text-white text-center'>Find a home that suits you.</div>
                 <p className=' text-white font-light text-center' style={{color : "#E8E8E9"}}>Want to find a suitable home? We are ready to help you find one that suits your lifestyle and needs</p>
                 <div className='w-8/12 max-tablet:w-10/12 max-small:w-full mt-10 mx-auto  bg-white py-2 flex justify-between rounded-2xl px-2'>
                     <div className='flex gap-2 px-2 w-full '>

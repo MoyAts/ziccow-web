@@ -20,7 +20,7 @@ import navaddImg from "../assets/images/navadd.svg"
 import type { RootState } from '../../store/store'
 import { AuthInf } from "../../store/features/auth/authSlice";
 import { useSelector, useDispatch } from 'react-redux'
-import { setUser,getState,logoutUser} from '../../store/features/auth/authSlice'
+import { getState,logoutUser,LogInf} from '../../store/features/auth/authSlice'
 
 interface Props {
   withsearch : boolean 
@@ -65,13 +65,16 @@ const Nav = ({ withsearch } : Props) => {
                         <Link href={"/contactus"} className='hover:text-blue-500 cursor-pointer ' >contact us</Link>
                     </div>
                     {
-                      state.doesTalkenExist ? 
+                    state.isLogedIn == LogInf.LOADING ?
+                    <>LOADING </> : 
+                    state.isLogedIn == LogInf.LOGED_IN ?
+
                       <div  className="relative max-tablet:text-[16px] max-mobile:hidden">
                         <div onClick={() => setShowProfile(data => !data)} className="flex gap-5 max-tablet:gap-3" >
-                          <div className="cursor-pointer bg-blue-200 my-auto p-2 w-10 h-10 rounded-full flex items-center justify-center">
-                            JD
+                          <div className="cursor-pointer capitalize bg-blue-200 my-auto p-2 w-10 h-10 rounded-full flex items-center justify-center">
+                            {state.user?.firstName !== null && typeof state.user?.firstName !== 'undefined' && state.user?.firstName.length > 0 ? state.user?.firstName[0] : state.user?.email![0] }
                           </div>
-                          <p className="cursor-pointer my-auto text-lightGray">John Doe</p>
+                          <p className="cursor-pointer my-auto text-lightGray">{state.user?.firstName}</p>
                         </div>
                        <ProfileCard logoutUser={() => {console.log("loging out"); dispatch(logoutUser())}} show={showProfile} />
                       </div>
@@ -113,7 +116,7 @@ const Nav = ({ withsearch } : Props) => {
 
                     <div className="flex gap-5 relative">
                      {showNotification && <Notification />}
-                     {state.doesTalkenExist &&
+                     {state.doesTokenExist &&
                         <>
                           <div onClick={()=>setShowNotification(data => !data)} className="flex max-tablet:hidden  relative cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
                             <Image src={notificationIcon} width={20} alt="" className="" />

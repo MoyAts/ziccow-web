@@ -24,7 +24,7 @@ const footer = () => {
                             <h3 className="text-xl"> Ziccow General Trading </h3>
                         </div>
                         <p className=' text-gray-400'>
-                            <h1 className="capitalize font-normal text-white mb-4" >about us</h1>
+                            <div className="capitalize font-normal text-white mb-4" >about us</div>
                             At Ziccow, we understand that every individual has unique needs and preferences when it comes to real estate. That's why we offer a personalized approach to our services, taking the time to listen to your goals and requirements, and working tirelessly to find the perfect property for you.
                         </p>
                         <h4 className="mt-6 mb-2">Recent Region</h4>
