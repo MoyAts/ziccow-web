@@ -51,7 +51,7 @@ const customeInput = ({label,name,onChange,value,preIcon,placeholder,pass,inputC
         <label htmlFor="" className={'font-semibold ' + labelClass}>{label}</label>
         <div className={'w-full  bg-white flex rounded-xl px-2 border ' } style={{borderColor:"#DBD7DD"}}>
             <Image src={preIcon ? preIcon : InputIcon} alt="" width={23} className={'me-3 ' +imgClass }/>
-            <input type={pass && pass == true ? "password" : "text"} onChange={onChange} name={name} placeholder={placeholder} className={'py-3  w-full outline-none rounded-lg ' + inputClass}/>
+            <input type={pass && pass == true ? "password" : "text"} value={value ? value : ""} onChange={onChange} name={name} placeholder={placeholder} className={'py-3  w-full outline-none rounded-lg ' + inputClass}/>
             {Icon && <Image src={Icon} alt="" className={"w-fit " + IconClass} /> }
             {ReactIcon && <ReactIcon className={"w-fit " + IconClass} />}
         </div>

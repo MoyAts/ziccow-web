@@ -68,7 +68,6 @@ export const authSlice : any = createSlice({
     },
     userFetched : (state,action : PayloadAction<UserFromApi>) => {
       const user = action.payload
-      console.log(user,"usering")
       state.user = {
         userId : user.user_id,
         firstName : user.first_name,

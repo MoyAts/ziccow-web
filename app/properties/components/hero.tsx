@@ -8,29 +8,49 @@ import Home from "./home";
 import listSvg from  "../../assets/images/listsvg.svg"
 import { useState } from "react";
 import collapseImg from "../../assets/images/collapse.svg"
+import { useQuery } from "@apollo/client";
+import { GET_LISTING } from "@/graphql/features/listing";
 interface filterInf {
     list : string[],
     img : any 
 }
 
+interface house {
+    digital_assets_list : Array<{ url : string}>,
+    listing_property : {
+        bathroom_count : number,
+        bedroom_count : number,
+        square_ft : number,
+    },
+    address_data : string
+
+}
+
 const Hero = () => {
+    const { loading , error, data } = useQuery(GET_LISTING)
+
     const [isGrid,setIsGrid] = useState(true)
+    
+    loading && console.log("loading")
+    error && console.log("error")
+    data && console.log(data)
+
     const sortList = ["Default" , "temporary1","temporary2"] 
     const filters : filterInf[] = [
         {
-            list : ["Rental1","Rental2","Rental3"],
+            list : ["Rental2","Rental1","Rental3"],
             img : rentalIcon
         },
         {
-            list : ["Rental1","Rental2","Rental3","Rental4"],
+            list : ["Rental3","Rental2","Rental1","Rental4"],
             img : rentalIcon
         },
         {
-            list : ["Rental1","Rental2"],
+            list : ["Rental4","Rental1"],
             img : rentalIcon
         },
         {
-            list : ["Rental1","Rental2","Rental3"],
+            list : ["Rental5","Rental2","Rental1"],
             img : rentalIcon
         },
     ]
@@ -58,7 +78,7 @@ const Hero = () => {
 
             <div className="flex text-gray-500 mt-3 justify-between  max-small:flex-col  ">
                 
-                <p className="text-sm max-small:mb-3">showing <span className="font-bold">64</span>  search result</p>
+                <div className="text-sm max-small:mb-3">showing <span className="font-bold">64</span>  search result</div>
                 <div className="flex  max-small:place-self-end">
                     <span>
                         sort : 
@@ -91,12 +111,21 @@ const Hero = () => {
             <div className="w-full my-3 mx-auto bg-gray-500 h-[2px] opacity-50 "></div>
             
             <div className={`${isGrid ? "grid grid-cols-2 max-small:grid max-small:grid-cols-1" : "flex flex-col gap-2  max-small:grid max-small:grid-cols-1"} tablet:overflow-scroll gap-2 pb-10`}>
-              <Home isGrid={isGrid} />
-              <Home isGrid={isGrid} />
-              <Home isGrid={isGrid} />
-              <Home isGrid={isGrid} />
-              <Home isGrid={isGrid} />
-
+              
+              
+              
+              { 
+                loading ? 
+                <div>Loading</div> 
+                :
+                error ? 
+                <div>error</div> 
+                :
+                data ?
+                data.listing.map((house : house,ind : number) => <Home key={ind} house={house} isGrid={isGrid} />)
+                :
+                <div>......</div>
+              }
             </div>
 
         </div>

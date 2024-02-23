@@ -3,7 +3,7 @@ import React from 'react'
 import client from "../graphql/client"
 import { ApolloProvider, useLazyQuery } from '@apollo/client';
 import StoreProvider from '@/store/storeProvider';
-import { GET_USER } from "../graphql/user"
+import { GET_USER } from "../graphql/features/user"
 import { useSelector,useDispatch } from 'react-redux';
 import { getState,AuthInf,userFetched,fetchingUser,userFetchedError,LogInf } from '@/store/features/auth/authSlice';
 import { getUser } from "../lib/auth"

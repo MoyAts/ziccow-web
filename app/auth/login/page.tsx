@@ -9,7 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import goImage from "../../assets/images/go.svg"
 import { useMutation } from "@apollo/client"
-import { LOGIN_GQL } from "../../../graphql/auth"
+import { LOGIN_GQL } from "../../../graphql/features/auth"
 import { saveUser } from "../../../lib/auth"
 import { useDispatch } from "react-redux"
 import { loginUser } from "@/store/features/auth/authSlice"
@@ -59,8 +59,8 @@ const LoginPage = () => {
                     </div>}
                     <form className='flex flex-col gap-7' onSubmit={e => e.preventDefault()}>
                         
-                        <CustomeInput onChange={({target} : any) => setEmail(target.value)} name='email' label={"email address"} placeholder={"email"}/>
-                        <CustomeInput onChange={({target} : any) => setPassword(target.value)} name='' pass={true} label={"password"} placeholder={"password"} />
+                        <CustomeInput value={email} onChange={({target} : any) => setEmail(target.value)} name='email' label={"email address"} placeholder={"email"}/>
+                        <CustomeInput value={password} onChange={({target} : any) => setPassword(target.value)} name='' pass={true} label={"password"} placeholder={"password"} />
                         <div className='ps-2 flex justify-between'>
                             <div className='flex gap-2'>
                                 <input type="checkbox" placeholder='s' />

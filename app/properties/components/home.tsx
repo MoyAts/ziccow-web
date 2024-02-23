@@ -8,19 +8,39 @@ import img3 from "../../assets/images/Group (1).png"
 import img4 from "../../assets/images/Group (2).png"
 import img5 from "../../assets/images/Group (3).png"
 
-interface Props {
-    isGrid : boolean   
+
+interface houseInf {
+    digital_assets_list : Array<{ url : string}>,
+    listing_property : {
+        bathroom_count : number,
+        bedroom_count : number,
+        square_ft : number,
+    },
+    address_data : string
+
 }
 
-const home = ( { isGrid } : Props) => {
+interface Props {
+    isGrid : boolean,
+    house : houseInf 
+}
+
+const home = ( { isGrid,house } : Props) => {
     
   return (
     
-    <div className={`flex  text-sm gap-2 bg-white border shadow p-1 rounded-lg text-lightGray  max-small:flex-col  ${isGrid && "flex-col "}`}>
-        <div className="rounded-lg basis-1/3  flex">
-            <Image src={img} className="rounded-lg  w-full object-cover my-auto" alt="" />
+    <div className={`flex justify-between text-sm gap-2 bg-white border shadow p-1 rounded-lg text-lightGray  max-small:flex-col  ${isGrid && "flex-col "}`}>
+        <div className="rounded-lg basis-1/3  ">
+            <Image src={house.digital_assets_list[0].url}  
+            width={100}
+            height={100}
+            className="rounded-lg  w-full object-cover my-auto" alt=""
+            quality={100}
+
+           />
         </div>
-        <div className={`flex flex-col basis-2/3  py-2 ${isGrid ? "px-1" : " w-full"}  max-small:px-1`}>
+        <div className={`bg-red200 ${!isGrid && "my-auto"} flex flex-col basis-2/3  py-2 ${isGrid ? "px-1" : " w-full"}  max-small:px-1`}>
+            {isGrid && <div className="flex-grow"></div>}
             <div className={`${!isGrid && 'hidden'}   flex flex-row-reverse`}>
                 <div className={`  w-fit  bg-blue-300 text-black text-[10px] px-2 rounded-lg h-fit my-auto bg-opacity-55`}>
                         Big house 
@@ -48,7 +68,7 @@ const home = ( { isGrid } : Props) => {
             <div className='flex justify-between pe-2 text-black flex-wrap' >
                 <div className='flex mt-2 gap-2'>
                     <Image src={img5} width={15} className="my-auto"  alt="" />
-                    <span className='text-[10px] my-auto'>1 Bathroom</span>
+                    <span className='text-[10px] my-auto'>{house.listing_property.bathroom_count} Bathroom</span>
                 </div>
                 <div className='flex mt-2 gap-2 '>
                     <Image src={img3} width={13} className="my-auto"  alt="" />

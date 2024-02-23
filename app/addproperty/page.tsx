@@ -1,6 +1,4 @@
 "use client" 
-import Image from "next/image"; 
-import Link from "next/link";
 import Nav from "../_components/nav"
 import Footer from "../_components/footer"
 import Hero from "./components/hero"

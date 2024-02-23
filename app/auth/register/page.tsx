@@ -9,7 +9,7 @@ import Image from "next/image";
 import goImage from "../../assets/images/go.svg"
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import {REGISTER_GQL} from "../../../graphql/auth"
+import {REGISTER_GQL} from "../../../graphql/features/auth"
 import Error from "@/app/_components/error";
 import ClientError from "@/app/_components/clientError";
 
@@ -103,13 +103,13 @@ const Register = () => {
                     {formError && <ClientError error={formError} />}
                     <form className='flex flex-col gap-7' onSubmit={e => e.preventDefault()}>
                         <div className="flex justify-between gap-7 max-mobile:flex-col">
-                            <CustomeInput name='firstName' onChange={setChange} label={"First Name"} placeholder={"first name"} divClass="w-full"/>
-                            <CustomeInput name='lastName' onChange={setChange} label={"Last Name"} placeholder={"last name"} divClass="w-full"/>
+                            <CustomeInput name='firstName' value={form.firstName} onChange={setChange} label={"First Name"} placeholder={"first name"} divClass="w-full"/>
+                            <CustomeInput name='lastName' value={form.lastName} onChange={setChange} label={"Last Name"} placeholder={"last name"} divClass="w-full"/>
                         </div>
-                        <CustomeInput name='phone' onChange={setChange} label={"phone number"} placeholder={"phone number"}/>
-                        <CustomeInput name='email' onChange={setChange} label={"email address"} placeholder={"email"}/>
-                        <CustomeInput name='password' onChange={setChange} pass={true} label={"create password"} placeholder={"password"} />
-                        <CustomeInput name='confirm' onChange={setChange} pass={true} label={"confirm password"} placeholder={"password"} />
+                        <CustomeInput name='phone' value={form.phone} onChange={setChange} label={"phone number"} placeholder={"phone number"}/>
+                        <CustomeInput name='email' value={form.email} onChange={setChange} label={"email address"} placeholder={"email"}/>
+                        <CustomeInput name='password' value={form.password} onChange={setChange} pass={true} label={"create password"} placeholder={"password"} />
+                        <CustomeInput name='confirm' value={form.confirm} onChange={setChange} pass={true} label={"confirm password"} placeholder={"password"} />
                         <div className='ps-2 flex justify-between'>
                             <div className='flex gap-2'>
                                 <input type="checkbox" placeholder='s' />
@@ -119,7 +119,7 @@ const Register = () => {
                                 
                         <button onClick={submit} disabled={loading} className={` w-full flex gap-3 justify-center  duration-200  py-3 text-white rounded-xl ${loading ? "bg-blue-300 cursor-not-allowed" : "bg-mainBlue hover:bg-blue-600"}`}>
                             
-                            <p className='font-semibold'>
+                            <p className='font-semibold capitalize'>
                                {loading ? "Loading...": "create an account"} 
                             </p>
                             <Image src={goImage} alt="" className="my-auto w-6" />

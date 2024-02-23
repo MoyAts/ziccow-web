@@ -1,16 +1,17 @@
 "use client" 
-import Image from "next/image"; 
-import Link from "next/link";
 
-interface Props2 {
+interface Props {
     label : string,
-    isChecked? : boolean
+    name : string,
+    isRadio : boolean,
+    setChange : any,
+    checked : boolean,
   }
   
-  function checkboxdiv({isChecked = false,label } : Props2) {
+  function checkboxdiv({label,isRadio,name,setChange,checked} : Props) {
     return (
       <div className="flex gap-3">
-          <input type="checkbox" id={label} placeholder="check" />
+          <input onChange={setChange} type={isRadio ? "radio" : "checkbox"} name={name} id={label} placeholder="check" checked={checked} />
           <label htmlFor={label} className="">{label}</label>
         </div>
     )
