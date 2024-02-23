@@ -61,10 +61,11 @@ const Form = () => {
             let url = null
             if(form.images[i]){ 
              url = await uploadImage(form.images[i])
+             console.log(imgs.length < 1)
              imgs.push({
                 url,
-                type: "",
-                primary: false
+                type: `${i}`,
+                primary: imgs.length < 1
               })
             }
             
