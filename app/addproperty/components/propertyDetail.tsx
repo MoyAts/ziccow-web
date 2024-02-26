@@ -12,7 +12,7 @@ import type { PropertyDetailInf } from "./interface"
 import { useRef, useState } from "react";
 import goImg from "../../assets/images/go.svg"
 import ImagePicker from "./imagePicker";
-
+import OptionInput  from "@/app/addproperty/components/optionInput2";
 interface MainProps {
   setForm : Function,
   form : PropertyDetailInf,
@@ -69,6 +69,9 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
       const errFound = (err : string) => {
         setErr(err)
       }
+      if (!checkString(form.propertyName)){
+        return errFound("Wrong Property Name")
+      }
       if (!checkString(form.address)){
         return errFound("Wrong Address")
       }
@@ -95,7 +98,14 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
         <div ref={errRef} className={`${!err && "hidden"} w-full my-3 font-semibold py-2 rounded-lg border-2 px-4 border-red-600 bg-red-300 text-red-900`}>
           {err} 
         </div>
-        <CustomeInput value={form.propertyName} onChange={setChange} label='Property Name' name={"propertyName"} placeholder='Tourist Plus Apartment' divClass='mb-5' />
+        <CustomeInput 
+          value={form.propertyName} 
+          onChange={setChange} 
+          label='Property Name' 
+          name={"propertyName"} 
+          placeholder='Tourist Plus Apartment' 
+          divClass='mb-5' 
+        />
         <CustomeInput value={form.phone} onChange={setChange} label='Parcel Number' name={"phone"} placeholder='012671164'  divClass='mb-5' />
         <CustomeInput 
           label='Enter the Home Address you’re going to sell.' 
@@ -105,7 +115,7 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
           Icon={searachImg} 
           value={form.address}
          />
-        <CustomeInput 
+        {/* <CustomeInput 
           label='Home Type' 
           name='homeType' 
           onChange={setChange}
@@ -114,7 +124,18 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
           ReactIcon={MdNavigateNext}
           IconClass={"text-3xl my-auto text-mainBlue rotate-90"}
           value={form.homeType}
+        /> */}
+        <OptionInput 
+          label='Home Types' 
+          name='homeType' 
+          onChange={setForm}
+          placeholder='Apartment, High rise'  
+          divClass='mb-5' 
+          ReactIcon={MdNavigateNext}
+          IconClass={"text-3xl my-auto text-mainBlue rotate-90"}
+          value={form.homeType}
         />
+        
         <div className='flex gap-5 mb-8 w-full max-mobile:flex-col'>
             <CustomeInput 
               label='Year Built' 
@@ -159,11 +180,46 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
               preImg={img4} label={"No. of Kitchen"} 
             />
             <CustomeInputNumber 
-              onAdd={() => updateFacilities("numOfLivingrooms",form.facilities.numOfLivingrooms + 1)} 
-              onSub={() => updateFacilities("numOfLivingrooms",form.facilities.numOfLivingrooms - 1)} 
-              value={form.facilities.numOfLivingrooms}
-              preImg={img4} label={"No. of Living room"} 
+                onAdd={() => updateFacilities("numOfLivingrooms",form.facilities.numOfLivingrooms + 1)} 
+                onSub={() => updateFacilities("numOfLivingrooms",form.facilities.numOfLivingrooms - 1)} 
+                value={form.facilities.numOfLivingrooms}
+                preImg={img4} label={"No. of Living room"} 
               />
+            <CustomeInputNumber 
+              onAdd={() => updateFacilities("numOfGyms",form.facilities.numOfGyms + 1)} 
+              onSub={() => updateFacilities("numOfGyms",form.facilities.numOfGyms - 1)} 
+              value={form.facilities.numOfGyms}
+              preImg={img4} 
+              label={"No. of number of gymnasiums"} 
+            />
+             <CustomeInputNumber 
+              onAdd={() => updateFacilities("numOfLibs",form.facilities.numOfLibs + 1)} 
+              onSub={() => updateFacilities("numOfLibs",form.facilities.numOfLibs - 1)} 
+              value={form.facilities.numOfLibs}
+              preImg={img4} 
+              label={"No. of number of Libraries"} 
+            />
+            <CustomeInputNumber 
+              onAdd={() => updateFacilities("numOfMaidsRooms",form.facilities.numOfMaidsRooms + 1)} 
+              onSub={() => updateFacilities("numOfMaidsRooms",form.facilities.numOfMaidsRooms - 1)} 
+              value={form.facilities.numOfMaidsRooms}
+              preImg={img4} 
+              label={"No. of number of Maids Rooms"} 
+            />
+             <CustomeInputNumber 
+              onAdd={() => updateFacilities("numOfSpas",form.facilities.numOfSpas + 1)} 
+              onSub={() => updateFacilities("numOfSpas",form.facilities.numOfSpas - 1)} 
+              value={form.facilities.numOfSpas}
+              preImg={img4} 
+              label={"No. of number of Spas"} 
+            />
+             <CustomeInputNumber 
+              onAdd={() => updateFacilities("numOfStores",form.facilities.numOfStores + 1)} 
+              onSub={() => updateFacilities("numOfStores",form.facilities.numOfStores - 1)} 
+              value={form.facilities.numOfStores}
+              preImg={img4} 
+              label={"No. of number of Stores"} 
+            />
         </div>
         <div className="flex justify-between mb-8">
             <div className="text-xl">Additional Features</div>
@@ -190,22 +246,22 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
         <div className="flex tablet:gap-24 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
           <CheckBoxDiv 
             label="Parking features" 
-            name="property" isRadio={true} 
-            setChange={() => setForm((data : PropertyDetailInf) => ({ ...data,"property" : true}))} 
-            checked = {form.property != null && form.property == true}
+            name="property" isRadio={false} 
+            setChange={() => setForm((data : PropertyDetailInf) => ({ ...data,"parkingFeature" : data.parkingFeature != null ? !data.parkingFeature : true }))} 
+            checked = {form.parkingFeature != null && form.parkingFeature == true}
           />
           <CheckBoxDiv 
             label="Lot features" 
-            name="property" isRadio={true} 
-            setChange={() => setForm((data : PropertyDetailInf) => ({ ...data,"property" : false}))} 
-            checked = {form.property != null && form.property == false}
+            name="property" isRadio={false} 
+            setChange={() => setForm((data : PropertyDetailInf) => ({ ...data,"lotFeature" : data.lotFeature != null ? !data.lotFeature : true }))} 
+            checked = {form.lotFeature != null && form.lotFeature == true}
           />
 
           
         </div>
         <p className="text-lightGray text-sm mt-2">Please select an option.</p>
 
-        <div className="text-xl mb-4 mt-8">Utilities</div>
+        {/* <div className="text-xl mb-4 mt-8">Utilities</div>
         <div className="flex tablet:gap-32 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
 
           <div className="flex flex-col gap-5">
@@ -213,19 +269,19 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
               label="Room in a home" 
               name="utility" isRadio={false} 
               setChange={() => setUtitlities("rooms")} 
-              checked = {form.utility.rooms}
+              checked = {form.utility.rooms!}
             />
              <CheckBoxDiv 
               label="Access to shared spaces." 
               name="utility" isRadio={false} 
               setChange={() => setUtitlities("accessToSharedPlace")} 
-              checked = {form.utility.accessToSharedPlace}
+              checked = {form.utility.accessToSharedPlace!}
             />
              <CheckBoxDiv 
               label="Great for remote work" 
               name="utility" isRadio={false} 
               setChange={() => setUtitlities("greateForRemoteWork")} 
-              checked = {form.utility.greateForRemoteWork}
+              checked = {form.utility.greateForRemoteWork!}
             />
           </div>
 
@@ -234,23 +290,23 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
               label="Security 24/7" 
               name="utility" isRadio={false} 
               setChange={() => setUtitlities("security")} 
-              checked = {form.utility.security}
+              checked = {form.utility.security!}
             />
              <CheckBoxDiv 
               label="Garbage shutter." 
               name="utility" isRadio={false} 
               setChange={() => setUtitlities("garbageShutter")} 
-              checked = {form.utility.garbageShutter}
+              checked = {form.utility.garbageShutter!}
             />
              <CheckBoxDiv 
               label="Back up or secondary electric power source" 
               name="utility" isRadio={false} 
               setChange={() => setUtitlities("backupElectricity")} 
-              checked = {form.utility.backupElectricity}
+              checked = {form.utility.backupElectricity!}
             />
           </div>
 
-        </div>
+        </div> */}
         <p className="text-lightGray text-sm mt-2">Please select an option.</p>
 
         <div className="text-xl mb-4 mt-8">Community</div>
@@ -260,13 +316,13 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
               label="Near Park" 
               name="communitys" isRadio={false} 
               setChange={() => setCommunity("nearPark")}
-              checked = {form.community.nearPark}
+              checked = {form.community.nearPark!}
             />
             <CheckBoxDiv 
               label="Shopping District" 
               name="community" isRadio={false} 
               setChange={() => setCommunity("shoppingDistrict")}
-              checked = {form.community.shoppingDistrict}
+              checked = {form.community.shoppingDistrict!}
             />
          
         </div>

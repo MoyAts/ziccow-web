@@ -1,38 +1,28 @@
 "use client"
 
-import logoG from "../../assets/images/googleLogo.svg";
-import img from "../../assets/images/Widget 5.svg"
-import CustomeInput from "../../_components/customeInput"
-import bg from "../../assets/images/Background.png"
+import logoG from "../../../assets/images/googleLogo.svg";
+import img from "../../../assets/images/Widget 5.svg"
+import CustomeInput from "../../../_components/customeInput"
+import bg from "../../../assets/images/Background.png"
 import Link from "next/link";
 import Image from "next/image";
-import goImage from "../../assets/images/go.svg"
+import goImage from "../../../assets/images/go.svg"
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import {REGISTER_GQL} from "../../../graphql/features/auth"
+import {LOGIN_SOCIAL_MEDIA, SIGNUP_SOCIAL_MEDIA} from "../../../../graphql/features/auth"
 import Error from "@/app/_components/error";
 import ClientError from "@/app/_components/clientError";
-import { loginWithEmail } from "@/utils/firebase";
-import { useRouter } from 'next/navigation'
+import { useDispatch } from "react-redux";
+import { loginUser } from "@/store/features/auth/authSlice";
 
-const Register = () => {
-    const router  = useRouter()
-
+const AfterEmail = ({ params : { id }} : { params : { id : string}}) => {
+    const dispatch = useDispatch()
     const initialData : { [key: string]: string } = {
         firstName : "",
         lastName : "",
         phone : "",
         email : "",
-        password : "",
-        confirm : "",
-    }
-    const initialError = {
-        firstName : null,
-        lastName : null,
-        phone : null,
-        email : null,
-        password : null,
-        confirm : null,
+        token : id
     }
     const [form,setForm] = useState(initialData)
     const [formError,setFormError] = useState("")
@@ -44,7 +34,7 @@ const Register = () => {
     const checkError = () : boolean =>{
         for (let key in form) {
             if (form.hasOwnProperty(key)) {
-                if(form[key] == "" && key != "phone"){
+                if(form[key] == ""){
                     setFormError(`${key} is required`)
                     return false
                 }
@@ -59,19 +49,15 @@ const Register = () => {
     }    
 
 
-    const [signup,{loading,error,data}] = useMutation(REGISTER_GQL)
+    const [signup,{loading,error,data}] = useMutation(SIGNUP_SOCIAL_MEDIA)
     
     if(data){
-        console.log(data)
-        location.href = "/auth/login"
+        const { socialSignup } = data 
+        console.log(socialSignup )
+        dispatch(loginUser({token:socialSignup.token, userId : socialSignup.user.user_id}))
+        location.href = "/"
     }
 
-    const loginEmail = async () => {
-        const data : any = await loginWithEmail()
-        const token = data.user.accessToken
-        router.push("/auth/continue/"+token);
-
-    }
 
     const submit = () => {
         if(checkError()){
@@ -97,13 +83,13 @@ const Register = () => {
                     <div className='w-full my-auto justify-center flex gap-2 cursor-pointer' onClick={() => location.href = "#home"}>
                         <Image src={img} alt="" />
                         <h1 className='font-semibold text-g my-auto'>
-                            Ziccow General Trading
+                            Ziccow General Trading 
                         </h1>
                     </div>
                     <p className='text-center mx-auto mt-3 pb-6 text-lightGray'>
                         Ziccow is making it simpler to sell, buy, and rent your properties to move forward.
                     </p>
-                    <h3 className='capitalize text-xl my-5 font-semibold'>Sign up</h3>
+                    <h3 className='capitalize text-xl my-5 font-semibold'>Continue</h3>
                     <Error error={error} />
                     {formError && <ClientError error={formError} />}
                     <form className='flex flex-col gap-7' onSubmit={e => e.preventDefault()}>
@@ -113,38 +99,18 @@ const Register = () => {
                         </div>
                         <CustomeInput name='phone' value={form.phone} onChange={setChange} label={"phone number"} placeholder={"phone number"}/>
                         <CustomeInput name='email' value={form.email} onChange={setChange} label={"email address"} placeholder={"email"}/>
-                        <CustomeInput name='password' value={form.password} onChange={setChange} pass={true} label={"create password"} placeholder={"password"} />
-                        <CustomeInput name='confirm' value={form.confirm} onChange={setChange} pass={true} label={"confirm password"} placeholder={"password"} />
-                        <div className='ps-2 flex justify-between'>
-                            <div className='flex gap-2'>
-                                <input type="checkbox" placeholder='s' />
-                                <p className='text-lightGray'>Remember this device</p>
-                            </div>
-                        </div>
                                 
                         <button onClick={submit} disabled={loading} className={` w-full flex gap-3 justify-center  duration-200  py-3 text-white rounded-xl ${loading ? "bg-blue-300 cursor-not-allowed" : "bg-mainBlue hover:bg-blue-600"}`}>
                             
                             <p className='font-semibold capitalize'>
-                               {loading ? "Loading...": "create an account"} 
+                               {loading ? "Loading...": "Finish"} 
                             </p>
                             <Image src={goImage} alt="" className="my-auto w-6" />
 
                         </button>
 
 
-                        <div className='flex gap-10'>
-                            <div className='border-b h-[.5px] border-gray-500 w-1/2 my-auto'></div>
-                            <p className='font-semibold '>or</p>
-                            <div className='border-b  border-gray-500 w-1/2 my-auto'></div>
-                        </div>
                         
-                        <button onClick={loginEmail} className='w-full border flex gap-3 justify-center bg-white py-3  rounded-xl'>
-                            <Image src={logoG} alt="" />
-                            <p className='font-semibold'>
-                                Sign up with Google
-                            </p>
-                        </button>
-
 
                         <p className='flex justify-center gap-2'>
                             Already have an account? 
@@ -164,4 +130,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default AfterEmail

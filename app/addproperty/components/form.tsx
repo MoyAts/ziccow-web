@@ -27,7 +27,9 @@ const Form = () => {
   
    if(error){
     console.log("error")
+    console.log(error)
    }
+   console.log(form)
 
    const uploadImage = async (image : any)  => {
         const data = new FormData();
@@ -61,7 +63,6 @@ const Form = () => {
             let url = null
             if(form.images[i]){ 
              url = await uploadImage(form.images[i])
-             console.log(imgs.length < 1)
              imgs.push({
                 url,
                 type: `${i}`,
@@ -78,7 +79,22 @@ const Form = () => {
             squareFootage : form.squareFootage,
             numOfBathrooms : form.facilities.numOfBathrooms,
             numOfBedrooms : form.facilities.numOfBedrooms,
-            urls : imgs
+            numOfLivingrooms : form.facilities.numOfLivingrooms,
+            numOfKitchens : form.facilities.numOfKitchens,
+            numOfMaidsRooms : form.facilities.numOfMaidsRooms,
+            numOfStores : form.facilities.numOfStores,
+            numOfLibs : form.facilities.numOfLibs,
+            numOfGyms : form.facilities.numOfGyms,
+            numOfSpas : form.facilities.numOfSpas,
+            urls : [],
+            name : form.propertyName,
+            lotFeature : form.lotFeature ?? false,
+            appliances : form.appliances ?? false,
+            parkingFeature : form.parkingFeature ?? false,
+            shoppingDistrict : form.community.shoppingDistrict ?? false,
+            nearPark : form.community.nearPark ?? false,
+            currency : form.currency,
+
         }})
         setLoading2(false)
     }

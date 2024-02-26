@@ -2,32 +2,78 @@ import { gql } from "@apollo/client"
 
 export const Add_LISTING = gql`
   mutation listing( 
-    $address: String!,
-    $sellingPrice: money!,
-    $yearBuilt: String!,
-    $squareFootage: bigint!,
-    $numOfBathrooms: bigint!,
-    $numOfBedrooms: bigint!,
-    $urls : [property_digital_asset_insert_input!]! 
+    $address: String,
+    $sellingPrice: money,
+    $yearBuilt: String,
+    $squareFootage: bigint,
+    $numOfBathrooms: bigint,
+    $numOfBedrooms: bigint,
+    $numOfMaidsRooms: bigint,
+    $numOfGyms: bigint,
+    $numOfStores: bigint,
+    $numOfSpas: bigint,
+    $numOfLibs: bigint,
+    $numOfLivingrooms : bigint,
+    $numOfKitchens : bigint,
+    $urls : [digital_assets_insert_input!]! ,
+    $name : name,
+    $homeType : uuid,
+    $nearPark : Boolean,
+    $lotFeature : Boolean,
+    $appliances : Boolean,
+    $parkingFeature : Boolean,
+    $shoppingDistrict : Boolean,
+    $RentalPrice : bigint,
+    $cycle : String,
+    $currency : String,
+    $owner_id : uuid
+  
   ) {
     insert_listing(
       objects: { 
+        real_estate: {
+          data: {
+            name: $name
+            }
+        }
         address_data: $address,
-        coordinate: "100032032", 
-        status: "apartment", 
+        house_type_id : $homeType,
         sale_price: $sellingPrice, 
-        build_date: $yearBuilt, 
-        digital_assets_list: {
+        currency : $currency,
+        build_date: $yearBuilt,
+        description : "new", 
+        digital_assets: {
           data: $urls
         },
         listing_property: {   
           data: { 
             bathroom_count: $numOfBathrooms, 
             bedroom_count: $numOfBedrooms, 
-            square_ft: $squareFootage
+            square_ft: $squareFootage,
+            maids_room: $numOfMaidsRooms,
+            spa: $numOfSpas, 
+            store_rooms: $numOfStores, 
+            living_room_count: $numOfLivingrooms, 
+            library: $numOfLibs,
+            kitchen_count: $numOfKitchens,
+            gymnasium: $numOfGyms
           }
         }, 
-        description: "new"
+        extra_features: {
+          data: { 
+              near_park: $nearPark, 
+              lot_features: $lotFeature, 
+              applicances_included: $appliances, 
+              parking_feature: $parkingFeature, 
+              shopping_district: $shoppingDistrict
+            }
+        },
+        rental_price: { 
+          data: { 
+            price: 3232, 
+            cycle: "1 month"
+            }
+          }    
       }
     ) {
       returning {

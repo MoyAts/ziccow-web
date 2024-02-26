@@ -10,8 +10,6 @@ interface Props{
     images : any,
     ind : number,
     form : PropertyDetailInf,
-  
-  
   }
   
   function ImagePicker ({ divClass , images,setImages,ind,setForm,form} : Props) {

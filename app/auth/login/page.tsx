@@ -9,27 +9,48 @@ import Link from "next/link";
 import Image from "next/image";
 import goImage from "../../assets/images/go.svg"
 import { useMutation } from "@apollo/client"
-import { LOGIN_GQL } from "../../../graphql/features/auth"
+import { LOGIN_GQL,LOGIN_SOCIAL_MEDIA } from "../../../graphql/features/auth"
 import { saveUser } from "../../../lib/auth"
 import { useDispatch } from "react-redux"
 import { loginUser } from "@/store/features/auth/authSlice"
 // import { useRouter } from 'next/router';
+import { loginWithEmail } from "@/utils/firebase";
 
 const LoginPage = () => {
     const dispatch = useDispatch()
     // const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [temp,setTemp] = useState(false)
     const [login,{loading,error,data}] = useMutation(LOGIN_GQL, {
         fetchPolicy : "no-cache"
     })
-   
+    const [login2,responses] = useMutation(LOGIN_SOCIAL_MEDIA, {
+        fetchPolicy : "no-cache"
+    })
+    const loginEmail = async () => {
+        const data : any = await loginWithEmail()
+        const token = data.user.accessToken
+        login2({
+            variables : {
+                token 
+            }
+        })
+    }
+    if(responses.data){
+        const { socialLogin } = responses.data 
+        dispatch(loginUser({token:socialLogin.token, userId : socialLogin.user.user_id}))
+        
+    }
+    if(responses.error){
+        console.log(responses.error)
+    }
+    if(responses.loading){
+        console.log("loading")
+    }
     if(data) {
         console.log(data)
         dispatch(loginUser({token:data.loginEmail.token, userId : data.loginEmail.user.user_id}))
-        // const token = data.loginEmail.token
-        // console.log(data)
-        // saveUser(token)
         location.href = "/"
     }
     const submit = () => {
@@ -54,8 +75,8 @@ const LoginPage = () => {
                         Ziccow is making it simpler to sell, buy, and rent your properties to move forward.
                     </p>
                     <h3 className='capitalize text-xl my-5 font-semibold'>Sign in</h3>
-                    {error && <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
-                        { error.graphQLErrors[0].message}
+                    {(error || responses.error) && <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
+                        { error ? error.graphQLErrors[0].message : responses.error ? responses.error.graphQLErrors[0].message : ""}
                     </div>}
                     <form className='flex flex-col gap-7' onSubmit={e => e.preventDefault()}>
                         
@@ -83,7 +104,7 @@ const LoginPage = () => {
                             <div className='border-b  border-gray-500 w-1/2 my-auto'></div>
                         </div>
 
-                        <button className='w-full border flex gap-3 justify-center bg-white py-3  rounded-xl'>
+                        <button onClick={loginEmail} className='w-full border flex gap-3 justify-center bg-white py-3  rounded-xl'>
                             <Image src={logoG} alt="" />
                             <p className='font-semibold'>
                                 Sign up with Google

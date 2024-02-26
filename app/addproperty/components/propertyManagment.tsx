@@ -9,6 +9,10 @@ import { GrLinkNext } from "react-icons/gr";
 import goImg from "../../assets/images/go.svg"
 import { PropertyDetailInf } from "./interface";
 import Checkboxdiv from "./checkboxdiv";
+import OptionInput from "./optionInput";
+import OptionInput3 from "./optionInput3";
+import OptionInput4 from "./optionInput4";
+
 interface Props {
   setForm : Function,
   form : PropertyDetailInf,
@@ -17,6 +21,7 @@ interface Props {
 
 const PropertyManagment = ({ form,setForm,setPage } : Props ) => {
   const [err,setErr] = useState<null | string>(null)
+  const [isRental,setIsRental] = useState<boolean | null>(null)
   const errRef = useRef<any>(null)
   const checkNumber = (value : any) => {
     try{
@@ -67,8 +72,8 @@ const PropertyManagment = ({ form,setForm,setPage } : Props ) => {
                setChange={()=> setForm((data : PropertyDetailInf) => ({...data,"typeOfPerson" : "none"}))}
             />
         </div>
-        <p className="text-danger mt-3 text-sm">Please select an option.</p>
-        <div className="mt-8">How soon would you like to sell?</div>
+        {/* <p className="text-danger mt-3 text-sm">Please select an option.</p> */}
+        {/* <div className="mt-8">How soon would you like to sell?</div>
         <div className='pt-4 flex w-full justify-between max-mobile:flex-col max-mobile:gap-2'>
             <Checkboxdiv
                label='As soon as possible' 
@@ -100,24 +105,56 @@ const PropertyManagment = ({ form,setForm,setPage } : Props ) => {
             />
             
 
-        </div>
+        </div> */}
         <p className="text-lightGray mt-3 text-sm">Please select an option.</p>
         <div className='flex flex-col mt-8 gap-3'>
-            <CustomeInput 
-             onChange={({ target } : any) => setForm((data : PropertyDetailInf) => ({...data,"PropertyManagment" : target.value}))}
-             ReactIcon={MdNavigateNext} 
-             IconClass={"m-auto text-3xl rotate-90 text-mainBlue"} 
-             name='propertymanagment' label='Property management' placeholder='Rental'
-             value={form.propertyManagment}
-            />
-            
-            <CustomeInput 
-              onChange={({ target } : any) => setForm((data : PropertyDetailInf) => ({...data,"sellingPrice" :  target.value}))}
+           
+            <OptionInput 
+              onChange={setForm}
               ReactIcon={MdNavigateNext} 
               IconClass={"m-auto text-3xl rotate-90 text-mainBlue"} 
-              name='price' label='Selling price' placeholder='15,000'
-              value={form.sellingPrice}
-             />
+              name='propertymanagment' label='Property management' placeholder='type'
+              value={form.propertyManagment}
+            />
+            {
+            form.propertyManagment == "Rental" ?
+            <div className="flex justify-between gap-5">
+              <CustomeInput 
+                onChange={({ target } : any) => setForm((data : PropertyDetailInf) => ({...data,"sellingPrice" :  target.value}))}
+                IconClass={"m-auto text-3xl rotate-90 text-mainBlue"} 
+                name='price' label='Rental price' placeholder='15,000'
+                value={form.sellingPrice}
+                divClass="w-full"
+               />
+
+              <OptionInput4 
+                 onChange={setForm}
+                ReactIcon={MdNavigateNext} 
+                IconClass={"m-auto text-3xl rotate-90 text-mainBlue"} 
+                 name='cycle' label='Cycle' placeholder='cycle'
+                 value={form.cycle}
+                 divClass="w-full "
+              />
+            </div>
+              : 
+            form.propertyManagment == "Sell" ? 
+            <CustomeInput 
+                onChange={({ target } : any) => setForm((data : PropertyDetailInf) => ({...data,"sellingPrice" :  target.value}))}
+                IconClass={"m-auto text-3xl rotate-90 text-mainBlue"} 
+                name='price' label='Selling price' placeholder='15,000'
+                value={form.sellingPrice}
+            /> : <></>
+             
+             }
+          
+            <OptionInput3
+               onChange={setForm}
+               ReactIcon={MdNavigateNext} 
+               IconClass={"m-auto text-3xl rotate-90 text-mainBlue"} 
+               name='currency' label='Currency' placeholder='currency'
+               value={form.currency}
+            />
+            
         </div>
         <div className="flex mt-8 justify-between ">
           <button className="text-mainBlue">Cancel</button>
