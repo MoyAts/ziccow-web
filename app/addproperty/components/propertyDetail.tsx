@@ -101,7 +101,7 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
         <CustomeInput 
           value={form.propertyName} 
           onChange={setChange} 
-          label='Property Name' 
+          label='Realstate name' 
           name={"propertyName"} 
           placeholder='Tourist Plus Apartment' 
           divClass='mb-5' 

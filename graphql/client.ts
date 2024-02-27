@@ -1,5 +1,4 @@
 import { ApolloClient, HttpLink, InMemoryCache, ApolloLink, concat } from '@apollo/client';
-
 const httpLink = new HttpLink({ uri: 'https://graphql.ziccow.com/v1/graphql' });
 
 const authMiddleware = new ApolloLink((operation, forward) => {

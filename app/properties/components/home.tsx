@@ -10,7 +10,7 @@ import img5 from "../../assets/images/Group (3).png"
 
 
 interface houseInf {
-    digital_assets_list : Array<{ url : string}>,
+    digital_assets : Array<{ url : string}>,
     listing_property : {
         bathroom_count : number,
         bedroom_count : number,
@@ -31,7 +31,7 @@ const home = ( { isGrid,house } : Props) => {
     
     <div className={`flex justify-between text-sm gap-2 bg-white border shadow p-1 rounded-lg text-lightGray  max-small:flex-col  ${isGrid && "flex-col "}`}>
         <div className="rounded-lg basis-1/3  ">
-            <Image src={house.digital_assets_list[0].url}  
+            <Image src={house.digital_assets[0].url}  
             width={100}
             height={100}
             className="rounded-lg  w-full object-cover my-auto" alt=""

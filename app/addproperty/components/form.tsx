@@ -12,14 +12,14 @@ import goImg from "../../assets/images/goBlack.svg"
 import CancelImg from "../../assets/images/cancelentry.svg"
 import { PropertyDetailInf,initialForm } from "./interface";
 import { useMutation } from "@apollo/client";
-import { Add_LISTING } from "@/graphql/features/listing";
+import { Add_LISTING_NEW } from "@/graphql/features/listing";
 
 const Form = () => {
    
    const [form,setForm] = useState(initialForm)
    const [page,setPage] = useState(1)
    const [loading2,setLoading2] = useState(false)
-   const [sendList,{ loading,error,data }] = useMutation(Add_LISTING)
+   const [sendList,{ loading,error,data }] = useMutation(Add_LISTING_NEW)
    
    if(data){
     page != 4 && setPage(4)
@@ -73,29 +73,30 @@ const Form = () => {
         }
         setForm((data : any) => ({...data,"urls":[...imgs]}))
         sendList({ variables : {
-            address : form.address,
-            sellingPrice : form.sellingPrice,
-            yearBuilt : form.yearBuilt,
-            squareFootage : form.squareFootage,
-            numOfBathrooms : form.facilities.numOfBathrooms,
-            numOfBedrooms : form.facilities.numOfBedrooms,
-            numOfLivingrooms : form.facilities.numOfLivingrooms,
-            numOfKitchens : form.facilities.numOfKitchens,
-            numOfMaidsRooms : form.facilities.numOfMaidsRooms,
-            numOfStores : form.facilities.numOfStores,
-            numOfLibs : form.facilities.numOfLibs,
-            numOfGyms : form.facilities.numOfGyms,
-            numOfSpas : form.facilities.numOfSpas,
-            urls : [],
-            name : form.propertyName,
-            lotFeature : form.lotFeature ?? false,
-            appliances : form.appliances ?? false,
-            parkingFeature : form.parkingFeature ?? false,
-            shoppingDistrict : form.community.shoppingDistrict ?? false,
-            nearPark : form.community.nearPark ?? false,
-            currency : form.currency,
-
-        }})
+            "objects": {
+              "address_data": form.address,
+              "sale_price": form.sellingPrice,
+              "build_date": form.yearBuilt,
+              "description": "some nice description",
+              "listing_property": {
+                "data": {
+                  "bathroom_count": form.facilities.numOfBathrooms,
+                  "bedroom_count": form.facilities.numOfBedrooms,
+                  "gymnasium": form.facilities.numOfGyms,
+                  "kitchen_count": form.facilities.numOfKitchens,
+                  "library": form.facilities.numOfLibs,
+                  "living_room_count": form.facilities.numOfLivingrooms,
+                  "maids_room": form.facilities.numOfMaidsRooms,
+                  "spa": form.facilities.numOfSpas,
+                  "square_ft": form.squareFootage,
+                  "store_rooms": form.facilities.numOfStores
+                }
+              },
+              "digital_assets": {
+                "data": imgs
+              }
+            }
+          }})
         setLoading2(false)
     }
 

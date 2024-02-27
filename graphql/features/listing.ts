@@ -1,5 +1,16 @@
 import { gql } from "@apollo/client"
 
+export const Add_LISTING_NEW = gql`
+  mutation listing($objects: [listing_insert_input!]!) {
+    insert_listing(objects: $objects) {
+      returning {
+        coordinate
+        __typename
+      }
+      __typename
+    }
+  }
+`
 export const Add_LISTING = gql`
   mutation listing( 
     $address: String,
@@ -87,31 +98,42 @@ export const Add_LISTING = gql`
 export const GET_LISTING  = gql`
 
   query a{
-  listing(limit : 100,where : {
-    digital_assets_list : { 
-      url : {
-        _neq :"ff"
-    } 
-      }
-        })  {
-            address_data
-            coordinate
-            Amenities
-            additional_features{
-              created_at
-            }
-            listing_id
-            digital_assets_list{
-              url
-            }
-            rental_price {
-              price
-            }
-            listing_property {
-              bathroom_count
-              bedroom_count
-              square_ft
-            }
-        }
+  listing {
+    digital_assets {
+      url
+      type
+    }
+    address_data
+    currency
+    build_date
+    description
+    listing_id
+    property_number
+    real_estate_id
+    sale_compare_price
+    rental_price_id
+    sale_price
+    sale_type
+    status
+    real_estate {
+      name
+    }
+    listing_property {
+      bathroom_count
+      bedroom_count
+      created_at
+      gymnasium
+      kitchen_count
+      library
+      listing_property_id
+      living_room_count
+      maids_room
+      square_ft
+      spa
+      store_rooms
+    }
+  }
 }
+
+
 `

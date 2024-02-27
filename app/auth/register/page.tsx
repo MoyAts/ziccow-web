@@ -14,6 +14,7 @@ import Error from "@/app/_components/error";
 import ClientError from "@/app/_components/clientError";
 import { loginWithEmail } from "@/utils/firebase";
 import { useRouter } from 'next/navigation'
+import { FaPhone } from "react-icons/fa6";
 
 const Register = () => {
     const router  = useRouter()
@@ -131,19 +132,28 @@ const Register = () => {
 
                         </button>
 
-
                         <div className='flex gap-10'>
                             <div className='border-b h-[.5px] border-gray-500 w-1/2 my-auto'></div>
                             <p className='font-semibold '>or</p>
                             <div className='border-b  border-gray-500 w-1/2 my-auto'></div>
                         </div>
-                        
-                        <button onClick={loginEmail} className='w-full border flex gap-3 justify-center bg-white py-3  rounded-xl'>
-                            <Image src={logoG} alt="" />
-                            <p className='font-semibold'>
-                                Sign up with Google
-                            </p>
-                        </button>
+                        <div className="flex flex-col gap-5">
+                            
+                            <button onClick={loginEmail} className='w-full border flex gap-3 justify-center bg-white py-3  rounded-xl'>
+                                <Image src={logoG} alt="" />
+                                <p className='font-semibold'>
+                                    Sign up with Google
+                                </p>
+                            </button>
+                            <Link href={"/auth/register/phone"} className='w-full border flex gap-3 justify-center bg-white py-3  rounded-xl'>
+                                <FaPhone className="my-auto" />
+                                <p className='font-semibold'>
+                                    Login with phone number
+                                </p>
+                            </Link>
+                        </div>
+
+
 
 
                         <p className='flex justify-center gap-2'>

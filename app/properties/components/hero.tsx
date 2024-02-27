@@ -16,7 +16,7 @@ interface filterInf {
 }
 
 interface house {
-    digital_assets_list : Array<{ url : string}>,
+    digital_assets : Array<{ url : string}>,
     listing_property : {
         bathroom_count : number,
         bedroom_count : number,

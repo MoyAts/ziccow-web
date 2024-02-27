@@ -19,7 +19,7 @@ import { loginWithEmail } from "@/utils/firebase";
 const LoginPage = () => {
     const dispatch = useDispatch()
     // const router = useRouter();
-    const [email, setEmail] = useState('');
+    const [language, setLanguage] = useState('');
     const [password, setPassword] = useState('');
     const [temp,setTemp] = useState(false)
     const [login,{loading,error,data}] = useMutation(LOGIN_GQL, {
@@ -40,14 +40,13 @@ const LoginPage = () => {
     if(responses.data){
         const { socialLogin } = responses.data 
         dispatch(loginUser({token:socialLogin.token, userId : socialLogin.user.user_id}))
-        location.href = "/"
+        
     }
     if(responses.error){
         console.log(responses.error)
-        console.log(error)
     }
     if(responses.loading){
-        console.log("loading...")
+        console.log("loading")
     }
     if(data) {
         console.log(data)
@@ -55,7 +54,7 @@ const LoginPage = () => {
         location.href = "/"
     }
     const submit = () => {
-        login({ variables: { email, password },})
+        // login({ variables: { email, password },})
     }
 
     return (
@@ -75,14 +74,13 @@ const LoginPage = () => {
                     <p className='text-center mx-auto mt-3 pb-6 text-lightGray'>
                         Ziccow is making it simpler to sell, buy, and rent your properties to move forward.
                     </p>
-                    <h3 className='capitalize text-xl my-5 font-semibold'>Sign in</h3>
+                    <h3 className='capitalize text-xl my-5 font-semibold'>Info</h3>
                     {(error || responses.error) && <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
                         { error ? error.graphQLErrors[0].message : responses.error ? responses.error.graphQLErrors[0].message : ""}
                     </div>}
                     <form className='flex flex-col gap-7' onSubmit={e => e.preventDefault()}>
                         
-                        <CustomeInput value={email} onChange={({target} : any) => setEmail(target.value)} name='email' label={"email address"} placeholder={"email"}/>
-                        <CustomeInput value={password} onChange={({target} : any) => setPassword(target.value)} name='' pass={true} label={"password"} placeholder={"password"} />
+                        {/* <CustomeInput value={email} onChange={({target} : any) => setEmail(target.value)} name='email' label={"email address"} placeholder={"email"}/> */}
                         <div className='ps-2 flex justify-between'>
                             <div className='flex gap-2'>
                                 <input type="checkbox" placeholder='s' />
@@ -99,18 +97,6 @@ const LoginPage = () => {
 
                         </button>
 
-                        <div className='flex gap-10'>
-                            <div className='border-b h-[.5px] border-gray-500 w-1/2 my-auto'></div>
-                            <p className='font-semibold '>or</p>
-                            <div className='border-b  border-gray-500 w-1/2 my-auto'></div>
-                        </div>
-
-                        <button onClick={loginEmail} className='w-full border flex gap-3 justify-center bg-white py-3  rounded-xl'>
-                            <Image src={logoG} alt="" />
-                            <p className='font-semibold'>
-                                Sign up with Google
-                            </p>
-                        </button>
 
                         <p className='flex justify-center gap-2'>
                             Not registered yet? 
