@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import person from "../../assets/images/person.png"
+import person from "../../../assets/images/person.png"
 
 
 interface Props {

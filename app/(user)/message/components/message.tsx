@@ -1,9 +1,9 @@
-import InputIcon from "../../assets/images/mainIcon.svg"
+import InputIcon from "../../../assets/images/mainIcon.svg"
 import React from 'react'
-import person from "../../assets/images/person.png"
+import person from "../../../assets/images/person.png"
 import Image from "next/image"
 import Chat from './chat'
-import sendImg from "../../assets/images/sendBlue.svg"
+import sendImg from "../../../assets/images/sendBlue.svg"
 import { IoIosArrowBack as BackIcon} from "react-icons/io";
 
 interface Props {

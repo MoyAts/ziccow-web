@@ -12,8 +12,11 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth"
 import { useRouter } from "next/navigation"
 import { useMutation } from "@apollo/client"
 import { LOGIN_SOCIAL_MEDIA } from "@/graphql/features/auth"
+import { loginUser } from "@/store/features/auth/authSlice"
+import { useDispatch } from "react-redux"
 
 const PhoneLoginPage = () => {
+    const dispatch = useDispatch()
     const router = useRouter();
     const [user, setUser] = useState<any>(null);
     const [phone, setPhone] = useState('');
@@ -31,12 +34,15 @@ const PhoneLoginPage = () => {
                 setLoading(true)
                 const data = await user.confirm(otp)
                 const token = data.user.accessToken
-                login2({ variables : {
-                    token
-                }})
+                console.log("my token",token)
+                login2({
+                    variables : {
+                        token 
+                    }
+                })
                 setError("")
             }catch(e){
-                setError("wron confirmation code")
+                setError("wrong confirmation code")
                 console.log(e)
             }finally{
                 setLoading(false)
@@ -78,7 +84,10 @@ const PhoneLoginPage = () => {
     }
    
     if(responses.data){
-        console.log(responses.data)
+        const data = responses.data 
+        console.log({token:data.socialLogin.token, userId : data.socialLogin.user.user_id})
+        dispatch(loginUser({token:data.socialLogin.token, userId : data.socialLogin.user.user_id}))
+        // location.href = "/"
     }
 
     if(responses.loading){
@@ -184,6 +193,5 @@ const PhoneLoginPage = () => {
         </div>
     )
 }
-
 
 export default PhoneLoginPage

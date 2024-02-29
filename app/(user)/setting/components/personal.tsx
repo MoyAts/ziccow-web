@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import CustomeInput from '@/app/_components/customeInput'
-import goImg from "../../assets/images/go.svg"
+import goImg from "../../../assets/images/go.svg"
 import Image from 'next/image'
 import { useMutation } from '@apollo/client'
 import { UPDATE_USER } from '@/graphql/features/user'
@@ -39,7 +39,8 @@ const Personal = () => {
             email : userData.email,
             first_name : userData.first_name,
             last_name : userData.last_name,
-            user_id : userData.user_id
+            user_id : userData.user_id,
+            onboarding_complete : userData.onboarding_complete
         }
         dispatch(userFetched(userFromApi))
         scrollToTop()

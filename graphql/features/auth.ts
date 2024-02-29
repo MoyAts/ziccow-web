@@ -45,16 +45,16 @@ mutation user($email: String!, $firstName: String!,$lastName: String!, $password
 `;
 
 export const LOGIN_SOCIAL_MEDIA = gql`
-mutation a($token : String!){
-  socialLogin(accessToken: $token) {
-    token
-    user {
-      first_name
-      last_name
-      phone_number
-      email
-      user_id
-    }
+  mutation a($token : String!){
+    socialLogin(accessToken: $token) {
+      token
+      user {
+        first_name
+        last_name
+        phone_number
+        email
+        user_id
+      }
   }
 }
 `

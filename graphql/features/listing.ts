@@ -97,7 +97,7 @@ export const Add_LISTING = gql`
 
 export const GET_LISTING  = gql`
 
-  query a{
+  query get_listings{
   listing {
     digital_assets {
       url

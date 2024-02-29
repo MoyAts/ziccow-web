@@ -21,32 +21,29 @@ interface houseInf {
 }
 
 interface Props {
-    isGrid : boolean,
     house : houseInf 
 }
 
-const home = ( { isGrid,house } : Props) => {
+const home = ( { house } : Props) => {
     
   return (
     
-    <div className={`flex justify-between text-sm gap-2 bg-white border shadow p-1 rounded-lg text-lightGray  max-small:flex-col  ${isGrid && "flex-col "}`}>
+    <div className={`flex w-fit justify-between text-sm gap-2 bg-white border shadow p-1 rounded-lg text-lightGray  max-small:flex-col flex-col `}>
         <div className="rounded-lg basis-1/3  ">
             <Image src={house.digital_assets[0].url}  
-            width={100}
-            height={100}
-            className="rounded-lg  w-full object-cover my-auto" alt=""
-            quality={100}
-
+                width={100}
+                height={100}
+                className="rounded-lg  w-full object-cover my-auto" alt=""
+                quality={100}
            />
         </div>
-        <div className={`bg-red200 ${!isGrid && "my-auto"} flex flex-col basis-2/3  py-2 ${isGrid ? "px-1" : " w-full"}  max-small:px-1`}>
-            {isGrid && <div className="flex-grow"></div>}
-            <div className={`${!isGrid && 'hidden'}   flex flex-row-reverse`}>
+        <div className={`bg-red200 my-auto flex flex-col basis-2/3  py-2 px-1  max-small:px-1`}>
+            <div className="flex-grow"></div>
+            <div className={`   flex flex-row-reverse`}>
                 <div className={`  w-fit  bg-blue-300 text-black text-[10px] px-2 rounded-lg h-fit my-auto bg-opacity-55`}>
                         Big house 
                 </div>
             </div>
-            <div className={` ${isGrid && "hidden"}   flex w-full justify-between pe-2`}>
                 <p className="flex text-xs gap-2">
                     <Image className="w-[20px] h-[20px]" src={locationIcon} alt="" />
                     <p className="my-auto">
@@ -57,7 +54,7 @@ const home = ( { isGrid,house } : Props) => {
             </div>
             <h1 className="text-lg mt-2 text-black">Glam Apartment No.3</h1>
             <p className="text-[10px]">Glam Apartment No.3, 4 Kilo Parliament, Addis Ababa.</p>
-            <div className={` ${!isGrid && "hidden"}   flex w-full justify-between pe-2`}>
+            <div className={`    flex w-full justify-between pe-2`}>
                 <p className="flex text-xs gap-2">
                     <Image className="w-[20px] h-[20px]" src={locationIcon} alt="" />
                     <p className="my-auto">
@@ -84,12 +81,8 @@ const home = ( { isGrid,house } : Props) => {
                     <span className="text-xl font-semibold text-black">$12,000</span> 
                     <span className="">/month</span>
                 </h1>
-                <Image src={bookMarkSvg} alt="" className={`${!isGrid && "hidden"}  `} />
 
-                <div className={` ${isGrid && 'hidden'}   bg-blue-300 text-black text-[10px] px-2 rounded-lg h-fit my-auto bg-opacity-55`}>
-                    Big house
-                </div>
-            </div>
+               
         </div>
     </div>
   )

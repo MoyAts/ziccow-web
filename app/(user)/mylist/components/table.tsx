@@ -2,7 +2,7 @@
 import Image from "next/image"; 
 import Link from "next/link";
 import React from 'react';
-import deleteImg from "../../assets/images/delete.svg"
+import deleteImg from "../../../assets/images/delete.svg"
 const Table = () => {
   const data = [
     { id: 1, name: 'Glam Apartment No.3', date: 'Apr 23 ,2021',type : "Apartment", propertyType : "Rental",status : "pending" },

@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 const Layout = ({ children } : any) => {
     const router = useRouter()
     const authState : AuthInf = useSelector(getState)
-    if (authState.isLogedIn == LogInf.NO_USER) return <>{children}</>
+    if (authState.isLogedIn == LogInf.LOGED_IN) return <>{children}</>
     if (authState.isLogedIn == LogInf.NOT_FETCHED) return <></>
     if (authState.isLogedIn == LogInf.LOADING) return <>loading</>
-    if (authState.isLogedIn == LogInf.LOGED_IN) {
+    if (authState.isLogedIn == LogInf.NO_USER) {
         router.push("/")
         if (typeof window !== "undefined") {
             window.location.href = "/";

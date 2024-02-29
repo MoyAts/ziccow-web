@@ -6,33 +6,24 @@ import { IoIosArrowBack as ListIcon} from "react-icons/io";
 import gridSvg from  "../../assets/images/gridsvg.svg"
 import Home from "./home";
 import listSvg from  "../../assets/images/listsvg.svg"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import collapseImg from "../../assets/images/collapse.svg"
-import { useQuery } from "@apollo/client";
+import { useLazyQuery, useQuery } from "@apollo/client";
 import { GET_LISTING } from "@/graphql/features/listing";
+import Property from "./property"
+import { houseInf } from "@/utils/interfaces";
 interface filterInf {
     list : string[],
     img : any 
 }
 
-interface house {
-    digital_assets : Array<{ url : string}>,
-    listing_property : {
-        bathroom_count : number,
-        bedroom_count : number,
-        square_ft : number,
-    },
-    address_data : string
-
-}
 
 const Hero = () => {
-    const { loading , error, data } = useQuery(GET_LISTING)
+    const { loading , error, data } = useQuery(GET_LISTING);
 
-    const [isGrid,setIsGrid] = useState(true)
     
     loading && console.log("loading")
-    error && console.log("error")
+    error && console.log("error",error)
     data && console.log(data)
 
     const sortList = ["Default" , "temporary1","temporary2"] 
@@ -57,30 +48,27 @@ const Hero = () => {
   
   return (
 
-    <div className='h-[100vh] max-w-[1700px] mx-auto  max-tablet:h-fit  max-tablet:max-h-fit max-h-[800px] relative z-20  bg-lightBg flex border-t border-gray-300'>
-        <div className="w-full max-tablet:basis-full  max-tablet:px-10  max-small:px-5 max-tablet:w-full    h-full  flex flex-col px-5 ">
+    <div className=' max-w-[1700px] mx-auto relative z-20  bg-lightBg flex border-t border-gray-300'>
+        <div className="w-full max-tablet:basis-full px-20  max-tablet:px-10  max-small:px-5 max-tablet:w-full h-full  flex flex-col ">
             <div className="flex text-sm justify-between my-3">
-                    <div className="font-semibold">Property Listing</div>
-                    <div className="flex gap-2">
-                        <span>Collapse</span>
-                        <Image src={collapseImg} alt="" />
-                    </div>
+                    <div className="font-semibold">Property Listings</div>
+                  
             </div>
-            <div className="flex  max-small:flex-wrap py-2 w-full tablet:justify-between   max-tablet:gap-5 gap-2">
+            <div className="flex  max-small:flex-wrap py-2 w-full   max-tablet:gap-5 gap-2">
                 {filters.map((data : filterInf) => (
                     <SelectOption key={data.list[0]} list={data.list} img={data.img}  />
                 ))}
 
             </div>
 
-            <div className="flex text-gray-500 mt-3 justify-between  max-small:flex-col  ">
+            <div className="flex text-gray-500 mt-3 gap-5  max-small:flex-col  ">
                 
                 <div className="text-sm max-small:mb-3">showing <span className="font-bold">64</span>  search result</div>
-                <div className="flex  max-small:place-self-end">
+                <div className="flex   my-auto">
                     <span>
                         sort : 
                     </span>
-                    <div className="relative flex flex-col gap-2 w-fit py-1 group   ">
+                    <div className="relative flex flex-col gap-2 w-fit  group   ">
                         <div className="flex justify-between rounded">
                             <div className="flex justify-between gap-2  px-2 ">
                                 <span className="text-sm text-black">Default</span>
@@ -96,30 +84,25 @@ const Hero = () => {
                 
                         </div>
                      </div>
-                     <div className="h-4/6 my-auto w-[1px] mx-5 bg-gray-400 max-small:hidden"></div>
-                     <div className="flex gap-3 max-small:hidden">
-                        <Image onClick={() => setIsGrid(true)} src={gridSvg} className={`cursor-pointer px-1 rounded-lg w-full  ${isGrid && "bg-blue-100"}`} alt="" />
-                        <Image onClick={() => setIsGrid(false)} src={listSvg} className={`cursor-pointer px-1 rounded-lg w-full ${!isGrid && "bg-blue-100"}`} alt="" />
-                     </div>
+                     
                 </div>
 
             </div>
 
-            <div className="w-full my-3 mx-auto bg-gray-500 h-[2px] opacity-50 "></div>
             
-            <div className={`${isGrid ? "grid grid-cols-2 max-small:grid max-small:grid-cols-1" : "flex flex-col gap-2  max-small:grid max-small:grid-cols-1"} tablet:overflow-scroll gap-2 pb-10`}>
-              
-              
+            <div className={`grid grid-cols-3 mt-5 2xl:grid-cols-4 max-tablet:grid-cols-2 max-sm:grid-cols-1 overflow-scroll gap-10 pb-10`}>
               
               { 
                 loading ? 
                 <div>Loading</div> 
                 :
                 error ? 
-                <div>error</div> 
+                <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
+                    {  error.graphQLErrors[0]?.message ?? "something goes wrong"}
+                </div>
                 :
                 data ?
-                data.listing.map((house : house,ind : number) => <Home key={ind} house={house} isGrid={isGrid} />)
+                data.listing.map((house : houseInf,ind : number) => <Property key={ind} house={house} />)
                 :
                 <div>......</div>
               }

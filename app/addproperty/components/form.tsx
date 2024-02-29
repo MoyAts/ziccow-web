@@ -1,7 +1,7 @@
 "use client" 
 import Image from "next/image"; 
 import Link from "next/link";
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import PropertyDetail from "./propertyDetail"
 import PropertyManagment from './propertyManagment'
 import Confirmation from "./confirmation";
@@ -16,7 +16,8 @@ import { Add_LISTING_NEW } from "@/graphql/features/listing";
 
 const Form = () => {
    
-   const [form,setForm] = useState(initialForm)
+  const errRef = useRef<any>(null)
+  const [form,setForm] = useState(initialForm)
    const [page,setPage] = useState(1)
    const [loading2,setLoading2] = useState(false)
    const [sendList,{ loading,error,data }] = useMutation(Add_LISTING_NEW)
@@ -24,12 +25,20 @@ const Form = () => {
    if(data){
     page != 4 && setPage(4)
    }
-  
+   
    if(error){
     console.log("error")
     console.log(error)
    }
-   console.log(form)
+
+   const changePage = (num : number) =>{
+        errRef && errRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center", 
+        });
+        setPage(num)
+    
+   }
 
    const uploadImage = async (image : any)  => {
         const data = new FormData();
@@ -78,6 +87,7 @@ const Form = () => {
               "sale_price": form.sellingPrice,
               "build_date": form.yearBuilt,
               "description": "some nice description",
+              "sale_type" : form.propertyManagment, 
               "listing_property": {
                 "data": {
                   "bathroom_count": form.facilities.numOfBathrooms,
@@ -94,6 +104,11 @@ const Form = () => {
               },
               "digital_assets": {
                 "data": imgs
+              },
+              "real_estate": {
+                "data" :{ 
+                    "name" : form.propertyName
+                }
               }
             }
           }})
@@ -136,7 +151,7 @@ const Form = () => {
                     </div>
                 </p>
 
-                <p onClick={() => page > 2 && setPage(3)} className={`${page == 3 && "font-semibold text-black"} gap-3  cursor-pointer duration-200 flex justify-between`}>
+                <p ref={errRef} onClick={() => page > 2 && setPage(3)} className={`${page == 3 && "font-semibold text-black"} gap-3  cursor-pointer duration-200 flex justify-between`}>
                     <p className="cursor-pointer">
                         3. Confirmation
                     </p>
@@ -154,10 +169,10 @@ const Form = () => {
             </div>
             {
                 page == 1 ?
-                <PropertyDetail setPage={setPage} setForm={setForm} form={form} />
+                <PropertyDetail setPage={changePage} setForm={setForm} form={form} />
                 :
                 page == 2 ?
-                <PropertyManagment setPage={setPage} setForm={setForm} form={form} />
+                <PropertyManagment setPage={changePage} setForm={setForm} form={form} />
                 :
                 page == 3 ?
                 <Confirmation loading={loading || loading2} form={form} setForm={setForm} addList={addList} />

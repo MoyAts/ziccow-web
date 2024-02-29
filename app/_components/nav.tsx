@@ -116,22 +116,22 @@ const Nav = ({ withsearch } : Props) => {
 
                     <div className="flex gap-5 relative">
                      {showNotification && <Notification />}
-                     {state.doesTokenExist &&
+                     {state.isLogedIn == LogInf.LOGED_IN &&
                         <>
                           <div onClick={()=>setShowNotification(data => !data)} className="flex max-tablet:hidden  relative cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
                             <Image src={notificationIcon} width={20} alt="" className="" />
                           </div>
-                          <div className="flex max-tablet:hidden cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
+                          <Link href="/message" className="flex max-tablet:hidden cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
                             <Image src={messageIcon} width={20} alt="" />
-                          </div>
+                          </Link>
                         </>
                       }
-                      <div className="flex text-mainBlue gap-1 text-sm">
+                      <Link href="/addproperty" className="flex text-mainBlue gap-1 text-sm">
                         <Image src={navaddImg} className="m-auto" alt="" />
                         <p className="m-auto ">
                           Add new Listing
                         </p>
-                      </div>
+                      </Link>
                     </div>
 
 

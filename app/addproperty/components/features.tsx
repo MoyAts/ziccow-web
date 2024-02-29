@@ -1,6 +1,11 @@
-"use client" 
+"use client"
+import { houseInf } from "@/utils/interfaces"
 
-const features = () => {
+ 
+
+
+
+const features = ({ form } : any) => {
   return (
     <div className="mt-8 h-fit text-lightGray ">
         <div className="text-2xl  font-semibold">Facts & Features</div>
@@ -10,28 +15,29 @@ const features = () => {
                 <div className="text-lg mt-5 font-semibold my">Bedrooms & bathrooms</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                     <li className="before:content-['\2022']  before:mr-2">
-                        Bedrooms: 1
+                        Bedrooms: {form.numOfBedrooms}
                     </li>
                     <li className="before:content-['\2022']  before:mr-2">
-                        Bathrooms: 1
+                        Bathrooms: {form.numOfBathrooms}
                     </li>
                     <li className="before:content-['\2022']  before:mr-2">
-                        Full bathrooms: 1
+                        square footage: {form.squareFootage}
                     </li>
                 </ul>
                 <div className="text-lg mt-5 font-semibold my">Appliances</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                     <li className="before:content-['\2022']  before:mr-2">
-                        Appliances included
+                    {form.appliances ? "Appliances included" : "Appliances not included"} 
+                    
                     </li>
                 </ul>
                 <div className="text-lg mt-5 font-semibold my">Other interior features</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                     <li className="before:content-['\2022']  before:mr-2">
-                        Total structure area: 125
+                        Total structure area: {form.squareFootage}
                     </li>
                     <li className="before:content-['\2022']  before:mr-2">
-                        Total interior livable area: 125 sqft
+                        Total interior livable area: {form.squareFootage} sqft
                     </li>
                 </ul>
             </div>
@@ -41,10 +47,10 @@ const features = () => {
                 <div className="text-lg mt-5 font-semibold my">Type & style</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                     <li className="before:content-['\2022']  before:mr-2">
-                        Home type: Apartment
+                        Home type: {form.propertyManagment}
                     </li>
                     <li className="before:content-['\2022']  before:mr-2">
-                        Property subType: Apartment, High Rise
+                        Property subType: {form.propertyName}, {form.propertyManagment}
                     </li>
                 </ul>
                 <div className="text-lg mt-5 font-semibold my">Condition</div>
@@ -53,7 +59,7 @@ const features = () => {
                         New construction: No
                     </li>
                     <li className="before:content-['\2022']  before:mr-2">
-                        Year built: 2020
+                        Year built: {form.yearBuilt}
                     </li>
                 </ul>
             </div>

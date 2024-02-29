@@ -115,16 +115,7 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
           Icon={searachImg} 
           value={form.address}
          />
-        {/* <CustomeInput 
-          label='Home Type' 
-          name='homeType' 
-          onChange={setChange}
-          placeholder='Apartment, High rise'  
-          divClass='mb-5' 
-          ReactIcon={MdNavigateNext}
-          IconClass={"text-3xl my-auto text-mainBlue rotate-90"}
-          value={form.homeType}
-        /> */}
+      
         <OptionInput 
           label='Home Types' 
           name='homeType' 
@@ -329,15 +320,10 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
 
         <div className="text-xl mb-4 mt-8">Property Description</div>
         <div className="w-full bg-white text-lightGray px-5 py-4 rounded-lg">
-            Welcome to {form.propertyName} 314 located on the third floor of Novo 64 in the 
-            heart of Forest Hills! This unit features a spacious living area with 
+            Welcome to {form.propertyName ?? "\"name\""} located in{form.address ?? "\"address\""}! 
+            This unit features a spacious living area with 
             beautiful maple hardwood floors and expansive windows overlooking a 
-            quiet street. The kitchen features top of the line Jenn-Air stainless 
-            steel appliances, Caesarstone countertops, and an oversized 
-            island/breakfast bar. The spacious natural stone bathroom is outfitted
-             with Kohler fixtures and European-style vanity. The unit has central 
-             heating and cooling and has lots of storage space throughout with 
-             three oversized closets in the front hallway and bedroom. 
+            quiet street. 
         </div>
         <p className="text-lightGray text-sm mt-2">
           Start with a brief overview that describes your item’s finest features.

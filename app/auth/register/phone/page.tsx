@@ -29,7 +29,7 @@ const PhoneLoginPage = () => {
                 router.push("/auth/continue/"+token);
                 setError("")
             }catch(e){
-                setError("wron confirmation code")
+                setError("wrong confirmation code")
                 console.log(e)
             }finally{
                 setLoading(false)

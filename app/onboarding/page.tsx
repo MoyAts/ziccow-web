@@ -1,16 +1,16 @@
 "use client"
 import { useState } from "react"
 
-import logoG from "../../assets/images/googleLogo.svg"
-import img from "../../assets/images/Widget 5.svg"
-import CustomeInput from "../../_components/customeInput"
-import bg from "../../assets/images/Background.png"
+import logoG from "../assets/images/googleLogo.svg"
+import img from "../assets/images/Widget 5.svg"
+import CustomeInput from "../_components/customeInput"
+import bg from "../assets/images/Background.png"
 import Link from "next/link";
 import Image from "next/image";
-import goImage from "../../assets/images/go.svg"
+import goImage from "../assets/images/go.svg"
 import { useMutation } from "@apollo/client"
-import { LOGIN_GQL,LOGIN_SOCIAL_MEDIA } from "../../../graphql/features/auth"
-import { saveUser } from "../../../lib/auth"
+import { ADD_ONBOARDING_DATA } from "../../graphql/features/user"
+import { saveUser } from "../../lib/auth"
 import { useDispatch } from "react-redux"
 import { loginUser } from "@/store/features/auth/authSlice"
 // import { useRouter } from 'next/router';
@@ -20,41 +20,35 @@ const LoginPage = () => {
     const dispatch = useDispatch()
     // const router = useRouter();
     const [language, setLanguage] = useState('');
-    const [password, setPassword] = useState('');
-    const [temp,setTemp] = useState(false)
-    const [login,{loading,error,data}] = useMutation(LOGIN_GQL, {
+    const [education, setEducation] = useState('');
+    const [work, setWork] = useState('');
+    const [uierror,setUierror] = useState('')
+    const [login,{loading,error,data}] = useMutation(ADD_ONBOARDING_DATA, {
         fetchPolicy : "no-cache"
     })
-    const [login2,responses] = useMutation(LOGIN_SOCIAL_MEDIA, {
-        fetchPolicy : "no-cache"
-    })
-    const loginEmail = async () => {
-        const data : any = await loginWithEmail()
-        const token = data.user.accessToken
-        login2({
-            variables : {
-                token 
-            }
-        })
-    }
-    if(responses.data){
-        const { socialLogin } = responses.data 
-        dispatch(loginUser({token:socialLogin.token, userId : socialLogin.user.user_id}))
-        
-    }
-    if(responses.error){
-        console.log(responses.error)
-    }
-    if(responses.loading){
-        console.log("loading")
-    }
+   
+  
     if(data) {
         console.log(data)
-        dispatch(loginUser({token:data.loginEmail.token, userId : data.loginEmail.user.user_id}))
-        location.href = "/"
+        if (typeof window !== "undefined") {
+            window.location.href = "/";
+        }
     }
     const submit = () => {
-        // login({ variables: { email, password },})
+        if(work.length < 2){
+            return setUierror("invalid work experience")
+        }
+        if(education.length < 2){
+            return setUierror("invalid education level")
+        }
+        if(language.length < 2){
+            return setUierror("invalid language preference")
+        }
+        login({ variables: { 
+            lang : language,
+            work ,
+            education ,
+        }})
     }
 
     return (
@@ -75,12 +69,29 @@ const LoginPage = () => {
                         Ziccow is making it simpler to sell, buy, and rent your properties to move forward.
                     </p>
                     <h3 className='capitalize text-xl my-5 font-semibold'>Info</h3>
-                    {(error || responses.error) && <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
-                        { error ? error.graphQLErrors[0].message : responses.error ? responses.error.graphQLErrors[0].message : ""}
-                    </div>}
+                    
+                    {   (error || uierror) && 
+                        <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
+                            { error ?  error.graphQLErrors[0].message : uierror}
+                        </div>
+                    }
                     <form className='flex flex-col gap-7' onSubmit={e => e.preventDefault()}>
                         
-                        {/* <CustomeInput value={email} onChange={({target} : any) => setEmail(target.value)} name='email' label={"email address"} placeholder={"email"}/> */}
+                        <CustomeInput 
+                            value={language} 
+                            onChange={({target} : any) => setLanguage(target.value)} 
+                            name='language' label={"Languate Preference"} placeholder={"Language"}
+                        />
+                        <CustomeInput 
+                            value={education} 
+                            onChange={({target} : any) => setEducation(target.value)} 
+                            name='education' label={"Education Level"} placeholder={"education"}
+                        />
+                          <CustomeInput 
+                            value={work} 
+                            onChange={({target} : any) => setWork(target.value)} 
+                            name='work' label={"Work Experience"} placeholder={"work"}
+                        />
                         <div className='ps-2 flex justify-between'>
                             <div className='flex gap-2'>
                                 <input type="checkbox" placeholder='s' />
@@ -98,14 +109,7 @@ const LoginPage = () => {
                         </button>
 
 
-                        <p className='flex justify-center gap-2'>
-                            Not registered yet? 
-                            <Link href={"/auth/register"} className='text-blue-800 font-bold'>
-                                Create an account 
-                            </Link>
-                        </p>
-                        
-
+                      
                     </form>
                 </div>
 

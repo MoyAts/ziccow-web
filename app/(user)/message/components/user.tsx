@@ -1,5 +1,5 @@
 import React from 'react'
-import person from "../../assets/images/person.png"
+import person from "../../../assets/images/person.png"
 import Image from 'next/image'
 interface Props {
   setMessage : Function

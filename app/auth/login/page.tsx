@@ -13,12 +13,14 @@ import { LOGIN_GQL,LOGIN_SOCIAL_MEDIA } from "../../../graphql/features/auth"
 import { saveUser } from "../../../lib/auth"
 import { useDispatch } from "react-redux"
 import { loginUser } from "@/store/features/auth/authSlice"
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { loginWithEmail } from "@/utils/firebase";
+import { FaPhone } from "react-icons/fa6";
 
 const LoginPage = () => {
+    
     const dispatch = useDispatch()
-    // const router = useRouter();
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [temp,setTemp] = useState(false)
@@ -88,7 +90,7 @@ const LoginPage = () => {
                                 <input type="checkbox" placeholder='s' />
                                 <p className='text-lightGray'>Remember this device</p>
                             </div>
-                            <Link href={"/auth/forgetpassword"} className='text-mainBlue'>Forgot Password</Link>
+                            {/* <Link href={"/auth/forgetpassword"} className='text-mainBlue'>Forgot Password</Link> */}
                         </div>
                         <button onClick={submit} disabled={loading} className={` w-full flex gap-3 justify-center  duration-200  py-3 text-white rounded-xl ${loading ? "bg-blue-300 cursor-not-allowed" : "bg-mainBlue hover:bg-blue-600"}`}>
                             
@@ -108,9 +110,15 @@ const LoginPage = () => {
                         <button onClick={loginEmail} className='w-full border flex gap-3 justify-center bg-white py-3  rounded-xl'>
                             <Image src={logoG} alt="" />
                             <p className='font-semibold'>
-                                Sign up with Google
+                                Login with Google
                             </p>
                         </button>
+                        <Link href={"/auth/login/phone"} className='w-full border flex gap-3 justify-center bg-white py-3  rounded-xl'>
+                                <FaPhone className="my-auto" />
+                                <p className='font-semibold'>
+                                    Login with phone number
+                                </p>
+                        </Link>
 
                         <p className='flex justify-center gap-2'>
                             Not registered yet? 
@@ -118,6 +126,7 @@ const LoginPage = () => {
                                 Create an account 
                             </Link>
                         </p>
+
                         
 
                     </form>

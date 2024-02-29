@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logoutImg from "../../assets/images/logout.svg"
+import logoutImg from "../../../assets/images/logout.svg"
 import Image from 'next/image'
 import Security from "./security"
 import Personal from './personal'

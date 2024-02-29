@@ -8,6 +8,7 @@ export const GET_USER = gql`
           last_name
           email
           user_id
+          onboarding_complete
         }
       }
 `
@@ -22,6 +23,7 @@ export const UPDATE_USER = gql`
         email
         phone_number
         user_id
+        onboarding_complete
       }
     }
   }
@@ -32,4 +34,25 @@ export const GET_USER_ONBOARDING = gql`
         onboarding_complete
       }
     }
+`
+
+
+export const ADD_ONBOARDING_DATA = gql`
+    mutation data($education : String!,$lang : String!, $work : String!) {
+      addOnboardingData(
+        education_level: $education, 
+        language_preference: $lang, 
+        work_experience: $work
+      ) {
+        success
+      }
+    }
+`
+
+export const GET_ONBOARDING_FLAG = gql`
+  query d($userId : String!) {
+    user_by_pk(user_id :  $userId){
+      onboarding_complete
+    }
+  }
 `

@@ -1,9 +1,9 @@
 "use client"
 import React from 'react'
-import Nav from '../_components/nav'
+import Nav from '../../_components/nav'
 import Detail from './components/detail'
-import Footer from '../_components/footer'
-import Contact from "../_components/contact"
+import Footer from '../../_components/footer'
+import Contact from "../../_components/contact"
 const page = () => {
   return (
     <div className='bg-lightBg'>

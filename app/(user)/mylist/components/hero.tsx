@@ -5,10 +5,10 @@ import React from 'react'
 // import { Combobox, Transition } from '@headlessui/react'
 // import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import SelectBox from "./selectBox"
-import houseImg from "../../assets/images/house.svg"
-import monthImg from "../../assets/images/month.svg"
+import houseImg from "../../../assets/images/house.svg"
+import monthImg from "../../../assets/images/month.svg"
 import Table from './table'
-import goImage from "../../assets/images/goBlack.svg"
+import goImage from "../../../assets/images/goBlack.svg"
 
 const options = ["choice1","choice2","choice3"] 
 

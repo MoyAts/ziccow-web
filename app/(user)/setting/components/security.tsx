@@ -1,5 +1,5 @@
 import CustomeInput from '@/app/_components/customeInput'
-import goImg from "../../assets/images/go.svg"
+import goImg from "../../../assets/images/go.svg"
 import Image from 'next/image'
 const security = () => {
   return (

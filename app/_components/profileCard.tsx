@@ -18,9 +18,9 @@ const profileCard = ({ show,logoutUser,state } : Props) => {
         </div>
         <div className='w-full h-[1px] my-1 bg-gray-300'></div>
         <div className='px-3 my-1 flex gap-2 flex-col '>
-          <Link href={""} className='hover:text-mainBlue'>My Listings</Link>
-          <Link href={""} className='hover:text-mainBlue'>Saved Listings</Link>
-          <Link href={""} className='hover:text-mainBlue'>Account Settings</Link>
+          <Link href={"/mylist"} className='hover:text-mainBlue'>My Listings</Link>
+          <Link href={"/bookmarks"} className='hover:text-mainBlue'>Saved Listings</Link>
+          <Link href={"/setting"} className='hover:text-mainBlue'>Account Settings</Link>
         </div>
         <div className='w-full h-[1px] my-1 bg-gray-300'></div>
         <div className='px-3 font-semibold pb-3 mt-1 text-[#8C560A]'>

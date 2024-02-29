@@ -1,6 +1,6 @@
 import Message from "./message"
 import Users from './users'
-import emptyImg from "../../assets/images/emptyMessage.svg"
+import emptyImg from "../../../assets/images/emptyMessage.svg"
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 

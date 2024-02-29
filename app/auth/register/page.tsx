@@ -148,7 +148,7 @@ const Register = () => {
                             <Link href={"/auth/register/phone"} className='w-full border flex gap-3 justify-center bg-white py-3  rounded-xl'>
                                 <FaPhone className="my-auto" />
                                 <p className='font-semibold'>
-                                    Login with phone number
+                                    Sign up with phone number
                                 </p>
                             </Link>
                         </div>

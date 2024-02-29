@@ -8,6 +8,7 @@ export interface UserFromApi {
   last_name : string ,
   user_id : string ,
   email : string ,
+  onboarding_complete : boolean
 } 
 
 export interface DatasInf {
@@ -21,6 +22,7 @@ export enum LogInf {
   LOGED_IN,
   LOADING,
   NO_USER,
+  NOT_FETCHED,
 }
 
 export interface loginDataInf {
@@ -33,7 +35,8 @@ export interface AuthInf {
   isLogedIn : LogInf,
   user : DatasInf | null,
   error: string | null,
-  isDataFetched : boolean
+  isDataFetched : boolean,
+  onboardingFilled : boolean
 }
 
 export const initialState: AuthInf = {
@@ -43,10 +46,11 @@ export const initialState: AuthInf = {
     lastName : null,
     email : null
   },
-  isLogedIn : LogInf.NO_USER,
+  isLogedIn : LogInf.NOT_FETCHED,
   doesTokenExist : isTokenExist(),
   isDataFetched : false,
   error : null,
+  onboardingFilled : false
 }
 
 export const authSlice : any = createSlice({
@@ -66,8 +70,10 @@ export const authSlice : any = createSlice({
     fetchingUser : (state) => {
       state.isLogedIn = LogInf.LOADING
     },
+    
     userFetched : (state,action : PayloadAction<UserFromApi>) => {
       const user = action.payload
+      console.log(user,"user")
       state.user = {
         userId : user.user_id,
         firstName : user.first_name,
@@ -78,6 +84,16 @@ export const authSlice : any = createSlice({
       state.doesTokenExist =true
       state.error = null
       state.isDataFetched = true
+      state.onboardingFilled = user.onboarding_complete
+
+    },
+    userNotFound : (state,action : PayloadAction<any>) => {
+      state.user = null
+      state.isLogedIn = LogInf.NO_USER
+      state.doesTokenExist = false
+      state.error = null
+      state.isDataFetched = true
+      state.onboardingFilled = false
 
     },
     userFetchedError : (state,action : any) => {
@@ -87,7 +103,7 @@ export const authSlice : any = createSlice({
   },
 })
 
-export const { loginUser,logoutUser,fetchingUser,userFetched,userFetchedError } = authSlice.actions
+export const { loginUser,userNotFound,logoutUser,fetchingUser,userFetched,userFetchedError } = authSlice.actions
 
 export const getState = (state : any) => {
     return state.auth
