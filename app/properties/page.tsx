@@ -3,7 +3,7 @@ import Hero from "./components/hero"
 import Nav from "../_components/nav"
 import GetStarted from "../_components/get_started"
 import Footer from "../_components/footer"
-const pages = () => {
+const Pages = () => {
   return (
     <div className="relative bg-lightBg">
         <GetStarted />
@@ -15,4 +15,4 @@ const pages = () => {
   )
 }
 
-export default pages
+export default Pages

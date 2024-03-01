@@ -2,7 +2,7 @@
 export interface houseInf {
     digital_assets : Array<{ url : string}>,
     address_data : string
-   
+    listing_id : string
     currency : string,
     build_date : string,
     sale_price : string,
@@ -22,6 +22,13 @@ export interface houseInf {
         square_ft : string,
         spa : string,
         store_rooms : string,
-      }
+    }
+    extra_features : {
+        applicances_included : boolean,
+        lot_features: boolean,
+        near_park: boolean,
+        shopping_district: boolean,
+        parking_feature : boolean
+    }
     
 }

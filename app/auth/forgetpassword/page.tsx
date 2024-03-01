@@ -18,7 +18,11 @@ const index = () => {
 
             <div className='mx-auto'>
                 
-                <div className='w-full my-auto justify-center flex gap-2 cursor-pointer' onClick={() => location.href = "#home"}>
+                <div className='w-full my-auto justify-center flex gap-2 cursor-pointer' onClick={() =>{
+                    if (typeof window !== "undefined") {
+                        window.location.href = "#home";
+                    }
+                }}>
                     <Image src={img} alt="" />
                     <h1 className='font-semibold text-g my-auto'>
                         Ziccow General Trading

@@ -73,7 +73,6 @@ export const authSlice : any = createSlice({
     
     userFetched : (state,action : PayloadAction<UserFromApi>) => {
       const user = action.payload
-      console.log(user,"user")
       state.user = {
         userId : user.user_id,
         firstName : user.first_name,
@@ -97,7 +96,6 @@ export const authSlice : any = createSlice({
 
     },
     userFetchedError : (state,action : any) => {
-      console.log(action.data)
       state.isLogedIn = LogInf.NO_USER
     } 
   },

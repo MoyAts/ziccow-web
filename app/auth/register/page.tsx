@@ -64,7 +64,9 @@ const Register = () => {
     
     if(data){
         console.log(data)
-        location.href = "/auth/login"
+        if (typeof window !== "undefined") {
+            window.location.href = "/auth/login";
+        }
     }
 
     const loginEmail = async () => {

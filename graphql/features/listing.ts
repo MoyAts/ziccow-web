@@ -11,90 +11,6 @@ export const Add_LISTING_NEW = gql`
     }
   }
 `
-export const Add_LISTING = gql`
-  mutation listing( 
-    $address: String,
-    $sellingPrice: money,
-    $yearBuilt: String,
-    $squareFootage: bigint,
-    $numOfBathrooms: bigint,
-    $numOfBedrooms: bigint,
-    $numOfMaidsRooms: bigint,
-    $numOfGyms: bigint,
-    $numOfStores: bigint,
-    $numOfSpas: bigint,
-    $numOfLibs: bigint,
-    $numOfLivingrooms : bigint,
-    $numOfKitchens : bigint,
-    $urls : [digital_assets_insert_input!]! ,
-    $name : name,
-    $homeType : uuid,
-    $nearPark : Boolean,
-    $lotFeature : Boolean,
-    $appliances : Boolean,
-    $parkingFeature : Boolean,
-    $shoppingDistrict : Boolean,
-    $RentalPrice : bigint,
-    $cycle : String,
-    $currency : String,
-    $owner_id : uuid
-  
-  ) {
-    insert_listing(
-      objects: { 
-        real_estate: {
-          data: {
-            name: $name
-            }
-        }
-        address_data: $address,
-        house_type_id : $homeType,
-        sale_price: $sellingPrice, 
-        currency : $currency,
-        build_date: $yearBuilt,
-        description : "new", 
-        digital_assets: {
-          data: $urls
-        },
-        listing_property: {   
-          data: { 
-            bathroom_count: $numOfBathrooms, 
-            bedroom_count: $numOfBedrooms, 
-            square_ft: $squareFootage,
-            maids_room: $numOfMaidsRooms,
-            spa: $numOfSpas, 
-            store_rooms: $numOfStores, 
-            living_room_count: $numOfLivingrooms, 
-            library: $numOfLibs,
-            kitchen_count: $numOfKitchens,
-            gymnasium: $numOfGyms
-          }
-        }, 
-        extra_features: {
-          data: { 
-              near_park: $nearPark, 
-              lot_features: $lotFeature, 
-              applicances_included: $appliances, 
-              parking_feature: $parkingFeature, 
-              shopping_district: $shoppingDistrict
-            }
-        },
-        rental_price: { 
-          data: { 
-            price: 3232, 
-            cycle: "1 month"
-            }
-          }    
-      }
-    ) {
-      returning {
-        coordinate
-      }
-    }
-  }
-`;
-
-
 export const GET_LISTING  = gql`
 
   query get_listings{
@@ -136,4 +52,69 @@ export const GET_LISTING  = gql`
 }
 
 
+`
+export const ADD_TO_BOOKMARK = gql`
+  mutation a($list_id: uuid!,$user_id : uuid! ) {
+    insert_bookmark(objects: {listing_id: $list_id,user_id : $user_id}) {
+      affected_rows
+    }
+  }
+`
+export const GET_BOOKMARK = gql`
+  query a($user_id : uuid!){
+  bookmark(where: {user_id: {_eq: $user_id}}) {
+    listing {
+      owner_id
+      address_data
+      currency
+    }
+  }
+}
+
+`
+
+export const GET_LIST_BY_ID = gql`
+  query a($list_id : uuid!){
+    listing(where: { listing_id : { _eq : $list_id }}) {
+      digital_assets {
+        url
+        type
+      }
+      address_data
+      currency
+      build_date
+      description
+      listing_id
+      property_number
+      real_estate_id
+      sale_compare_price
+      rental_price_id
+      sale_price
+      sale_type
+      status
+      extra_features {
+        applicances_included
+        lot_features
+        near_park
+        shopping_district
+      }
+      real_estate {
+        name
+      }
+      listing_property {
+        bathroom_count
+        bedroom_count
+        created_at
+        gymnasium
+        kitchen_count
+        library
+        listing_property_id
+        living_room_count
+        maids_room
+        square_ft
+        spa
+        store_rooms
+      }
+    }
+  }
 `

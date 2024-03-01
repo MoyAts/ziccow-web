@@ -19,7 +19,6 @@ export function isTokenExist(){
     }
     if(data == null) return false
     const temp = JSON.parse(data)
-    console.log(temp,"temp")
     if(temp == null || temp?.length < 10  || temp?.userId.length < 5){
         return false
     }

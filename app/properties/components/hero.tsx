@@ -12,6 +12,8 @@ import { useLazyQuery, useQuery } from "@apollo/client";
 import { GET_LISTING } from "@/graphql/features/listing";
 import Property from "./property"
 import { houseInf } from "@/utils/interfaces";
+import { useSelector } from "react-redux";
+import { getUser } from "@/lib/auth";
 interface filterInf {
     list : string[],
     img : any 
@@ -20,11 +22,10 @@ interface filterInf {
 
 const Hero = () => {
     const { loading , error, data } = useQuery(GET_LISTING);
-
-    
+    const state = useSelector(getUser)
     loading && console.log("loading")
     error && console.log("error",error)
-    data && console.log(data)
+    data && console.log("+++++++++++++",data)
 
     const sortList = ["Default" , "temporary1","temporary2"] 
     const filters : filterInf[] = [
@@ -102,7 +103,7 @@ const Hero = () => {
                 </div>
                 :
                 data ?
-                data.listing.map((house : houseInf,ind : number) => <Property key={ind} house={house} />)
+                data.listing.map((house : houseInf,ind : number) => <Property userId={state?.userId ?? null} key={ind} house={house} />)
                 :
                 <div>......</div>
               }

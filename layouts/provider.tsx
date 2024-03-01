@@ -38,21 +38,17 @@ const Requestor  = ({ children } : any) => {
   })
   const dispatch = useDispatch()
   const check = state.doesTokenExist && state.isDataFetched == false  && getUser() != null
-  console.log(check , "checking",state.doesTokenExist,state.isDataFetched == false)
   if(check){
     if(loading == false && data == null && error == null){
       getuser()
     }
     if(loading){
-      console.log("loading")
       dispatch(fetchingUser())
     }
     if(data){
-      console.log("okkkkkk",data.user_by_pk)
       dispatch(userFetched(data.user_by_pk))
     }
     if(error){
-      console.log("error")
       dispatch(userFetchedError(error))
     }
   } else if (state.doesTokenExist == false && state.isDataFetched == false){ 
@@ -64,7 +60,6 @@ const Requestor  = ({ children } : any) => {
 
 const Checker = ({ children }: any) => {
   const state: AuthInf = useSelector(getState);
-  console.log(state.isLogedIn == LogInf.LOGED_IN && state.onboardingFilled === false)
   if (state.isLogedIn == LogInf.LOGED_IN && state.onboardingFilled === false) {
     return <Onboarding />;
   }
