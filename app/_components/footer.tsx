@@ -9,7 +9,7 @@ import emailImg from "../assets/images/emailFooter.svg"
 import locationImg from "../assets/images/locationFooter.svg"
 import phoneImg from "../assets/images/phoneFooter.svg"
 import { FaAngleLeft as LeftIcon } from "react-icons/fa6";
-
+import Link from "next/link";
 const footer = () => {
   return (
     <div className="w-full bg-mainDark ">
@@ -21,7 +21,7 @@ const footer = () => {
                     <div className='basis-4/12 flex flex-col gap-3 mb-4'>
                         <div className='flex gap-3 my-2'>
                             <Image src={logo} alt="" />
-                            <h3 className="text-xl"> Ziccow General Trading </h3>
+                            <Link href="/" className="text-xl"> Ziccow General Trading </Link>
                         </div>
                         <p className=' text-gray-400'>
                             <div className="capitalize font-normal text-white mb-4" >about us</div>
@@ -40,12 +40,12 @@ const footer = () => {
                         <div className='flex flex-col gap- max-sm:w-full3 w-2/6 '>
                             <h3 className="text-xl">Company</h3>
                             <ul className=' flex flex-col gap-5 mt-3 text-gray-400 capitalize'>
-                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#home"}>About us</li>
-                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#services"}>Team</li>
-                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#properties"}>Real Estate</li>
-                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#contactus"}>Properties</li>
-                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#contactus"}>service</li>
-                                <li className='hover:text-blue-500 cursor-pointer duration-200' onClick={() => location.href = "#contactus"}>contact us</li>
+                                <Link href={"/about"} className='hover:text-blue-500 cursor-pointer duration-200' >About us</Link>
+                                <Link href={"/about"} className='hover:text-blue-500 cursor-pointer duration-200' >Team</Link>
+                                <Link href={""} className='hover:text-blue-500 cursor-pointer duration-200' >Real Estate</Link>
+                                <Link href={"/properties"} className='hover:text-blue-500 cursor-pointer duration-200' >Properties</Link>
+                                <Link href={"/properties"} className='hover:text-blue-500 cursor-pointer duration-200' >service</Link>
+                                <Link href={"/contactus"} className='hover:text-blue-500 cursor-pointer duration-200' >contact us</Link>
                             </ul>
                         </div>
 
@@ -95,7 +95,7 @@ const footer = () => {
                         <CiFacebook className='text-2xl text-blue-500 cursor-pointer hover:text-white duration-200' />
                     </div>
                     <p className='max-mobile:hidden'>Ziccow General Trading Â© 2024. All Rights Reserved.</p>
-                    <button onClick={() => location.href = "#home"} className="capitalize flex gap-2 hover:text-white">
+                    <button onClick={() => location.href = "#header"} className="capitalize flex gap-2 hover:text-white">
                         <UpArrowIcon className="m-auto" />
                         <span className="m-auto">
                             back to top

@@ -1,23 +1,27 @@
 "use client" 
 import Image from "next/image"; 
-import locationIcon from "../../assets/images/location.svg"
-import bookMarkSvg from "../../assets/images/bookmark.svg"
-import bookMarkedSvg from "../../assets/images/bookmarked.svg"
+import locationIcon from "../../../assets/images/location.svg"
+import bookMarkSvg from "../../../assets/images/bookmark.svg"
+import bookMarkedSvg from "../../../assets/images/bookmarked.svg"
 
-import img3 from "../../assets/images/space.svg"
-import img4 from "../../assets/images/bed.svg"
-import img5 from "../../assets/images/bathroom.svg"
+import img3 from "../../../assets/images/space.svg"
+import img4 from "../../../assets/images/bed.svg"
+import img5 from "../../../assets/images/bathroom.svg"
 import { houseInf } from "@/utils/interfaces";
 import { useMutation } from "@apollo/client";
-import { ADD_TO_BOOKMARK } from "@/graphql/features/listing";
+import { DELET_BOOKMARK } from "@/graphql/features/listing";
 import Link from "next/link";
 interface Props {
     house : houseInf,
     userId : string | null, 
+    uuid : string,
 }
 
-const Home = ( { house , userId} : Props) => {
-  const [addToBookmark , { loading,data,error}] = useMutation(ADD_TO_BOOKMARK,{
+const Home = ( { house , userId, uuid} : Props) => {
+  const [deleteBookmark , { loading,data,error}] = useMutation(DELET_BOOKMARK,{
+    variables : {
+        uuid : uuid
+    },
     fetchPolicy : "no-cache"
   })
   
@@ -93,9 +97,13 @@ const Home = ( { house , userId} : Props) => {
                loading ? 
                "..." : 
                data ? 
-               <Image src={bookMarkedSvg} className="w-6" alt="" />
+               <Image 
+                src={bookMarkSvg} className="w-6 " alt="" />
                :
-               <Image onClick={() => addToBookmark({ variables : { list_id : house.listing_id, user_id : userId}})} src={bookMarkSvg} className="w-6 cursor-pointer" alt="" />
+               <Image 
+                onClick={() => deleteBookmark() }
+                src={bookMarkedSvg} 
+                className="w-6 cursor-pointer" alt="" />
                }                
             </div>
         </div>

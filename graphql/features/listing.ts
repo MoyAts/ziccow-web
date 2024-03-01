@@ -63,16 +63,47 @@ export const ADD_TO_BOOKMARK = gql`
 export const GET_BOOKMARK = gql`
   query a($user_id : uuid!){
   bookmark(where: {user_id: {_eq: $user_id}}) {
+    uuid
     listing {
       owner_id
+      digital_assets {
+        url
+        type
+      }
       address_data
       currency
+      build_date
+      description
+      listing_id
+      property_number
+      real_estate_id
+      sale_compare_price
+      rental_price_id
+      sale_price
+      sale_type
+      status
+      real_estate {
+        name
+      }
+      listing_property {
+        bathroom_count
+        bedroom_count
+        created_at
+        gymnasium
+        kitchen_count
+        library
+        listing_property_id
+        living_room_count
+        maids_room
+        square_ft
+        spa
+        store_rooms
+      }
     }
   }
 }
 
 `
-
 export const GET_LIST_BY_ID = gql`
   query a($list_id : uuid!){
     listing(where: { listing_id : { _eq : $list_id }}) {
@@ -117,4 +148,15 @@ export const GET_LIST_BY_ID = gql`
       }
     }
   }
+`
+export const DELET_BOOKMARK = gql`
+  mutation ($uuid : uuid!){
+    delete_bookmark_by_pk(uuid: $uuid) {
+      created_at
+      listing_id
+      user{
+        first_name
+      }
+    }
+}
 `

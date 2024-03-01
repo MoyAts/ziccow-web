@@ -1,7 +1,7 @@
 "use client" 
-import Nav from "../_components/nav"
-import Footer from "../_components/footer"
-import GetStarted from "../_components/get_started"
+import Nav from "../../_components/nav"
+import Footer from "../../_components/footer"
+import GetStarted from "../../_components/get_started"
 import Bookmarks from "./components/bookmarks"
 const page = () => {
   return (

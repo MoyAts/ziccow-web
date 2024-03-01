@@ -1,13 +1,24 @@
 import React from 'react'
 import Property from "./property"
 import SelectOption from "./select_option"
-import rentalIcon from "../../assets/images/rentalIcon.svg"
-import houseIcon from "../../assets/images/house.svg"
-import amountIcon from "../../assets/images/amountIcon.svg"
-import spaceIcon from "../../assets/images/space.svg"
+import rentalIcon from "../../../assets/images/rentalIcon.svg"
+import houseIcon from "../../../assets/images/house.svg"
+import amountIcon from "../../../assets/images/amountIcon.svg"
+import spaceIcon from "../../../assets/images/space.svg"
 import { IoIosArrowBack as ListIcon} from "react-icons/io";
+import { useSelector } from 'react-redux'
+import { GET_BOOKMARK } from '@/graphql/features/listing'
+import { useQuery } from '@apollo/client'
+import { getUser } from '@/lib/auth'
 
-const bookmarks = () => {
+const Bookmarks = () => {
+  const state = useSelector(getUser)
+  const { loading , error, data } = useQuery(GET_BOOKMARK,{
+    variables : {
+      user_id : state?.userId
+    },
+    fetchPolicy : "no-cache"
+  });
   return (
     <div className='flex flex-col px-20 max-w-[1700px] max-tablet:px-10 max-mobile:px-5 mx-auto border-t border-gray-300'>
       <div className='flex justify-between border-b border-gray-300 mb-4 py-4 max-tablet:flex-col'>
@@ -39,18 +50,24 @@ const bookmarks = () => {
 
       </div>
       <div className='w-full grid grid-cols-3  2xl:grid-cols-4 max-tablet:grid-cols-2 max-mobile:grid-cols-1  gap-5 pb-32 max-xl:grid-cols-3 justify-between '>
-          <Property  />
-          <Property  />
-          <Property  />
-          <Property  />
-          <Property  />
-          <Property  />
-          <Property  />
-          <Property  />
-          <Property  />
+         
+           { 
+                loading ? 
+                <div>Loading</div> 
+                :
+                error ? 
+                <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
+                    {  error.graphQLErrors[0]?.message ?? "something goes wrong"}
+                </div>
+                :
+                data ?
+                data.bookmark.map((house : any,ind : number) => <Property uuid={house.uuid} userId={state?.userId ?? null} key={ind} house={house.listing} />)
+                :
+                <div>......</div>
+              }
       </div>
     </div>
   )
 }
 
-export default bookmarks
+export default Bookmarks

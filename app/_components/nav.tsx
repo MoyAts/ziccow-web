@@ -33,7 +33,7 @@ const Nav = ({ withsearch } : Props) => {
   const [showNotification,setShowNotification] = useState(false)
   
   return (
-        <div className='w-full z-[1000] bg-lightBg bg-transparent relative'>
+        <div id="header" className='w-full z-[1000] bg-lightBg bg-transparent relative'>
           <div className="flex w-full bg-lightBg  mobile:rounded-b-3xl justify-center">
             <div className={`w-full max-w-[1700px] pb-4 flex flex-col ${withsearch == false  && " mobile:rounded-b-3xl"} `} >
                 <div className={"flex  pt-3 h-fit min-h-14  justify-between px-20 max-small:px-5 max-tablet:px-10 "}>

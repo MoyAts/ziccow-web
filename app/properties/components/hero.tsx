@@ -3,17 +3,15 @@ import Image from "next/image";
 import rentalIcon from "../../assets/images/rentalIcon.svg"
 import SelectOption from "./select_option"
 import { IoIosArrowBack as ListIcon} from "react-icons/io";
-import gridSvg from  "../../assets/images/gridsvg.svg"
-import Home from "./home";
-import listSvg from  "../../assets/images/listsvg.svg"
-import { useEffect, useState } from "react";
-import collapseImg from "../../assets/images/collapse.svg"
-import { useLazyQuery, useQuery } from "@apollo/client";
+import {  useQuery } from "@apollo/client";
 import { GET_LISTING } from "@/graphql/features/listing";
 import Property from "./property"
 import { houseInf } from "@/utils/interfaces";
 import { useSelector } from "react-redux";
 import { getUser } from "@/lib/auth";
+import houseIcon from "../../assets/images/house.svg"
+import amountIcon from "../../assets/images/amountIcon.svg"
+import spaceIcon from "../../assets/images/space.svg"
 interface filterInf {
     list : string[],
     img : any 
@@ -51,44 +49,38 @@ const Hero = () => {
 
     <div className=' max-w-[1700px] mx-auto relative z-20  bg-lightBg flex border-t border-gray-300'>
         <div className="w-full max-tablet:basis-full px-20  max-tablet:px-10  max-small:px-5 max-tablet:w-full h-full  flex flex-col ">
-            <div className="flex text-sm justify-between my-3">
+            <div className="flex text-xl justify-between my-3">
                     <div className="font-semibold">Property Listings</div>
                   
             </div>
-            <div className="flex  max-small:flex-wrap py-2 w-full   max-tablet:gap-5 gap-2">
-                {filters.map((data : filterInf) => (
-                    <SelectOption key={data.list[0]} list={data.list} img={data.img}  />
-                ))}
-
-            </div>
-
-            <div className="flex text-gray-500 mt-3 gap-5  max-small:flex-col  ">
-                
-                <div className="text-sm max-small:mb-3">showing <span className="font-bold">64</span>  search result</div>
-                <div className="flex   my-auto">
-                    <span>
-                        sort : 
-                    </span>
-                    <div className="relative flex flex-col gap-2 w-fit  group   ">
-                        <div className="flex justify-between rounded">
-                            <div className="flex justify-between gap-2  px-2 ">
-                                <span className="text-sm text-black">Default</span>
+            <div className='flex justify-between border-b border-gray-300 mb-4 py-4 max-tablet:flex-col'>
+                <div className='flex gap-5 flex-wrap  '>
+                    <SelectOption list={["Rental","Sell","new"]} img={rentalIcon}  />
+                    <SelectOption list={["House","Sell","new"]} img={houseIcon}  />
+                    <SelectOption list={["$15k - $30k","Sell","new"]} img={amountIcon}  />
+                    <SelectOption list={["125 sq ft","Sell","new"]} img={spaceIcon}  />
+                </div>
+                <div className='flex gap-2 text-lightGray me-12 place-self-end max-mobile:mt-5'>
+                    <p>
+                        Sort:
+                    </p>
+                    <div className="relative z-40 flex flex-col gap-2 w-fit px-2  group  ">
+                        <div className="flex  justify-between rounded gap-1">
+                            <span className="">Default</span>
+                            <ListIcon className="my-auto text-mainBlue group-hover:rotate-90 duration-150 -rotate-90" />
+                        </div>
+                        <div className="absolute text-sm top-8 shadow group-hover:flex hidden flex-col w-full text-black bg-white rounded p-1">
+                        {["Default","new1","new2"].map((data , ind) => (
+                            <div key={ind} className="flex  cursor-pointer duration-150 gap-2  px-2  py-1">
+                                <input id={`${ind}  ${data}`} type="checkbox" placeholder="s" className="hover:text-mainBlue cursor-pointer"/>
+                                <label htmlFor={`${ind}  ${data}`}  className=" text-black cursor-pointer hover:text-mainBlue">{data}</label>
                             </div>
-                            <ListIcon className="m-auto text-mainBlue group-hover:rotate-90 duration-150 -rotate-90" />
+                        ) )}
                         </div>
-                        <div className="absolute z-10 group-hover:flex hidden flex-col top-6  w-full text-black bg-white rounded p-1">
-                            {sortList.map((data : string) => (
-                                <div key={data} className="flex hover:bg-blue-200 cursor-pointer duration-150 gap-2  px-1 py-1">
-                                    <span className="text-xs text-black ">{data}</span>
-                                </div>
-                            ) )}
-                
-                        </div>
-                     </div>
-                     
+                    </div>
                 </div>
 
-            </div>
+        </div>
 
             
             <div className={`grid grid-cols-3 mt-5 2xl:grid-cols-4 max-tablet:grid-cols-2 max-sm:grid-cols-1 overflow-scroll gap-10 pb-10`}>
