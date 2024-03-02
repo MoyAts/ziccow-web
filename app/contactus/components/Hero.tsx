@@ -5,10 +5,10 @@ import Link from "next/link";
 import Nav from "../../_components/nav"
 import bg from "../../assets/images/Background_-_Copy-removebg-preview.png"
 import CustomeInput from "../../_components/customeInput"
-const Hero = () => {
+const Hero = ({ setIsDrawer } :any) => {
   return (
     <div className='w-full bg-[#547b87] bg-opacity-[85%]  '>
-        <Nav withsearch={false} /> 
+        <Nav setIsDrawer={setIsDrawer} withsearch={false} /> 
         <div className="w-full max-w-[1700px] items-center  h-[100vh]  max-tablet:h-fit max-h-[800px] relative flex mx-auto">
           <div className="absolute w-full bottom-0 ">
               <Image src={bg} alt="" className='w-full h-full object-cover max-h-[800px]'/>

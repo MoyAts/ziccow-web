@@ -5,8 +5,6 @@ import MegaMenu from "./mega_menu";
 import { GoLocation  as LocationIcon} from "react-icons/go";
 import { FaRegBuilding as BuildingIcon } from "react-icons/fa";
 import { CiSearch as SearchIcon } from "react-icons/ci";
-import Button from "./button";
-import { IoIosAddCircleOutline as AddIcon } from "react-icons/io";
 import Notification from "./notification";
 import notificationIcon from '../assets/images/notification.svg';
 import messageIcon from '../assets/images/message.svg';
@@ -17,16 +15,15 @@ import Link from "next/link";
 import { IoMdMenu as MenuIcon } from "react-icons/io";
 import navaddImg from "../assets/images/navadd.svg"
 
-import type { RootState } from '../../store/store'
 import { AuthInf } from "../../store/features/auth/authSlice";
 import { useSelector, useDispatch } from 'react-redux'
 import { getState,logoutUser,LogInf} from '../../store/features/auth/authSlice'
-
 interface Props {
-  withsearch : boolean 
+  withsearch : boolean,
+  setIsDrawer : Function
 }
 
-const Nav = ({ withsearch } : Props) => {
+const Nav = ({ withsearch , setIsDrawer} : Props) => {
   const state : AuthInf = useSelector(getState)
   const dispatch = useDispatch()
   const [showProfile,setShowProfile] = useState(false)
@@ -46,7 +43,7 @@ const Nav = ({ withsearch } : Props) => {
                     </div>
                     
                     <div className="h-full cursor-pointer mobile:hidden flex">
-                      <MenuIcon className="text-3xl my-auto text-mainBlue" />
+                      <MenuIcon onClick={() => setIsDrawer(true)} className="text-3xl my-auto text-mainBlue" />
                     </div>
 
 

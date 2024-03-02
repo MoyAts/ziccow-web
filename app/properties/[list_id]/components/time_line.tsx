@@ -28,7 +28,7 @@ const timeLine = () => {
                 <Image src={dateImg} className="w-7 my-auto" alt="" />
             </div>
             
-            <div className="flex justify-between">
+            <div className="flex justify-between overflow-auto">
 
                 <div className="duration-300 hover:bg-blue-100 cursor-pointer py-2 px-3 rounded-lg flex flex-col gap-2 justify-center items-center">
                     <p className="text-xl">Mon</p>

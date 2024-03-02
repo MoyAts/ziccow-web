@@ -3,10 +3,10 @@ import Image from "next/image";
 
 import Nav from "../../_components/nav"
 import bg from "../../assets/images/about_bg.png"
-const Hero = () => {
+const Hero = ({ setIsDrawer } : any) => {
   return (
     <div className='w-full bg-[#6b6d77] h-[100vh]   mx-auto max-h-[800px] relative flex flex-col '>
-        <Nav withsearch={false} />  
+        <Nav setIsDrawer={setIsDrawer} withsearch={false} />  
         <div className="absolute w-full h-[100vh]  mx-auto max-h-[800px]">
             <Image src={bg} alt="" className='w-full mx-auto m  h-full object-cover'/>
         </div>

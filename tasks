@@ -2,46 +2,37 @@ api Integration
   - finished
     - auth 
     - setting
-  - on progress
     - add property 
     - property
     - property detail
-  - remaining
     - bookmark
+    - check onboarding
+    - add links
+    - login by phone number
+    - onboarding info
+    - authentication header
+    - drawer
+  - on progress
+    - image quality
+    - region - location
+    - remove description
+    - team
+  - remaining
+    - parcel number -> property number
+    - filtering
+    - realstate name
+    - language , ... select box 
+    - currency -||-
+  - latter
     - message
+    - edit description
     - recommendation
   
-questions
-  - explanation
-  - add property
-  - message
-    + user fetch 
-    + fetch recent message
-    + send message
-  - listing   
-    + listing name
-    + filter
-  - about
-  - report a problem
-  - contact us
-  - notification
-  - popular realstate / recommedation
-  - my listing
-    + pagination
-  - search property
-  - graph api
 _______________________________
 
 
--edit description
--add links
 
--login by phone number
 
--check onboarding
-
--onboarding info
--authentication header
 
 https://blog.stackademic.com/sending-and-verifying-mobile-otp-with-firebase-and-react-d1d0244690a9
  

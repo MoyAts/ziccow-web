@@ -3,14 +3,22 @@
 import Hero from "./components/Hero"
 import Footer from "../_components/footer"
 import GetStarted from "../_components/get_started"
-const page = () => {
+import Drawer from "../_components/drawer"
+import { useState } from "react"
+const Page = () => {
+  const [isDrawer,setIsDrawer] = useState(false)
   return (
-    <div className='relative'>
-      <GetStarted />
-      <Hero />
-      <Footer />
+    <div>
+        {
+          isDrawer && <Drawer setIsDrawer={setIsDrawer}/>
+        }
+        <div className={` ${isDrawer && "hidden"}  relative`}>
+          <GetStarted />
+          <Hero setIsDrawer={setIsDrawer} />
+          <Footer />
+      </div>
     </div>
   )
 }
 
-export default page
+export default Page

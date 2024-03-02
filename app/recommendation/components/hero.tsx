@@ -3,10 +3,10 @@ import Image from "next/image";
 import bg from "../../assets/images/unsplash_B0aCvAVSX8E.png"
 import Nav from "../../_components/nav"
 
-const hero = () => {
+const hero = ({ setIsDrawer }: any) => {
   return (
     <div className='w-full  relative z-20 flex flex-col'>
-        <Nav withsearch={true} />
+        <Nav setIsDrawer={setIsDrawer} withsearch={true} />
         <div className='absolute left-0 right-0 bottom-0 top-0 bg-mainDark opacity-[85%] z-10'></div>
         <div className="w-full max-w-[1700px]  items-center  h-[100vh]   relative flex mx-auto">
             <Image src={bg} className='absolute w-7/12 bottom-0 right-0 -z-10 ' alt="" />

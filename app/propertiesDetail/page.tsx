@@ -2,14 +2,23 @@
 import GetStarted from "../_components/get_started"
 import Hero from "./components/hero"
 import Detail from "./components/detail"
-const page = () => {
+import Drawer from "../_components/drawer"
+import { useState } from "react"
+
+const Page = () => {
+  const [isDrawer,setIsDrawer] = useState(false)
   return (
-    <div className='relative bg-lightBg'>
-      <GetStarted />
-      <Hero />
-      <Detail />
+    <div>
+        {
+          isDrawer && <Drawer setIsDrawer={setIsDrawer}/>
+        }
+      <div className={` ${isDrawer && "hidden"}  relative bg-lightBg`}>
+        <GetStarted />
+        <Hero setIsDrawer={setIsDrawer} />
+        <Detail />
+      </div>
     </div>
   )
 }
 
-export default page
+export default Page

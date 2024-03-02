@@ -9,19 +9,26 @@ import DowloadApp from "./components/dowload_app"
 import Footer from "../_components/footer"
 import Join from "../_components/join"
 import GetStarted from "../_components/get_started"
-const home = () => {
+import Drawer from "../_components/drawer"
+import { useState } from "react"
+
+const Home = () => {
+    const [isDrawer,setIsDrawer] = useState(false)
     return (
-    <div className='relative bg-lightBg' id="home">
-        <GetStarted />
-        <Hero />
-        <Enjoy />
-        <Difference />
-        <View /> 
-        <Properties />
-        <DowloadApp />
-        <Join />
-        <Footer /> 
+    <div>
+        {isDrawer && <Drawer setIsDrawer={setIsDrawer}/>}
+        <div className={`relative ${isDrawer && "hidden"} bg-lightBg`} id="home">
+            <GetStarted />
+            <Hero setIsDrawer={setIsDrawer} />
+            <Enjoy />
+            <Difference />
+            <View /> 
+            <Properties />
+            <DowloadApp />
+            <Join />
+            <Footer /> 
+        </div>
     </div>
     )
 }
-export default home
+export default Home

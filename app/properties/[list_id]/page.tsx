@@ -5,6 +5,8 @@ import Detail from "./components/detail"
 import { GET_LIST_BY_ID } from "@/graphql/features/listing"
 import { useQuery } from "@apollo/client"
 import { useRouter } from "next/navigation"
+import Drawer from "@/app/_components/drawer"
+import { useState } from "react"
 
 const Page = ({ params : { list_id }} : { params : { list_id : string}}) => {
   const router = useRouter()
@@ -13,16 +15,21 @@ const Page = ({ params : { list_id }} : { params : { list_id : string}}) => {
       list_id 
     }
   })
-  data && console.log(data.listing)
   if(error){
     router.replace("/properties")
   }
-  
+  const [isDrawer,setIsDrawer] = useState(false)
   return (
-    <div className='relative bg-lightBg'>
-      <GetStarted />
-      <Hero />
-      {data && <Detail house={data.listing[0]} />}
+    <div>
+        {
+          isDrawer && <Drawer setIsDrawer={setIsDrawer}/>
+        }
+        <div className={` ${isDrawer && "hidden"}  relative bg-lightBg`}>
+          <GetStarted />
+          <Hero setIsDrawer={setIsDrawer} />
+          {loading && "loading"}
+          {data && <Detail house={data.listing[0]} />}
+        </div>
     </div>
   )
 }

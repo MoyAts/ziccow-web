@@ -1,18 +1,24 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from '../../_components/nav'
 import Detail from './components/detail'
 import Footer from '../../_components/footer'
 import Contact from "../../_components/contact"
-const page = () => {
+import Drawer from '@/app/_components/drawer'
+
+const Page = () => {
+  const [isDrawer,setIsDrawer] = useState(false)
   return (
-    <div className='bg-lightBg'>
-      <Nav withsearch={true} />
-      <Detail />
-      <Contact />
-      <Footer />
+    <div>
+      {isDrawer && <Drawer setIsDrawer={setIsDrawer}/>}
+      <div className={` ${isDrawer && "hidden"} bg-lightBg `}>
+        <Nav setIsDrawer={setIsDrawer} withsearch={true} />
+        <Detail />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   )
 }
 
-export default page
+export default Page

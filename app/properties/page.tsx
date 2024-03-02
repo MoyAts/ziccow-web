@@ -3,14 +3,22 @@ import Hero from "./components/hero"
 import Nav from "../_components/nav"
 import GetStarted from "../_components/get_started"
 import Footer from "../_components/footer"
+import Drawer from "../_components/drawer"
+import { useState } from "react"
 const Pages = () => {
+  const [isDrawer,setIsDrawer] = useState(false)
   return (
-    <div className="relative bg-lightBg">
-        <GetStarted />
-        <Nav withsearch={true} />
-        <Hero />
-        <Footer />
+    <div>
+        {
+          isDrawer && <Drawer setIsDrawer={setIsDrawer}/>
+        }
+        <div className={` ${isDrawer && "hidden"}  relative bg-lightBg`}>
+            <GetStarted />
+            <Nav setIsDrawer={setIsDrawer} withsearch={true} />
+            <Hero />
+            <Footer />
       
+        </div>
     </div>
   )
 }

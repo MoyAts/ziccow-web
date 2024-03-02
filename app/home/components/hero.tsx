@@ -7,11 +7,13 @@ import img3 from "../../assets/images/solar_city-bold-duotone.svg"
 import Nav from '../../_components/nav';
 import searchImg from "../../assets/images/search.svg"
 import mobileSearchImg from "../../assets/images/mobilesearch.svg"
-
-const hero = () => {
+interface Props{
+    setIsDrawer : Function
+}
+const hero = ({ setIsDrawer } : Props) => {
   return (
     <div className="w-full bg-[#6b6d77] tablet:h-[112vh] max-tablet:h-fit max-tablet:pb-32 max-mobile:pb-8     mx-auto  tablet:max-h-[800px] relative flex flex-col ">
-        <Nav withsearch={false} />
+        <Nav withsearch={false} setIsDrawer={setIsDrawer} />
             <div className="absolute w-full tablet:h-[112vh] max-tablet:h-full  mx-auto  tablet:max-h-[800px]">
                 <Image src={bg} alt="" className='w-full mx-auto  h-full object-cover'/>
             </div>

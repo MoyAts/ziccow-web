@@ -5,18 +5,25 @@ import Realestates from './components/realestates'
 import Footer from "../_components/footer"
 import Join from "../_components/join"
 import GetStarted from "../_components/get_started"
-const page = () => {
+import Drawer from "../_components/drawer"
+import { useState } from "react"
+const Page = () => {
+  const [isDrawer,setIsDrawer] = useState(false)
   return (
-    <div className='relative' >
-      <GetStarted />
-      <Hero />
-      <PropertyTypes />
-      <Realestates />
-      <Join />
-      <Footer /> 
-      
+    <div>
+        {
+          isDrawer && <Drawer setIsDrawer={setIsDrawer}/>
+        }
+        <div className={` ${isDrawer && "hidden"}  relative bg-lightBg`}>
+            <GetStarted />
+            <Hero setIsDrawer={setIsDrawer} />
+            <PropertyTypes />
+            <Realestates />
+            <Join />
+            <Footer /> 
+       </div>
     </div>
   )
 }
 
-export default page
+export default Page
