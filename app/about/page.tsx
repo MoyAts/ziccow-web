@@ -22,7 +22,7 @@ const Page = () => {
           <About />
           <Help />
           <Teams />
-          <Honor />
+          {/* <Honor /> */}
           <Contact />
           <Footer /> 
         </div>

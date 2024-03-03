@@ -4,14 +4,18 @@ import rentalIcon from "../../assets/images/rentalIcon.svg"
 import SelectOption from "./select_option"
 import { IoIosArrowBack as ListIcon} from "react-icons/io";
 import {  useQuery } from "@apollo/client";
-import { GET_LISTING } from "@/graphql/features/listing";
+import { GET_LISTING,FILTER_LIST } from "@/graphql/features/listing";
 import Property from "./property"
+import Properties from "./properties"
 import { houseInf } from "@/utils/interfaces";
 import { useSelector } from "react-redux";
 import { getUser } from "@/lib/auth";
 import houseIcon from "../../assets/images/house.svg"
 import amountIcon from "../../assets/images/amountIcon.svg"
 import spaceIcon from "../../assets/images/space.svg"
+import { useState } from "react";
+import PriceOption from "./price_option";
+import AreaOption from "./area_option";
 interface filterInf {
     list : string[],
     img : any 
@@ -19,31 +23,43 @@ interface filterInf {
 
 
 const Hero = () => {
-    const { loading , error, data } = useQuery(GET_LISTING);
-    const state = useSelector(getUser)
-    loading && console.log("loading")
-    error && console.log("error",error)
-    data && console.log("+++++++++++++",data)
-
-    const sortList = ["Default" , "temporary1","temporary2"] 
-    const filters : filterInf[] = [
-        {
-            list : ["Rental2","Rental1","Rental3"],
-            img : rentalIcon
-        },
-        {
-            list : ["Rental3","Rental2","Rental1","Rental4"],
-            img : rentalIcon
-        },
-        {
-            list : ["Rental4","Rental1"],
-            img : rentalIcon
-        },
-        {
-            list : ["Rental5","Rental2","Rental1"],
-            img : rentalIcon
-        },
+    
+    const priceFilter = [
+        { name :  "$15k and Below", price : [0,15000]},
+        {  name : "$15k and 30k" , price :  [15000,30000]},
+        {  name : "$30k and 50k" , price :  [30000,50000]},
+        {  name : "$50k and Above" , price :  [50000,10000000000]},
     ]
+    const areaFilter = [
+        {  name :  "125 sq ft and Below", price : [0,125]},
+        {  name : "125 sq ft - 250 sq ft" , price :  [125,250]},
+        {  name : "250 sq ft - 500 sq ft" , price :  [250,500]},
+        {  name : "500 sq ft and Above" , price :  [500,10000000000]},
+    ]
+    const [where,setWhere] = useState<any>()
+    const [variables,setVariables] = useState<any>({})
+    const [curr,setCurr] = useState<string | null>(null)
+    const reset = () => {
+        setCurr(null)
+        setWhere(null)
+        setVariables({})
+    }
+    const filterByPrice  = (ls : number , lg : number) => {
+        const curr = {
+            where : {
+                sale_price: { _gte: ls, _lte: lg } 
+            }
+        }
+        // setVariables({ fr : ls,to : lg})
+        setWhere(curr)
+    }
+    const filterByArea  = (ls : number , lg : number) => {
+        const curr = {
+            where: {listing_property: {square_ft: {_gte: ls, _lte: lg}}}
+        }
+        // setVariables({ fr : ls,to : lg})
+        setWhere(curr)
+    }
   
   return (
 
@@ -57,8 +73,25 @@ const Hero = () => {
                 <div className='flex gap-5 flex-wrap  '>
                     <SelectOption list={["Rental","Sell","new"]} img={rentalIcon}  />
                     <SelectOption list={["House","Sell","new"]} img={houseIcon}  />
-                    <SelectOption list={["$15k - $30k","Sell","new"]} img={amountIcon}  />
-                    <SelectOption list={["125 sq ft","Sell","new"]} img={spaceIcon}  />
+                    <PriceOption  
+                        list={priceFilter} 
+                        filter={filterByPrice} 
+                        name="price" 
+                        checkbox={true} 
+                        img={amountIcon}  
+                        curr={curr}
+                        reset={reset}
+                    />
+                     <PriceOption  
+                        list={areaFilter} 
+                        filter={filterByArea} 
+                        name="Area" 
+                        checkbox={true} 
+                        img={amountIcon}  
+                        curr={curr}
+                        reset={reset}
+                    />
+                    {/* <SelectOption list={["125 sq ft","Sell","new"]} img={spaceIcon}  /> */}
                 </div>
                 <div className='flex gap-2 text-lightGray me-12 place-self-end max-mobile:mt-5'>
                     <p>
@@ -81,26 +114,10 @@ const Hero = () => {
                 </div>
 
         </div>
-
-            
-            <div className={`grid grid-cols-3 mt-5 2xl:grid-cols-4 max-tablet:grid-cols-2 max-sm:grid-cols-1 overflow-scroll gap-10 pb-10`}>
-              
-              { 
-                loading ? 
-                <div>Loading</div> 
-                :
-                error ? 
-                <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
-                    {  error.graphQLErrors[0]?.message ?? "something goes wrong"}
-                </div>
-                :
-                data ?
-                data.listing.map((house : houseInf,ind : number) => <Property userId={state?.userId ?? null} key={ind} house={house} />)
-                :
-                <div>......</div>
-              }
-            </div>
-
+            <Properties  
+                query={where ? FILTER_LIST : GET_LISTING} 
+                variables={where}
+            />
         </div>
     </div>
   )

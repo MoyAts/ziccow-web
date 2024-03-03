@@ -101,7 +101,7 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
         <CustomeInput 
           value={form.propertyName} 
           onChange={setChange} 
-          label='Realstate name' 
+          label='Real estate' 
           name={"propertyName"} 
           placeholder='Tourist Plus Apartment' 
           divClass='mb-5' 
@@ -318,7 +318,7 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
          
         </div>
 
-        <div className="text-xl mb-4 mt-8">Property Description</div>
+        {/* <div className="text-xl mb-4 mt-8">Property Description</div>
         <div className="w-full bg-white text-lightGray px-5 py-4 rounded-lg">
             Welcome to {form.propertyName ?? "\"name\""} located in{form.address ?? "\"address\""}! 
             This unit features a spacious living area with 
@@ -327,7 +327,7 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
         </div>
         <p className="text-lightGray text-sm mt-2">
           Start with a brief overview that describes your item’s finest features.
-        </p>
+        </p> */}
 
         <div className="text-xl mb-4 mt-8">Upload Image(s)</div>
         <div className="mt-5 grid grid-cols-2 max-mobile:grid-cols-1  max-mobile:h-fit gap-5">

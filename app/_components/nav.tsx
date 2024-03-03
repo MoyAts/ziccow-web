@@ -95,7 +95,7 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
                       <div className="flex gap-4">
                           <div className="border w-fit flex px-2 rounded-xl font-light bg-white">
                             <LocationIcon className="text-mainBlue m-auto" />
-                            <input type="text" className="px-3 py-2 outline-none" placeholder="Enter location" />
+                            <input type="text" className="px-3 py-2 outline-none" placeholder="Enter a region" />
                           </div>
                           <div className="border w-fit flex px-2 rounded-xl font-light bg-white">
                             <BuildingIcon className="text-mainBlue m-auto " />

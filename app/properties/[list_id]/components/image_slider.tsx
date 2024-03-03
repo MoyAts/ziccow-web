@@ -33,6 +33,7 @@ const ImageSlider = ({ house } : Props) => {
                     width={100} height={100} 
                     className='w-full h-full object-cover rounded-lg' 
                     alt="" 
+                    unoptimized={true}
                 />        
             </div>
             {/* <div className="mt-4 gap-5 grid grid-cols-4 justify-between overflow-hidden">

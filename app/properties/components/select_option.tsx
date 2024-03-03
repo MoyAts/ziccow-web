@@ -4,10 +4,13 @@ import { IoIosArrowBack as ListIcon} from "react-icons/io";
 
 interface Props {
     list : string[],
-    img : any 
+    img : any ,
+    checkbox? : boolean,
+    name? : string,
+    filter? : Function
 }
 
-const SelectOption = ({list,img} : Props) => {
+const SelectOption = ({list,img,checkbox,name,filter} : Props) => {
   return (
     <div className="relative z-40 flex flex-col gap-2 w-fit py-1 group rounded-lg  ">
         <div className="flex justify-between bg-white py-1 rounded px-2">
@@ -20,7 +23,7 @@ const SelectOption = ({list,img} : Props) => {
         <div className="absolute text-sm top-10 shadow group-hover:flex hidden flex-col w-full text-black bg-white rounded p-1">
             {list.map((data , ind) => (
                 <div key={ind} className="flex  cursor-pointer duration-150 gap-2  px-2  py-1">
-                    <input id={`${ind} ${list[0]} ${data}`} type="checkbox" placeholder="s" className="hover:text-mainBlue cursor-pointer"/>
+                    <input id={`${ind} ${list[0]} ${data}`} name={name ?? ""} type={checkbox ? "checkbox" : "radio"} placeholder="s" className="hover:text-mainBlue cursor-pointer"/>
                     <label htmlFor={`${ind} ${list[0]} ${data}`}  className=" text-black cursor-pointer hover:text-mainBlue">{data}</label>
                 </div>
             ) )}

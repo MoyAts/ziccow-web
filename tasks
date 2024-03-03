@@ -12,14 +12,14 @@ api Integration
     - onboarding info
     - authentication header
     - drawer
-  - on progress
     - image quality
-    - region - location
-    - remove description
     - team
+    - remove description
+    - region - location
+  - on progress
+    - filtering
   - remaining
     - parcel number -> property number
-    - filtering
     - realstate name
     - language , ... select box 
     - currency -||-

@@ -41,6 +41,7 @@ const Home = ( { house , userId, uuid} : Props) => {
                 width={100}
                 height={100}
                 quality={100}
+                unoptimized={true}
                 alt="" 
             />
             }

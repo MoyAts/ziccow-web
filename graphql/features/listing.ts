@@ -160,3 +160,42 @@ export const DELET_BOOKMARK = gql`
     }
 }
 `
+export const FILTER_LIST = gql`
+  query get_listings($where : listing_bool_exp){
+    listing(where: $where) {
+      digital_assets {
+        url
+        type
+      }
+      address_data
+      currency
+      build_date
+      description
+      listing_id
+      property_number
+      real_estate_id
+      sale_compare_price
+      rental_price_id
+      sale_price
+      sale_type
+      status
+      real_estate {
+        name
+      }
+      listing_property {
+        bathroom_count
+        bedroom_count
+        created_at
+        gymnasium
+        kitchen_count
+        library
+        listing_property_id
+        living_room_count
+        maids_room
+        square_ft
+        spa
+        store_rooms
+      }
+    }
+  }
+`
