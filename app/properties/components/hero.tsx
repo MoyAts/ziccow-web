@@ -58,11 +58,7 @@ const Hero = () => {
     }
     const filterByArea  = (ls : number , lg : number) => {
         setWhere((data : any)=>{
-            const temp = {
-                status:{_eq : "ACTIVE" },
-                listing_property: {square_ft: {_gte: ls, _lte: lg}}
-            }
-            return {...data,"where" : temp}
+            return {...data,"where" : { listing_property: {square_ft: {_gte: ls, _lte: lg}}}}
         })
     }
     const filterByHouseType = (val : string) => {
@@ -162,7 +158,7 @@ const Hero = () => {
         </div>
             <Properties  
                 query={where ? FILTER_LIST : GET_LISTING} 
-                variables={where}
+                variables={{...where,status:{_eq : "ACTIVE" }}}
             />
         </div>
     </div>

@@ -16,9 +16,13 @@ interface Props {
 const Box = ({data} : Props) => {
   
   return (
-    <Link href={"/propertiesDetail"}  className='bg-rd-300 relative w-fit max-w-sm cursor-pointer shrink-0 max-mobile:w-full rounded-xl overflow-hidden text-black flex flex-col gap-3'>
+    <Link href={"/properties/"+data.listing_id}  className='bg-rd-300 relative w-fit max-w-sm cursor-pointer shrink-0 max-mobile:w-full rounded-xl overflow-hidden text-black flex flex-col gap-3'>
           <div className="absolute top-4 right-4  z-10">
-              <Popular />
+              {
+              data.is_featured ?  <Popular /> 
+              : data.is_discounted ? <IsDiscounted />
+              : data.is_
+              }
           </div>          
           <div className='rounded-xl group relative border w-full h-2/3 overflow-hidden'>
             <Image src={data.digital_assets[0]?.url ?? ""} unoptimized={true} width={100} height={100} className='rounded-xl group-hover:scale-110 w-full object-cover h-full cursor-pointer duration-300 hover:scale-105' alt="" />
@@ -66,6 +70,29 @@ const Popular = () => {
     </div>
   )
 }
+
+
+const IsDiscounted = () => {
+  return (
+    <div className="w-fit px-2 py-1 rounded-xl" style={{backgroundColor : "rgba(253, 244, 231, 1)"}} >
+      
+        <div className="" style={{color : "rgba(82, 50, 6, 1)"}}>Discounted Price</div>
+
+    </div>
+  )
+}
+
+
+const isNewListing = () => {
+  return (
+    <div className="w-fit px-2 py-1 rounded-xl" style={{backgroundColor : "rgba(253, 244, 231, 1)"}} >
+      
+        <div className="" style={{color : "rgba(82, 50, 6, 1)"}}>New Listing</div>
+
+    </div>
+  )
+}
+
 
 
 export default Box
