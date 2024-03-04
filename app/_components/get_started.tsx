@@ -6,6 +6,8 @@ import checkIcon from "../assets/images/Group (2).svg"
 
 const GetStarted = () => {
   return (
+    <>
+
     <div className='w-full bg-mainDark sticky top-0 z-[2000] h-12 flex  max-mobile:hidden'>
       <div className='w-full max-w-[1700px]  m-auto px-20 max-tablet:px-10   bg-mainDark text-white font-light text-sm top-0 flex justify-between'>
           <div className='flex '>
@@ -21,6 +23,9 @@ const GetStarted = () => {
           </div>
       </div>
     </div>
+    
+   
+    </>
   )
 }
 

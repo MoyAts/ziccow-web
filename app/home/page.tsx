@@ -21,6 +21,14 @@ const Home = () => {
     <div>
         {isDrawer && <Drawer setIsDrawer={setIsDrawer}/>}
         <div className={`relative ${isDrawer && "hidden"} bg-lightBg`} id="home">
+            
+            <div className='w-full bg-mainBlue sticky top-0 z-[2000] h-12 flex  max-mobile:hidden'>
+            <div className='w-full max-w-[1700px]  gap-3 m-auto px-20 max-tablet:px-10   bg-mainBlue text-white font-light text-sm top-0 flex justify-center'>
+                <div className="font-semibold">
+                    Underconstruction
+                </div>
+            </div>
+            </div>
             <GetStarted />
             <Hero setIsDrawer={setIsDrawer} />
             <Enjoy />

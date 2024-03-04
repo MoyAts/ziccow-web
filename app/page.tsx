@@ -1,5 +1,5 @@
 "use client"
-import Page from "./underconstruction/page"
+import Page from "./home/page"
 
 
 export default function Home() {
