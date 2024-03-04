@@ -3,16 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import React from 'react';
 import deleteImg from "../../../assets/images/delete.svg"
+import { useQuery } from "@apollo/client";
+import { GET_MY_LISTING } from "@/graphql/features/listing";
+import { useSelector } from "react-redux";
+import { getUser } from "@/lib/auth";
+import { houseInf } from "@/utils/interfaces";
 const Table = () => {
-  const data = [
-    { id: 1, name: 'Glam Apartment No.3', date: 'Apr 23 ,2021',type : "Apartment", propertyType : "Rental",status : "pending" },
-    { id: 1, name: 'Glam Apartment No.3', date: 'Apr 23 ,2021',type : "Big house", propertyType : "Rental",status : "Published" },
-    { id: 1, name: 'Glam Apartment No.3', date: 'Apr 23 ,2021',type : "Apartment", propertyType : "Sold",status : "Published" },
-    { id: 1, name: 'Glam Apartment No.3', date: 'Apr 23 ,2021',type : "Apartment", propertyType : "Rental",status : "Declined" },
-    { id: 1, name: 'Glam Apartment No.3', date: 'Apr 23 ,2021',type : "Apartment", propertyType : "Rental",status : "Published" },
-    { id: 1, name: 'Glam Apartment No.3', date: 'Apr 23 ,2021',type : "Big house", propertyType : "Rental",status : "Published" },
-    { id: 1, name: 'Glam Apartment No.3', date: 'Apr 23 ,2021',type : "Apartment", propertyType : "Sold",status : "Published" },
-  ];
+  const state = useSelector(getUser)
+  const { loading ,error,data} = useQuery(GET_MY_LISTING,{
+    variables : {
+      // userId : state?.userId
+      userId : "42ab510c-a241-46d1-b702-846dbf1e3884"
+    }
+  })
+  loading && console.log("loading")
+  error && console.log("error",error)
+  data  && console.log(data)
+  
 
   return (
     <div className="w-full overflow-x-auto  max-tablet:px-10 max-mobile:px-5">
@@ -30,16 +37,16 @@ const Table = () => {
             </tr>
           </thead>
           <tbody className='bg-lightBg'>
-            {data.map((item) => (
-              <tr key={item.id} className='h-14'>
+            {data && data.listing.map((data : houseInf, ind : number) => (
+              <tr key={ind} className='h-14'>
                 <td className="py-2 ps-4 border-b border-gray-300  text-left">
                       <input type="checkbox" placeholder='check' />
                 </td>
-                <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left font-semibold text-mainBlue">{item.name}</td>
-                <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left">{item.date}</td>
-                <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left">{item.type}</td>
-                <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left">{item.propertyType}</td>
-                <td className={`py-2 px-4 border-b border-gray-300 min-w-[160px] text-left ${item.status == "Published" && ""}`}>{item.status}</td>
+                <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left font-semibold text-mainBlue">{data.real_estate?.name ?? "Unknown"}</td>
+                <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left"></td>
+                <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left">{data.sale_type ?? "Sell"}</td>
+                <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left">{data.real_estate?.name ?? "Unknown"}</td>
+                <td className={`py-2 px-4 border-b border-gray-300 min-w-[160px] text-left `}>{data.status ?? "Unknown"}</td>
                 <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left ">
                   <div className='flex gap-2 cursor-pointer'>
                       <Image src={deleteImg} className='w-4 my-auto' alt="" />

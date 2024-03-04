@@ -15,7 +15,8 @@ import amountIcon from "../../assets/images/amountIcon.svg"
 import spaceIcon from "../../assets/images/space.svg"
 import { useState } from "react";
 import PriceOption from "./price_option";
-import AreaOption from "./area_option";
+import RentalOption from "./rental_option";
+import Search from "./search"
 interface filterInf {
     list : string[],
     img : any 
@@ -36,43 +37,89 @@ const Hero = () => {
         {  name : "250 sq ft - 500 sq ft" , price :  [250,500]},
         {  name : "500 sq ft and Above" , price :  [500,10000000000]},
     ]
-    const [where,setWhere] = useState<any>()
-    const [variables,setVariables] = useState<any>({})
+    const houseFilter = [
+        "Sell","Rental"
+    ]
+    
+    const [where,setWhere] = useState<any>({ where : {},order_by : {}})
     const [curr,setCurr] = useState<string | null>(null)
+    
+    const [propertyType,setpropertyType] = useState<string>("")
+    const [region,setRegion] = useState<string>("")
+
     const reset = () => {
         setCurr(null)
-        setWhere(null)
-        setVariables({})
+        setWhere({ where : {},order_by : {}})
     }
     const filterByPrice  = (ls : number , lg : number) => {
-        const curr = {
-            where : {
-                sale_price: { _gte: ls, _lte: lg } 
-            }
-        }
-        // setVariables({ fr : ls,to : lg})
-        setWhere(curr)
+        setWhere((data : any)=>{
+            return {...data,"where" : {sale_price: { _gte: ls, _lte: lg } }}
+        })
     }
     const filterByArea  = (ls : number , lg : number) => {
-        const curr = {
-            where: {listing_property: {square_ft: {_gte: ls, _lte: lg}}}
-        }
-        // setVariables({ fr : ls,to : lg})
-        setWhere(curr)
+        setWhere((data : any)=>{
+            const temp = {
+                status:{_eq : "ACTIVE" },
+                listing_property: {square_ft: {_gte: ls, _lte: lg}}
+            }
+            return {...data,"where" : temp}
+        })
     }
-  
-  return (
+    const filterByHouseType = (val : string) => {
+        setWhere((data : any)=>{
+            return {...data,"where" : {sale_type: {_eq: val}}}
+        })
+    }
+    const sort_map = [
+        {created_at: "asc"},
+        {sale_price:  "asc"},
+        {created_at: "desc"},
+    ]
+    const sortList = (ind : number) => {
+        setWhere((data : any)=>{
+            const order = sort_map[ind]
+            return {...data,"order_by" : order}
+        })
+    }
+    const search = () =>{
+        setWhere((data : any)=>{
+            const val = {
+                _or:[
+                  {
+                    address_data:{_ilike:region.trim() ? `%${region}%` : ""}
+                  },
+                  {
+                    house_type:{
+                        type_name : {
+                            _ilike: propertyType.trim() ? `%${propertyType}%` : ""
+                            }
+                        }
+                  }
+                ]
+              }
+            return {...data,"where" : val}
+        })
+    }
 
+  return (
+    <>
+    <Search search={search} region={region} propertyType={propertyType} setRegion={setRegion} setPropertyType={setpropertyType} />
     <div className=' max-w-[1700px] mx-auto relative z-20  bg-lightBg flex border-t border-gray-300'>
         <div className="w-full max-tablet:basis-full px-20  max-tablet:px-10  max-small:px-5 max-tablet:w-full h-full  flex flex-col ">
             <div className="flex text-xl justify-between my-3">
                     <div className="font-semibold">Property Listings</div>
-                  
             </div>
-            <div className='flex justify-between border-b border-gray-300 mb-4 py-4 max-tablet:flex-col'>
+            <div className='flex justify-between border-b border-gray-300 mb-4 py-4 max-tablet:gap-5 max-tablet:flex-col'>
                 <div className='flex gap-5 flex-wrap  '>
-                    <SelectOption list={["Rental","Sell","new"]} img={rentalIcon}  />
-                    <SelectOption list={["House","Sell","new"]} img={houseIcon}  />
+                    <RentalOption 
+                        list={houseFilter}
+                        name="rentaloption"
+                        img={rentalIcon}
+                        // reset={reset}
+                        filter={filterByHouseType}
+                    />
+                    {/* <SelectOption list={["Rental","Sell","new"]} img={rentalIcon}  /> */}
+                    {/* <SelectOption list={["House","Sell","new"]} img={houseIcon}  /> */}
                     <PriceOption  
                         list={priceFilter} 
                         filter={filterByPrice} 
@@ -91,9 +138,8 @@ const Hero = () => {
                         curr={curr}
                         reset={reset}
                     />
-                    {/* <SelectOption list={["125 sq ft","Sell","new"]} img={spaceIcon}  /> */}
                 </div>
-                <div className='flex gap-2 text-lightGray me-12 place-self-end max-mobile:mt-5'>
+                <div className='flex gap-2 my-auto text-lightGray me-12 place-self-end max-mobile:mt-5'>
                     <p>
                         Sort:
                     </p>
@@ -102,11 +148,11 @@ const Hero = () => {
                             <span className="">Default</span>
                             <ListIcon className="my-auto text-mainBlue group-hover:rotate-90 duration-150 -rotate-90" />
                         </div>
-                        <div className="absolute text-sm top-8 shadow group-hover:flex hidden flex-col w-full text-black bg-white rounded p-1">
-                        {["Default","new1","new2"].map((data , ind) => (
-                            <div key={ind} className="flex  cursor-pointer duration-150 gap-2  px-2  py-1">
-                                <input id={`${ind}  ${data}`} type="checkbox" placeholder="s" className="hover:text-mainBlue cursor-pointer"/>
-                                <label htmlFor={`${ind}  ${data}`}  className=" text-black cursor-pointer hover:text-mainBlue">{data}</label>
+                        <div className="absolute text-sm top-6 shadow group-hover:flex hidden flex-col w-full text-black bg-white rounded p-1">
+                        {["Default","Price","Date"].map((data , ind) => (
+                            <div onClick={() => sortList(ind)} key={ind} className="flex  cursor-pointer duration-150 gap-2  px-2  py-1">
+                                <input id={`sort${ind}`} name="sort" type="radio" placeholder="s" className="hover:text-mainBlue cursor-pointer"/>
+                                <label htmlFor={`sort${ind}`}   className=" text-black cursor-pointer hover:text-mainBlue">{data}</label>
                             </div>
                         ) )}
                         </div>
@@ -120,6 +166,7 @@ const Hero = () => {
             />
         </div>
     </div>
+    </>
   )
 }
 

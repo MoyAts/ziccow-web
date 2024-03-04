@@ -12,7 +12,6 @@ const head = typeof window !== "undefined" ?
     {}
     :
     { 
-
     }
 
 const authMiddleware = new ApolloLink((operation, forward) => {

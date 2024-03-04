@@ -4,6 +4,7 @@ import Nav from "../_components/nav"
 import GetStarted from "../_components/get_started"
 import Footer from "../_components/footer"
 import Drawer from "../_components/drawer"
+import Search from "./components/search"
 import { useState } from "react"
 const Pages = () => {
   const [isDrawer,setIsDrawer] = useState(false)
@@ -14,7 +15,7 @@ const Pages = () => {
         }
         <div className={` ${isDrawer && "hidden"}  relative bg-lightBg`}>
             <GetStarted />
-            <Nav setIsDrawer={setIsDrawer} withsearch={true} />
+            <Nav setIsDrawer={setIsDrawer} withsearch={false} />
             <Hero />
             <Footer />
       
@@ -22,5 +23,6 @@ const Pages = () => {
     </div>
   )
 }
+
 
 export default Pages

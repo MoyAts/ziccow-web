@@ -13,16 +13,17 @@ api Integration
     - authentication header
     - drawer
     - image quality
-    - team
     - remove description
-    - region - location
   - on progress
+    - team
+    - region - location
+    - currency -||-
     - filtering
   - remaining
     - parcel number -> property number
     - realstate name
     - language , ... select box 
-    - currency -||-
+    - featured
   - latter
     - message
     - edit description

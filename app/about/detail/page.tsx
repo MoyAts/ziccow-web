@@ -6,6 +6,7 @@ import Footer from "../../_components/footer"
 import GetStarted from "../../_components/get_started"
 import Nav from "../../_components/nav"
 import Hero from "./components/hero"
+
 const Page = ({ searchParams } : any) => {
   const [isDrawer,setIsDrawer] = useState(false)
   return (
@@ -14,7 +15,7 @@ const Page = ({ searchParams } : any) => {
         <div className={`relative ${isDrawer && "hidden"} bg-lightBg `}>
           <GetStarted />
           <Nav  setIsDrawer={setIsDrawer} withsearch={false} />
-          <Hero id={searchParams.id} desc={searchParams.desc} name={searchParams.name} />
+          <Hero id={searchParams.id} />
           <Footer />
       </div>
     </div>

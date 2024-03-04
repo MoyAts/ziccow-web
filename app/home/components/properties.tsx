@@ -5,9 +5,19 @@ import Box from "./box"
 import { FaLongArrowAltRight } from "react-icons/fa";
 import img1 from "../../assets/images/image (2).png"
 import img2 from "../../assets/images/image (3).png"
+import { useQuery } from "@apollo/client";
+import {  GET_FEATURED_LISTS } from "@/graphql/features/listing";
+import { useEffect } from "react";
+import { houseFeaturedInf } from "@/utils/interfaces";
 
 
-const properties = () => {
+const Properties = () => {
+
+  const {loading,error,data} = useQuery(GET_FEATURED_LISTS)
+  loading && console.log("loading")
+  error && console.log(error,"++=")
+  data && console.log(data)
+  
   return (
     <div className="w-full mb-12 max-tablet:mb-5 h-[105vh]   tablet:max-h-[800px] max-tablet:h-fit">
       <div id='properties' className='h-full max-w-[1700px]   tablet:max-h-[800px]  max-tablet:h-fit mx-auto max-tablet:mx-none  px-20 max-small:px-5 max-tablet:px-10' >
@@ -28,12 +38,11 @@ const properties = () => {
           </Link>
         </div>
 
-        <div className='pt-10 h-[87%] mobile:max-h-[600px] flex gap-10 max-mobile:flex-col mobile:overflow-x-scroll '>
-            <Box img={img2}/>
-            <Box img={img1}/>
-            <Box img={img2}/>
-            <Box img={img1}/>
-            <Box img={img2}/>
+        <div  className='pt-10  h-[87%] mobile:max-h-[600px] flex gap-10 max-mobile:flex-col mobile:overflow-x-scroll '>
+            {
+              data && data.listing.map((data : houseFeaturedInf,ind : number) => <Box key={ind} data={data} />)
+            }
+           
         </div>
         
       </div>
@@ -41,4 +50,4 @@ const properties = () => {
   )
 }
 
-export default properties
+export default Properties

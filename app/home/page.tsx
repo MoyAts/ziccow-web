@@ -11,8 +11,11 @@ import Join from "../_components/join"
 import GetStarted from "../_components/get_started"
 import Drawer from "../_components/drawer"
 import { useState } from "react"
+import { useQuery } from "@apollo/client"
+import { GET_FEATURED_LISTS } from "@/graphql/features/listing"
 
 const Home = () => {
+    
     const [isDrawer,setIsDrawer] = useState(false)
     return (
     <div>

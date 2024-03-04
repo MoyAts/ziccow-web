@@ -86,7 +86,7 @@ const Home = ( { house , userId} : Props) => {
                 {
                     house.sale_price && 
                     <h1 className="">
-                        <span className="text-xl font-semibold text-black">{house.sale_price}</span> 
+                        <span className="text-xl font-semibold text-black">{house.currency ?? "Birr "}{house.sale_price.slice(1,house.sale_price.length)}</span> 
                         <span className="">/month</span>
                     </h1>
                 }

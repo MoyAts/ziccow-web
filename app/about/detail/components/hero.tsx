@@ -13,7 +13,7 @@ import img5 from "../../../assets/images/image (13).png"
 import img6 from "../../../assets/images/image (14).png"
 
 
-const hero = ({ name , desc,id } : any) => {
+const hero = ({ id } : any) => {
    const images = [img1,img2,img3,img4,img5,img6]
    const datas = [
         {
@@ -37,14 +37,7 @@ const hero = ({ name , desc,id } : any) => {
         },
         {
             name : "Ann Houben",
-            desc : `Mr. Adi Dekebo Dale, our esteemed legal partner at Ziccow General 
-            Trading PLC, is an extraordinary legal strategist with over 13 years of 
-            stellar experience. With his unparalleled expertise, he navigates the 
-            complexities of the legal landscape, offering personalized attention and 
-            cost-effective solutions. Mr. Adi's proactive approach ensures ongoing 
-            compliance and minimizes risks for our clients, making him the ideal choice
-            for legal excellence in business innovation.
-            `
+            desc : ``
         },
         {
             name : "Judge Hiwust Ashenafi G/mariam",
@@ -56,7 +49,20 @@ const hero = ({ name , desc,id } : any) => {
         },
         {
             name : "Adi Dekebo",
-            desc : ""
+            desc : `Welcome to Ziccow General
+            Trading   PLC,   where   legal
+            excellence   meets   business
+            innovation. We take immense
+            pride   in   introducing   our
+            esteemed legal partner, Mr.
+            Adi   Dekebo   Dale.   With   a
+            stellar career spanning over
+            13 years, Mr. Adi is not just a
+            lawyer; he's an extraordinary
+            legal   strategist,   offering
+            unparalleled   expertise   in
+            navigating   the   complexities
+            of the legal landscape.`
         }
    ]
   return (

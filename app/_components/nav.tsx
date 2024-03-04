@@ -99,7 +99,7 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
                           </div>
                           <div className="border w-fit flex px-2 rounded-xl font-light bg-white">
                             <BuildingIcon className="text-mainBlue m-auto " />
-                            <input type="text" className="px-3 py-2 outline-none" placeholder="Enter location" />
+                            <input type="text" className="px-3 py-2 outline-none" placeholder="Enter property type" />
                           </div>
 
                           <button onClick={() => {}} className={` flex gap-2  hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white m-auto  px-3 py-2 text-sm  flex-row-reverse`}>
@@ -113,7 +113,7 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
 
                     <div className="flex gap-5 relative">
                      {showNotification && <Notification />}
-                     {state.isLogedIn == LogInf.LOGED_IN &&
+                     {state.isLogedIn == LogInf.LOGED_IN && false &&
                         <>
                           <div onClick={()=>setShowNotification(data => !data)} className="flex max-tablet:hidden  relative cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
                             <Image src={notificationIcon} width={20} alt="" className="" />
