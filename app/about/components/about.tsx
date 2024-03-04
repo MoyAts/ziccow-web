@@ -20,7 +20,7 @@ const about = () => {
         </p>
         <h6 className='mt-12 text-onDark'>Trusted by our clients in the industry</h6>
         
-        <div className="flex justify-between w-2/3 mt-10 max-tablet:w-full">
+        {/* <div className="flex justify-between w-2/3 mt-10 max-tablet:w-full">
           <div className="flex gap-4 max-mobile:flex-col">
               <Image src={moyatsImg} alt="" />
               <p className="my-auto text-center">MoyAts</p>
@@ -33,7 +33,7 @@ const about = () => {
               <Image src={moyatsImg} alt="" />
               <p className="my-auto text-center">MoyAts</p>
           </div>
-        </div>
+        </div> */}
 
       </div>
     </div>

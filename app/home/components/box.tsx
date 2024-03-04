@@ -7,7 +7,8 @@ import img3 from "../../assets/images/bed.svg"
 import img4 from "../../assets/images/bathroom.svg"
 import img5 from "../../assets/images/space.svg"
 import { houseFeaturedInf } from "@/utils/interfaces";
-
+import popImg from "../../assets/images/solar_fire-bold-duotone.png"
+import aImg from "../../assets/images/solar_tag-price-bold-duotone.png"
 
 interface Props {
   data : houseFeaturedInf
@@ -19,9 +20,8 @@ const Box = ({data} : Props) => {
     <Link href={"/properties/"+data.listing_id}  className='bg-rd-300 relative w-fit max-w-sm cursor-pointer shrink-0 max-mobile:w-full rounded-xl overflow-hidden text-black flex flex-col gap-3'>
           <div className="absolute top-4 right-4  z-10">
               {
-              data.is_featured ?  <Popular /> 
-              : data.is_discounted ? <IsDiscounted />
-              : data.is_
+              data.is_popular ?  <Popular /> 
+              : <IsDiscounted />
               }
           </div>          
           <div className='rounded-xl group relative border w-full h-2/3 overflow-hidden'>
@@ -63,10 +63,9 @@ const Box = ({data} : Props) => {
 
 const Popular = () => {
   return (
-    <div className="w-fit px-2 py-1 rounded-xl" style={{backgroundColor : "rgba(253, 244, 231, 1)"}} >
-      
+    <div className="w-fit px-2 py-1 rounded-xl flex gap-2" style={{backgroundColor : "rgba(253, 244, 231, 1)"}} >
+        <Image src={popImg} alt="" />
         <div className="" style={{color : "rgba(82, 50, 6, 1)"}}>Popular</div>
-
     </div>
   )
 }
@@ -74,24 +73,13 @@ const Popular = () => {
 
 const IsDiscounted = () => {
   return (
-    <div className="w-fit px-2 py-1 rounded-xl" style={{backgroundColor : "rgba(253, 244, 231, 1)"}} >
-      
+    <div className="w-fit px-2 py-1 rounded-xl flex gap-2 bg-green-100" >
+        <Image  src={aImg} alt="" />
         <div className="" style={{color : "rgba(82, 50, 6, 1)"}}>Discounted Price</div>
-
     </div>
   )
 }
 
-
-const isNewListing = () => {
-  return (
-    <div className="w-fit px-2 py-1 rounded-xl" style={{backgroundColor : "rgba(253, 244, 231, 1)"}} >
-      
-        <div className="" style={{color : "rgba(82, 50, 6, 1)"}}>New Listing</div>
-
-    </div>
-  )
-}
 
 
 
