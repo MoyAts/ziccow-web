@@ -13,15 +13,17 @@ import CancelImg from "../../assets/images/cancelentry.svg"
 import { PropertyDetailInf,initialForm } from "./interface";
 import { useMutation } from "@apollo/client";
 import { Add_LISTING_NEW } from "@/graphql/features/listing";
+import { useSelector } from "react-redux";
+import { getUser } from "@/lib/auth";
 
 const Form = () => {
-   
-  const errRef = useRef<any>(null)
-  const [form,setForm] = useState(initialForm)
-   const [page,setPage] = useState(1)
-   const [loading2,setLoading2] = useState(false)
-   const [sendList,{ loading,error,data }] = useMutation(Add_LISTING_NEW)
-   
+    const state = useSelector(getUser)
+    const errRef = useRef<any>(null)
+    const [form,setForm] = useState(initialForm)
+    const [page,setPage] = useState(1)
+    const [loading2,setLoading2] = useState(false)
+    const [sendList,{ loading,error,data }] = useMutation(Add_LISTING_NEW)
+    
    if(data){
     page != 4 && setPage(4)
    }

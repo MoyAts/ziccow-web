@@ -12,8 +12,7 @@ const Table = () => {
   const state = useSelector(getUser)
   const { loading ,error,data} = useQuery(GET_MY_LISTING,{
     variables : {
-      // userId : state?.userId
-      userId : "42ab510c-a241-46d1-b702-846dbf1e3884"
+      userId : state?.userId
     }
   })
   loading && console.log("loading")
