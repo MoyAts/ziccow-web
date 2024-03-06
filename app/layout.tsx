@@ -5,8 +5,8 @@ import Provider from "../layouts/provider"
 const inter = Lexend({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ziccow",
-  description: "ziccow",
+  title: "zirrow",
+  description: "zirrow",
 };
 
 export default function RootLayout({
