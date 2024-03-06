@@ -80,11 +80,11 @@ const PhoneLoginPage = () => {
                     <div className='w-full my-auto justify-center flex gap-2 cursor-pointer' onClick={() => location.href = "#home"}>
                         <Image src={img} alt="" />
                         <h1 className='font-semibold text-g my-auto'>
-                            Ziccow General Trading
+                            Zirrow General Trading
                         </h1>
                     </div>
                     <p className='text-center mx-auto mt-3 pb-6 text-lightGray'>
-                        Ziccow is making it simpler to sell, buy, and rent your properties to move forward.
+                        Zirrow is making it simpler to sell, buy, and rent your properties to move forward.
                     </p>
                     <h3 className='capitalize text-xl my-5 font-semibold'>Sign up With Phone</h3>
                    

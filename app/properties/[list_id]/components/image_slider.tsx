@@ -12,6 +12,7 @@ interface Props {
 const ImageSlider = ({ house } : Props) => {
 
     const imgs = [...house.digital_assets]
+    const len = imgs.length
     const [curr,setCurr] = useState(0)
     const add = () => {
         setCurr(val => (val + 1 < imgs.length) ? val + 1 : val )
@@ -22,11 +23,11 @@ const ImageSlider = ({ house } : Props) => {
     return (
         <div className='p-2  bg-red-00 h-fit'>
             <div className='w-full h-[65vh] max-h-[500px] rounded-lg relative'>
-                <div onClick={sub} className="absolute cursor-pointer left-2 hover:opacity-100 duration-200 flex bottom-1/2 mt-2 w-10 h-10 text-white rounded-full bg-blue-200">
-                    <NextIcon className="m-auto text-mainBlue" />
+                <div onClick={sub} className={`absolute cursor-pointer left-2 hover:opacity-100 duration-200 flex bottom-1/2 mt-2 w-10 h-10 text-white rounded-full ${ curr > 0 ? "bg-mainBlue" : "bg-blue-200"}`}>
+                    <NextIcon className={` m-auto ${curr <= 0 && "text-mainBlue"} `} />
                 </div>
-                <div onClick={add} className="absolute cursor-pointer flex right-2 hover:opacity-100 duration-200 bottom-1/2 mt-2 w-10 h-10 text-white rounded-full bg-mainBlue">
-                    <NextIcon className="m-auto rotate-180" />
+                <div onClick={add} className={`absolute cursor-pointer flex right-2 hover:opacity-100 duration-200 bottom-1/2 mt-2 w-10 h-10 text-white rounded-full ${ len > 0 && curr + 1 < len ? "bg-mainBlue" : "bg-blue-200"}`}>
+                    <NextIcon className={`m-auto rotate-180 ${ !(len > 0 && curr + 1 < len) && "text-mainBlue"}`} />
                 </div>
                 <Image 
                     src={imgs.length > 0 ? imgs[curr]?.url : ""}

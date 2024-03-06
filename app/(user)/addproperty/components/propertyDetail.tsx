@@ -1,18 +1,18 @@
 "use client" 
 import Image from "next/image"; 
-import CustomeInput from "../../_components/customeInput"
-import searachImg from "../../assets/images/searchLocation.svg"
+import CustomeInput from "../../../_components/customeInput"
+import searachImg from "../../../assets/images/searchLocation.svg"
 import { MdNavigateNext } from "react-icons/md";
 import { GrLinkNext } from "react-icons/gr";
 import CustomeInputNumber from "./customeInputNumber";
 import CheckBoxDiv from "./checkboxdiv";
-import img3 from "../../assets/images/bed.svg"
-import img4 from "../../assets/images/bathroom.svg"
+import img3 from "../../../assets/images/bed.svg"
+import img4 from "../../../assets/images/bathroom.svg"
 import type { PropertyDetailInf } from "./interface"
 import { useRef, useState } from "react";
-import goImg from "../../assets/images/go.svg"
+import goImg from "../../../assets/images/go.svg"
 import ImagePicker from "./imagePicker";
-import OptionInput  from "@/app/addproperty/components/optionInput2";
+import OptionInput  from "./optionInput2";
 interface MainProps {
   setForm : Function,
   form : PropertyDetailInf,
@@ -106,7 +106,7 @@ const PropertyDetail = ({ form , setForm,setPage } : MainProps) => {
           placeholder='Tourist Plus Apartment' 
           divClass='mb-5' 
         />
-        <CustomeInput value={form.phone} onChange={setChange} label='Parcel Number' name={"phone"} placeholder='012671164'  divClass='mb-5' />
+        <CustomeInput value={form.phone} onChange={setChange} label='Property Id' name={"phone"} placeholder='012671164'  divClass='mb-5' />
         <CustomeInput 
           label='Enter the Home Address you’re going to sell.' 
           name={"address"} placeholder='6405 Yellowstone Blvd APT 314, Forest Hills, NY 11375.'  

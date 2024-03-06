@@ -21,11 +21,11 @@ const footer = () => {
                     <div className='basis-4/12 flex flex-col gap-3 mb-4'>
                         <div className='flex gap-3 my-2'>
                             <Image src={logo} alt="" />
-                            <Link href="/" className="text-xl"> Ziccow General Trading </Link>
+                            <Link href="/" className="text-xl"> Zirrow General Trading </Link>
                         </div>
                         <p className=' text-gray-400'>
                             <div className="capitalize font-normal text-white mb-4" >about us</div>
-                            At Ziccow, we understand that every individual has unique needs and preferences when it comes to real estate. That's why we offer a personalized approach to our services, taking the time to listen to your goals and requirements, and working tirelessly to find the perfect property for you.
+                            At Zirrow, we understand that every individual has unique needs and preferences when it comes to real estate. That's why we offer a personalized approach to our services, taking the time to listen to your goals and requirements, and working tirelessly to find the perfect property for you.
                         </p>
                         <h4 className="mt-6 mb-2">Recent Region</h4>
                         <div className="w-full bg-white py-4 flex justify-between rounded-xl cursor-pointer ps-5 pe-3">
@@ -70,7 +70,7 @@ const footer = () => {
                                 <li className='hover:text-blue-500 cursor-pointer duration-200 flex gap-3'>
                                     <Image src={emailImg} alt="" />
                                     <p>
-                                        info@ziccowgt.com
+                                        info@Zirrowgt.com
                                     </p>
                                 </li>
                                 <li className='hover:text-blue-500 cursor-pointer duration-200 flex gap-3'>
@@ -94,7 +94,7 @@ const footer = () => {
                         <FaInstagram className='text-2xl text-blue-500 cursor-pointer hover:text-white duration-200' />
                         <CiFacebook className='text-2xl text-blue-500 cursor-pointer hover:text-white duration-200' />
                     </div>
-                    <p className='max-mobile:hidden'>Ziccow General Trading Â© 2024. All Rights Reserved.</p>
+                    <p className='max-mobile:hidden'>Zirrow General Trading Â© 2024. All Rights Reserved.</p>
                     <button onClick={() => location.href = "#header"} className="capitalize flex gap-2 hover:text-white">
                         <UpArrowIcon className="m-auto" />
                         <span className="m-auto">
@@ -104,7 +104,7 @@ const footer = () => {
                    
                 </div>
 
-                <p className='mobile:hidden text-gray-400 text-center mt-12'>Ziccow General Trading Â© 2024. All Rights Reserved.</p>
+                <p className='mobile:hidden text-gray-400 text-center mt-12'>Zirrow General Trading Â© 2024. All Rights Reserved.</p>
 
 
         </div>

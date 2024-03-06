@@ -1,7 +1,6 @@
 "use client"
 import { useState } from "react"
 
-import logoG from "../assets/images/googleLogo.svg"
 import img from "../assets/images/Widget 5.svg"
 import CustomeInput from "../_components/customeInput"
 import bg from "../assets/images/Background.png"
@@ -10,11 +9,8 @@ import Image from "next/image";
 import goImage from "../assets/images/go.svg"
 import { useMutation } from "@apollo/client"
 import { ADD_ONBOARDING_DATA } from "../../graphql/features/user"
-import { saveUser } from "../../lib/auth"
 import { useDispatch } from "react-redux"
-import { loginUser } from "@/store/features/auth/authSlice"
-// import { useRouter } from 'next/router';
-import { loginWithEmail } from "@/utils/firebase";
+import AddLanguage from "./components/addlanguage"
 
 const LoginPage = () => {
     const dispatch = useDispatch()
@@ -35,14 +31,14 @@ const LoginPage = () => {
         }
     }
     const submit = () => {
+        if(language.length < 2){
+            return setUierror("invalid language preference")
+        }
         if(work.length < 2){
             return setUierror("invalid work experience")
         }
         if(education.length < 2){
             return setUierror("invalid education level")
-        }
-        if(language.length < 2){
-            return setUierror("invalid language preference")
         }
         login({ variables: { 
             lang : language,
@@ -62,11 +58,11 @@ const LoginPage = () => {
                     <div className='w-full my-auto justify-center flex gap-2 cursor-pointer' onClick={() => location.href = "#home"}>
                         <Image src={img} alt="" />
                         <h1 className='font-semibold text-g my-auto'>
-                            Ziccow General Trading
+                            Zirrow General Trading
                         </h1>
                     </div>
                     <p className='text-center mx-auto mt-3 pb-6 text-lightGray'>
-                        Ziccow is making it simpler to sell, buy, and rent your properties to move forward.
+                        Zirrow is making it simpler to sell, buy, and rent your properties to move forward.
                     </p>
                     <h3 className='capitalize text-xl my-5 font-semibold'>Info</h3>
                     
@@ -77,9 +73,8 @@ const LoginPage = () => {
                     }
                     <form className='flex flex-col gap-7' onSubmit={e => e.preventDefault()}>
                         
-                        <CustomeInput 
-                            value={language} 
-                            onChange={({target} : any) => setLanguage(target.value)} 
+                        <AddLanguage 
+                            updateValue={setLanguage} 
                             name='language' label={"Languate Preference"} placeholder={"Language"}
                         />
                         <CustomeInput 

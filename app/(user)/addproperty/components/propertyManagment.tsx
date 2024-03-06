@@ -1,12 +1,9 @@
 "use client" 
 import Image from "next/image"; 
-import Link from "next/link";
 import React, { useRef, useState } from 'react'
-import RadioDiv from './radioboxdiv'
-import CustomeInput from '../../_components/customeInput' 
+import CustomeInput from '../../../_components/customeInput' 
 import { MdNavigateNext } from "react-icons/md";
-import { GrLinkNext } from "react-icons/gr";
-import goImg from "../../assets/images/go.svg"
+import goImg from "../../../assets/images/go.svg"
 import { PropertyDetailInf } from "./interface";
 import Checkboxdiv from "./checkboxdiv";
 import OptionInput from "./optionInput";

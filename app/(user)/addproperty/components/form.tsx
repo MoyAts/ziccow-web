@@ -7,9 +7,9 @@ import PropertyManagment from './propertyManagment'
 import Confirmation from "./confirmation";
 import Confirmed from "./confirmed";
 
-import accept from "../../assets/images/goAccept.svg"
-import goImg from "../../assets/images/goBlack.svg"
-import CancelImg from "../../assets/images/cancelentry.svg"
+import accept from "../../../assets/images/goAccept.svg"
+import goImg from "../../../assets/images/goBlack.svg"
+import CancelImg from "../../../assets/images/cancelentry.svg"
 import { PropertyDetailInf,initialForm } from "./interface";
 import { useMutation } from "@apollo/client";
 import { Add_LISTING_NEW } from "@/graphql/features/listing";

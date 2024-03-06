@@ -27,13 +27,13 @@ const Home = ( { house , userId} : Props) => {
   
   return (
     
-    <div  className={`flex w-full shrink-0 gap-2 bg-white  p-1 rounded-lg text-lightGray flex-col`}>
-        <Link href={"/properties/"+house.listing_id} className="rounded-lg asis-1/3 flex">
+    <div  className={`flex w-full overflow-hidden shrink-0 gap-2 bg-white  p-1 rounded-lg text-lightGray flex-col`}>
+        <Link href={"/properties/"+house.listing_id} className="rounded-lg  asis-1/3 flex ">
             {
             house.digital_assets[0]?.url &&
             <Image 
                 src={house.digital_assets[0].url} 
-                className="rounded-lg w-full object-cover my-auto" 
+                className="rounded-lg w-full object-cover my-auto hover:scale-105    duration-300" 
                 width={100}
                 height={100}
                 quality={100}
@@ -78,7 +78,7 @@ const Home = ( { house , userId} : Props) => {
                     house.listing_property?.square_ft && 
                     <div className='flex mt-2 gap-1 '>
                         <Image src={img4} width={19} className="my-auto" alt="" />
-                        <span className='text-sm my-auto'>{house.listing_property.square_ft} square fit</span>
+                        <span className='text-sm my-auto'>{house.listing_property.square_ft}Built up area</span>
                     </div>
                 }
             </div>

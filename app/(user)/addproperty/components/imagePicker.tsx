@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { PropertyDetailInf } from "./interface";
 import Image from "next/image";
-import dropimg from "../../assets/images/dropimg.svg"
+import dropimg from "../../../assets/images/dropimg.svg"
 
 interface Props{
     divClass? : string,

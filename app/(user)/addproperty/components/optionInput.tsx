@@ -1,6 +1,6 @@
 "use client" 
 import Image from "next/image"; 
-import InputIcon from "../../assets/images/inputIcon.svg"
+import InputIcon from "../../../assets/images/inputIcon.svg"
 import { useState } from "react";
 
 interface Props {
@@ -28,42 +28,26 @@ const OptionInput = ({label,name,onChange,value,preIcon,placeholder,pass,inputCl
         <label htmlFor="" className={'font-semibold ' + labelClass}>{label}</label>
         <div onClick={() => setShow(data => !data)} className={'w-full cursor-pointer bg-white flex rounded-xl px-2 border ' } style={{borderColor:"#DBD7DD"}}>
             <Image src={preIcon ? preIcon : InputIcon} alt="" width={23} className={'me-3 ' +imgClass }/>
-            <div className={`w-full py py-2 ${!value && "text-gray-500"}`}>{value}</div>
+            <div className={`w-full py py-2 ${!value && "text-gray-500"}`}>{value == 1 ? "Rental" : "Sell"} </div>
             {Icon && <Image src={Icon} alt="" className={"w-fit " + IconClass} /> }
             {ReactIcon && <ReactIcon className={"w-fit " + IconClass} />}
         </div> 
         {<div className={`${!show && "h-0 hidden"} duration-1000 w-full relative bottom-2 shadow-xl bg-white  rounded-lg border  flex flex-col gap-2`}>
-        <div 
-              onClick={() => {
-                 setShow(false); 
-                 onChange((data : any) => ({ ...data,"cycle" : "1 month"}))
-              }} 
-              className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
-              >1 month</div>
-
-             <div 
-              onClick={() => {
-                 setShow(false); 
-                 onChange((data : any) => ({ ...data,"cycle" : "3 months"}))
-              }} 
-              className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
-              >3 month</div>
-
-             <div 
-              onClick={() => {
-                 setShow(false); 
-                 onChange((data : any) => ({ ...data,"cycle" : "6 month"}))
-              }} 
-              className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
-              >6 month</div>
-            
             <div 
               onClick={() => {
                  setShow(false); 
-                 onChange((data : any) => ({ ...data,"cycle" : "1 year"}))
+                 onChange((data  : any) => ({ ...data,"propertyManagment" : "Rental"}))
               }} 
               className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
-              >1 year</div>
+              >Rental</div>
+            <div 
+              onClick={() => {
+                setShow(false);
+                onChange((data  : any) => ({ ...data,"propertyManagment" : "Sell"}))
+                
+              }} 
+              className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
+              >Sell</div>
         </div>
         }
     </div>

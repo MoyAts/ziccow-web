@@ -49,7 +49,7 @@ const hero = ({ id } : any) => {
         },
         {
             name : "Adi Dekebo",
-            desc : `Welcome to Ziccow General
+            desc : `Welcome to Zirrow General
             Trading   PLC,   where   legal
             excellence   meets   business
             innovation. We take immense

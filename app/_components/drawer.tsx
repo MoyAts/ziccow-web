@@ -29,7 +29,7 @@ const Drawer = ({setIsDrawer} : Props) => {
                     <Image src={img} alt="" />
                     <Link href={"/"} className='font-semibold text-g'>
                         <p className="">{
-                           isLogedIn && state.user?.firstName ? state.user.firstName :  "Ziccow General Trading"
+                           isLogedIn && state.user?.firstName ? state.user.firstName :  "Zirrow General Trading"
                         }</p>
                     </Link>
                 </div>

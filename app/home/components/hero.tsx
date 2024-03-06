@@ -36,20 +36,20 @@ const hero = ({ setIsDrawer } : Props) => {
 
                 <p className='text-[#E8E8E9] mt-32 text-lg font-light'>Or browse through the highlights</p>
                 <div className='flex   justify-center max-mobile:flex-col max-mobile:gap-4 gap-12 w-full mt-16 xl:mt-10 z-[1000] '>
-                    <div className='flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
+                    <Link href={"/properties"} className='flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
                         <Image src={img3} width={50} alt="" />
                         <p className='text-white max-sm:text-center  font-semibold'>Buy a property</p>
-                    </div>
+                    </Link>
                     <div className='h-10 my-auto bg-gray-200 w-[1px] max-mobile:hidden'></div>
-                    <div className='flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
+                    <Link href={"/properties"}  className='flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
                         <Image src={img3} width={50} alt="" />
                         <p className='text-white max-sm:text-center  font-semibold'>Rent a property</p>
-                    </div>
+                    </Link>
                     <div className='h-10 my-auto bg-gray-200 w-[1px] max-mobile:hidden'></div>
-                    <div className='flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
+                    <Link href={"/addproperty"}  className='flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
                         <Image src={img3} width={50} alt="" />
                         <p className='text-white max-sm:text-center  font-semibold'>Sell a property</p>
-                    </div>
+                    </Link>
                 </div>
             </div>
     </div>

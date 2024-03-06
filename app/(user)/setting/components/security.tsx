@@ -11,7 +11,7 @@ const security = () => {
                 <CustomeInput label='Confirm Password' name='fullName' placeholder='Enter your password' divClass='w-full' pass={true}  />
             </div>
             <CustomeInput label='Google Sign-in' name='fullName' placeholder='Enter your email'  />
-            <p className='text-sm mt-2 mb-7 text-lightGray'>You've linked your Google account to Ziccow and are using it to sign in.</p>
+            <p className='text-sm mt-2 mb-7 text-lightGray'>You've linked your Google account to Zirrow and are using it to sign in.</p>
             
             <div className='mb-7 flex flex-col gap-2'>
                 <div className='flex justify-between'>

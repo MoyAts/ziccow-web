@@ -21,7 +21,7 @@ const features = ({ form } : any) => {
                         Bathrooms: {form.numOfBathrooms}
                     </li>
                     <li className="before:content-['\2022']  before:mr-2">
-                        square footage: {form.squareFootage}
+                        Built up area: {form.squareFootage}
                     </li>
                 </ul>
                 <div className="text-lg mt-5 font-semibold my">Appliances</div>
@@ -34,7 +34,7 @@ const features = ({ form } : any) => {
                 <div className="text-lg mt-5 font-semibold my">Other interior features</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                     <li className="before:content-['\2022']  before:mr-2">
-                        Total structure area: {form.squareFootage}
+                        Built up area: {form.squareFootage}
                     </li>
                     <li className="before:content-['\2022']  before:mr-2">
                         Total interior livable area: {form.squareFootage} sqft

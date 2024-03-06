@@ -14,11 +14,17 @@ api Integration
     - drawer
     - image quality
     - remove description
-  - on progress
+    - parcel - property id
+    - link on top
+    - group buy
+    - Square ft => Built up area
+    - multiple languages 
+    - Ziccow > Zirrow
     - team
     - region - location
     - currency -||-
     - filtering
+  - on progress
   - remaining
     - parcel number -> property number
     - realstate name
@@ -30,9 +36,6 @@ api Integration
     - recommendation
   
 _______________________________
-
-
-
 
 
 https://blog.stackademic.com/sending-and-verifying-mobile-otp-with-firebase-and-react-d1d0244690a9

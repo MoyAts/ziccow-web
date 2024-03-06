@@ -8,10 +8,10 @@ const MegaMenu = () => {
         <div className='z-50 max-w-[1700px] w-full max-tablet:flex-col-reverse left-0 gap-16 font-light  h-fit py-10 mx-auto max-tablet:px-10 max-mobile:px-5 px-20 flex justify-between' >
           <div className='z-50 flex flex-col gap-3 max-tablet:basis-full basis-1/2'>
             <h3 className='font-normal text-2xl '>
-                Ziccow is making it simpler to sell, buy, and rent your properties to move forward.
+                Zirrow is making it simpler to sell, buy, and rent your properties to move forward.
             </h3>
             <p className=' text-lightGray'>
-                Ziccow helps you sell, buy, and rent your properties, your way. Easily explore your selling options below and get personalized market value estimates â€” we can even help you choose the best option when youâ€™re ready.
+                Zirrow helps you sell, buy, and rent your properties, your way. Easily explore your selling options below and get personalized market value estimates â€” we can even help you choose the best option when youâ€™re ready.
             </p>
           </div>
  

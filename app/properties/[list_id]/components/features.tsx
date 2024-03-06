@@ -38,7 +38,7 @@ const features = ({ house } : Props) => {
                         Total structure area: {house.listing_property.square_ft}
                     </li>
                     <li className="before:content-['\2022']  before:mr-2">
-                        Total interior livable area: {house.listing_property.square_ft} sqft
+                        Built up area: {house.listing_property.square_ft} sqft
                     </li>
                 </ul>
             </div>

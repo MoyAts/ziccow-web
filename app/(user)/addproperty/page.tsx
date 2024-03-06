@@ -1,10 +1,10 @@
 "use client" 
-import Nav from "../_components/nav"
-import Footer from "../_components/footer"
+import Nav from "../../_components/nav"
+import Footer from "../../_components/footer"
 import Hero from "./components/hero"
-import GetStarted from "../_components/get_started"
+import GetStarted from "../../_components/get_started"
 import { useState } from "react"
-import Drawer from "../_components/drawer"
+import Drawer from "../../_components/drawer"
 
 const Page = () => {
   const [isDrawer,setIsDrawer] = useState(false)

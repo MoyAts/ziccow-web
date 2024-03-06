@@ -62,7 +62,7 @@ const detail = ({ house } : Props ) => (
       <div className="flex gap-4 my-auto">
         <div className="flex gap-1">
           <span>1 day</span>
-          <span className="text-lightGray">on Ziccow</span>
+          <span className="text-lightGray">on Zirrow</span>
         </div>
         <div className="w-[1px] h-5 my-auto bg-gray-300"></div>
         <div className="flex gap-1">

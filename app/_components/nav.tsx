@@ -37,8 +37,8 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
                     <div className='my-auto  flex gap-2 cursor-pointer' >
                         <Image src={img} alt="" />
                         <Link href={"/"} className='font-semibold text-g'>
-                          <p className="tablet:hidden">Ziccow</p>
-                          <p className="max-tablet:hidden">Ziccow General Trading</p>
+                          <p className="tablet:hidden">Zirrow</p>
+                          <p className="max-tablet:hidden">Zirrow General Trading</p>
                         </Link>
                     </div>
                     
@@ -58,7 +58,7 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
                               <MegaMenu />
                             </div>
                         </div>
-                        <Link href={"/properties"} className='hover:text-blue-500 cursor-pointer ' >properties</Link>
+                        <div className='hover:text-blue-500 cursor-pointer ' >Group Buy</div>
                         <Link href={"/contactus"} className='hover:text-blue-500 cursor-pointer ' >contact us</Link>
                     </div>
                     {

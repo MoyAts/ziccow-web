@@ -17,7 +17,7 @@ const join = () => {
                     </span> 
                 </div>
                 <p className='font-light max-tablet:text-center '>
-                    A great agent makes all the difference. Find out how real estate advertising on Ziccow can help you get more leads.
+                    A great agent makes all the difference. Find out how real estate advertising on Zirrow can help you get more leads.
                 </p>
             </div>
             <p className='basis-1/3 max-tablet:basis-full  max-mobile:mx-0 max-tablet:mx-auto  text-sm my-auto flex flex-row-reverse text-gray-400 '>

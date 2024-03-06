@@ -2,10 +2,10 @@
 import Image from "next/image"; 
 import Link from "next/link";
 
-import propertyImg from "../../assets/images/property.svg"
+import propertyImg from "../../../assets/images/property.svg"
 import { IoIosArrowBack  as NextIcon } from "react-icons/io";
 import Form from "./form"
-import cancelImg from "../../assets/images/cancelentry.svg"
+import cancelImg from "../../../assets/images/cancelentry.svg"
 const hero = () => {
   return (
     <div className="h-fit px-20 mx-auto max-tablet:px-10 max-mobile:px-5 border-t border-gray-300 pt-5 max-w-[1700px]">

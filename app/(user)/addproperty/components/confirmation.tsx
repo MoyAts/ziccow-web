@@ -1,9 +1,9 @@
 import React from 'react'
 import Image from "next/image"
-import img from "../../assets/images/image.png"
+import img from "../../../assets/images/image.png"
 import Features from "./features"
-import goImg from "../../assets/images/go.svg"
-import dropimg from "../../assets/images/dropimg.svg"
+import goImg from "../../../assets/images/go.svg"
+import dropimg from "../../../assets/images/dropimg.svg"
 import { PropertyDetailInf } from './interface'
 interface MainProps {
     addList : any

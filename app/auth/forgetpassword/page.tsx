@@ -25,11 +25,11 @@ const index = () => {
                 }}>
                     <Image src={img} alt="" />
                     <h1 className='font-semibold text-g my-auto'>
-                        Ziccow General Trading
+                        Zirrow General Trading
                     </h1>
                 </div>
                 <p className='text-center mx-auto mt-3 pb-6 text-lightGray'>
-                    Ziccow is making it simpler to sell, buy, and rent your properties to move forward.
+                    Zirrow is making it simpler to sell, buy, and rent your properties to move forward.
                 </p>
                 <h3 className='capitalize text-xl mt-5'>Reset Password</h3>
                 <div className='mx-auto mt-1 mb-2 pb-6 text-lightGray'>

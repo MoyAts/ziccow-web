@@ -8,7 +8,7 @@ const index = () => {
               Enjoy quality life with our housing services.
         </div>
         <p className='basis-9/12 text- my-auto text-gray-400 max-tablet:text-center'>
-        Ziccow General Trading is the right choice for those of you who are looking for comfortable, safe and affordable housing. With our services, you can enjoy the privacy and comfort of living in a beautiful and clean environment. You can see for yourself how our housing services can offer beautiful and comfortable housing for you and your family.   </p>
+        Zirrow General Trading is the right choice for those of you who are looking for comfortable, safe and affordable housing. With our services, you can enjoy the privacy and comfort of living in a beautiful and clean environment. You can see for yourself how our housing services can offer beautiful and comfortable housing for you and your family.   </p>
       </div>
     </div>
   )

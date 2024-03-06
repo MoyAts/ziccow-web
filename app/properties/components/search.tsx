@@ -18,7 +18,7 @@ interface Props{
 const Search = ({ region , setRegion, setPropertyType , propertyType , search} : Props) => {
   const [showNotification,setShowNotification] = useState(false)
   return (
-    <div className='pb-5'>
+    <div className='pb-5 '>
       <div className="w-full mb-2 mt-2 max-mobile:hidden h-[1px] bg-slate-300"></div>
         <div className="flex pt-2 justify-between px-20 max-small:px-5 max-tablet:px-10 max-mobile:hidden ">
             <div className="flex gap-4">

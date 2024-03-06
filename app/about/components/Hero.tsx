@@ -11,7 +11,7 @@ const Hero = ({ setIsDrawer } : any) => {
             <Image src={bg} alt="" className='w-full mx-auto m  h-full object-cover'/>
         </div>
         <div className="m-auto z-0 flex flex-col text-white">
-            <h1 className="text-[45px] max-tablet:text-center">Ziccow General Trading</h1>
+            <h1 className="text-[45px] max-tablet:text-center">Zirrow General Trading</h1>
             <p className="text-center font-light">Making it simpler when moving forward.</p>
         </div>
 

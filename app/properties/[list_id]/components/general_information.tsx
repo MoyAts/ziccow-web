@@ -54,7 +54,7 @@ const generalInformation = ({ house } : Props) => {
           <div className="flex gap-5 border-b px-2 pb-4 ">
             <Image src={img5} className="w-5  my-auto mt-1" alt="" />
             <p>
-              Occupying {house.listing_property?.square_ft ?? 0} sq ft
+              Built up area {house.listing_property?.square_ft ?? 0} sq ft
             </p>
           </div>
 
