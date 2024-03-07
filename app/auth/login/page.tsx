@@ -68,12 +68,12 @@ const LoginPage = () => {
 
                 <div className='mx-auto'>
                     
-                    <div className='w-full my-auto justify-center flex gap-2 cursor-pointer' onClick={() => location.href = "#home"}>
+                    <Link href={"/"} className='w-full my-auto justify-center flex gap-2 cursor-pointer' onClick={() => location.href = "#home"}>
                         <Image src={img} alt="" />
                         <h1 className='font-semibold text-g my-auto'>
                             Zirrow General Trading
                         </h1>
-                    </div>
+                    </Link>
                     <p className='text-center mx-auto mt-3 pb-6 text-lightGray'>
                         Zirrow is making it simpler to sell, buy, and rent your properties to move forward.
                     </p>

@@ -11,6 +11,8 @@ import { houseInf } from "@/utils/interfaces";
 import { useMutation } from "@apollo/client";
 import { ADD_TO_BOOKMARK } from "@/graphql/features/listing";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { LogInf, getState } from "@/store/features/auth/authSlice";
 interface Props {
     house : houseInf,
     userId : string | null, 
@@ -24,11 +26,13 @@ const Home = ( { house , userId} : Props) => {
   if(error){
     alert("something goes wrong")
   }
+  const state = useSelector(getState)
+  const url = state.isLogedIn == LogInf.LOGED_IN ? "/properties/"+house.listing_id : "/auth/register"
   
   return (
     
     <div  className={`flex w-full overflow-hidden shrink-0 gap-2 bg-white  p-1 rounded-lg text-lightGray flex-col`}>
-        <Link href={"/properties/"+house.listing_id} className="rounded-lg  asis-1/3 flex ">
+        <Link href={url} className="rounded-lg  asis-1/3 flex ">
             {
             house.digital_assets[0]?.url &&
             <Image 

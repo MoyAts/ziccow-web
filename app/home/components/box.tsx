@@ -9,15 +9,18 @@ import img5 from "../../assets/images/space.svg"
 import { houseFeaturedInf } from "@/utils/interfaces";
 import popImg from "../../assets/images/solar_fire-bold-duotone.png"
 import aImg from "../../assets/images/solar_tag-price-bold-duotone.png"
+import { useSelector } from "react-redux";
+import { getState,LogInf } from "@/store/features/auth/authSlice";
 
 interface Props {
   data : houseFeaturedInf
 }
 
 const Box = ({data} : Props) => {
-  
+  const state = useSelector(getState)
+  const url = state.isLogedIn == LogInf.LOGED_IN ? "/properties/"+data.listing_id : "/auth/register"
   return (
-    <Link href={"/properties/"+data.listing_id}  className='bg-rd-300 relative w-fit max-w-sm cursor-pointer shrink-0 max-mobile:w-full rounded-xl overflow-hidden text-black flex flex-col gap-3'>
+    <Link href={url}  className='bg-rd-300 relative w-fit max-w-sm cursor-pointer shrink-0 max-mobile:w-full rounded-xl overflow-hidden text-black flex flex-col gap-3'>
           <div className="absolute top-4 right-4  z-10">
               {
               data.is_popular ?  <Popular /> 

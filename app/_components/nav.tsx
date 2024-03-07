@@ -28,6 +28,8 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
   const dispatch = useDispatch()
   const [showProfile,setShowProfile] = useState(false)
   const [showNotification,setShowNotification] = useState(false)
+  const url = state.isLogedIn == LogInf.LOGED_IN ? "/addproperty/" : "/auth/signup"
+  
   
   return (
         <div id="header" className='w-full z-[1000] bg-lightBg bg-transparent relative'>
@@ -123,7 +125,7 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
                           </Link>
                         </>
                       }
-                      <Link href="/addproperty" className="flex text-mainBlue gap-1 text-sm">
+                      <Link href={url} className="flex text-mainBlue gap-1 text-sm">
                         <Image src={navaddImg} className="m-auto" alt="" />
                         <p className="m-auto ">
                           Add new Listing

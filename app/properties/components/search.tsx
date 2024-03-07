@@ -6,6 +6,8 @@ import Notification from "../../_components/notification";
 import Link from 'next/link';
 import Image from 'next/image';
 import navaddImg from "../../assets/images/navadd.svg"
+import { useSelector } from 'react-redux';
+import { LogInf, getState } from '@/store/features/auth/authSlice';
 
 interface Props{
     region: string, 
@@ -17,6 +19,9 @@ interface Props{
 
 const Search = ({ region , setRegion, setPropertyType , propertyType , search} : Props) => {
   const [showNotification,setShowNotification] = useState(false)
+  const state = useSelector(getState)
+  const url = state.isLogedIn == LogInf.LOGED_IN ? "/addproperty" : "/auth/signup"
+  
   return (
     <div className='pb-5 '>
       <div className="w-full mb-2 mt-2 max-mobile:hidden h-[1px] bg-slate-300"></div>
@@ -40,8 +45,8 @@ const Search = ({ region , setRegion, setPropertyType , propertyType , search} :
             </div>
           <div className="flex gap-5 relative">
             {showNotification && <Notification />}
-            <Link href="/addproperty" className="flex text-mainBlue gap-1 text-sm">
-            <Image src={navaddImg} className="m-auto" alt="" />
+            <Link href={url} className="flex text-mainBlue gap-1 text-sm">
+              <Image src={navaddImg} className="m-auto" alt="" />
               <p className="m-auto ">
                 Add new Listing
               </p>
