@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
-const name_slide = () => {
+const NameSlide = () => {
     const [selected,setSelected] = useState(-1)
     const responsive = {
         desktop: {
@@ -88,4 +88,4 @@ const name_slide = () => {
   )
 }
 
-export default name_slide
+export default NameSlide
