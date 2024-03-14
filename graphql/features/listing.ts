@@ -284,3 +284,13 @@ export const GET_MY_LISTING  = gql`
 
 
 `
+
+export const GET_REAL_ESTATES = gql`query {
+  real_estate {
+    name
+    icon
+    real_estate_uuid
+    created_at
+  }
+}
+`

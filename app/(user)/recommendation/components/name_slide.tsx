@@ -1,5 +1,5 @@
 "use client"
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import img1 from "../../../assets/images/Group (7).svg"
 import img2 from "../../../assets/images/Group (8).svg"
 import img3 from "../../../assets/images/Group (9).svg"
@@ -7,9 +7,21 @@ import img4 from "../../../assets/images/Group (10).svg"
 import Image from 'next/image'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
+import { useQuery } from '@apollo/client';
+import { GET_REAL_ESTATES } from "@/graphql/features/listing";
 
-const NameSlide = () => {
-    const [selected,setSelected] = useState(-1)
+
+const NameSlide = ({ selectedRealEstate }: any) => {
+    const [selected, setSelected] = useState("")
+    const { loading, error, data } = useQuery(GET_REAL_ESTATES, {
+        fetchPolicy: "no-cache"
+    });
+
+    // load real estates data
+    if (data) {
+        console.log("real estate data", data)
+    }
+
     const responsive = {
         desktop: {
             breakpoint: { max: 4000, min: 1024 },
@@ -27,6 +39,10 @@ const NameSlide = () => {
             paritialVisibilityGutter: 30,
         },
     }
+    const realEstateSelected = (real_estate_uuid) => {
+        setSelected(real_estate_uuid)
+        selectedRealEstate(real_estate_uuid)
+    }
     return (
         <Carousel
             ssr
@@ -38,54 +54,44 @@ const NameSlide = () => {
             responsive={responsive}
             className='items-center mt-12'
             slidesToSlide={1}
-        >   
-        <div 
-            onClick={() => setSelected(0)}
-            className={`w-fit cursor-pointer duration-200 p-1 border-2  ${selected == 0 ? ' bg-blue-200 rounded-lg border-blue-600' : 'border-transparent'}`}
         >
-            <Image src={img1} alt='a' className='h-[4rem] w-[4rem] object-contain' />
-        </div>
-        <div 
-            onClick={() => setSelected(1)}
-            className={`w-fit cursor-pointer duration-200 p-1 border-2  ${selected == 1 ? ' bg-blue-200 rounded-lg border-blue-600' : 'border-transparent'}`}
-        >
-            <Image src={img2} alt='a' className='h-[4rem] w-[4rem] object-contain' />
-        </div>
-        <div 
-            onClick={() => setSelected(2)}
-            className={`w-fit cursor-pointer duration-200 p-1 border-2  ${selected == 2 ? ' bg-blue-200 rounded-lg border-blue-600' : 'border-transparent'}`}
-        >
-            <Image src={img3} alt='a' className='h-[4rem] w-[4rem] object-contain' />
-        </div>
-        <div 
-            onClick={() => setSelected(3)}
-            className={`w-fit cursor-pointer duration-200 p-1 border-2  ${selected == 3 ? ' bg-blue-200 rounded-lg border-blue-600' : 'border-transparent'}`}
-        >
-            <Image src={img4} alt='a' className='h-[4rem] w-[4rem] object-contain' />
-        </div>
-        <div 
-            onClick={() => setSelected(4)}
-            className={`w-fit cursor-pointer duration-200 p-1 border-2  ${selected == 4 && ' bg-blue-200 rounded-lg border-blue-600'}`}
-        >
-            <Image src={img1} alt='a' className='h-[4rem] w-[4rem] object-contain' />
-        </div>
-        <div 
-            onClick={() => setSelected(5)}
-            className={`w-fit cursor-pointer duration-200 p-1 border-2   ${selected == 5 ? ' bg-blue-200 rounded-lg border-blue-600' : 'border-transparent'}`}
-        >
-            <Image src={img2} alt='a' className='h-[4rem] w-[4rem] object-contain' />
-        </div>
-        
-    </Carousel>
+            {
+                loading ?
+                    <div>Loading</div>
+                    :
+                    error ?
+                        <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
+                            {error.graphQLErrors[0]?.message ?? "something goes wrong"}
+                        </div>
+                        :
+                        data ?
+                            data.real_estate.map((realEstate: any, idx: any) =>
+                                // <Box key={ind} house={house} />
+                                <div key={idx}
+                                    onClick={() => realEstateSelected(realEstate.real_estate_uuid)}
+                                    className={`w-fit cursor-pointer duration-200 p-1 border-2  ${selected == realEstate.real_estate_uuid ? ' bg-blue-200 rounded-lg border-blue-600' : 'border-transparent'}`}
+                                >
+                                    <Image src={realEstate.icon} width={77} height={77} alt='a' className='h-[4rem] w-[4rem] object-contain' />
+                                </div>
+
+
+                            )
+                            :
+                            <div>......</div>
+            }
+
+
+
+        </Carousel>
         // <div className='p-2 bg-blue-200 cursor-not-allowed rounded-full w-[2em] h-[2em] flex text-white'>
         //     <ListIcon className='m-auto' />
         // </div>
-        
-    //     <div className='p-2 bg-mainBlue cursor-pointer rounded-full w-[2em] h-[2em] flex text-white'>
-    //         <ListIcon className='m-auto rotate-180' />
-    //     </div>
-   
-  )
+
+        //     <div className='p-2 bg-mainBlue cursor-pointer rounded-full w-[2em] h-[2em] flex text-white'>
+        //         <ListIcon className='m-auto rotate-180' />
+        //     </div>
+
+    )
 }
 
 export default NameSlide

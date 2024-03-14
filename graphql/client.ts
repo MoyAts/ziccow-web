@@ -4,21 +4,21 @@ import { getUser } from '@/lib/auth';
 
 
 const head = typeof window !== "undefined" ?
-    window.localStorage.getItem("user") ? 
+  window.localStorage.getItem("user") ?
     {
-      "Authorization": "Bearer "+ getUser()?.token,
+      "Authorization": "Bearer " + getUser()?.token,
     }
-    : 
-    {}
     :
-    { 
-    }
+    {}
+  :
+  {
+  }
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...head,
-      "x-hasura-admin-secret":"myadminsecretkey"
+      "x-hasura-admin-secret": "myadminsecretkey"
     }
   }));
 
@@ -26,8 +26,8 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 });
 
 const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    link: concat(authMiddleware, httpLink),
+  cache: new InMemoryCache(),
+  link: concat(authMiddleware, httpLink),
 });
 
 export default client
