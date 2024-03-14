@@ -1,26 +1,14 @@
 "use client" 
-import Image from "next/image"; 
 import rentalIcon from "../../assets/images/rentalIcon.svg"
-import SelectOption from "./select_option"
 import { IoIosArrowBack as ListIcon} from "react-icons/io";
-import {  useQuery } from "@apollo/client";
 import { GET_LISTING,FILTER_LIST } from "@/graphql/features/listing";
-import Property from "./property"
 import Properties from "./properties"
-import { houseInf } from "@/utils/interfaces";
-import { useSelector } from "react-redux";
-import { getUser } from "@/lib/auth";
-import houseIcon from "../../assets/images/house.svg"
 import amountIcon from "../../assets/images/amountIcon.svg"
-import spaceIcon from "../../assets/images/space.svg"
 import { useState } from "react";
 import PriceOption from "./price_option";
 import RentalOption from "./rental_option";
 import Search from "./search"
-interface filterInf {
-    list : string[],
-    img : any 
-}
+
 
 
 const Hero = () => {
@@ -114,8 +102,6 @@ const Hero = () => {
                         // reset={reset}
                         filter={filterByHouseType}
                     />
-                    {/* <SelectOption list={["Rental","Sell","new"]} img={rentalIcon}  /> */}
-                    {/* <SelectOption list={["House","Sell","new"]} img={houseIcon}  /> */}
                     <PriceOption  
                         list={priceFilter} 
                         filter={filterByPrice} 

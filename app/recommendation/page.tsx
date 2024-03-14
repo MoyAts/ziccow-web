@@ -7,6 +7,8 @@ import Join from "../_components/join"
 import GetStarted from "../_components/get_started"
 import Drawer from "../_components/drawer"
 import { useState } from "react"
+import 'react-multi-carousel/lib/styles.css'
+
 const Page = () => {
   const [isDrawer,setIsDrawer] = useState(false)
   return (
@@ -17,7 +19,7 @@ const Page = () => {
         <div className={` ${isDrawer && "hidden"}  relative bg-lightBg`}>
             <GetStarted />
             <Hero setIsDrawer={setIsDrawer} />
-            <PropertyTypes />
+            {/* <PropertyTypes /> */}
             <Realestates />
             <Join />
             <Footer /> 
