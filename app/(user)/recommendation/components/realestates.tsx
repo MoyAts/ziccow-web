@@ -1,10 +1,10 @@
 "use client" 
 import { IoIosArrowBack as ListIcon} from "react-icons/io";
 import Box from './box';
-import amountIcon from "../../assets/images/amountIcon.svg"
+import amountIcon from "../../../assets/images/amountIcon.svg"
 import PriceOption from "./price_option";
 import RentalOption from "./rental_option";
-import rentalIcon from "../../assets/images/rentalIcon.svg"
+import rentalIcon from "../../../assets/images/rentalIcon.svg"
 import Boxes from "./boxes";
 import { useState } from "react";
 import { FILTER_LIST, GET_LISTING } from "@/graphql/features/listing";

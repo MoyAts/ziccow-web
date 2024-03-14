@@ -2,10 +2,10 @@
 import Hero from "./components/hero"
 import PropertyTypes from './components/property_types'
 import Realestates from './components/realestates'
-import Footer from "../_components/footer"
-import Join from "../_components/join"
-import GetStarted from "../_components/get_started"
-import Drawer from "../_components/drawer"
+import Footer from "../../_components/footer"
+import Join from "../../_components/join"
+import GetStarted from "../../_components/get_started"
+import Drawer from "../../_components/drawer"
 import { useState } from "react"
 import 'react-multi-carousel/lib/styles.css'
 

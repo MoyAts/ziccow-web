@@ -1,7 +1,7 @@
 "use client" 
 import Image from "next/image"; 
-import bg from "../../assets/images/unsplash_B0aCvAVSX8E.png"
-import Nav from "../../_components/nav"
+import bg from "../../../assets/images/unsplash_B0aCvAVSX8E.png"
+import Nav from "../../../_components/nav"
 import { IoIosArrowBack as ListIcon} from "react-icons/io";
 
 const hero = ({ setIsDrawer }: any) => {

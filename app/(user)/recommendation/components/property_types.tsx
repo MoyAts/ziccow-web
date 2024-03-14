@@ -1,6 +1,6 @@
 "use client" 
 import Image from "next/image"; 
-import img1 from "../../assets/images/solar_city-bold-duotone (1).svg"
+import img1 from "../../../assets/images/solar_city-bold-duotone (1).svg"
 
 
 const propertyTypes = () => {
