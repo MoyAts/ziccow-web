@@ -35,7 +35,7 @@ const generalInformation = ({ house }: Props) => {
         <div className="flex gap-5 border-b px-2 pb-4 ">
           <Image src={hashTagImg} className="w-5  my-auto mt-1" alt="" />
           <p>
-            Property number: {house.property_number ?? ' N/A'}
+            Property number: {(house as any).property_number ?? ' N/A'}
           </p>
         </div>
         <div className="flex gap-5 border-b px-2 pb-4 ">
