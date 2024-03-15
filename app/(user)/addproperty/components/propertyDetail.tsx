@@ -14,6 +14,8 @@ import goImg from "../../../assets/images/go.svg"
 import ImagePicker from "./imagePicker";
 import OptionInput from "./optionInput2";
 import RealEstateOptionInput from "./realEstateInput";
+import { useSelector } from "react-redux";
+import { getState } from "@/store/features/auth/authSlice";
 interface MainProps {
   setForm: Function,
   form: PropertyDetailInf,
@@ -21,6 +23,7 @@ interface MainProps {
 }
 
 const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
+  const state = useSelector(getState)
   const [images, setImages] = useState<any>([])
   const [err, setErr] = useState<string | null>(null)
   const errRef = useRef<any>(null)
@@ -70,7 +73,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
     const errFound = (err: string) => {
       setErr(err)
     }
-    if (!checkString(form.propertyName)) {
+    if (state.user.internal_agent == false && !checkString(form.propertyName)) {
       return errFound("Wrong Property Name")
     }
     if (!checkString(form.address)) {
@@ -99,7 +102,8 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       <div ref={errRef} className={`${!err && "hidden"} w-full my-3 font-semibold py-2 rounded-lg border-2 px-4 border-red-600 bg-red-300 text-red-900`}>
         {err}
       </div>
-      <CustomeInput
+     { state.user.internal_agent == false ?
+    <CustomeInput
         value={form.propertyName}
         onChange={setChange}
         label='Property Name'
@@ -107,8 +111,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         placeholder='Tourist Plus Apartment'
         divClass='mb-5'
       />
-
-      {/* start real estate dropdown */}
+      :
       <RealEstateOptionInput
         label='Real Estate'
         name='realEstateId'
@@ -119,7 +122,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         IconClass={"text-3xl my-auto text-mainBlue rotate-90"}
         value={form.realEstateId}
       />
-      {/* end */}
+     }
 
       <CustomeInput value={form.phone} onChange={setChange} label='Property Id' name={"phone"} placeholder='012671164' divClass='mb-5' />
       <CustomeInput

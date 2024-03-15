@@ -9,6 +9,7 @@ export interface UserFromApi {
   user_id : string ,
   email : string ,
   onboarding_complete : boolean
+  internal_agent : boolean,
 } 
 
 export interface DatasInf {
@@ -16,6 +17,8 @@ export interface DatasInf {
   lastName : string  | null,
   userId : string  | null,
   email : string  | null,
+  internal_agent : boolean | null
+
 } 
 
 export enum LogInf {
@@ -44,7 +47,8 @@ export const initialState: AuthInf = {
     userId : null,
     firstName : null,
     lastName : null,
-    email : null
+    email : null,
+    internal_agent : null,
   },
   isLogedIn : LogInf.NOT_FETCHED,
   doesTokenExist : isTokenExist(),
@@ -77,7 +81,9 @@ export const authSlice : any = createSlice({
         userId : user.user_id,
         firstName : user.first_name,
         lastName : user.last_name,
-        email : user.email
+        email : user.email,
+        internal_agent : user.internal_agent
+
       }
       state.isLogedIn = LogInf.LOGED_IN
       state.doesTokenExist =true

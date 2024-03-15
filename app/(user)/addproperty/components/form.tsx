@@ -14,10 +14,10 @@ import { PropertyDetailInf,initialForm } from "./interface";
 import { useMutation } from "@apollo/client";
 import { Add_LISTING_NEW } from "@/graphql/features/listing";
 import { useSelector } from "react-redux";
-import { getUser } from "@/lib/auth";
+import { getState } from "@/store/features/auth/authSlice";
 
 const Form = () => {
-    const state = useSelector(getUser)
+    const state = useSelector(getState)
     const errRef = useRef<any>(null)
     const [form,setForm] = useState(initialForm)
     const [page,setPage] = useState(1)
@@ -83,8 +83,19 @@ const Form = () => {
             
         }
         setForm((data : any) => ({...data,"urls":[...imgs]}))
+        console.log(form.realEstateId)
+        const name = state.user.internal_agent ? {
+            "real_estate_id" : form.realEstateId ?? null
+        } : {
+            "real_estate":{
+                "data" :{ 
+                    "name" :  form.propertyName
+                }
+              }
+        }
         sendList({ variables : {
             "objects": {
+                ...name,
               "address_data": form.address,
               "sale_price": form.sellingPrice,
               "build_date": form.yearBuilt,
@@ -107,11 +118,7 @@ const Form = () => {
               "digital_assets": {
                 "data": imgs
               },
-              "real_estate": {
-                "data" :{ 
-                    "name" : form.propertyName
-                }
-              }
+              
             }
           }})
         setLoading2(false)

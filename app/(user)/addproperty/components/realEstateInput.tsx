@@ -48,7 +48,7 @@ const RealEstateOptionInput = ({ label, name, onChange, value, preIcon, placehol
             </div>
             {<div className={`${!show && "h-0 hidden"} duration-1000 w-full relative bottom-2 shadow-xl bg-white  rounded-lg border  flex flex-col gap-2`}>
                 {loading ? <div>Loading</div> : error ? <div>Error</div> :
-                    <div> {data.real_estate.map((e) => (<>
+                    <div> {data.real_estate.map((e : any) => (<>
                         <div
                             onClick={() => {
                                 setShow(false);

@@ -39,7 +39,7 @@ const NameSlide = ({ selectedRealEstate }: any) => {
             paritialVisibilityGutter: 30,
         },
     }
-    const realEstateSelected = (real_estate_uuid) => {
+    const realEstateSelected = (real_estate_uuid : any) => {
         setSelected(real_estate_uuid)
         selectedRealEstate(real_estate_uuid)
     }

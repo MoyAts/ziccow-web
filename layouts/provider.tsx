@@ -46,6 +46,7 @@ const Requestor  = ({ children } : any) => {
       dispatch(fetchingUser())
     }
     if(data){
+      console.log(data,"myuser")
       dispatch(userFetched(data.user_by_pk))
     }
     if(error){

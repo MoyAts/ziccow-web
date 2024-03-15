@@ -9,6 +9,7 @@ export const GET_USER = gql`
           email
           user_id
           onboarding_complete
+          internal_agent
         }
       }
 `
