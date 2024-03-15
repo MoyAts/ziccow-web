@@ -1,9 +1,5 @@
 "use client"
 import React, { useState } from 'react'
-import img1 from "../../../assets/images/Group (7).svg"
-import img2 from "../../../assets/images/Group (8).svg"
-import img3 from "../../../assets/images/Group (9).svg"
-import img4 from "../../../assets/images/Group (10).svg"
 import Image from 'next/image'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
@@ -71,7 +67,7 @@ const NameSlide = ({ selectedRealEstate }: any) => {
                                     onClick={() => realEstateSelected(realEstate.real_estate_uuid)}
                                     className={`w-fit cursor-pointer duration-200 p-1 border-2  ${selected == realEstate.real_estate_uuid ? ' bg-blue-200 rounded-lg border-blue-600' : 'border-transparent'}`}
                                 >
-                                    <Image src={realEstate.icon} width={77} height={77} alt='a' className='h-[4rem] w-[4rem] object-contain' />
+                                    <Image src={realEstate?.icon?? ""} width={77} height={77} alt='a' className='h-[4rem] w-[4rem] object-contain' />
                                 </div>
 
 
