@@ -2,6 +2,8 @@
 import Image from "next/image"; 
 import InputIcon from "../../../assets/images/inputIcon.svg"
 import { useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_HOME_TYPES } from "@/graphql/features/listing";
 
 interface Props {
   label : string,
@@ -22,10 +24,23 @@ interface Props {
 
 const OptionInput = ({label,name,onChange,value,preIcon,placeholder,pass,inputClass,imgClass,labelClass,divClass,Icon,IconClass,ReactIcon} : Props) => {
   const [show,setShow] = useState(false)
-  const m : any = {
-    "b87f2d37-e422-4686-94d5-b73ff73472e5" : "real estate apartment" ,
-    "da047ed1-bd72-4542-90d3-60552a0921c1" : "High Rise"
-  }
+  // const m : any = {
+  //   "b87f2d37-e422-4686-94d5-b73ff73472e5" : "real estate apartment" ,
+  //   "da047ed1-bd72-4542-90d3-60552a0921c1" : "High Rise"
+  // }
+  const { loading, error, data } = useQuery(GET_HOME_TYPES, {
+      fetchPolicy: "no-cache"
+  });
+
+    let m: any = {
+    }
+    if (data) {
+        for (let x = 0; x < data.house_type.length; x++) {
+            const item = data.house_type[x];
+            m[item.house_type_id] = item.type_name;
+        }
+    }
+  console.log(m, ">>>")
   return (
     <div className={'flex flex-col gap-2 capitalize '  + divClass}>
         <label htmlFor="" className={'font-semibold ' + labelClass}>{label}</label>
@@ -36,22 +51,22 @@ const OptionInput = ({label,name,onChange,value,preIcon,placeholder,pass,inputCl
             {ReactIcon && <ReactIcon className={"w-fit " + IconClass} />}
         </div> 
         {<div className={`${!show && "h-0 hidden"} duration-1000 w-full relative bottom-2 shadow-xl bg-white  rounded-lg border  flex flex-col gap-2`}>
-            <div 
-              onClick={() => {
-                 setShow(false); 
-                 onChange((data : any) => ({...data,[name] : "b87f2d37-e422-4686-94d5-b73ff73472e5"}))
-              }} 
-              className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
-              >real estate apartment  </div>
-            <div 
-              onClick={() => {
-                setShow(false);
-                onChange((data : any) => ({...data,[name] : "da047ed1-bd72-4542-90d3-60552a0921c1"}))
-              }} 
-              className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
-              >High Rise</div>
-        </div>
-        }
+                {loading ? <div>Loading</div> : error ? <div>Error</div> :
+                    data ? 
+                    <div> {data.house_type.map((e : any) => (
+                        <div
+                              onClick={() => {
+                                  setShow(false);
+                                  onChange((dt: any) => ({ ...dt, [name]: e.house_type_id }))
+                              }}
+                              key={e.house_type_id}
+                              className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
+                          >{e.type_name}</div>
+                      ))}
+                    </div> : <></>
+                }
+
+            </div>}
     </div>
   )
 }
