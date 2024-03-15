@@ -40,7 +40,8 @@ const Personal = () => {
             first_name : userData.first_name,
             last_name : userData.last_name,
             user_id : userData.user_id,
-            onboarding_complete : userData.onboarding_complete
+            onboarding_complete : userData.onboarding_complete,
+            internal_agent : false
         }
         dispatch(userFetched(userFromApi))
         scrollToTop()
