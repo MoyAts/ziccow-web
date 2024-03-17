@@ -346,6 +346,14 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         <p className="text-lightGray text-sm mt-2">
           Start with a brief overview that describes your item’s finest features.
         </p> */}
+      <div className="text-xl mb-4 mt-8">Property Description</div>
+      <textarea 
+        className="w-full bg-white text-lightGray px-5 py-4 rounded-lg"
+        onChange={({target} : any)=> setForm((data : PropertyDetailInf)  => ({...data,"description" : target.value}))}
+        name="" id="" cols={30} rows={10} placeholder="your description" 
+      />
+     
+       
 
       <div className="text-xl mb-4 mt-8">Upload Image(s)</div>
       <div className="mt-5 grid grid-cols-2 max-mobile:grid-cols-1  max-mobile:h-fit gap-5">

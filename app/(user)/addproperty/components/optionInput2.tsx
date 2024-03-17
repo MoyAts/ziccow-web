@@ -24,10 +24,7 @@ interface Props {
 
 const OptionInput = ({label,name,onChange,value,preIcon,placeholder,pass,inputClass,imgClass,labelClass,divClass,Icon,IconClass,ReactIcon} : Props) => {
   const [show,setShow] = useState(false)
-  // const m : any = {
-  //   "b87f2d37-e422-4686-94d5-b73ff73472e5" : "real estate apartment" ,
-  //   "da047ed1-bd72-4542-90d3-60552a0921c1" : "High Rise"
-  // }
+  
   const { loading, error, data } = useQuery(GET_HOME_TYPES, {
       fetchPolicy: "no-cache"
   });

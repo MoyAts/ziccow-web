@@ -29,9 +29,8 @@ const Form = () => {
    }
    
    if(error){
-    console.log("error")
-    console.log(error)
-   }
+        alert("something goew wrong")
+    }
 
    const changePage = (num : number) =>{
         errRef && errRef.current.scrollIntoView({
@@ -99,7 +98,7 @@ const Form = () => {
               "address_data": form.address,
               "sale_price": form.sellingPrice,
               "build_date": form.yearBuilt,
-              "description": "some nice description",
+              "description": form.description,
               "sale_type" : form.propertyManagment, 
               "listing_property": {
                 "data": {

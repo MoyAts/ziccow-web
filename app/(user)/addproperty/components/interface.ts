@@ -47,7 +47,7 @@ export interface PropertyDetailInf {
     urls: any,
     currency: "ETH" | "USA",
     cycle: "1 month" | "3 months" | "6 months" | "1 year"
-
+    description : string
 }
 
 
@@ -94,5 +94,6 @@ export const initialForm: PropertyDetailInf = {
     parkingFeature: null,
     lotFeature: null,
     currency: "ETH",
-    cycle: "1 month"
+    cycle: "1 month",
+    description : "",
 }
