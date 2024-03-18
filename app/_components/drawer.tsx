@@ -22,7 +22,7 @@ const Drawer = ({setIsDrawer} : Props) => {
     return (
         <div className='absolute h-fit pb-10 w-full  z-[9999]  '>
             <div className='bg-mainDark w-full py-3 text-white mb-5 text-center'>
-                Having Troubles? Call 8990
+                Having Troubles? Call 0000
             </div>
             <div className='flex justify-between px-10 max-sm:px-5'>
                 <div className='my-auto  flex gap-2 cursor-pointer' >
