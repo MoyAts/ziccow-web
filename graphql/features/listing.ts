@@ -113,6 +113,7 @@ export const GET_LIST_BY_ID = gql`
       }
       address_data
       currency
+      real_estate_name
       build_date
       description
       listing_id
@@ -123,6 +124,12 @@ export const GET_LIST_BY_ID = gql`
       sale_price
       sale_type
       status
+      house_type{
+        house_type_id
+        icon
+        type_name
+        available
+      }
       extra_features {
         applicances_included
         lot_features
@@ -131,6 +138,11 @@ export const GET_LIST_BY_ID = gql`
       }
       real_estate {
         name
+      }
+      rental_price{
+        cycle
+        price
+      
       }
       listing_property {
         bathroom_count

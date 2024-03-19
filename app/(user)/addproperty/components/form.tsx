@@ -22,14 +22,15 @@ const Form = () => {
     const [form,setForm] = useState(initialForm)
     const [page,setPage] = useState(1)
     const [loading2,setLoading2] = useState(false)
-    const [sendList,{ loading,error,data }] = useMutation(Add_LISTING_NEW)
+    const [sendList,{ loading,error,data, reset }] = useMutation(Add_LISTING_NEW)
     
    if(data){
     page != 4 && setPage(4)
    }
    
    if(error){
-        alert("something goew wrong")
+        alert(error.graphQLErrors[0].message)
+        reset()
     }
 
    const changePage = (num : number) =>{
@@ -82,7 +83,6 @@ const Form = () => {
             
         }
         setForm((data : any) => ({...data,"urls":[...imgs]}))
-        console.log(form.realEstateId)
         const name = state.user.internal_agent ? {
             "real_estate_id" : form.realEstateId ?? null
         } : {
@@ -92,14 +92,27 @@ const Form = () => {
                 }
               }
         }
+        const sellType = form.propertyManagment != "Sell" ? {
+            "sale_price" : null,
+            "rental_price" : {
+                "data" : {
+                    "cycle" : form.cycle,
+                    "price" : form.rentalPrice
+                }
+            }
+        } : {
+            "sale_price" : form.propertyManagment,
+            "rental_price" : null
+        }
         sendList({ variables : {
             "objects": {
                 ...name,
+                ...sellType,
               "address_data": form.address,
-              "sale_price": form.sellingPrice,
               "build_date": form.yearBuilt,
               "description": form.description,
               "sale_type" : form.propertyManagment, 
+              "currency" : form.currency,
               "listing_property": {
                 "data": {
                   "bathroom_count": form.facilities.numOfBathrooms,

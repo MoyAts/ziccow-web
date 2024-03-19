@@ -22,6 +22,28 @@ const features = ({ house } : Props) => {
                     <li className="before:content-['\2022']  before:mr-2">
                         Bathrooms: {house.listing_property.bathroom_count}
                     </li>
+                    <li className="before:content-['\2022']  before:mr-2">
+                        Kitchens: {house.listing_property.kitchen_count}
+                    </li>
+                    <li className="before:content-['\2022']  before:mr-2">
+                        Living Rooms: {house.listing_property.living_room_count}
+                    </li>
+                    <li className="before:content-['\2022']  before:mr-2">
+                        Gymnasium: {house.listing_property.gymnasium}
+                    </li>
+                    <li className="before:content-['\2022']  before:mr-2">
+                        Library: {house.listing_property.library}
+                    </li>
+                    <li className="before:content-['\2022']  before:mr-2">
+                        Maids Room: {house.listing_property.maids_room}
+                    </li>
+                    <li className="before:content-['\2022']  before:mr-2">
+                        Spas: {house.listing_property.spa}
+                    </li>
+                    <li className="before:content-['\2022']  before:mr-2">
+                        Storage: {house.listing_property.store_rooms}
+                    </li>
+                   
                     {/* <li className="before:content-['\2022']  before:mr-2">
                         Full bathrooms: 1
                     </li> */}
@@ -48,11 +70,11 @@ const features = ({ house } : Props) => {
                 <div className="text-lg mt-5 font-semibold my">Type & style</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                     <li className="before:content-['\2022']  before:mr-2">
-                        Home type: Apartment
+                        {house.house_type?.type_name ?? "Apartment"}
                     </li>
-                    <li className="before:content-['\2022']  before:mr-2">
+                    {/* <li className="before:content-['\2022']  before:mr-2">
                         Property subType: Apartment, {house.real_estate?.name ?? "Real State"}
-                    </li>
+                    </li> */}
                 </ul>
                 <div className="text-lg mt-5 font-semibold my">Condition</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
@@ -79,9 +101,12 @@ const features = ({ house } : Props) => {
                 <div className="text-lightGray font-semibold text-xl">Property</div>
                 <div className="text-lg mt-5 font-semibold my">Parking</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                   {house.extra_features?.parking_feature  && <li className="before:content-['\2022']  before:mr-2">
+                   {
+                    house.extra_features?.parking_feature  &&
+                    <li className="before:content-['\2022']  before:mr-2">
                         Parking features
-                    </li>}
+                    </li>
+                    }
                 </ul>
                 <div className="text-lg mt-5 font-semibold my">Lot</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">

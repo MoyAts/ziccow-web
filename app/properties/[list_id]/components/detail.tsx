@@ -28,7 +28,7 @@ const detail = ({ house } : Props ) => (
         <div>Property</div>
       </div>
       <div>Rental</div>
-      <div>{house.real_estate?.name ?? "Real State"}</div>
+      <div>{house.real_estate_name ?? house.real_estate?.name ?? "Real State"}</div>
     </div>
 
     <div className="flex justify-between">
@@ -95,7 +95,7 @@ const detail = ({ house } : Props ) => (
     <div className="flex w-full pb-12 gap-10 pt-8 max-tablet:hidden">
       <div className="w-7/12 flex flex-col">
         <ImageSlider house={house} />
-        {/* <About /> */}
+        <About description={house.description} />
         <Features house={house} />
         {/* <Nearby /> */}
       </div>

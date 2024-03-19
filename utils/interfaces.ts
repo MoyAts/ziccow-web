@@ -8,6 +8,14 @@ export interface houseInf {
     sale_price : string,
     sale_type : string,
     status : string,
+    description : string,
+    property_number : string,
+    real_estate_name : string,
+    rental_price : {
+        cycle : string,
+        price : string,
+        
+    },
     real_estate : {
         name : string
     },
@@ -29,6 +37,12 @@ export interface houseInf {
         near_park: boolean,
         shopping_district: boolean,
         parking_feature : boolean
+    },
+    house_type : {
+        house_type_id : string,
+        icon : string | null,
+        type_name : string, 
+        available : boolean
     }
     
 }

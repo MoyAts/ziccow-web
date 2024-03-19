@@ -117,10 +117,10 @@ const PropertyManagment = ({ form,setForm,setPage } : Props ) => {
             form.propertyManagment == "Rental" ?
             <div className="flex justify-between gap-5">
               <CustomeInput 
-                onChange={({ target } : any) => setForm((data : PropertyDetailInf) => ({...data,"sellingPrice" :  target.value}))}
+                onChange={({ target } : any) => setForm((data : PropertyDetailInf) => ({...data,"rentalPrice" :  target.value}))}
                 IconClass={"m-auto text-3xl rotate-90 text-mainBlue"} 
                 name='price' label='Rental price' placeholder='15,000'
-                value={form.sellingPrice}
+                value={form.rentalPrice}
                 divClass="w-full"
                />
 
