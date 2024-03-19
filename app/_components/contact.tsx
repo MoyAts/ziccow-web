@@ -24,10 +24,10 @@ const join = () => {
                     <span className=''>(123) 456-7890</span>
                 </button> 
 
-                <button className='flex gap-2 text-lg px-4 py-2 hover:bg-blue-600 rounded-lg bg-mainBlue w-fit max-sm:mx-auto text-white '>
+                <a href="/auth/register" className='flex gap-2 text-lg px-4 py-2 hover:bg-blue-600 rounded-lg bg-mainBlue w-fit max-sm:mx-auto text-white '>
                     <EmailIcon className="m-auto text-xl"  />
-                    <span className='my-auto'>Join out agents</span>
-                </button> 
+                    <span className='my-auto'>Join our agents</span>
+                </a> 
             </p>
     </div>
   </div>
