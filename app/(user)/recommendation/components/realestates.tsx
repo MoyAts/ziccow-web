@@ -72,14 +72,14 @@ const Realestates = () => {
 
     return (
         <div className="w-full bg-lightBg">
-            <div className='h-fit w-full max-w-[1700px] pb-20 mx-auto px-20 max-tablet:px-10 max-tablet:px-5 pt-10'>
+            <div className='h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10'>
                 <div className='flex  flex-col gap-7 max-tablet:flex-col max-tablet:items-center'>
                     <h1 className='flex gap-2 text-xl max-tablet:text-xl max-tablet:mb-5'>
                         <span>Popular </span>
                         <span className='text-mainBlue'>real estates</span>
                     </h1>
-                    <div className="flex justify-between">
-                        <div className="flex gap-7">
+                    <div className="flex justify-between  max-md:flex-col max-md:gap-2 w-full">
+                        <div className="flex gap-x-7 flex-wrap">
                             <RentalOption
                                 list={houseFilter}
                                 name="rentaloption"
@@ -105,8 +105,8 @@ const Realestates = () => {
                             />
 
                         </div>
-                        <div className='flex place-self-end  gap-2 my-auto text-lightGray me-12  max-mobile:mt-5'>
-                            <p>
+                        <div className='flex place-self-  gap-2 my-auto text-lightGray me-12  max-mobile:mt-5'>
+                            <p className="">
                                 Sort:
                             </p>
                             <div className="relative z-40 flex flex-col gap-2 w-fit px-2  group  ">

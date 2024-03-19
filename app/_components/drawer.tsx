@@ -39,7 +39,7 @@ const Drawer = ({setIsDrawer} : Props) => {
             </div>
             <div className='w-full border-t mt-5'></div>
             
-            <div className={` ${!toggle ? "h-[80vh]" : " my-10"} overflow-y-scroll flex flex-col place-content-center px-10 max-sm:px-5`}>
+            <div className={` ${!toggle ? "h-[80vh] mt-12" : " my-10"} overflow-y-scroll flex flex-col  px-10 max-sm:px-5`}>
 
                 <div className='flex flex-col gap-10'>
                     <Link href="/about" className='flex gap-4'>

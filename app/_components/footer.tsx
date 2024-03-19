@@ -96,7 +96,7 @@ const footer = () => {
 
                 <div className='w-full h-[1px] my-10 bg-gray-400 '></div>
 
-                <div className='flex justify-between  text-gray-400'>
+                <div className='flex justify-between flex-wrap gap-y-5 text-gray-400'>
                 
                     <div className='flex gap-4'>
                         <Link href={"https://x.com/Zirrowprop43444?t=MNpJsJT9cR9j3w2nn-Heuw&s=08"}>
