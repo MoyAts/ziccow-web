@@ -82,7 +82,7 @@ const Home = ( { house , userId} : Props) => {
                         <Image src={img5} width={15} className="my-auto"  alt="" />
                         <span className='text-sm my-auto'>{house.listing_property.bathroom_count} Bathroom</span>
                     </div>
-                }
+                }  
                 {
                     house.listing_property?.bedroom_count &&
                     <div className='flex mt-2 gap-1 '>
