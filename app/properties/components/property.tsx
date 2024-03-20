@@ -41,7 +41,7 @@ const Home = ( { house , userId} : Props) => {
   return (
     
     <div  className={`flex w-full overflow-hidden shrink-0 gap-2 bg-white  p-1 rounded-lg text-lightGray flex-col`}>
-        <Link href={url} className="rounded-lg relative asis-1/3 flex ">
+        <Link href={url} className="rounded-lg  asis-1/3 flex ">
             {
             house.digital_assets[0]?.url &&
             <Image 
@@ -54,9 +54,6 @@ const Home = ( { house , userId} : Props) => {
                 alt="" 
             />
             }
-            <div className="absolute top-5 flex gap-1 px-2 py-1 rounded-xl right-5 bg-gray-100 bg-opacity-40">
-                <BuildStar num={3} />
-            </div>
         </Link>
         <div className="flex h-full  flex-grow"></div>
         <div className={`flex flex-col basis-2/3 py-2 px-1  `}>
