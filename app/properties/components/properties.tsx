@@ -14,6 +14,9 @@ const Properties = ( { query ,variables}  : any) => {
     if(data){
       console.log("data",data)
     }
+    if(error){
+      console.log("----")
+    }
     return (
       <div className={`grid grid-cols-3 mt-5 2xl:grid-cols-4 max-tablet:grid-cols-2 max-sm:grid-cols-1 overflow-scroll gap-10 pb-10`}>
               
