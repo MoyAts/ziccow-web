@@ -18,10 +18,10 @@ const AddComment = () => {
   return (
     <div className='flex pb-32 flex-col gap-5'>
 
-      <p className='text-lg'>Leave your comment</p>
+      <p className='text-lg'>Leave your comment here</p>
       <div className=' flex gap-5'>
         <div className='flex gap-5 w-full'>
-          <div className='w-[3em] flex h-[3em] rounded-full bg-mainBlue'>
+          <div className='w-[3em] flex h-[3em] rounded-full bg-slate-900'>
               <div className='m-auto text-white'>N</div>
           </div>
           <div className="flex border w-full border-slate-400 rounded-xl ps-2 bg-white ">

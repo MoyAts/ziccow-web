@@ -16,7 +16,7 @@ import Broker from "./broker"
 import Nearby from "./nearby"
 import { houseInf } from "@/utils/interfaces";
 import AddComment from "./comments";
-
+import BuildStar  from "./buildstar"
 interface Props {
   house : houseInf
 }
@@ -40,7 +40,12 @@ const detail = ({ house } : Props ) => (
           <Image src={img} width={25} alt="" />
           <p className="my-auto text-mainBlue">Verified</p>
         </div>
+        <div className="flex gap-2 my-auto ">
+          <BuildStar num={3} />
+        </div>
       </div>
+
+
 
       <div className="flexx gap-10 max-tablet: hidden">
         <div className="flex gap-2">
