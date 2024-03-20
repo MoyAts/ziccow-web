@@ -36,7 +36,7 @@ const Home = ( { house , userId} : Props) => {
       return <>
         {[0,0,0,0,0].map((_,ind : number) => ind < randomNumber ? <StarIcon key={ind} className="text-lg fill-yellow-500" /> : <StarIcon  key={ind} className="text-lg fill-gray-600" /> )}
     </>
-  } 
+  }  
 
   return (
     
