@@ -14,7 +14,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_TO_BOOKMARK } from "@/graphql/features/listing";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { LogInf, getState } from "@/store/features/auth/authSlice";
+import { LogInf, getState } from "@/store/features/auth/authSlice"; 
 interface Props {
     house : houseInf,
     userId : string | null, 
