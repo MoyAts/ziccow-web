@@ -13,7 +13,6 @@ import { ADD_TO_BOOKMARK } from "@/graphql/features/listing";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { LogInf, getState } from "@/store/features/auth/authSlice";
-import { IoIosStar as StarIcon } from "react-icons/io";
 interface Props {
     house : houseInf,
     userId : string | null, 
@@ -29,17 +28,11 @@ const Home = ( { house , userId} : Props) => {
   }
   const state = useSelector(getState)
   const url = state.isLogedIn == LogInf.LOGED_IN ? "/properties/"+house.listing_id : "/auth/register"
-  const BuildStar = ({num} : any) => {
-      var randomNumber = Math.floor(Math.random() * 5);
-      return <>
-        {[0,0,0,0,0].map((_,ind : number) => ind < randomNumber ? <StarIcon key={ind} className="text-lg fill-yellow-500" /> : <StarIcon  key={ind} className="text-lg fill-gray-600" /> )}
-    </>
-  } 
-
+  
   return (
     
     <div  className={`flex w-full overflow-hidden shrink-0 gap-2 bg-white  p-1 rounded-lg text-lightGray flex-col`}>
-        <Link href={url} className="rounded-lg relative asis-1/3 flex ">
+        <Link href={url} className="rounded-lg  asis-1/3 flex ">
             {
             house.digital_assets[0]?.url &&
             <Image 

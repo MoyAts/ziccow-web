@@ -15,7 +15,6 @@ import TimeLine from "./time_line"
 import Broker from "./broker"
 import Nearby from "./nearby"
 import { houseInf } from "@/utils/interfaces";
-import AddComment from "./comment";
 
 interface Props {
   house : houseInf
@@ -117,9 +116,6 @@ const detail = ({ house } : Props ) => (
         <Broker />
         <Features house={house} />
         {/* <Nearby /> */}
-    </div>
-    <div className=" ">
-      <AddComment />
     </div>
 
   </div>
