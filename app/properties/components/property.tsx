@@ -32,7 +32,7 @@ const Home = ( { house , userId} : Props) => {
   const BuildStar = ({num} : any) => {
       var randomNumber = Math.floor(Math.random() * 5);
       return <>
-        {[0,0,0,0,0].map((_,ind : number) => ind < randomNumber ? <StarIcon className="text-lg fill-yellow-500" /> : <StarIcon className="text-lg fill-gray-600" /> )}
+        {[0,0,0,0,0].map((_,ind : number) => ind < randomNumber ? <StarIcon key={ind} className="text-lg fill-yellow-500" /> : <StarIcon  key={ind} className="text-lg fill-gray-600" /> )}
     </>
   } 
 
