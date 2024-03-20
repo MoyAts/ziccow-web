@@ -40,9 +40,9 @@ const detail = ({ house } : Props ) => (
           <Image src={img} width={25} alt="" />
           <p className="my-auto text-mainBlue">Verified</p>
         </div>
-        <div className="flex gap-2 my-auto ">
+        {/* <div className="flex gap-2 my-auto ">
           <BuildStar num={3} />
-        </div>
+        </div> */}
       </div>
 
 
