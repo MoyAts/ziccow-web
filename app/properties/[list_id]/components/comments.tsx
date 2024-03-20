@@ -38,6 +38,7 @@ const AddComment = () => {
                   className='flex my-auto gap-2  px-2 py-1'>
                   {[0,0,0,0,0].map((_,ind : number) => {
                     return <StarIcon 
+                    key={ind}
                     onMouseOver={()=>{
                       setCurr(ind)
                     }} 
