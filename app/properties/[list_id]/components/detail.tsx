@@ -15,7 +15,7 @@ import TimeLine from "./time_line"
 import Broker from "./broker"
 import Nearby from "./nearby"
 import { houseInf } from "@/utils/interfaces";
-import AddComment from "./comment";
+import AddComment from "./comments";
 
 interface Props {
   house : houseInf
