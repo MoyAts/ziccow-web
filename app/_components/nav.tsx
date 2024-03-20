@@ -1,4 +1,4 @@
-import img from "../assets/images/Widget 5.svg"
+import img from "../assets/images/zirrow.jpg"
 import { IoIosArrowBack as ListIcon} from "react-icons/io";
 import { PiSignInBold as SignInIcon} from "react-icons/pi";
 import MegaMenu from "./mega_menu";
@@ -37,8 +37,8 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
             <div className={`w-full max-w-[1700px] pb-4 flex flex-col ${withsearch == false  && " mobile:rounded-b-3xl"} `} >
                 <div className={"flex  pt-3 h-fit min-h-14  justify-between px-20 max-small:px-5 max-tablet:px-10 "}>
                     <div className='my-auto  flex gap-2 cursor-pointer' >
-                        <Image src={img} alt="" />
-                        <Link href={"/"} className='font-semibold text-g'>
+                        <Image src={img} width={40} alt="" />
+                        <Link href={"/"} className='font-semibold text-g my-auto'>
                           <p className="tablet:hidden">Zirrow</p>
                           <p className="max-tablet:hidden">Zirrow General Trading</p>
                         </Link>

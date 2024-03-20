@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FiTwitter } from "react-icons/fi";
 import { CiFacebook } from "react-icons/ci";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
-import logo from "../assets/images/Widget 5.svg"
+import logo from "../assets/images/zirrow.jpg"
 import { FaArrowUp as UpArrowIcon } from "react-icons/fa6";
 import emailImg from "../assets/images/emailFooter.svg"
 import locationImg from "../assets/images/locationFooter.svg"
@@ -25,7 +25,7 @@ const footer = () => {
                     
                     <div className='basis-4/12 flex flex-col gap-3 mb-4'>
                         <div className='flex gap-3 my-2'>
-                            <Image src={logo} alt="" />
+                            <Image src={logo} width={30} alt="" />
                             <Link href="/" className="text-xl"> Zirrow General Trading </Link>
                         </div>
                         <p className=' text-gray-400'>
