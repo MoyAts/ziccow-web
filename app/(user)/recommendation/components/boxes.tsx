@@ -12,6 +12,7 @@ const Boxes = ({ query, variables }: any) => {
   if (data) {
     console.log("data", data)
   }
+  
   return (
     <div className='mt-10 grid max-tablet:grid-cols-2 max-mobile:grid-cols-1 max-tablet:gap-15 grid-cols-3 gap-10'>
 
