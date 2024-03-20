@@ -45,11 +45,6 @@ const Home = ( { house , userId} : Props) => {
                 alt="" 
             />
             }
-
-            
-            <div className="absolute top-5 flex gap-1 px-2 py-1 rounded-xl right-5 bg-gray-100 bg-opacity-40">
-                <BuildStar num={3} />
-            </div>
         </Link>
         <div className="flex h-full  flex-grow"></div>
         <div className={`flex flex-col basis-2/3 py-2 px-1  `}>
