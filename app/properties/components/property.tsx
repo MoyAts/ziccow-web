@@ -1,3 +1,5 @@
+
+
 "use client" 
 import Image from "next/image"; 
 import locationIcon from "../../assets/images/location.svg"
