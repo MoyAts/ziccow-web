@@ -21,9 +21,9 @@ const box = ({ house } : { house : houseInf}) => {
             unoptimized={true}
             className='w-full hover:scale-105 object-cover duration-200 h-[300px] rounded-lg'
             alt="" />
-             <div className="absolute top-5 flex gap-1 px-2 py-1 rounded-xl right-5 bg-gray-100 bg-opacity-40">
+             {/* <div className="absolute top-5 flex gap-1 px-2 py-1 rounded-xl right-5 bg-gray-100 bg-opacity-40">
                 <BuildStar num={3} />
-            </div>
+            </div> */}
         </div>
         <h1 className='font-semibold'>{house?.real_estate?.name ?? "Real state"}</h1>
         <p>Are you looking to find your dream home or invest in a lucrative property.</p>
