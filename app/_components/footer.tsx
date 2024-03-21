@@ -1,5 +1,5 @@
-"use client" 
-import Image from "next/image"; 
+"use client"
+import Image from "next/image";
 import { FiTwitter } from "react-icons/fi";
 import { CiFacebook } from "react-icons/ci";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
@@ -16,13 +16,13 @@ import { FaYoutube } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa6";
 const footer = () => {
-  return (
-    <div className="w-full bg-mainDark ">
+    return (
+        <div className="w-full bg-mainDark ">
 
-        <div id='contactus' className='h-fit pb-12 max-w-[1700px] mx-auto text-white px-20 pt-20 max-tablet:px-10 bg-mainDark'>
+            <div id='contactus' className='h-fit pb-12 max-w-[1700px] mx-auto text-white px-20 pt-20 max-tablet:px-10 bg-mainDark'>
 
                 <div className='flex justify-between max-tablet:flex-col'>
-                    
+
                     <div className='basis-4/12 flex flex-col gap-3 mb-4'>
                         <div className='flex gap-3 my-2'>
                             <Image src={logo} width={30} alt="" />
@@ -75,7 +75,7 @@ const footer = () => {
                                 <li className='hover:text-blue-500 cursor-pointer duration-200 flex gap-3'>
                                     <Image src={emailImg} alt="" />
                                     <p>
-                                        info@Zirrowgt.com
+                                        zirrowproperties@gmail.com
                                     </p>
                                 </li>
                                 <li className='hover:text-blue-500 cursor-pointer duration-200 flex gap-3'>
@@ -84,10 +84,10 @@ const footer = () => {
                                         +251949688383
                                     </p>
                                 </li>
-                               
-                               
-                                
-                                
+
+
+
+
                             </ul>
                         </div>
                     </div>
@@ -97,7 +97,7 @@ const footer = () => {
                 <div className='w-full h-[1px] my-10 bg-gray-400 '></div>
 
                 <div className='flex justify-between flex-wrap gap-y-5 text-gray-400'>
-                
+
                     <div className='flex gap-4'>
                         <Link href={"https://x.com/Zirrowprop43444?t=MNpJsJT9cR9j3w2nn-Heuw&s=08"}>
                             <FaXTwitter className='text-2xl text-blue-500 cursor-pointer hover:text-white duration-200' />
@@ -107,14 +107,14 @@ const footer = () => {
                         </Link>
                         <Link href={"https://www.facebook.com/profile.php?id=100065515388888&mibextid=ZbWKwL"}>
                             <CiFacebook className='text-2xl text-blue-500 cursor-pointer hover:text-white duration-200' />
-                        </Link> 
+                        </Link>
                         <Link href={"https://www.youtube.com/@Zirrow0000"}>
                             <FaYoutube className="text-2xl text-blue-500 cursor-pointer hover:text-white duration-200" />
                         </Link>
                         <Link href={"https://www.tiktok.com/@zirrow0?_t=8iDeN9loXV0&_r=1"}>
                             <FaTiktok className="text-2xl text-blue-500 cursor-pointer hover:text-white duration-200" />
                         </Link>
-                        
+
 
                     </div>
                     <p className='max-mobile:hidden'>Zirrow General Trading Â© 2024. All Rights Reserved.</p>
@@ -122,17 +122,17 @@ const footer = () => {
                         <UpArrowIcon className="m-auto" />
                         <span className="m-auto">
                             back to top
-                        </span>    
+                        </span>
                     </button>
-                   
+
                 </div>
 
                 <p className='mobile:hidden text-gray-400 text-center mt-12'>Zirrow General Trading Â© 2024. All Rights Reserved.</p>
 
 
+            </div>
         </div>
-</div>
-  )
+    )
 }
 
 export default footer

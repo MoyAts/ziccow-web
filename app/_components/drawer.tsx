@@ -7,20 +7,20 @@ import aboutImg from "../assets/images/Group (3).svg"
 import serviceImg from "../assets/images/Group (4).svg"
 import propertyImg from "../assets/images/property.svg"
 import confirmImg from "../assets/images/confirm.svg"
-import { IoIosArrowBack as ListIcon} from "react-icons/io";
+import { IoIosArrowBack as ListIcon } from "react-icons/io";
 import { useSelector } from 'react-redux'
-import { LogInf,getState} from "../../store/features/auth/authSlice"
+import { LogInf, getState } from "../../store/features/auth/authSlice"
 
 interface Props {
-    setIsDrawer : Function
+    setIsDrawer: Function
 }
 
-const Drawer = ({setIsDrawer} : Props) => {
+const Drawer = ({ setIsDrawer }: Props) => {
     const state = useSelector(getState)
-    const [toggle,setToggle] = useState(false)
+    const [toggle, setToggle] = useState(false)
     const isLogedIn = state.isLogedIn == LogInf.LOGED_IN
     return (
-        <div className='absolute h-fit pb-10 w-full  z-[9999]  '>
+        <div className='absolute h-fit pb-10 w-full  z-[9999]  bg-gray-200 '>
             <div className='bg-mainDark w-full py-3 text-white mb-5 text-center'>
                 Having Troubles? Call 0000
             </div>
@@ -29,7 +29,7 @@ const Drawer = ({setIsDrawer} : Props) => {
                     <Image src={img} alt="" />
                     <Link href={"/"} className='font-semibold text-g'>
                         <p className="">{
-                           isLogedIn && state.user?.firstName ? state.user.firstName :  "Zirrow General Trading"
+                            isLogedIn && state.user?.firstName ? state.user.firstName : "Zirrow General Trading"
                         }</p>
                     </Link>
                 </div>
@@ -38,7 +38,7 @@ const Drawer = ({setIsDrawer} : Props) => {
                 </div>
             </div>
             <div className='w-full border-t mt-5'></div>
-            
+
             <div className={` ${!toggle ? "h-[80vh] mt-12" : " my-10"} overflow-y-scroll flex flex-col  px-10 max-sm:px-5`}>
 
                 <div className='flex flex-col gap-10'>
@@ -72,7 +72,7 @@ const Drawer = ({setIsDrawer} : Props) => {
                                 <Link href={"/addproperty"} className='text-mainBlue font-semibold text-lg'>Sell a Property</Link>
                                 <div className='z-50 flex flex-col gap-1 mt-2'>
                                     <p className=' text-lightGray'>
-                                        Selling agents, Post for sale, Seller’s guide, Home values, Real estate app.   
+                                        Selling agents, Post for sale, Seller’s guide, Home values, Real estate app.
                                     </p>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@ const Drawer = ({setIsDrawer} : Props) => {
                                 <Link href={"/addproperty"} className='text-mainBlue font-semibold text-lg'>Rent a Property</Link>
                                 <div className='z-50 flex flex-col gap-1 mt-2'>
                                     <p className=' text-lightGray'>
-                                        Rental buildings, Apartments for rent, Houses for rent, Your rental listing, Affordability calculator, Rent Guide, Real estate app.   
+                                        Rental buildings, Apartments for rent, Houses for rent, Your rental listing, Affordability calculator, Rent Guide, Real estate app.
                                     </p>
                                 </div>
                             </div>
@@ -88,41 +88,41 @@ const Drawer = ({setIsDrawer} : Props) => {
                         </div>
                     }
 
-                    <Link href="/properties" className='flex gap-4'>
+                    <Link href="#" className='flex gap-4'>
                         <Image src={propertyImg} alt='' />
                         <div className="text-xl">
-                            Properties
+                            Group Buy
                         </div>
                     </Link>
 
                 </div>
 
-        </div>
+            </div>
 
-        {
-        isLogedIn ?
-        <div className='w-full px-5 text-lg'>
-            <Link href={"/contactus"} className='w-full  flex justify-center gap-5 bg-mainBlue rounded-2xl text-white py-3'>
-                <div>
-                    Contact Us
-                </div>
-                <Image src={confirmImg} width={23} className=' my-auto' alt='' />
-            </Link>
-        </div>
-        :
-        <div className='w-full px-5 text-lg flex flex-col gap-5'>
-            <Link href={"/auth/register"} className='w-full flex justify-center gap-5 bg-mainBlue rounded-2xl text-white py-3'>
-                <Image src={confirmImg} width={23} className=' my-auto' alt='' />
-                <div>
-                    Reginster now
-                </div>
-            </Link>
-            <Link href={"/conactus"} className='w-full text-center font-semibold text-mainBlue'>
-                Contact Us
-            </Link>
+            {
+                isLogedIn ?
+                    <div className='w-full px-5 text-lg'>
+                        <Link href={"/contactus"} className='w-full  flex justify-center gap-5 bg-mainBlue rounded-2xl text-white py-3'>
+                            <div>
+                                Contact Us
+                            </div>
+                            <Image src={confirmImg} width={23} className=' my-auto' alt='' />
+                        </Link>
+                    </div>
+                    :
+                    <div className='w-full px-5 text-lg flex flex-col gap-5'>
+                        <Link href={"/auth/register"} className='w-full flex justify-center gap-5 bg-mainBlue rounded-2xl text-white py-3'>
+                            <Image src={confirmImg} width={23} className=' my-auto' alt='' />
+                            <div>
+                                Reginster now
+                            </div>
+                        </Link>
+                        <Link href={"/conactus"} className='w-full text-center font-semibold text-mainBlue'>
+                            Contact Us
+                        </Link>
 
-        </div>
-        }
+                    </div>
+            }
 
         </div>
     )

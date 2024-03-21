@@ -81,6 +81,22 @@ const Realestates = () => {
                         <span>Popular </span>
                         <span className='text-mainBlue'>real estates</span>
                     </h1>
+                    <NameSlide selectedRealEstate={(reid: string) => {
+                        setIsSelected(true)
+                        setWhere({
+                            where: {
+                                real_estate: {
+                                    real_estate_uuid: {
+                                        "_eq": reid
+                                    }
+                                }
+                            },
+                            order_by: {}
+                        }
+                        )
+                    }
+                    } />
+
                     <div className="flex justify-between  max-md:flex-col max-md:gap-2 w-full">
                         <div className="flex gap-x-7 flex-wrap">
                             <RentalOption
@@ -128,20 +144,6 @@ const Realestates = () => {
                             </div>
                         </div>
                     </div>
-                    <NameSlide selectedRealEstate={(reid: string) => {
-                        setIsSelected(true)
-                        setWhere({
-                            where: {
-                                real_estate: {
-                                    real_estate_uuid: {
-                                        "_eq": reid
-                                        }
-                                    }
-                                },
-                                order_by: {}
-                            }
-                        )}
-                    } />
 
                 </div>
                 <Boxes
@@ -149,10 +151,13 @@ const Realestates = () => {
                     variables={{ ...where, status: { _eq: "ACTIVE" } }}
                 />
             </div>
-            { isSelected && 
-                <div className="h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10">
-                    <AddComment />
-                </div>
+            {isSelected && (
+                <>
+                    <div className="h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10">
+                        <AddComment />
+                    </div>
+                </>
+            )
             }
         </div>
     )

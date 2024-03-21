@@ -89,13 +89,13 @@ const Content = () => {
     <div className="ps-14 max-md:ps-6">
             <h1 className='text-[45px] max-sm:text-[30px] max-md:text-[40px]  text-white ps-12 max-mobile:px-5  flex flex-col gap-2  pe-10'>
                 <span >
-                    Discover new products and  
+                    This place is for promotion
                 </span>
                 <span>
-                    possibilities
+                    YOUR COMAPNY
                 </span>
                 <p className=' text-lg md:max-w-[80%] max-md:w-full  mt-8  flex gap-2 flex-wrap font-light'>
-                    Here at flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.
+                    Here we are focused on getting your name and business in front of millions
                 </p>
             </h1>
         </div>
