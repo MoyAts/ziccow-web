@@ -9,6 +9,8 @@ import Boxes from "./boxes";
 import { useState } from "react";
 import { FILTER_LIST, GET_LISTING } from "@/graphql/features/listing";
 import NameSlide from "./name_slide";
+import AddComment from "./comments"
+
 const Realestates = () => {
     const priceFilter = [
         { name: "$15k and Below", price: [0, 15000] },
@@ -34,6 +36,7 @@ const Realestates = () => {
         order_by: {}
     })
     const [curr, setCurr] = useState<string | null>(null)
+    const [isSelected, setIsSelected] = useState(false)
 
     const [propertyType, setpropertyType] = useState<string>("")
     const [region, setRegion] = useState<string>("")
@@ -125,16 +128,20 @@ const Realestates = () => {
                             </div>
                         </div>
                     </div>
-                    <NameSlide selectedRealEstate={(reid: string) => setWhere({
-                        where: {
-                            real_estate: {
-                                real_estate_uuid: {
-                                    "_eq": reid
-                                }
+                    <NameSlide selectedRealEstate={(reid: string) => {
+                        setIsSelected(true)
+                        setWhere({
+                            where: {
+                                real_estate: {
+                                    real_estate_uuid: {
+                                        "_eq": reid
+                                        }
+                                    }
+                                },
+                                order_by: {}
                             }
-                        },
-                        order_by: {}
-                    })} />
+                        )}
+                    } />
 
                 </div>
                 <Boxes
@@ -142,6 +149,11 @@ const Realestates = () => {
                     variables={{ ...where, status: { _eq: "ACTIVE" } }}
                 />
             </div>
+            { isSelected && 
+                <div className="h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10">
+                    <AddComment />
+                </div>
+            }
         </div>
     )
 }

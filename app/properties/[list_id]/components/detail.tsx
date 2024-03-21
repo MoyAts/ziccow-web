@@ -123,9 +123,9 @@ const detail = ({ house } : Props ) => (
         <Features house={house} />
         {/* <Nearby /> */}
     </div>
-    <div className=" ">
+    {/* <div className=" ">
       <AddComment />
-    </div>
+    </div> */}
   </div>
 )
 
