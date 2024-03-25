@@ -23,7 +23,7 @@ const SelectOption = ({list,img,checkbox,name,filter,reset} : Props) => {
 
   return (
     <div className="relative z-20 flex flex-col gap-2 w-fit py-1 group rounded-lg  ">
-        <div className={`${selected ? "bg-blue-200 shadow" : "bg-white"} flex justify-between  py-1 rounded px-2`}>
+        <div className={`${selected ? "bg-blue-200 shadow" : "bg-white"} min-w-[400px] flex justify-between  py-1 rounded px-2`}>
             <div className="flex justify-between gap-2  px-2 ">
                 <Image src={img} width={16} className="" alt="" />
                 <span className="">{selected ?? name == "Sites" ? "Sites" : "Sell Type"}</span>
