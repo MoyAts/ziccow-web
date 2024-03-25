@@ -27,7 +27,7 @@ interface Props {
 
 const Detail = ({ house,list_id } : Props ) => { 
   const router = useRouter()
-  const id = house.real_estate.real_estate_uuid
+  const id = house?.real_estate?.real_estate_uuid
   return (
 
   <div className='w-full mt-12 h-fit px-20 max-w-[1700px]  max-tablet:px-10 max-small:px-5 mx-auto'>

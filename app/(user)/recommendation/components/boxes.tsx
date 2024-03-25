@@ -26,6 +26,7 @@ const Boxes = ({ query, variables }: any) => {
             </div>
             :
             data ?
+            data.listing.length == 0 ? <div className='text-xl'>Sorry, Nothing Found :( </div> :
               data.listing.map((house: houseInf, ind: number) => <Box key={ind} house={house} />)
               :
               <div>......</div>

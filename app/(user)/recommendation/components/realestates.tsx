@@ -111,6 +111,8 @@ const Realestates = () => {
         { created_at: "desc" },
     ]
 
+    const [isSell , setIsSell] = useState(true)
+
     const sortList = (ind: number) => {
         setWhere((data: any) => {
             const order = sort_map[ind]
@@ -132,13 +134,23 @@ const Realestates = () => {
 
                     <div className="flex justify-between  max-md:flex-col max-md:gap-2 w-full">
                         <div className="flex gap-x-7 flex-wrap">
-                            <RentalOption
-                                list={houseFilter}
-                                name="rentaloption"
-                                img={rentalIcon}
-                                reset={() => reset_where("sale_type")}
-                                filter={filterByHouseType}
+                            <label className="inline-block flex gap-1 ps-[0.15rem] hover:cursor-pointer" htmlFor="flexSwitchCheckDefault">
+                                <div className={`${isSell ? 'text-black' : 'text-gray-400'}`}>Sell</div>
+                                <div>/</div>
+                                <div className={`${!isSell ? 'text-black' : 'text-gray-400'}`}>Rent</div>
+                            </label>
+                            <input onClick={() =>{
+                                setIsSell((data : boolean) =>{
+                                    filterByHouseType(data ? "Rental" : "Sell");
+                                    return !data;
+                                })
+                            }} className="me-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-black/25 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-mainBlue before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-mainBlue after:shadow-switch-2 after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-mainBlue checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ms-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-mainBlue checked:after:shadow-switch-1 checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-switch-3 focus:before:shadow-black/60 focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-blue-300 checked:focus:bg-blue-300 checked:focus:before:ms-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-switch-3 checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-slate-300 dark:after:bg-surface-dark dark:checked:bg-blue-500 dark:checked:after:bg-blue-500"
+                                type="checkbox"
+                                role="switch"
+                                id="flexSwitchCheckDefault" 
                             />
+                            
+
                             <RentalOption
                                 list={["Gerji", "Bisrate Gebriel", "Ayer Tena", "Bulbula" ]}
                                 name="Sites"

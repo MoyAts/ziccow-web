@@ -27,7 +27,7 @@ const box = ({ house } : { house : houseInf}) => {
             </div> */}
         </div>
         <h1 className='font-semibold'>{house?.real_estate?.name ?? "Real state"}</h1>
-        <p>Are you looking to find your dream home or invest in a lucrative property.</p>
+        <p>Are you looking to find your dream home or invest in a lucrative property. {house.sale_type}</p>
         <button className='flex w-fit gap-2 text-mainBlue mt-2 group'>
             <span>
                 View More
