@@ -7,8 +7,7 @@ import { useQuery } from '@apollo/client';
 import { GET_REAL_ESTATES } from "@/graphql/features/listing";
 
 
-const NameSlide = ({ selectedRealEstate }: any) => {
-    const [selected, setSelected] = useState("")
+const NameSlide = ({ selectedRealEstate,selected,setSelected }: any) => {
     const { loading, error, data } = useQuery(GET_REAL_ESTATES, {
         fetchPolicy: "no-cache"
     });
@@ -63,9 +62,12 @@ const NameSlide = ({ selectedRealEstate }: any) => {
                                     // <Box key={ind} house={house} />
                                     <div key={idx}
                                         onClick={() => realEstateSelected(realEstate.real_estate_uuid)}
-                                        className={`w-fit cursor-pointer duration-200 p-1 border-2  ${selected == realEstate.real_estate_uuid ? ' bg-blue-200 rounded-lg border-blue-600' : 'border-transparent'}`}
+                                        className={`w-fit flex flex-col gap-2 cursor-pointer duration-200 p-1 border-2  ${selected == realEstate.real_estate_uuid ? ' bg-blue-200 rounded-lg border-blue-600' : 'border-transparent'}`}
                                     >
-                                        <Image src={realEstate?.icon?? ""} width={"77"} height={"77"} alt='a' className='h-[4rem] rounded-full w-[4rem] object-contain' />
+                                        <Image src={realEstate?.icon?? ""} width={"77"} height={"77"} alt='a' className='h-[4rem] mx-auto rounded-full w-[4rem] object-contain' />
+                                        <div className='mx-auto'>
+                                            {realEstate?.name ?? "Unknown"}
+                                        </div>
                                     </div>
 
 

@@ -4,14 +4,14 @@ import { useQuery } from '@apollo/client';
 import { houseInf } from '@/utils/interfaces';
 
 const Boxes = ({ query, variables }: any) => {
-  console.log(query, variables)
   const { loading, error, data } = useQuery(query, {
     variables
   });
-  //   const state = useSelector(getUser)
-  if (data) {
-    console.log("data", data)
-  }
+  console.log("variables",variables)
+    // const state = useSelector(getUser)
+  // if (data) {
+  //   console.log("data", data)
+  // }
   
   return (
     <div className='mt-10 grid max-tablet:grid-cols-2 max-mobile:grid-cols-1 max-tablet:gap-15 grid-cols-3 gap-10'>

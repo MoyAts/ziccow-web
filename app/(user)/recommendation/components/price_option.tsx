@@ -13,21 +13,21 @@ interface Props {
 }
 
 const PriceOption = ({list,img,name,filter,reset} : Props) => {
-    const [selectedValue, setSelectedValue] = useState('');
+    const [selectedValue, setSelectedValue] = useState<null | string>(null);
     const handleCheck = (data : any) =>{
            setSelectedValue(data.name)
             filter(data.price[0],data.price[1])
     }
     const clear = () => {
-        setSelectedValue('')
+        setSelectedValue(null)
         reset()
     }
   return (
     <div className="relative z-20 flex flex-col gap-2 w-fit  py-1 group rounded-lg  ">
-        <div className="flex justify-between bg-white py-1 rounded px-2">
+        <div className={`${selectedValue ? "bg-blue-200 shadow" : "bg-white"} flex justify-between py-1 rounded px-2`}>
             <div className="flex justify-between gap-2  px-2 ">
                 <Image src={img} width={16} className="" alt="" />
-                <span className="capitalize">{selectedValue != '' ? selectedValue :  name + " Filter"}</span>
+                <span className="capitalize">{selectedValue  ??  name + " Filter"}</span>
             </div>
             <ListIcon className="m-auto text-mainBlue group-hover:rotate-90 duration-150 -rotate-90" />
         </div>

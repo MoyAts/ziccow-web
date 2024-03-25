@@ -2,12 +2,13 @@
 import Image from "next/image"; 
 import bg from "../../../assets/images/unsplash_B0aCvAVSX8E.png"
 import Nav from "../../../_components/nav"
-import { IoIosArrowBack as ListIcon} from "react-icons/io";
-
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
+import Search from "./search"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-const hero = ({ setIsDrawer }: any) => {
+const Hero = ({ setIsDrawer }: any) => {
     const responsive = {
         desktop: {
             breakpoint: { max: 4000, min: 1024 },
@@ -25,9 +26,24 @@ const hero = ({ setIsDrawer }: any) => {
             paritialVisibilityGutter: 30,
         },
     }
+    const [ propertyType,setPropertyType ] = useState("")
+    const [ region,setRegion ] = useState("")
+    const router = useRouter()
+    const search = () => {
+        router.push(`/recommendation?region=${region}&propertyType=${propertyType}`)
+    }
+
   return (
+    <>
+    <Nav setIsDrawer={setIsDrawer} withsearch={false} />
+    <Search 
+        search={search} 
+        propertyType={propertyType}  
+        region={region}
+        setPropertyType={setPropertyType}
+        setRegion={setRegion}
+    />
     <div className='w-full  relative z-20 flex flex-col'>
-        <Nav setIsDrawer={setIsDrawer} withsearch={true} />
         <div className='absolute left-0 right-0 bottom-0 top-0 bg-mainDark opacity-[85%] z-10'></div>
         <div className="w-full max-w-[1700px]  items-center     relative  mx-auto">
         {/* <div className="w-full max-w-[1700px]  items-center     relative flex  mx-auto"> */}
@@ -81,6 +97,8 @@ const hero = ({ setIsDrawer }: any) => {
         
         </div>
     </div>
+    </>
+
   )
 }
 
@@ -102,4 +120,4 @@ const Content = () => {
         </>
 }
 
-export default hero
+export default Hero

@@ -8,9 +8,11 @@ import GetStarted from "../../_components/get_started"
 import Drawer from "../../_components/drawer"
 import { useState } from "react"
 import 'react-multi-carousel/lib/styles.css'
+import { useSearchParams } from 'next/navigation'
 
 const Page = () => {
   const [isDrawer,setIsDrawer] = useState(false)
+  
   return (
     <div>
         {

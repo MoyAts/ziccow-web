@@ -17,18 +17,31 @@ import Nearby from "./nearby"
 import { houseInf } from "@/utils/interfaces";
 import AddComment from "./comments";
 import BuildStar  from "./buildstar"
+import { IoArrowBackSharp } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+
 interface Props {
-  house : houseInf
+  house : houseInf,
+  list_id : string,
 }
 
-const detail = ({ house } : Props ) => (
+const Detail = ({ house,list_id } : Props ) => { 
+  const router = useRouter()
+
+  return (
+
   <div className='w-full mt-12 h-fit px-20 max-w-[1700px]  max-tablet:px-10 max-small:px-5 mx-auto'>
     <div className='flex text-sm gap-2'>
+      <div onClick={() => router.back() } className="me-4">
+        <IoArrowBackSharp className="text-3xl cursor-pointer text-mainBlue" />
+      </div>
       <div className="flex gap-1">
         <Image src={propertyImg} alt="" />
         <div>Property</div>
       </div>
+      <div>/</div>
       <div>Rental</div>
+      <div>/</div>
       <div>{house.real_estate_name ?? house.real_estate?.name ?? "Real State"}</div>
     </div>
 
@@ -128,5 +141,6 @@ const detail = ({ house } : Props ) => (
     </div> */}
   </div>
 )
+}
 
-export default detail
+export default Detail

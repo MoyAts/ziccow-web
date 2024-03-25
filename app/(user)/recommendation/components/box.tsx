@@ -3,16 +3,17 @@ import Image from "next/image";
 import { FaArrowUp as ArrowIcon } from "react-icons/fa6";
 import { houseInf } from "@/utils/interfaces";
 import Link from "next/link";
-import { FaStar as StarIcon } from "react-icons/fa6"; 
 
 const box = ({ house } : { house : houseInf}) => {
-  const BuildStar = ({num} : any) => {
-    var randomNumber = 2 + Math.floor(Math.random() * 4);
-    return <>
-      {[0,0,0,0,0].map((_,ind : number) => ind < randomNumber ? <StarIcon key={ind} className="text-lg fill-yellow-500" /> : <StarIcon  key={ind} className="text-lg fill-gray-600" /> )}
-  </>}
+ 
   return (
-    <Link href={"/properties/" + house.listing_id} className='flex w-full flex-col text-sm  gap-1 '>
+    <Link 
+        // href={} 
+        href={{
+          pathname: "/properties/" + house.listing_id,
+        }}
+        className='flex w-full flex-col text-sm  gap-1 '
+      >
         <div className='rounded-lg relative w-full overflow-hidden duration-200'>
             <Image 
             src={house?.digital_assets[0]?.url ?? ""} 

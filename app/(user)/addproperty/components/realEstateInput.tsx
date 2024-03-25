@@ -36,7 +36,6 @@ const RealEstateOptionInput = ({ label, name, onChange, value, preIcon, placehol
             m[item.real_estate_uuid] = item.name;
         }
     }
-    console.log(m, ">>>")
     return (
         <div className={'flex flex-col gap-2 capitalize ' + divClass}>
             <label htmlFor="" className={'font-semibold ' + labelClass}>{label}</label>

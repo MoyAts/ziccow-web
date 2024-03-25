@@ -18,6 +18,7 @@ const Page = ({ params : { list_id }} : { params : { list_id : string}}) => {
   if(error){
     router.replace("/properties")
   }
+ 
   const [isDrawer,setIsDrawer] = useState(false)
   return (
     <div>
@@ -28,7 +29,7 @@ const Page = ({ params : { list_id }} : { params : { list_id : string}}) => {
           <GetStarted />
           <Hero setIsDrawer={setIsDrawer} />
           {loading && "loading"}
-          {data && <Detail house={data.listing[0]} />}
+          {data && <Detail house={data.listing[0]} list_id={list_id} />}
         </div>
     </div>
   )

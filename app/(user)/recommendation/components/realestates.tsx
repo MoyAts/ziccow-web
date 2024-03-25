@@ -10,8 +10,14 @@ import { useState } from "react";
 import { FILTER_LIST, GET_LISTING } from "@/graphql/features/listing";
 import NameSlide from "./name_slide";
 import AddComment from "./comments"
+import { useSearchParams } from "next/navigation";
 
 const Realestates = () => {
+
+    const searchParams = useSearchParams()
+    const search = searchParams.get('region')
+    console.log(search)
+
     const priceFilter = [
         { name: "$15k and Below", price: [0, 15000] },
         { name: "$15k and 30k", price: [15000, 30000] },
@@ -27,6 +33,8 @@ const Realestates = () => {
     const houseFilter = [
         "Sell", "Rental"
     ]
+    const [selectedRealEstate, setSelectedRealEstate] = useState("")
+
     const [where, setWhere] = useState<any>({
         where: {
             real_estate_id: {
@@ -45,21 +53,54 @@ const Realestates = () => {
         setCurr(null)
         setWhere({ where: {}, order_by: {} })
     }
+
+    const reset_where = (name : string) => {
+        setWhere((data : any)=>{
+            let temp = {
+                ...data.where,
+            }
+            delete temp[name]
+            return {...data,"where" : temp}
+        })
+    }
+
     const filterByPrice = (ls: number, lg: number) => {
         setWhere((data: any) => {
-            return { ...data, "where": { sale_price: { _gte: ls, _lte: lg } } }
+            const filter = { 
+                ...data.where,
+                _or : [
+                    { 
+                        sale_price: { _gte: ls, _lte: lg },
+                    },
+                    { 
+                        rental_price : { price : { _gte: ls, _lte: lg }}
+                    },
+                ]
+            }
+            return { ...data, "where": filter }
         })
     }
+
     const filterByArea = (ls: number, lg: number) => {
         setWhere((data: any) => {
-            return { ...data, "where": { listing_property: { square_ft: { _gte: ls, _lte: lg } } } }
+            const filter = { 
+                ...data.where,
+                listing_property: { square_ft: { _gte: ls, _lte: lg } } 
+            }
+            return { ...data, "where": filter }
         })
     }
+
     const filterByHouseType = (val: string) => {
         setWhere((data: any) => {
-            return { ...data, "where": { sale_type: { _eq: val } } }
+            const filter = { 
+                ...data.where,
+                sale_type: { _eq: val } 
+            }
+            return { ...data, "where": filter }
         })
     }
+
     const sort_map = [
         { created_at: "asc" },
         { sale_price: "asc" },
@@ -87,24 +128,28 @@ const Realestates = () => {
                                 list={houseFilter}
                                 name="rentaloption"
                                 img={rentalIcon}
-                                // reset={reset}
+                                reset={() => reset_where("sale_type")}
                                 filter={filterByHouseType}
                             />
-                            <PriceOption
-                                list={priceFilter}
-                                filter={filterByPrice}
-                                name="price"
-                                checkbox={true}
-                                img={amountIcon}
-                                reset={reset}
-                            />
+                            {
+                            selectedRealEstate != "" && 
+                                <PriceOption
+                                    list={priceFilter}
+                                    filter={filterByPrice}
+                                    name="price"
+                                    checkbox={true}
+                                    img={amountIcon}
+                                    reset={() => reset_where("_or")}
+                                /> 
+                            }
                             <PriceOption
                                 list={areaFilter}
                                 filter={filterByArea}
                                 name="Area"
                                 checkbox={true}
                                 img={amountIcon}
-                                reset={reset}
+                                reset={() => reset_where("sale_type")}
+
                             />
 
                         </div>
@@ -128,20 +173,25 @@ const Realestates = () => {
                             </div>
                         </div>
                     </div>
-                    <NameSlide selectedRealEstate={(reid: string) => {
-                        setIsSelected(true)
-                        setWhere({
-                            where: {
-                                real_estate: {
-                                    real_estate_uuid: {
-                                        "_eq": reid
+                    <NameSlide 
+                        selectedRealEstate={(reid: string) => {
+                            setIsSelected(true)
+                            setWhere({
+                                where: {
+                                    real_estate: {
+                                        real_estate_uuid: {
+                                            "_eq": reid
+                                            }
                                         }
-                                    }
-                                },
-                                order_by: {}
+                                    },
+                                    order_by: {}
+                                }
+                                )
                             }
-                        )}
-                    } />
+                        }
+                        setSelected={setSelectedRealEstate}
+                        selected={selectedRealEstate}
+                    />
 
                 </div>
                 <Boxes
