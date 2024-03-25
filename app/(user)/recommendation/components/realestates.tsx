@@ -117,9 +117,7 @@ const Realestates = () => {
         })
     }
 
-    useEffect(()=>{
-        setWhere(temp)
-    },[region])
+  
     return (
         <div className="w-full bg-lightBg">
             <div className='h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10'>
