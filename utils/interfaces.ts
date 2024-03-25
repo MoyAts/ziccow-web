@@ -17,7 +17,8 @@ export interface houseInf {
         
     },
     real_estate : {
-        name : string
+        name : string,
+        real_estate_uuid : string
     },
     listing_property :  {
         bathroom_count : string,

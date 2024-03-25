@@ -16,6 +16,7 @@ const Realestates = () => {
 
     const searchParams = useSearchParams()
     const region = useState(searchParams.get('region'))
+    const initialRealestateType = useState(searchParams.get('realestateType'))
     const [propertyType,setPropertyType] = useState(searchParams.get('propertyType'))
     let temp : any = {
         where: {
@@ -204,6 +205,7 @@ const Realestates = () => {
                                 )
                             }
                         }
+                        initialRealestateType={initialRealestateType}
                         setSelected={setSelectedRealEstate}
                         selected={selectedRealEstate}
                     />

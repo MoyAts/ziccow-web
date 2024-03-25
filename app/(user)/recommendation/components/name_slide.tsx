@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client';
 import { GET_REAL_ESTATES } from "@/graphql/features/listing";
 
 
-const NameSlide = ({ selectedRealEstate,selected,setSelected }: any) => {
+const NameSlide = ({ selectedRealEstate,selected,setSelected,initialRealestateType }: any) => {
     const { loading, error, data } = useQuery(GET_REAL_ESTATES, {
         fetchPolicy: "no-cache"
     });
@@ -35,6 +35,12 @@ const NameSlide = ({ selectedRealEstate,selected,setSelected }: any) => {
         setSelected(real_estate_uuid)
         selectedRealEstate(real_estate_uuid,name)
     }
+    useEffect(()=>{
+        data && data.real_estate.map((realEstate: any, idx: any)=>{
+            console.log(initialRealestateType == realEstate.real_estate_uuid,"trying",initialRealestateType[0])
+            initialRealestateType[0] == realEstate.real_estate_uuid && realEstateSelected(realEstate.real_estate_uuid,realEstate?.name ?? "Unknown")
+        })
+    },[data])
     return (
         <div className='w-full'>
             <Carousel
