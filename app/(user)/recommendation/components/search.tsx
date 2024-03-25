@@ -10,7 +10,7 @@ import navaddImg from "../../../assets/images/navadd.svg"
 import { useSelector } from 'react-redux';
 import { LogInf, getState } from '@/store/features/auth/authSlice';
 import { useQuery } from '@apollo/client';
-import { GET_REAL_ESTATES } from '@/graphql/features/listing';
+import { GET_HOME_TYPES } from '@/graphql/features/listing';
 
 interface Props{
     region: string, 
@@ -25,7 +25,7 @@ const Search = ({ region , setRegion, setPropertyType , propertyType , search} :
   const state = useSelector(getState)
   const url = state.isLogedIn == LogInf.LOGED_IN ? "/addproperty" : "/auth/signup"
   
-  const { loading, error, data } = useQuery(GET_REAL_ESTATES, {
+  const { loading, error, data } = useQuery(GET_HOME_TYPES, {
     fetchPolicy: "no-cache"
   });
 
@@ -49,16 +49,16 @@ const Search = ({ region , setRegion, setPropertyType , propertyType , search} :
                   {/* <input type="text"  className="" placeholder={`${loading ? "loading" :"Enter property type"}`} />  */}
                   <button onClick={()=>setShow(d => !d)} className={`px-3 w-full py-2 my-auto  ${propertyType == "" && "text-gray-400"}`} > {propertyType != "" ? propertyType : "select property type" }</button>
                   {loading ? <div>Loading</div> : error ? <div>Error</div> :
-                       show && <div className='absolute top-12 shadow-xl rounded-lg z-40 bg-white h-[16rem] overflow-scroll'> {
-                        data.real_estate.map((e : any) => (<>
+                       show && <div className='absolute top-12 shadow-xl rounded-lg z-40 bg-white  overflow-scroll'> {
+                        data.house_type.map((e : any) => (<>
                             <div
                                 onClick={() => {
                                     setShow(s => !s);
-                                    setPropertyType(e.name)
+                                    setPropertyType(e.type_name)
                                 }}
                                 className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
                             >
-                              {e.name}
+                              {e.type_name}
                             </div>
                         </>))
                         }
