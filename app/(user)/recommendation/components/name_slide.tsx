@@ -31,9 +31,9 @@ const NameSlide = ({ selectedRealEstate,selected,setSelected }: any) => {
             paritialVisibilityGutter: 30,
         },
     }
-    const realEstateSelected = (real_estate_uuid: string) => {
+    const realEstateSelected = (real_estate_uuid: string,name : string) => {
         setSelected(real_estate_uuid)
-        selectedRealEstate(real_estate_uuid)
+        selectedRealEstate(real_estate_uuid,name)
     }
     return (
         <div className='w-full'>
@@ -61,7 +61,7 @@ const NameSlide = ({ selectedRealEstate,selected,setSelected }: any) => {
                                 data.real_estate.map((realEstate: any, idx: any) =>
                                     // <Box key={ind} house={house} />
                                     <div key={idx}
-                                        onClick={() => realEstateSelected(realEstate.real_estate_uuid)}
+                                        onClick={() => realEstateSelected(realEstate.real_estate_uuid,realEstate?.name ?? "Unknown")}
                                         className={`w-fit flex flex-col gap-2 cursor-pointer duration-200 p-1 border-2  ${selected == realEstate.real_estate_uuid ? ' bg-blue-200 rounded-lg border-blue-600' : 'border-transparent'}`}
                                     >
                                         <Image src={realEstate?.icon?? ""} width={"77"} height={"77"} alt='a' className='h-[4rem] mx-auto rounded-full w-[4rem] object-contain' />

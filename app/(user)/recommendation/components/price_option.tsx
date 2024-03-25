@@ -16,7 +16,7 @@ const PriceOption = ({list,img,name,filter,reset} : Props) => {
     const [selectedValue, setSelectedValue] = useState<null | string>(null);
     const handleCheck = (data : any) =>{
            setSelectedValue(data.name)
-            filter(data.price[0],data.price[1])
+           filter(data.price[0],data.price[1])
     }
     const clear = () => {
         setSelectedValue(null)

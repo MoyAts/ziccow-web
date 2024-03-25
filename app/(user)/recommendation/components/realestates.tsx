@@ -6,7 +6,7 @@ import PriceOption from "./price_option";
 import RentalOption from "./rental_option";
 import rentalIcon from "../../../assets/images/rentalIcon.svg"
 import Boxes from "./boxes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FILTER_LIST, GET_LISTING } from "@/graphql/features/listing";
 import NameSlide from "./name_slide";
 import AddComment from "./comments"
@@ -15,8 +15,20 @@ import { useSearchParams } from "next/navigation";
 const Realestates = () => {
 
     const searchParams = useSearchParams()
-    const search = searchParams.get('region')
-    console.log(search)
+    const region = useState(searchParams.get('region'))
+    const [propertyType,setPropertyType] = useState(searchParams.get('propertyType'))
+    let temp : any = {
+        where: {
+            real_estate_id: {
+                _is_null: false
+            }
+        },
+        order_by: {}
+    }
+
+    if(propertyType){
+         temp = { where:  { real_estate :{ name : {_eq : propertyType}}}, order_by: {} }
+    }
 
     const priceFilter = [
         { name: "$15k and Below", price: [0, 15000] },
@@ -35,23 +47,14 @@ const Realestates = () => {
     ]
     const [selectedRealEstate, setSelectedRealEstate] = useState("")
 
-    const [where, setWhere] = useState<any>({
-        where: {
-            real_estate_id: {
-                _is_null: false
-            }
-        },
-        order_by: {}
-    })
+    const [where, setWhere] = useState<any>(temp)
     const [curr, setCurr] = useState<string | null>(null)
     const [isSelected, setIsSelected] = useState(false)
 
-    const [propertyType, setpropertyType] = useState<string>("")
-    const [region, setRegion] = useState<string>("")
 
     const reset = () => {
         setCurr(null)
-        setWhere({ where: {}, order_by: {} })
+        setWhere(temp)
     }
 
     const reset_where = (name : string) => {
@@ -114,13 +117,17 @@ const Realestates = () => {
         })
     }
 
+    useEffect(()=>{
+        setWhere(temp)
+    },[region])
     return (
         <div className="w-full bg-lightBg">
             <div className='h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10'>
                 <div className='flex  flex-col gap-7 max-tablet:flex-col max-tablet:items-center'>
-                    <h1 className='flex gap-2 text-xl max-tablet:text-xl max-tablet:mb-5'>
-                        <span>Popular </span>
-                        <span className='text-mainBlue'>real estates</span>
+                    <h1 className='flex gap-2 text-3xl max-tablet:text-xl max-tablet:mb-5'>
+                        
+                        {!propertyType ?? <span>Popular </span>}
+                        <span className='text-mainBlue'>{propertyType ?? "real estates"}</span>
                     </h1>
                     
 
@@ -132,6 +139,13 @@ const Realestates = () => {
                                 img={rentalIcon}
                                 reset={() => reset_where("sale_type")}
                                 filter={filterByHouseType}
+                            />
+                            <RentalOption
+                                list={["Gerji", "Bisrate Gebriel", "Ayer Tena", "Bulbula" ]}
+                                name="Sites"
+                                img={rentalIcon}
+                                reset={() => {}}
+                                filter={()=>{}}
                             />
                             {
                             selectedRealEstate != "" && 
@@ -150,10 +164,10 @@ const Realestates = () => {
                                 name="Area"
                                 checkbox={true}
                                 img={amountIcon}
-                                reset={() => reset_where("sale_type")}
+                                reset={() => reset_where("listing_property")}
 
                             />
-
+                            
                         </div>
                         <div className='flex place-self-  gap-2 my-auto text-lightGray me-12  max-mobile:mt-5'>
                             <p className="">
@@ -176,8 +190,9 @@ const Realestates = () => {
                         </div>
                     </div>
                     <NameSlide 
-                        selectedRealEstate={(reid: string) => {
+                        selectedRealEstate={(reid: string,name : string) => {
                             setIsSelected(true)
+                            setPropertyType(name)
                             setWhere({
                                 where: {
                                     real_estate: {
