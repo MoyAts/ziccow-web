@@ -2,8 +2,8 @@ import React, { useRef, useState } from 'react'
 import CustomeInput from '@/app/_components/customeInput'
 import goImg from "../../../assets/images/go.svg"
 import Image from 'next/image'
-import { useMutation } from '@apollo/client'
-import { UPDATE_USER } from '@/graphql/features/user'
+import { useMutation, useQuery } from '@apollo/client'
+import { GET_USER_SETTING, UPDATE_USER } from '@/graphql/features/user'
 import Error from '@/app/_components/error'
 import { useSelector,useDispatch } from 'react-redux'
 import { getState,UserFromApi,userFetched } from "@/store/features/auth/authSlice"
@@ -17,22 +17,42 @@ interface formInf{
 }
 
 const Personal = () => {
+    const userData = useSelector(getState)
     const initialData : formInf = {
         firstName : "",lastName : "" , email : "", phone : "",userName : ""
     }
     const dispatch = useDispatch()
+    console.log(userData)
+    const getUserState = useQuery(GET_USER_SETTING,{
+        variables : {
+            user_id : userData.user.userId,
+        },
+        onCompleted : () =>{
+            const fetchedUser = getUserState.data.user_by_pk
+            setForm((data) => ({
+                        ...data,
+                        "firstName" : fetchedUser.first_name,"lastName" : fetchedUser.last_name,
+                        "email" : fetchedUser.email,"phone" : fetchedUser.phone_number,
+                    }))
+        }
+    })
+    
+    
     const [updateUser,{loading,error,data,reset}] = useMutation(UPDATE_USER)
     const [form,setForm] = useState<formInf>(initialData)
     const [err,setErr] = useState<string | null>(null)
     const errRef = useRef<any>(null)
+    
     const onChange = ({ target } : any) => setForm((data) => ({...data,[target.name] : target.value}))
-    const userData = useSelector(getState)
+    
     const scrollToTop = () => {
         errRef && errRef.current.scrollIntoView({
             behavior: "smooth",
             block: "center", 
         });
     }
+    
+    
     if(data){
         const userData = data.update_user.returning[0]
         const userFromApi : UserFromApi = {
@@ -90,16 +110,29 @@ const Personal = () => {
         </div>
         <form action=" mt-8" onSubmit={(e) => e.preventDefault()}>
             <div className='flex justify-between gap-5'>
-                <CustomeInput name="firstName" value={form.firstName} onChange={onChange} divClass='w-full' label='Full Name' placeholder='Enter your name'  />
-                <CustomeInput name="lastName" value={form.lastName} onChange={onChange} divClass='w-full' label='Full Name' placeholder='Enter your name'  />
+                <CustomeInput name="firstName" value={form.firstName} onChange={onChange} divClass='w-full' label='First Name' placeholder='Enter your name'  />
+                <CustomeInput name="lastName" value={form.lastName} onChange={onChange} divClass='w-full' label='Last Name' placeholder='Enter your name'  />
             </div>
             <p className='text-sm my-2 text-lightGray mb-7'>Your first and last given names.</p>
             <CustomeInput  name="userName" value={form.userName} onChange={onChange} label='User Name' placeholder='Enter your name'  />
             <p className='text-sm my-2 text-lightGray mb-7'>Your screen name across the platform.</p>
-            <div className='flex gap-5 w-full '>
+            <div className='flex gap-5 w-full mb-5'>
                 <CustomeInput name="phone" value={form.phone} onChange={onChange} label='Phone Number' placeholder='Enter your phone number' divClass='w-full'  />
                 <CustomeInput name="email" value={form.email} onChange={onChange} label='Email Address' placeholder='Enter your email' divClass='w-full'  />
             </div>
+            <p className='text-xl font-semibold mb-2'>Social Media</p>
+            <p className='text-sm my-2 text-lightGray mb-7'>Your social media links.</p>
+            
+            <div className='flex gap-5 w-full mb-5'>
+                <CustomeInput name="LinkedIn" value={""} onChange={onChange} label='LinkedIn' placeholder='Enter your phone number' divClass='w-full'  />
+                <CustomeInput name="Facebook" value={""} onChange={onChange} label='Facebook' placeholder='Enter your email' divClass='w-full'  />
+            </div>
+            <div className='flex gap-5 w-full mb-5'>
+                <CustomeInput name="Instagram" value={""} onChange={onChange} label='Instagram' placeholder='Enter your phone number' divClass='w-full'  />
+                <CustomeInput name="Twitter" value={""} onChange={onChange} label='Twitter' placeholder='Enter your email' divClass='w-full'  />
+            </div>
+
+            
             <div className='flex justify-between mt-8'>
                 <button className='px-2 py-2 text-mainBlue'> Cancel </button>
                 <button onClick={submit} className='flex gap-2 text-lg px-4 py-2 hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white '>
