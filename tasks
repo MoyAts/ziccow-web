@@ -32,19 +32,85 @@ api Integration
     - Add written indicator that there’s an active real estate “properties in {real_estate}” (this needs to go in the recommendation page to show what real estate is selected exactly)
     - Price filter should show once the real estate is selected
     - Add back button to go back to the selected real estate section (from the detail page)
-  - on progress
     - Change property type to dropdown (villa, etc …) this is a search field needs to be dropdown
+    Sell type: sell & rent.
+    Choose site filter (dropdown for real estates) (this is sth new since real estates have differnet "construction sites" we need to add another option to filter through those)
+  - on progress
+    -
   - remaining
   - latter
     - message
-    
+
+    - Status for the construction 
+    - Payment program
+    - broker | owner | none
+    - facilities -> NO. Of Number of praying room
+    - utilities 
+      - basement
+    - interior
+      - full finished |  semi finished | 
+      - Air conditioning system
+    - utilities
+      - Basement
+      - Back yard
+      - Service rooms
+      - Electric
+      - Water
+      - Secondary electric source facility (e.g generator, solar)
+      - Garbage shutter
+      - Ground water
+      - Security system
+      - Swimming
+      - Gymnasium
+      - SPA
+      - Other
+
+    - community and neighborhood (the whole thing)
+    - Construction (the whole thing)
+    - financial 
+    - const calculator
 
     ====
-    Sell type: sell & rent.
-    Choose site filter (dropdown for real estates) (this is sth new since real estates have differnet "construction sites" we need to add another option to filter through those)
   
 _______________________________
 
 
 https://blog.stackademic.com/sending-and-verifying-mobile-otp-with-firebase-and-react-d1d0244690a9
  
+ I am not sure which person to talk to
+ What kind of project
+ delay email
+
+ word press | Code base
+ email and password
+
+ou r startups
+
+
+<!-- 
+
+detail
+large preview 
+
+-->
+
+
+  incubator - yellow
+
+  blog - portfolio
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
