@@ -21,7 +21,7 @@ interface formInf{
 }
 
 const Personal = () => {
-    const userData = useSelector(getState)
+    const userData : any = useSelector(getState)
     const initialData : formInf = {
         firstName: "", lastName: "", email: "", phone: "", userName: "",
         twitter: '',
