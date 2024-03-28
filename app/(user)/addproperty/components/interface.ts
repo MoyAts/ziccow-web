@@ -27,16 +27,33 @@ export interface PropertyDetailInf {
         numOfSpas: number,
         numOfStores: number,
         numOfGyms: number,
+        numOfPrayerRoom: number,
     },
-    parkingFeature: null,
-    lotFeature: null,
-    appliances: boolean | null,
+    parkingFeature: boolean| null,
+    lotFeature: boolean|null,
+    appliances: string | null,
     property: boolean | null,
     utility: UtilityInf,
+    completionStatus: string | null,
+    matterportLink: string | null,
+    paymentProgram: string | null,
     community: {
-        nearPark: boolean,
-        shoppingDistrict: boolean,
+        primarySchool: boolean,
+        secondarySchool: boolean,
+        collegeAndUni: boolean,
+        hospital: boolean,
+        supermarket: boolean,
     },
+    construction: {
+        ordinaryMaterial: boolean,
+        uniqueMaterial: boolean
+    },
+    constructionCustom: string | null,
+    estRentalPrice: string | null,
+    govPaymentAshura: string | null,
+    leasingPayment: string | null,
+    conveyancingPayment: string | null,
+    commission: string | null,
     images: [any, any, any, any, any],
     previewImages: [any, any, any, any, any],
     typeOfPerson: "agent" | "owner" | "none" | null,
@@ -47,7 +64,7 @@ export interface PropertyDetailInf {
     urls: any,
     currency: "ETH" | "USA",
     cycle: "1 month" | "3 months" | "6 months" | "1 year"
-    description : string
+    description: string
 }
 
 
@@ -68,8 +85,9 @@ export const initialForm: PropertyDetailInf = {
         numOfSpas: 0,
         numOfStores: 0,
         numOfGyms: 0,
+        numOfPrayerRoom: 0
     },
-    appliances: null,
+    appliances: "",
     property: null,
     utility: {
         rooms: false,
@@ -79,10 +97,26 @@ export const initialForm: PropertyDetailInf = {
         garbageShutter: false,
         backupElectricity: false,
     },
+    completionStatus: "",
+    matterportLink: "",
+    paymentProgram: "",
     community: {
-        nearPark: false,
-        shoppingDistrict: false,
+        primarySchool: false,
+        secondarySchool: false,
+        collegeAndUni: false,
+        hospital: false,
+        supermarket: false,
     },
+    construction: {
+        ordinaryMaterial: false,
+        uniqueMaterial: false
+    },
+    constructionCustom: "",
+    estRentalPrice: "",
+    govPaymentAshura: "",
+    leasingPayment: "",
+    conveyancingPayment: "",
+    commission: "",
     images: [null, null, null, null, null],
     previewImages: [null, null, null, null, null],
     typeOfPerson: null,
@@ -95,5 +129,5 @@ export const initialForm: PropertyDetailInf = {
     lotFeature: null,
     currency: "ETH",
     cycle: "1 month",
-    description : "",
+    description: "",
 }

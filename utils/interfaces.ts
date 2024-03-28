@@ -20,6 +20,7 @@ export interface houseInf {
         name : string,
         real_estate_uuid : string
     },
+    matterport_link: string,
     listing_property :  {
         bathroom_count : string,
         bedroom_count : string,
@@ -31,6 +32,7 @@ export interface houseInf {
         square_ft : string,
         spa : string,
         store_rooms : string,
+        praying_room: string,
     }
     extra_features : {
         applicances_included : boolean,

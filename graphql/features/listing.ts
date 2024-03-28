@@ -104,63 +104,77 @@ export const GET_BOOKMARK = gql`
 }
 
 `
-export const GET_LIST_BY_ID = gql`
-  query a($list_id : uuid!){
-    listing(where: { listing_id : { _eq : $list_id }}) {
-      digital_assets {
-        url
-        type
-      }
-      address_data
-      currency
-      real_estate_name
-      build_date
-      description
-      listing_id
-      property_number
-      real_estate_id
-      sale_compare_price
-      rental_price_id
-      sale_price
-      sale_type
-      status
-      house_type{
-        house_type_id
-        icon
-        type_name
-        available
-      }
-      extra_features {
-        applicances_included
-        lot_features
-        near_park
-        shopping_district
-      }
-      real_estate {
-        name
-        real_estate_uuid
-      }
-      rental_price{
-        cycle
-        price
-      
-      }
-      listing_property {
-        bathroom_count
-        bedroom_count
-        created_at
-        gymnasium
-        kitchen_count
-        library
-        listing_property_id
-        living_room_count
-        maids_room
-        square_ft
-        spa
-        store_rooms
-      }
+export const GET_LIST_BY_ID = gql`query a($list_id: uuid!) {
+  listing(where: {listing_id: {_eq: $list_id}}) {
+    digital_assets {
+      url
+      type
+    }
+    address_data
+    currency
+    real_estate_name
+    build_date
+    description
+    listing_id
+    property_number
+    real_estate_id
+    sale_compare_price
+    rental_price_id
+    sale_price
+    sale_type
+    status
+    house_type {
+      house_type_id
+      icon
+      type_name
+      available
+    }
+    extra_features {
+      applicances
+      lot_features
+      primary_school
+      secondary_school
+      college_and_uni
+      construction_custom
+      hospital
+      supermarket
+      unique_material
+      ordinary_material
+    }
+    payment_program
+    gov_payment_ashura
+    completion_status
+    matterport_link
+    est_rental_price
+    leasing_payment
+    conveyancing_payment
+    commission_payment
+    real_estate {
+      name
+      real_estate_uuid
+    }
+    rental_price {
+      cycle
+      price
+    }
+    listing_property {
+      bathroom_count
+      bedroom_count
+      created_at
+      gymnasium
+      kitchen_count
+      library
+      listing_property_id
+      living_room_count
+      maids_room
+      square_ft
+      spa
+      praying_room
+      store_rooms
+      praying_room
     }
   }
+}
 `
 export const DELET_BOOKMARK = gql`
   mutation ($uuid : uuid!){

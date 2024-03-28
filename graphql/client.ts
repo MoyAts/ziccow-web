@@ -9,17 +9,20 @@ const head = typeof window !== "undefined" ?
       "Authorization": "Bearer " + getUser()?.token,
     }
     :
-    {}
+    {
+      "X-Hasura-Role": "anonymous"
+    }
   :
   {
   }
 
+const supserAdmin = false
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
-    headers: {
-      ...head,
+    headers: supserAdmin ? {
       "x-hasura-admin-secret": "myadminsecretkey"
-    }
+    } : head,
+
   }));
 
   return forward(operation);
