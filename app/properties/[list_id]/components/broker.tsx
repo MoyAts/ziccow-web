@@ -66,30 +66,31 @@ const broker = ({ house } : Props) => {
                     <p className="text-lg">Send Message</p>
                     <Image src={send} alt="" />
                 </button>
-                <div className="flex gap-2 justify-between mt-4">
+                <div className="text-xl text-black mt-5">Social Medias</div>
+                <div className="flex gap-4 mt-2">
                    {house.owner?.social_facebook &&
                     <Link href={house.owner?.social_facebook ?? ""}>
-                        <FaFacebookF className="text-3xl" />
+                        <FaFacebookF className="text-2xl hover:text-blue-500" />
                     </Link>
                     }
                     {house.owner?.social_whatsapp &&
                     <Link href={house.owner?.social_whatsapp ?? ""}>
-                        <FaWhatsapp className="text-3xl" />
+                        <FaWhatsapp className="text-2xl hover:text-blue-500" />
                     </Link>
                     }
                      {house.owner?.social_telegram &&
                     <Link href={house.owner?.social_telegram ?? ""}>
-                        <BsTelegram className="text-3xl" />
+                        <BsTelegram className="text-2xl hover:text-blue-500" />
                     </Link>
                     }
                     {house.owner?.social_instagram &&
                     <Link href={house.owner?.social_instagram ?? ""}>
-                        <FaInstagram className="text-3xl" />
+                        <FaInstagram className="text-2xl hover:text-blue-500" />
                     </Link>
                     }
                     {house.owner?.social_twitter &&
                     <Link href={house.owner?.social_twitter ?? ""}>
-                        <BsTwitterX className="text-3xl" />
+                        <BsTwitterX className="text-2xl hover:text-blue-500" />
                     </Link>
                     }
                    

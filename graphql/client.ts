@@ -16,7 +16,7 @@ const head = typeof window !== "undefined" ?
   {
   }
 
-const supserAdmin = true
+const supserAdmin = false
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: supserAdmin ? {

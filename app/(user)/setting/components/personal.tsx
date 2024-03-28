@@ -30,17 +30,22 @@ const Personal = () => {
         instagram: ''
     }
     const dispatch = useDispatch()
-    console.log(userData)
     const getUserState = useQuery(GET_USER_SETTING,{
         variables : {
             user_id : userData.user.userId,
         },
         onCompleted : () =>{
             const fetchedUser = getUserState.data.user_by_pk
+            console.log(fetchedUser,"fetched")
             setForm((data) => ({
                         ...data,
                         "firstName" : fetchedUser.first_name,"lastName" : fetchedUser.last_name,
                         "email" : fetchedUser.email,"phone" : fetchedUser.phone_number,
+                        "twitter" : fetchedUser.social_twitter,
+                        "facebook" : fetchedUser.social_facebook,
+                        "instagram" : fetchedUser.social_instagram,
+                        "whatsapp" : fetchedUser.social_whatsapp,
+                    
                     }))
         }
     })
@@ -107,6 +112,10 @@ const Personal = () => {
             last_name : form.lastName,
             email : form.email,
             phone_number : form.phone,
+            twitter : form.twitter,
+            facebook : form.facebook,
+            instagram : form.instagram,
+            whatsapp : form.whatsapp,
         }})
     }
   return (
@@ -122,9 +131,7 @@ const Personal = () => {
                 <CustomeInput name="lastName" value={form.lastName} onChange={onChange} divClass='w-full' label='Last Name' placeholder='Enter your name'  />
             </div>
             <p className='text-sm my-2 text-lightGray mb-7'>Your first and last given names.</p>
-            <CustomeInput  name="userName" value={form.userName} onChange={onChange} label='User Name' placeholder='Enter your name'  />
-            <p className='text-sm my-2 text-lightGray mb-7'>Your screen name across the platform.</p>
-            <div className='flex gap-5 w-full mb-5'>
+           <div className='flex gap-5 w-full mb-5'>
                 <CustomeInput name="phone" value={form.phone} onChange={onChange} label='Phone Number' placeholder='Enter your phone number' divClass='w-full'  />
                 <CustomeInput name="email" value={form.email} onChange={onChange} label='Email Address' placeholder='Enter your email' divClass='w-full'  />
             </div>
@@ -132,12 +139,12 @@ const Personal = () => {
             <p className='text-sm my-2 text-lightGray mb-7'>Your social media links.</p>
             
             <div className='flex gap-5 w-full mb-5'>
-                <CustomeInput name="whatsapp" value={""} onChange={onChange} label='Whatsapp' placeholder='Enter your whatsapp' divClass='w-full'  />
-                <CustomeInput name="facebook" value={""} onChange={onChange} label='Facebook' placeholder='Enter your facebook' divClass='w-full'  />
+                <CustomeInput name="whatsapp" value={form.whatsapp} onChange={onChange} label='Whatsapp' placeholder='Enter your whatsapp' divClass='w-full'  />
+                <CustomeInput name="facebook" value={form.facebook} onChange={onChange} label='Facebook' placeholder='Enter your facebook' divClass='w-full'  />
             </div>
             <div className='flex gap-5 w-full mb-5'>
-                <CustomeInput name="instagram" value={""} onChange={onChange} label='Instagram' placeholder='Enter your instagram' divClass='w-full'  />
-                <CustomeInput name="twitter" value={""} onChange={onChange} label='Twitter' placeholder='Enter your twitter' divClass='w-full'  />
+                <CustomeInput name="instagram" value={form.instagram} onChange={onChange} label='Instagram' placeholder='Enter your instagram' divClass='w-full'  />
+                <CustomeInput name="twitter" value={form.twitter} onChange={onChange} label='Twitter' placeholder='Enter your twitter' divClass='w-full'  />
             </div>
 
             
