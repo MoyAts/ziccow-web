@@ -308,16 +308,10 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "parkingFeature": data.parkingFeature != null ? !data.parkingFeature : true }))}
           checked={form.parkingFeature != null && form.parkingFeature == true}
         />
-        <CheckBoxDiv
-          label="Lot features"
-          name="property" isRadio={false}
-          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "lotFeature": data.lotFeature != null ? !data.lotFeature : true }))}
-          checked={form.lotFeature != null && form.lotFeature == true}
-        />
+        
 
 
       </div>
-      <p className="text-lightGray text-sm mt-2">Please select an option.</p>
 
       {/* <div className="text-xl mb-4 mt-8">Utilities</div>
         <div className="flex tablet:gap-32 max-small:gap-3 max-tablet:justify-between max-small:flex-col">

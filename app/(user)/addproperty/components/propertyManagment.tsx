@@ -33,10 +33,18 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
       behavior: "smooth",
       block: "center",
     });
-    if (!checkNumber(form.sellingPrice)) {
-      setErr("Wrong selling price")
-    } else {
-      setPage(3)
+    if(form.propertyManagment == "Sell"){
+      if (!checkNumber(form.sellingPrice)) {
+        setErr("Wrong selling price")
+      } else {
+        setPage(3)
+      }
+    } else{
+      if (!checkNumber(form.rentalPrice)) {
+        setErr("Wrong rent price")
+      } else {
+        setPage(3)
+      }
     }
   }
   return (

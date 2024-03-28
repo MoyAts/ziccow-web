@@ -18,6 +18,7 @@ interface formInf{
     facebook : string,
     whatsapp : string,
     instagram : string,
+    telegram : string,
 }
 
 const Personal = () => {
@@ -27,7 +28,8 @@ const Personal = () => {
         twitter: '',
         facebook: '',
         whatsapp: '',
-        instagram: ''
+        instagram: '',
+        telegram: ''
     }
     const dispatch = useDispatch()
     const getUserState = useQuery(GET_USER_SETTING,{
@@ -36,16 +38,15 @@ const Personal = () => {
         },
         onCompleted : () =>{
             const fetchedUser = getUserState.data.user_by_pk
-            console.log(fetchedUser,"fetched")
             setForm((data) => ({
                         ...data,
-                        "firstName" : fetchedUser.first_name,"lastName" : fetchedUser.last_name,
-                        "email" : fetchedUser.email,"phone" : fetchedUser.phone_number,
-                        "twitter" : fetchedUser.social_twitter,
-                        "facebook" : fetchedUser.social_facebook,
-                        "instagram" : fetchedUser.social_instagram,
-                        "whatsapp" : fetchedUser.social_whatsapp,
-                    
+                        firstName : fetchedUser.first_name,lastName : fetchedUser.last_name,
+                        email : fetchedUser.email,phone : fetchedUser.phone_number,
+                        twitter : fetchedUser.social_twitter,
+                        facebook : fetchedUser.social_facebook,
+                        instagram : fetchedUser.social_instagram,
+                        whatsapp : fetchedUser.social_whatsapp,
+                        telegram : fetchedUser.social_telegram,
                     }))
         }
     })
@@ -116,6 +117,7 @@ const Personal = () => {
             facebook : form.facebook,
             instagram : form.instagram,
             whatsapp : form.whatsapp,
+            telegram : form.telegram,
         }})
     }
   return (
@@ -146,6 +148,8 @@ const Personal = () => {
                 <CustomeInput name="instagram" value={form.instagram} onChange={onChange} label='Instagram' placeholder='Enter your instagram' divClass='w-full'  />
                 <CustomeInput name="twitter" value={form.twitter} onChange={onChange} label='Twitter' placeholder='Enter your twitter' divClass='w-full'  />
             </div>
+            <CustomeInput name="telegram" value={form.telegram} onChange={onChange} label='Telegram' placeholder='Enter your telegram' divClass='w-full'  />
+            
 
             
             <div className='flex justify-between mt-8'>

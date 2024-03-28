@@ -141,7 +141,6 @@ const Form = () => {
                         data: {
                             applicances: form.appliances,
                             parking_feature: form.parkingFeature,
-                            lot_features: form.lotFeature,
                             primary_school: form.community.primarySchool,
                             secondary_school: form.community.secondarySchool,
                             college_and_uni: form.community.collegeAndUni,
@@ -217,10 +216,10 @@ const Form = () => {
                 </div>
                 {
                     page == 1 ?
-                        <PropertyDetail setPage={changePage} setForm={setForm} form={form} />
-                        :
-                        page == 2 ?
-                            <PropertyManagment setPage={changePage} setForm={setForm} form={form} />
+                    <PropertyDetail setPage={changePage} setForm={setForm} form={form} />
+                    :
+                    page == 2 ?
+                    <PropertyManagment setPage={changePage} setForm={setForm} form={form} />
                             :
                             page == 3 ?
                                 <Confirmation loading={loading || loading2} form={form} setForm={setForm} addList={addList} />

@@ -140,7 +140,13 @@ export const GET_LIST_BY_ID = gql`query a($list_id: uuid!) {
       social_instagram
       social_telegram
       social_whatsapp
+      phone_number
     }
+    
+    views_count 
+    save_count 
+    created_at
+    verified
     address_data
     currency
     real_estate_name

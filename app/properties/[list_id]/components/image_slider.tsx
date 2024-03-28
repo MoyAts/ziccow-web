@@ -4,13 +4,17 @@ import img from "../../../assets/images/anthony-esau-N2zk9yXjmLA-unsplash (1).jp
 import { IoIosArrowBack as NextIcon} from "react-icons/io";
 import { houseInf } from "@/utils/interfaces";
 import { useState } from "react";
-import Lightbox from "yet-another-react-lightbox";
+import Lightbox  from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import { useRef } from "react"
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+
 interface Props {
     house : houseInf
 }
 
 const ImageSlider = ({ house } : Props) => {
+    const zoomRef = useRef(null);
     const [open, setOpen] = useState(false);
     const imgs = [...house.digital_assets]
     const len = imgs.length
@@ -26,6 +30,19 @@ const ImageSlider = ({ house } : Props) => {
 
       <Lightbox
         open={open}
+        plugins={[ Zoom]}
+        zoom={{ 
+            ref: zoomRef,
+            maxZoomPixelRatio : 10,
+            // zoomInMultiplier,
+            // doubleTapDelay,
+            // doubleClickDelay,
+            // doubleClickMaxStops,
+            // keyboardMoveDistance,
+            // wheelZoomDistanceFactor,
+            // pinchZoomDistanceFactor,
+            // scrollToZoom,
+         }}
         close={() => setOpen(false)}
         slides={
            imgs.map((data : any,ind : number) => {

@@ -25,14 +25,40 @@ interface Props {
   house: houseInf,
   list_id: string,
 }
+function calculateTimeDifference(timestamp: string): string {
+  const currentDate = new Date();
+  const targetDate = new Date(timestamp);
 
+  const timeDiff = Math.abs(currentDate.getTime() - targetDate.getTime());
+
+  const secondsDiff = Math.floor(timeDiff / 1000);
+  const minutesDiff = Math.floor(timeDiff / (1000 * 60));
+  const hoursDiff = Math.floor(timeDiff / (1000 * 60 * 60));
+  const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+  const monthsDiff = Math.floor(daysDiff / 30);
+  const yearsDiff = Math.floor(daysDiff / 365);
+
+  if (yearsDiff > 0) {
+    return `${yearsDiff} year${yearsDiff > 1 ? 's' : ''}`;
+  } else if (monthsDiff > 0) {
+    return `${monthsDiff} month${monthsDiff > 1 ? 's' : ''}`;
+  } else if (daysDiff > 0) {
+    return `${daysDiff} day${daysDiff > 1 ? 's' : ''}`;
+  } else if (hoursDiff > 0) {
+    return `${hoursDiff} hour${hoursDiff > 1 ? 's' : ''}`;
+  } else if (minutesDiff > 0) {
+    return `${minutesDiff} minute${minutesDiff > 1 ? 's' : ''}`;
+  } else {
+    return `${secondsDiff} second${secondsDiff !== 1 ? 's' : ''}`;
+  }
+}
 const Detail = ({ house, list_id }: Props) => {
   const router = useRouter()
   const id = house?.real_estate?.real_estate_uuid
   return (
 
     <div className='w-full mt-12 h-fit px-20 max-w-[1700px]  max-tablet:px-10 max-small:px-5 mx-auto'>
-      <div className='flex text-sm gap-2'>
+      <div className='flex text-sm gap-2 items-center'>
         <div onClick={() => id ? router.push(`/recommendation?realestateType=${id}`) : router.back()} className="me-4">
           <IoArrowBackSharp className="text-3xl cursor-pointer text-mainBlue" />
         </div>
@@ -46,14 +72,16 @@ const Detail = ({ house, list_id }: Props) => {
         <div>{house.real_estate_name ?? house.real_estate?.name ?? "Real State"}</div>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between mt-5">
         <div className="flex gap-7">
           <h1 className="text-[35px] max-tablet:text-[25px]"> {house.real_estate?.name ?? "Real State"}</h1>
-
-          <div className="flex gap-1 m-auto">
-            <Image src={img} width={25} alt="" />
-            <p className="my-auto text-mainBlue">Verified</p>
-          </div>
+    
+          {house.verified &&
+            <div className="flex gap-1 m-auto">
+              <Image src={img} width={25} alt="" />
+              <p className="my-auto text-mainBlue">Verified </p>
+            </div>
+          }
           {/* <div className="flex gap-2 my-auto ">
           <BuildStar num={3} />
         </div> */}
@@ -81,17 +109,17 @@ const Detail = ({ house, list_id }: Props) => {
       <div className="flex justify-between max-mobile:flex-col max-small:gap-5">
         <div className="flex gap-4 my-auto">
           <div className="flex gap-1">
-            <span>1 day</span>
+            <span>{calculateTimeDifference(house.created_at) ?? ""}</span>
             <span className="text-lightGray">on Zirrow</span>
           </div>
           <div className="w-[1px] h-5 my-auto bg-gray-300"></div>
           <div className="flex gap-1">
-            <span>310</span>
+            <span>{house.views_count}</span>
             <span className="text-lightGray">View</span>
           </div>
           <div className="w-[1px] h-5 my-auto bg-gray-300"></div>
           <div className="flex gap-1">
-            <span>4</span>
+            <span>{house.save_count}</span>
             <span className="text-lightGray">Saves</span>
           </div>
         </div>

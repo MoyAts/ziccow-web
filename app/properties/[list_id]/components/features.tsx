@@ -51,30 +51,7 @@ const features = ({ house }: Props) => {
                         Full bathrooms: 1
                     </li> */}
                     </ul>
-                    
-                    <div className="text-lg mt-5 font-semibold my">Payments</div>
-                    <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                        <li className="before:content-['\2022']  before:mr-2">
-                            Payment program : {house.payment_program ?? "Unknown"} 
-                        </li>
-                        <li className="before:content-['\2022']  before:mr-2">
-                            Conveyancing program : {house.conveyancing_payment} Birr
-                        </li>
-
-                        <li className="before:content-['\2022']  before:mr-2">
-                            Goverment Payment  : {house.gov_payment_ashura} Birr
-                        </li>
-                        <li className="before:content-['\2022']  before:mr-2">
-                            Leasing Payment  : {house.leasing_payment} Birr
-                        </li>
-                        <li className="before:content-['\2022']  before:mr-2">
-                            Commission Payment  : {house.commission_payment} Birr
-                        </li>
-                        <li className="before:content-['\2022']  before:mr-2">
-                            Estimated Rent Price : {house.est_rental_price} Birr
-                        </li>
-                    </ul>
-                  
+                 
                     <div className="text-lg mt-5 font-semibold my">Extra feature</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
@@ -115,8 +92,34 @@ const features = ({ house }: Props) => {
                             Year built: {house.build_date}
                         </li>
                     </ul>
+                       
+                    <div className="text-lg mt-5 font-semibold my">Payments</div>
+                    <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Payment program : {house.payment_program ?? "Unknown"} 
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Conveyancing program : {house.conveyancing_payment} Birr
+                        </li>
+
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Goverment Payment Ashura  : {house.gov_payment_ashura} Birr
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Leasing Payment  : {house.leasing_payment} Birr
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Commission Payment  : {house.commission_payment} Birr
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Estimated Rent Price : {house.est_rental_price} Birr
+                        </li>
+                    </ul>
+                  
                 </div>
+                
             </div>
+            
 
 
 
@@ -126,7 +129,7 @@ const features = ({ house }: Props) => {
 
 
 
-            <div className='flex justify-between mt-5'>
+            <div className='flex justify-between mt-10'>
                 <div className='w-full '>
                     <div className="text-lightGray font-semibold text-xl">Property</div>
                     <div className="text-lg mt-5 font-semibold my">Parking</div>
@@ -141,20 +144,22 @@ const features = ({ house }: Props) => {
                             </li>
                         }
                     </ul>
-                    <div className="text-lg mt-5 font-semibold my">Lot</div>
-                    <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                        {house.extra_features?.lot_features && <li className="before:content-['\2022']  before:mr-2">
-                            Lot features: Near Public Transit
-                        </li>}
-                    </ul>
-                    <div className="text-lg mt-5 font-semibold my">Other property information</div>
-                    <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                        <li className="before:content-['\2022']  before:mr-2">
-                            Property number: {house.property_number ?? "Unknown"}
-                        </li>
-                    </ul>
+                   
                 </div>
-
+                <div className='w-full '>
+                    <div className="text-lg mt-5 font-semibold my">Lot</div>
+                        <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+                            {house.extra_features?.lot_features && <li className="before:content-['\2022']  before:mr-2">
+                                Lot features: Near Public Transit
+                            </li>}
+                        </ul>
+                        <div className="text-lg mt-5 font-semibold my">Other property information</div>
+                        <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+                            <li className="before:content-['\2022']  before:mr-2">
+                                Property number: {house.property_number ?? "Unknown"}
+                            </li>
+                        </ul>
+                </div>
                 {/* 
             <div className='w-full '>
                 <div className="text-lightGray font-semibold text-xl">Utilities</div>
@@ -182,14 +187,16 @@ const features = ({ house }: Props) => {
             </div> */}
 
             </div>
-            <div className="text-lg mt-5 font-semibold ">Construction custom</div>
             {house.extra_features?.construction_custom && 
+            <>
+                <div className="text-lg mt-5 font-semibold ">Construction custom</div>
                 <div className="text-lightGray ps-5">
                     {house.extra_features.construction_custom}
                 </div>
+            </>
             }
 
-            <div className='flex justify-between mt-5'>
+            <div className='flex justify-between '>
 
                 <div className='w-full '>
                     {/* <div className="text-lightGray font-semibold text-xl">Community & neighborhood</div> */}
@@ -230,17 +237,17 @@ const features = ({ house }: Props) => {
                              {house.extra_features?.unique_material ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
                         </li>
                     </ul>
-                    <div className="text-lg mt-5 font-semibold my">Property Location</div>
+                
+                </div>
+               
+
+                <div className='w-full '>
+                <div className="text-lg mt-5 font-semibold my">Property Location</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
                            {house.address_data}
                         </li>
                     </ul>
-                    
-                </div>
-               
-
-                <div className='w-full '>
                     {/* <div className="text-lightGray font-semibold text-xl">HOA & financial</div>
                     <div className="text-lg mt-5 font-semibold my">HOA</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">

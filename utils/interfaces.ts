@@ -5,13 +5,18 @@ export interface houseInf {
     listing_id : string
     currency : string,
     build_date : string,
+    created_at : string,
     sale_price : string,
     sale_type : string,
     status : string,
     description : string,
     property_number : string,
     real_estate_name : string,
+    
+    views_count : number,
+    save_count : number,
     owner :  {
+        phone_number : string,
         first_name : string | null,
         profile_pic: string | null,
         social_twitter: string | null,
@@ -60,6 +65,7 @@ export interface houseInf {
         unique_material: boolean | null,
         
     },
+    verified : boolean,
     completion_status : String | null,
     payment_program : String | null,
     est_rental_price : String | null,

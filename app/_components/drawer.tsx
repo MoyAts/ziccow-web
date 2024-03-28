@@ -69,7 +69,7 @@ const Drawer = ({ setIsDrawer }: Props) => {
                                 </div>
                             </div>
                             <div className='z-50 flex flex-col basis-1/3'>
-                                <Link href={"/addproperty"} className='text-mainBlue font-semibold text-lg'>Sell a Property</Link>
+                                <Link href={"/addproperty"} className='text-mainBlue font-semibold text-lg'>Add new listing</Link>
                                 <div className='z-50 flex flex-col gap-1 mt-2'>
                                     <p className=' text-lightGray'>
                                         Selling agents, Post for sale, Seller’s guide, Home values, Real estate app.
