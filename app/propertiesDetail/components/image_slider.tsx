@@ -15,7 +15,7 @@ const imageSlider = () => {
             </div>
             <Image src={img} className='w-full h-full object-cover rounded-lg' alt="" />        
         </div>
-        <div className="mt-4 gap-5 grid grid-cols-4 justify-between overflow-hidden">
+        {/* <div className="mt-4 gap-5 grid grid-cols-4 justify-between overflow-hidden">
             <div onClick={() => alert("alert")} className="w-full flex flex-shrink-0 rounded-lg overflow-hidden cursor-pointer ">
                 <Image src={img}  className='w-full duration-200 rounded-lg hover:scale-110 object-cover' alt="" />        
             </div>
@@ -35,7 +35,7 @@ const imageSlider = () => {
 
           
 
-        </div>
+        </div> */}
     </div>
   )
 }

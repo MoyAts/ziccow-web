@@ -124,7 +124,7 @@ const Detail = ({ house, list_id }: Props) => {
           <GeneralInformation house={house} />
           <Price house={house} />
           <TimeLine />
-          <Broker />
+          {house.owner && <Broker house={house} />}
         </div>
       </div>
 
@@ -135,7 +135,7 @@ const Detail = ({ house, list_id }: Props) => {
         <GeneralInformation house={house} />
         <Price house={house} />
         <TimeLine />
-        <Broker />
+        {house.owner && <Broker house={house} />}
         <Features house={house} />
         {/* <Nearby /> */}
       </div>

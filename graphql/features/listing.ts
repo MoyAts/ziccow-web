@@ -48,6 +48,28 @@ export const GET_LISTING  = gql`
       spa
       store_rooms
     }
+    extra_features {
+      created_at
+      college_and_uni
+      applicances
+      construction_custom
+      hospital
+      lot_features
+      ordinary_material
+      parking_feature
+      primary_school
+      secondary_school
+      supermarket
+      unique_material
+      uuid
+    }
+    completion_status
+    payment_program
+    est_rental_price
+    conveyancing_payment
+    gov_payment_ashura
+    leasing_payment
+    commission_payment
   }
 }
 
@@ -109,6 +131,15 @@ export const GET_LIST_BY_ID = gql`query a($list_id: uuid!) {
     digital_assets {
       url
       type
+    }
+    owner {
+      first_name
+      profile_pic
+      social_twitter
+      social_facebook
+      social_instagram
+      social_telegram
+      social_whatsapp
     }
     address_data
     currency

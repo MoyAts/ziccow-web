@@ -16,8 +16,10 @@ const Page = ({ params : { list_id }} : { params : { list_id : string}}) => {
     }
   })
   if(error){
-    console.log(error)
-    // router.replace("/properties")
+    router.replace("/properties")
+  }
+  if(data){
+    console.log("--",data)
   }
  
   const [isDrawer,setIsDrawer] = useState(false)

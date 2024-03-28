@@ -5,14 +5,25 @@ import phoneImg from "../../../assets/images/datelight.svg"
 import InputIcon from "../../../assets/images/inputIcon.svg"
 import send from "../../../assets/images/send.svg"
 import userSvg from "../../../assets/images/user.svg"
+import { houseFeaturedInf, houseInf } from "@/utils/interfaces";
+import { CiLinkedin } from "react-icons/ci";
+import { BsTelegram, BsTwitterX } from "react-icons/bs";
+import { FaFacebookF } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
+import { FaTelegramPlane } from "react-icons/fa";
+import Link from "next/link";
 
-const broker = () => {
+interface Props {
+    house : houseInf
+}
+const broker = ({ house } : Props) => {
     return (
       <div className="mt-5 bg-white py-4 px-4 rounded-xl shadow h-fit">
           <div className="flex gap-2 text-xl font-semibold">
              <Image src={userSvg} className="w-7" alt="" />
               <p>
-                Broker’s Info
+                Broker’s Info 
               </p>
           </div>
 
@@ -21,10 +32,20 @@ const broker = () => {
            
             <div className="px-2 pb-4 flex justify-between">
                 <div className="flex gap-2">
-                    <Image src={userImg} className="w-16 h-16 rounded-full" alt="" />
+                    {house.owner?.profile_pic ?<Image 
+                        src={house.owner?.profile_pic ?? ""} 
+                        width={100}
+                        height={100}
+                        className="w-16 h-16 rounded-full" 
+                        alt="" 
+                    /> : <div className="p-2 flex rounded-full w-[44px] bg-blue-500 text-white h-[44px]">
+                            <p className="m-auto text-xl">
+                                {house.owner?.first_name ? house.owner?.first_name[0] : "U"}
+                            </p>
+                        </div>}
                     <div className="flex flex-col my-auto">
                         <div>Jan 03, 2024</div>
-                        <div className="text-slate-700">Today</div>
+                        <div className="text-slate-700">{house.owner?.first_name}</div>
                     </div>
                 </div>
                 <Image src={phoneImg} className="w-7 my-auto" alt="" />
@@ -45,6 +66,35 @@ const broker = () => {
                     <p className="text-lg">Send Message</p>
                     <Image src={send} alt="" />
                 </button>
+                <div className="flex gap-2 justify-between mt-4">
+                   {house.owner?.social_facebook &&
+                    <Link href={house.owner?.social_facebook ?? ""}>
+                        <FaFacebookF className="text-3xl" />
+                    </Link>
+                    }
+                    {house.owner?.social_whatsapp &&
+                    <Link href={house.owner?.social_whatsapp ?? ""}>
+                        <FaWhatsapp className="text-3xl" />
+                    </Link>
+                    }
+                     {house.owner?.social_telegram &&
+                    <Link href={house.owner?.social_telegram ?? ""}>
+                        <BsTelegram className="text-3xl" />
+                    </Link>
+                    }
+                    {house.owner?.social_instagram &&
+                    <Link href={house.owner?.social_instagram ?? ""}>
+                        <FaInstagram className="text-3xl" />
+                    </Link>
+                    }
+                    {house.owner?.social_twitter &&
+                    <Link href={house.owner?.social_twitter ?? ""}>
+                        <BsTwitterX className="text-3xl" />
+                    </Link>
+                    }
+                   
+                </div>
+                
             </div>
   
   

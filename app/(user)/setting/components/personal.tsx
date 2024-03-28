@@ -14,12 +14,20 @@ interface formInf{
     phone : string,
     email : string,
     userName : string,
+    twitter : string,
+    facebook : string,
+    whatsapp : string,
+    instagram : string,
 }
 
 const Personal = () => {
     const userData = useSelector(getState)
     const initialData : formInf = {
-        firstName : "",lastName : "" , email : "", phone : "",userName : ""
+        firstName: "", lastName: "", email: "", phone: "", userName: "",
+        twitter: '',
+        facebook: '',
+        whatsapp: '',
+        instagram: ''
     }
     const dispatch = useDispatch()
     console.log(userData)
@@ -124,12 +132,12 @@ const Personal = () => {
             <p className='text-sm my-2 text-lightGray mb-7'>Your social media links.</p>
             
             <div className='flex gap-5 w-full mb-5'>
-                <CustomeInput name="LinkedIn" value={""} onChange={onChange} label='LinkedIn' placeholder='Enter your phone number' divClass='w-full'  />
-                <CustomeInput name="Facebook" value={""} onChange={onChange} label='Facebook' placeholder='Enter your email' divClass='w-full'  />
+                <CustomeInput name="whatsapp" value={""} onChange={onChange} label='Whatsapp' placeholder='Enter your whatsapp' divClass='w-full'  />
+                <CustomeInput name="facebook" value={""} onChange={onChange} label='Facebook' placeholder='Enter your facebook' divClass='w-full'  />
             </div>
             <div className='flex gap-5 w-full mb-5'>
-                <CustomeInput name="Instagram" value={""} onChange={onChange} label='Instagram' placeholder='Enter your phone number' divClass='w-full'  />
-                <CustomeInput name="Twitter" value={""} onChange={onChange} label='Twitter' placeholder='Enter your email' divClass='w-full'  />
+                <CustomeInput name="instagram" value={""} onChange={onChange} label='Instagram' placeholder='Enter your instagram' divClass='w-full'  />
+                <CustomeInput name="twitter" value={""} onChange={onChange} label='Twitter' placeholder='Enter your twitter' divClass='w-full'  />
             </div>
 
             

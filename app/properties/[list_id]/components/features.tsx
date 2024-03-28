@@ -1,7 +1,7 @@
 "use client"
 import { houseInf } from "@/utils/interfaces"
-
-
+import { FaCheck } from "react-icons/fa";
+import { IoCloseSharp } from "react-icons/io5";
 
 interface Props {
     house: houseInf
@@ -51,10 +51,37 @@ const features = ({ house }: Props) => {
                         Full bathrooms: 1
                     </li> */}
                     </ul>
-                    <div className="text-lg mt-5 font-semibold my">Appliances</div>
+                    
+                    <div className="text-lg mt-5 font-semibold my">Payments</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
-                            Appliances included
+                            Payment program : {house.payment_program ?? "Unknown"} 
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Conveyancing program : {house.conveyancing_payment} Birr
+                        </li>
+
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Goverment Payment  : {house.gov_payment_ashura} Birr
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Leasing Payment  : {house.leasing_payment} Birr
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Commission Payment  : {house.commission_payment} Birr
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Estimated Rent Price : {house.est_rental_price} Birr
+                        </li>
+                    </ul>
+                  
+                    <div className="text-lg mt-5 font-semibold my">Extra feature</div>
+                    <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+                        <li className="before:content-['\2022']  before:mr-2">
+                            {house.extra_features.applicances}
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Complition status : {house.completion_status}
                         </li>
                     </ul>
                     <div className="text-lg mt-5 font-semibold my">Other interior features</div>
@@ -105,9 +132,12 @@ const features = ({ house }: Props) => {
                     <div className="text-lg mt-5 font-semibold my">Parking</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         {
-                            house.extra_features?.parking_feature &&
+                            house.extra_features?.parking_feature ?
                             <li className="before:content-['\2022']  before:mr-2">
                                 Parking features
+                            </li>
+                            : <li className="before:content-['\2022']  before:mr-2">
+                                No Parking features
                             </li>
                         }
                     </ul>
@@ -120,7 +150,7 @@ const features = ({ house }: Props) => {
                     <div className="text-lg mt-5 font-semibold my">Other property information</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
-                            Parcel number: 012671164
+                            Property number: {house.property_number ?? "Unknown"}
                         </li>
                     </ul>
                 </div>
@@ -152,29 +182,66 @@ const features = ({ house }: Props) => {
             </div> */}
 
             </div>
-
-
+            <div className="text-lg mt-5 font-semibold ">Construction custom</div>
+            {house.extra_features?.construction_custom && 
+                <div className="text-lightGray ps-5">
+                    {house.extra_features.construction_custom}
+                </div>
+            }
 
             <div className='flex justify-between mt-5'>
 
                 <div className='w-full '>
-                    <div className="text-lightGray font-semibold text-xl">Community & neighborhood</div>
-                    <div className="text-lg mt-5 font-semibold my">Community</div>
+                    {/* <div className="text-lightGray font-semibold text-xl">Community & neighborhood</div> */}
+                    <div className="text-lg  font-semibold my">Community</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                        <li className="before:content-['\2022']  before:mr-2">
+                        {/* <li className="before:content-['\2022']  before:mr-2">
                             Near a local park
+                        </li> */}
+                        
+                        <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+                            <p>
+                                College and Universities :
+                            </p>
+                             {house.extra_features?.college_and_uni ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+                            <p>
+                                hospital :
+                            </p>
+                             {house.extra_features?.hospital ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+                            <p>
+                                Secondary School :
+                            </p>
+                             {house.extra_features?.secondary_school ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+                            <p>
+                                Supermarket :
+                            </p>
+                             {house.extra_features?.supermarket ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+                            <p>
+                                Unique Material :
+                            </p>
+                             {house.extra_features?.unique_material ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
                         </li>
                     </ul>
                     <div className="text-lg mt-5 font-semibold my">Property Location</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
-                            4kilo around parliament
+                           {house.address_data}
                         </li>
                     </ul>
+                    
                 </div>
+               
 
                 <div className='w-full '>
-                    <div className="text-lightGray font-semibold text-xl">HOA & financial</div>
+                    {/* <div className="text-lightGray font-semibold text-xl">HOA & financial</div>
                     <div className="text-lg mt-5 font-semibold my">HOA</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
@@ -186,13 +253,13 @@ const features = ({ house }: Props) => {
                         <li className="before:content-['\2022']  before:mr-2">
                             Services included
                         </li>
-                    </ul>
-                    <div className="text-lg mt-5 font-semibold my">Other financial information</div>
+                    </ul> */}
+                    {/* <div className="text-lg mt-5 font-semibold my">Other financial information</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
                             Buyer agency compensation: 2%
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
 
             </div>
