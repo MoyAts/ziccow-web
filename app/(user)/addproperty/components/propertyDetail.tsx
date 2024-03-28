@@ -276,25 +276,25 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         <CheckBoxDiv
           label="Fully Furnished"
           name="Appliances" isRadio={true}
-          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "appliances": false }))}
+          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "appliances": "fully_furnished" }))}
           checked={form.appliances != null && form.appliances == "fully_furnished"}
         />
         <CheckBoxDiv
           label="Semi-Furnished"
           name="Appliances" isRadio={true}
-          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "appliances": true }))}
+          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "appliances": "semi_furnished" }))}
           checked={form.appliances != null && form.appliances == "semi_furnished"}
         />
         <CheckBoxDiv
           label="Furnishing work not done"
           name="Appliances" isRadio={true}
-          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "appliances": true }))}
+          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "appliances": "not_furnished" }))}
           checked={form.appliances != null && form.appliances == "not_furnished"}
         />
         <CheckBoxDiv
           label="Air conditioning system"
           name="Appliances" isRadio={true}
-          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "appliances": true }))}
+          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "appliances": "includes_ac" }))}
           checked={form.appliances != null && form.appliances == "includes_ac"}
         />
       </div>
@@ -453,7 +453,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
 
       <CustomeInput
         label="Government payment (Ashura)"
-        name={"estRentalPrice"} placeholder='Estimated rental price per month Birr/month'
+        name={"govPaymentAshura"} placeholder='Estimated rental price per month Birr/month'
         divClass='mb-5'
         onChange={setChange}
         value={form.govPaymentAshura}
