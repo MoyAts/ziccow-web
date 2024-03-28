@@ -116,7 +116,7 @@ const Detail = ({ house, list_id }: Props) => {
         <div className="w-7/12 flex flex-col">
           <ImageSlider house={house} />
           <About description={house.description} />
-          <MatterPortEmbed link={house.matterport_link} height={400} />
+          {house.matterport_link && <MatterPortEmbed link={house.matterport_link} height={400} />}
           <Features house={house} />
           {/* <Nearby /> */}
         </div>
@@ -131,7 +131,7 @@ const Detail = ({ house, list_id }: Props) => {
       <div className="flex flex-col w-full pb-12 gap-10 pt-8 tablet:hidden">
         <ImageSlider house={house} />
         {/* <About /> */}
-        <MatterPortEmbed link="https://my.matterport.com/show/?m=jm5WwEA3HUN&title=0&brand=0&wh=0" height={400} />
+        {house.matterport_link && <MatterPortEmbed link={house.matterport_link} height={400} />}
         <GeneralInformation house={house} />
         <Price house={house} />
         <TimeLine />

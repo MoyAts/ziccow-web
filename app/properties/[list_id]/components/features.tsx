@@ -78,7 +78,7 @@ const features = ({ house }: Props) => {
                     <div className="text-lg mt-5 font-semibold my">Extra feature</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
-                            {house.extra_features.applicances}
+                            {house.extra_features?.applicances ?? 0}
                         </li>
                         <li className="before:content-['\2022']  before:mr-2">
                             Complition status : {house.completion_status}
