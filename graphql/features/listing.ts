@@ -157,6 +157,7 @@ export const GET_LIST_BY_ID = gql`
         maids_room
         square_ft
         spa
+        praying_room
         store_rooms
       }
     }

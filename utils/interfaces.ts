@@ -31,6 +31,7 @@ export interface houseInf {
         square_ft : string,
         spa : string,
         store_rooms : string,
+        praying_room: string,
     }
     extra_features : {
         applicances_included : boolean,
