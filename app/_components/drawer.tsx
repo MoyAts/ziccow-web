@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
-import img from "../assets/images/Widget 5.svg"
+// import img from "../assets/images/Widget 5.svg"
+import img from "../assets/images/zirrow.jpg"
+
 import Image from 'next/image'
 import closeImg from "../assets/images/Group (5).svg"
 import aboutImg from "../assets/images/Group (3).svg"
@@ -26,8 +28,8 @@ const Drawer = ({ setIsDrawer }: Props) => {
             </div>
             <div className='flex justify-between px-10 max-sm:px-5'>
                 <div className='my-auto  flex gap-2 cursor-pointer' >
-                    <Image src={img} alt="" />
-                    <Link href={"/"} className='font-semibold text-g'>
+                    <Image src={img}  width={40} alt="" />
+                    <Link href={"/"} className='font-semibold text-g my-auto'>
                         <p className="">{
                             isLogedIn && state.user?.firstName ? state.user.firstName : "Zirrow General Trading"
                         }</p>
