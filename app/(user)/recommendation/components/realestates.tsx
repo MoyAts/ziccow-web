@@ -187,12 +187,12 @@ const Realestates = () => {
                             <p className="">
                                 Sort:
                             </p>
-                            <div className="relative z-40 flex flex-col gap-2 w-fit px-2  group  ">
+                            <div className="relative  flex flex-col gap-2 w-fit px-2  group  ">
                                 <div className="flex  justify-between rounded gap-1">
                                     <span className="">Default</span>
                                     <ListIcon className="my-auto text-mainBlue group-hover:rotate-90 duration-150 -rotate-90" />
                                 </div>
-                                <div className="absolute text-sm top-6 shadow group-hover:flex hidden flex-col w-full text-black bg-white rounded p-1">
+                                <div className="absolute  z-40 text-sm top-6 shadow group-hover:flex hidden flex-col w-full text-black bg-white rounded p-1">
                                     {["Default", "Price", "Date"].map((data, ind) => (
                                         <div onClick={() => sortList(ind)} key={ind} className="flex  cursor-pointer duration-150 gap-2  px-2  py-1">
                                             <input id={`sort${ind}`} name="sort" type="radio" placeholder="s" className="hover:text-mainBlue cursor-pointer" />
