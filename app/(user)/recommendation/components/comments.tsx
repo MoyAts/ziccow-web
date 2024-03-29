@@ -5,6 +5,7 @@ import BuildStar from './buildstar';
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_REALESTATE_REVIEW, GET_REALESTATE_REVIEW } from '@/graphql/features/realestate';
 import Image from 'next/image';
+import { calculateTimeDifference } from '@/lib/auth';
 const AddComment = ({ realEstate } : any) => {
   const [comments, setComments] = useState<any[]>([])
   const newDatas = useQuery(GET_REALESTATE_REVIEW,{
@@ -25,6 +26,7 @@ const AddComment = ({ realEstate } : any) => {
   const [addReview , { loading , data, error}] = useMutation(ADD_REALESTATE_REVIEW,{
     fetchPolicy: 'network-only', 
   })
+
   const post = ()=> {
     addReview({ variables : {
         comment,
@@ -100,7 +102,7 @@ const AddComment = ({ realEstate } : any) => {
         </div>
       </div>
       <div className='flex flex-col gap-4 ps-5'>
-        {comments.map((data: any, ind: number) => <Comment key={ind} rating={data.rating} message={data.comment} user={data.user} />)}
+        {comments.map((data: any, ind: number) => <Comment key={ind} create_at={data.create_at} rating={data.rating} message={data.comment} user={data.user} />)}
       </div>
     </div>
   )
@@ -117,14 +119,16 @@ const timeStamp = () => {
 interface Pr {
    message: string, 
    rating: number, 
+   create_at : string,
    user : {
     first_name : string,
     last_name : string,
     profile_pic : string,
   }
 }
-const Comment = ({ message, rating, user }: Pr) => {
-  const time = timeStamp()
+const Comment = ({ message, rating, user ,create_at}: Pr) => {
+  const time  = create_at ? calculateTimeDifference(create_at) : "1 sec"
+
   return <div className='flex gap-5 '>
     <div className='w-[3em] flex h-[3em] rounded-full bg-mainBlue'>
       <div className='m-auto text-white'>{user?.first_name[0] ?? "U"}</div>
@@ -140,7 +144,7 @@ const Comment = ({ message, rating, user }: Pr) => {
           <div className='flex gap-1  place-content-end place-items-end '>
             <BuildStar num={rating + 1} />
           </div>
-          <div className='text-sm mt-2 text-gray-500 place-self-end place-items-end self-end'>{time}</div>
+          <div className='text-sm mt-2 text-gray-500 place-self-end place-items-end self-end'>{time} Ago</div>
         </div>
       </div>
     </div>

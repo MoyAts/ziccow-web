@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { LuSend } from "react-icons/lu";
 import { FaStar as StarIcon } from "react-icons/fa6";
 import BuildStar from './buildstar';
+import { calculateTimeDifference } from '@/lib/auth';
 
 var cms = [
   { comment: "Great location and spacious apartment!", rate: 3 },
