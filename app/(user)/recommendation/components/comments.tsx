@@ -144,7 +144,7 @@ const Comment = ({ message, rating, user ,create_at}: Pr) => {
           <div className='flex gap-1  place-content-end place-items-end '>
             <BuildStar num={rating + 1} />
           </div>
-          <div className='text-sm mt-2 text-gray-500 place-self-end place-items-end self-end'>{time} Ago</div>
+          <div className='text-xs mt-2 text-gray-500 place-self-end place-items-end self-end'>{time} Ago</div>
         </div>
       </div>
     </div>

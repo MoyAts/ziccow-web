@@ -20,6 +20,7 @@ import AddComment from "./comments";
 import BuildStar from "./buildstar"
 import { IoArrowBackSharp } from "react-icons/io5";
 import { useRouter } from "next/navigation";
+import { calculateTimeDifference } from "@/lib/auth";
 
 interface Props {
   house: houseInf,
@@ -29,9 +30,7 @@ interface Props {
 const Detail = ({ house, list_id }: Props) => {
   const router = useRouter()
   const id = house?.real_estate?.real_estate_uuid
-  function calculateTimeDifference(created_at: string): import("react").ReactNode {
-    throw new Error("Function not implemented.");
-  }
+  
 
   return (
 
