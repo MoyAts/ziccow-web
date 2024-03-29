@@ -2,24 +2,36 @@ import React, { useState } from 'react'
 import { LuSend } from "react-icons/lu";
 import { FaStar as StarIcon } from "react-icons/fa6";
 import BuildStar from './buildstar';
-
-var cms = [
-  { comment: "Great location and spacious apartment!", rate: 3 },
-  { comment: "The view from the balcony is breathtaking!", rate: 2 },
-  { comment: "The apartment is clean and well-maintained.", rate: 2 },
-  { comment: "Excellent amenities and friendly neighbors.", rate: 1 },
-  { comment: "The landlord is responsive and helpful.", rate: 3 },
-  { comment: "I love the modern design of the apartment.", rate: 2 },
-  { comment: "Conveniently located near shops and restaurants.", rate: 2 },
-  { comment: "Quiet and peaceful environment.", rate: 3 },
-  { comment: "The apartment has ample storage space.", rate: 2 },
-  { comment: "I feel safe and secure in this building.", rate: 3 }
-];
-const AddComment = () => {
-  const [comments, setComments] = useState(cms)
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_REALESTATE_REVIEW, GET_REALESTATE_REVIEW } from '@/graphql/features/realestate';
+import Image from 'next/image';
+const AddComment = ({ realEstate } : any) => {
+  const [comments, setComments] = useState<any[]>([])
+  const newDatas = useQuery(GET_REALESTATE_REVIEW,{
+    fetchPolicy: 'network-only', 
+    variables : {
+      _eq : realEstate,
+    },
+    onCompleted : ()=>{
+      if(newDatas.data){
+        setComments(newDatas.data.real_estate_review)
+      }
+    }
+  })
   const [comment, setComment] = useState("")
   const [curr, setCurr] = useState(-1)
-  const [rate, setRate] = useState<number | null>(null)
+  const [rating, setRating] = useState<number | null>(null)
+  // $comment : String!,$real_estate_id : uuid!,$ : bigint!
+  const [addReview , { loading , data, error}] = useMutation(ADD_REALESTATE_REVIEW,{
+    fetchPolicy: 'network-only', 
+  })
+  const post = ()=> {
+    addReview({ variables : {
+        comment,
+        rating,
+        real_estate_id : realEstate, 
+    }})
+  }
   return (
     <div className='flex pb-32 flex-col gap-5'>
 
@@ -29,7 +41,13 @@ const AddComment = () => {
           <div className='w-[3em] flex h-[3em] rounded-full bg-slate-900'>
             <div className='m-auto text-white'>N</div>
           </div>
-          <div className='flex flex-col gap-2 w-full'>
+         {loading ? 
+         <div>loading</div>
+         :
+         error ?
+         <div>error</div>
+         :
+         <div className='flex flex-col gap-2 w-full'>
             <div className='my-auto'>
               <div
                 onMouseOut={() => {
@@ -43,14 +61,14 @@ const AddComment = () => {
                       setCurr(ind)
                     }}
                     onClick={() => {
-                      setRate(ind)
+                      setRating(ind)
                     }}
-                    className={`text-lg cursor-pointer text-gray-600 ${rate != null && rate >= ind ? "text-yellow-500" : rate == null && curr >= ind ? "text-yellow-500" : ""}`} />
+                    className={`text-lg cursor-pointer text-gray-600 ${rating != null && rating >= ind ? "text-yellow-500" : rating == null && curr >= ind ? "text-yellow-500" : ""}`} />
                 })}
 
               </div>
             </div>
-            {rate != null && <div className="flex border w-full border-slate-400 rounded-xl ps-2 bg-white ">
+            {rating != null && <form className="flex border w-3/4 border-slate-400 rounded-xl ps-2 bg-white ">
               <input
                 value={comment}
                 onChange={({ target }: any) => setComment(target.value)}
@@ -58,15 +76,16 @@ const AddComment = () => {
                 placeholder='Add your review here...'
                 name='Abcd'
                 onSubmit={() => {
-                  setComments(data => [{ comment, rate }, ...data])
+                  setComments(data => [{ comment, rating }, ...data])
                   setComment("")
-                  setRate(null)
+                  setRating(null)
                 }}
               />
               <button onClick={() => {
-                setComments(data => [{ comment, rate }, ...data])
+                setComments(data => [{ comment, rating }, ...data])
                 setComment("")
-                setRate(null)
+                setRating(null)
+                post()
               }} className='px-5 py-5 rounded-lg  flex gap-3'>
                 {/* <p>
                           Send
@@ -74,14 +93,14 @@ const AddComment = () => {
                 <LuSend className='m-auto text-lg text-mainBlue' />
               </button>
 
-            </div>
+            </form>
 
             }
-          </div>
+          </div>}
         </div>
       </div>
       <div className='flex flex-col gap-4 ps-5'>
-        {comments.map((data: { comment: string, rate: number }, ind: number) => <Comment key={ind} rate={data.rate} message={data.comment} />)}
+        {comments.map((data: any, ind: number) => <Comment key={ind} rating={data.rating} message={data.comment} user={data.user} />)}
       </div>
     </div>
   )
@@ -94,22 +113,32 @@ const timeStamp = () => {
   var formattedDate = date.toLocaleDateString(); // Adjust the format based on your preference
   return formattedDate
 }
-const Comment = ({ message, rate }: { message: string, rate: number }) => {
+
+interface Pr {
+   message: string, 
+   rating: number, 
+   user : {
+    first_name : string,
+    last_name : string,
+    profile_pic : string,
+  }
+}
+const Comment = ({ message, rating, user }: Pr) => {
   const time = timeStamp()
   return <div className='flex gap-5 '>
     <div className='w-[3em] flex h-[3em] rounded-full bg-mainBlue'>
-      <div className='m-auto text-white'>N</div>
+      <div className='m-auto text-white'>{user?.first_name[0] ?? "U"}</div>
     </div>
     <div className='flex flex-col gap-2'>
 
       <div className='py-2 flex flex-col break-words flex-wrap px-4 w-fit  rounded-lg bg-white'>
-        <div className='text-gray-500 text-sm'>Alemu Girma</div>
+        <div className='text-gray-500 text-sm'>{user?.first_name ?? ""}</div>
         <div>
           {message}
         </div>
         <div className='flex gap-5 justify-between'>
           <div className='flex gap-1  place-content-end place-items-end '>
-            <BuildStar num={rate + 1} />
+            <BuildStar num={rating + 1} />
           </div>
           <div className='text-sm mt-2 text-gray-500 place-self-end place-items-end self-end'>{time}</div>
         </div>

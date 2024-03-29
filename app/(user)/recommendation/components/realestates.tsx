@@ -50,7 +50,7 @@ const Realestates = () => {
 
     const [where, setWhere] = useState<any>(temp)
     const [curr, setCurr] = useState<string | null>(null)
-    const [isSelected, setIsSelected] = useState(false)
+    const [realEstate, setRealEstate] = useState<null | string>(null)
 
 
     const reset = () => {
@@ -205,7 +205,7 @@ const Realestates = () => {
                     </div>
                     <NameSlide 
                         selectedRealEstate={(reid: string,name : string) => {
-                            setIsSelected(true)
+                            setRealEstate(reid)
                             setPropertyType(name)
                             setWhere({
                                 where: {
@@ -231,10 +231,10 @@ const Realestates = () => {
                     variables={{ ...where, status: { _eq: "ACTIVE" } }}
                 />
             </div>
-            {isSelected && (
+            {realEstate && (
                 <>
                     <div className="h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10">
-                        <AddComment />
+                        <AddComment realEstate={realEstate} />
                     </div>
                 </>
             )
