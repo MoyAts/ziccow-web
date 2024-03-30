@@ -8,11 +8,14 @@ import { useState } from "react";
 import PriceOption from "./price_option";
 import RentalOption from "./rental_option";
 import Search from "./search"
+import { useSearchParams } from "next/navigation";
 
 
 
 const Hero = () => {
-    
+    const searchParams = useSearchParams()
+    const searchData = searchParams.get('search')
+   
     const priceFilter = [
         { name :  "$15k and Below", price : [0,15000]},
         {  name : "$15k and 30k" , price :  [15000,30000]},
@@ -28,8 +31,25 @@ const Hero = () => {
     const houseFilter = [
         "Sell","Rental"
     ]
-    
-    const [where,setWhere] = useState<any>({ where : {},order_by : {}})
+    const initialData = searchData  ? {
+         where : {
+        _or:[
+          {
+            address_data:{_ilike:searchData.trim() ? `%${searchData}%` : ""}
+          },
+          {
+            house_type:{
+                type_name : {
+                    _ilike: searchData.trim() ? `%${searchData}%` : ""
+                    }
+                }
+          }
+        ]
+      },order_by : {}} : 
+      { where : {},order_by : {}
+    }
+
+    const [where,setWhere] = useState<any>(initialData)
     const [curr,setCurr] = useState<string | null>(null)
     
     const [propertyType,setpropertyType] = useState<string>("")
@@ -65,8 +85,11 @@ const Hero = () => {
             return {...data,"order_by" : order}
         })
     }
-    const search = () =>{
+    const search = (region : string,propertyType : string) =>{
         setWhere((data : any)=>{
+            if(!region.trim() && !propertyType.trim()){
+                return initialData
+            }
             const val = {
                 _or:[
                   {
@@ -83,6 +106,10 @@ const Hero = () => {
               }
             return {...data,"where" : val}
         })
+    }
+
+    const runSearch = () => {
+        search(region,propertyType)
     }
 
   return (

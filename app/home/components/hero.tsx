@@ -7,10 +7,14 @@ import img3 from "../../assets/images/solar_city-bold-duotone.svg"
 import Nav from '../../_components/nav';
 import searchImg from "../../assets/images/search.svg"
 import mobileSearchImg from "../../assets/images/mobilesearch.svg"
+import { useState } from "react";
 interface Props{
     setIsDrawer : Function
 }
 const hero = ({ setIsDrawer } : Props) => {
+  
+
+    const [search,setSearch] = useState("")
   return (
     <div className="w-full bg-[#6b6d77] tablet:h-[112vh] max-tablet:h-fit max-tablet:pb-32 max-mobile:pb-8     mx-auto  tablet:max-h-[800px] relative flex flex-col ">
         <Nav withsearch={false} setIsDrawer={setIsDrawer} />
@@ -23,12 +27,12 @@ const hero = ({ setIsDrawer } : Props) => {
                 <div className='w-8/12 max-tablet:w-10/12 max-small:w-full mt-10 mx-auto  bg-white py-2 flex justify-between rounded-2xl px-2'>
                     <div className='flex gap-2 px-2 w-full '>
                         <Image src={img2} className='w-[27px]' alt="" />
-                        <input className='outline-none my-auto w-full py-3' style={{color:"#6D6C6E"}} placeholder='Enter a location, property type or budget' />
+                        <input onChange={({target} : any) => setSearch(target.value)} className='outline-none my-auto w-full py-3' style={{color:"#6D6C6E"}} placeholder='Enter a location, property type or budget' />
                     </div>
                     <div className="mobile:hidden w-fit px-6 flex justify-center ">
                         <Image src={mobileSearchImg} className="w-6" alt="" />
                     </div>
-                    <Link href={"/properties"} className='flex gap-2 w-fit max-mobile:hidden  bg-mainBlue text-white px-6 text-sm justify-center hover:bg-blue-500 py-3 rounded-lg'>
+                    <Link href={!search.trim() ? "/properties" : "/properties/?search="+search} className='flex gap-2 w-fit max-mobile:hidden  bg-mainBlue text-white px-6 text-sm justify-center hover:bg-blue-500 py-3 rounded-lg'>
                         <Image src={searchImg} className="" alt="" />
                         <span className='my-auto w-full max-mobile:hidden'>See&nbsp;Suggestions</span>
                     </Link>

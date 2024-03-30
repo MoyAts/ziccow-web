@@ -130,10 +130,10 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         />
       }
 
-      <CustomeInput value={form.phone} onChange={setChange} label='Property Id (e.g. A0001 “A” is the first letter of your name)' name={"phone"} placeholder='012671164' divClass='mb-5' />
+      <CustomeInput value={form.phone} onChange={setChange} label='Property Id ' name={"phone"} placeholder='012671164' divClass='mb-5' />
       <CustomeInput
         label='Enter the Home Address you’re going to sell/rent.'
-        name={"address"} placeholder='6405 Yellowstone Blvd APT 314, Forest Hills, NY 11375.'
+        name={"address"} placeholder='e.g. A0001 “A” is the first letter of your name'
         divClass='mb-5'
         onChange={setChange}
         Icon={searachImg}
@@ -160,8 +160,8 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           value={form.yearBuilt}
         />
         <CustomeInput
-          label='Square footage (above ground)'
-          name='squareFootage' placeholder='125 sq ft'
+          label='Built up area (above ground)'
+          name='squareFootage' placeholder='e.g. 125 sq ft'
           IconClass={"text-3xl my-auto text-mainBlue rotate-90"}
           ReactIcon={MdNavigateNext}
           divClass='w-full'
@@ -170,8 +170,8 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         />
       </div>
       <CustomeInput
-        label='add % completed Eg. 80% completed'
-        name={"completionStatus"} placeholder='add % completed Eg. 80% completed'
+        label='Construction Status'
+        name={"completionStatus"} placeholder='Eg. 80% completed'
         divClass='mb-5'
         onChange={setChange}
         Icon={searachImg}
@@ -180,7 +180,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
 
       <CustomeInput
         label='Payment Program'
-        name={"paymentProgram"} placeholder='add % completed Eg. 80% completed'
+        name={"paymentProgram"} placeholder='payment program'
         divClass='mb-5'
         onChange={setChange}
         Icon={searachImg}
@@ -291,16 +291,16 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "appliances": "not_furnished" }))}
           checked={form.appliances != null && form.appliances == "not_furnished"}
         />
-        <CheckBoxDiv
+        {/* <CheckBoxDiv
           label="Air conditioning system"
           name="Appliances" isRadio={true}
           setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "appliances": "includes_ac" }))}
           checked={form.appliances != null && form.appliances == "includes_ac"}
-        />
+        /> */}
       </div>
       <p className="text-lightGray text-sm mt-2">Please select an option.</p>
 
-      <div className="text-xl mb-4 mt-8">Property</div>
+      <div className="text-xl mb-4 mt-8">Utilities</div>
       <div className="flex tablet:gap-24 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
         <CheckBoxDiv
           label="Parking features"
@@ -308,10 +308,17 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "parkingFeature": data.parkingFeature != null ? !data.parkingFeature : true }))}
           checked={form.parkingFeature != null && form.parkingFeature == true}
         />
+
         
 
 
       </div>
+      <div className="text-xl mb-4 mt-8">Property Description (Home Details)</div>
+      <textarea
+        className="w-full bg-white text-lightGray px-5 py-4 rounded-lg"
+        onChange={({ target }: any) => setForm((data: PropertyDetailInf) => ({ ...data, "description": target.value }))}
+        name="" id="" cols={30} rows={10} placeholder="your description"
+      />
 
       {/* <div className="text-xl mb-4 mt-8">Utilities</div>
         <div className="flex tablet:gap-32 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
@@ -443,7 +450,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
 
 
 
-      <div className="text-xl mb-4 mt-8">Cost Calculator</div>
+      <div className="text-xl mb-4 mt-8">Additional Costs</div>
 
       <CustomeInput
         label="Government payment (Ashura)"
@@ -475,12 +482,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       />
 
 
-      <div className="text-xl mb-4 mt-8">Property Description (Home Details)</div>
-      <textarea
-        className="w-full bg-white text-lightGray px-5 py-4 rounded-lg"
-        onChange={({ target }: any) => setForm((data: PropertyDetailInf) => ({ ...data, "description": target.value }))}
-        name="" id="" cols={30} rows={10} placeholder="your description"
-      />
+     
 
 
 

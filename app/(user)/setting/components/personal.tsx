@@ -3,7 +3,7 @@ import CustomeInput from '@/app/_components/customeInput'
 import goImg from "../../../assets/images/go.svg"
 import Image from 'next/image'
 import { useMutation, useQuery } from '@apollo/client'
-import { GET_USER_SETTING, UPDATE_USER } from '@/graphql/features/user'
+import { GET_USER_SETTING, UPDATE_USER, UPDATE_USER_ONBOARDING } from '@/graphql/features/user'
 import Error from '@/app/_components/error'
 import { useSelector,useDispatch } from 'react-redux'
 import { getState,UserFromApi,userFetched } from "@/store/features/auth/authSlice"
@@ -19,6 +19,9 @@ interface formInf{
     whatsapp : string,
     instagram : string,
     telegram : string,
+    education_level : string,
+    language_preference : string,
+    work_experience : string,
 }
 
 const Personal = () => {
@@ -29,7 +32,10 @@ const Personal = () => {
         facebook: '',
         whatsapp: '',
         instagram: '',
-        telegram: ''
+        telegram: '',
+        education_level: '',
+        language_preference: '',
+        work_experience: '',
     }
     const dispatch = useDispatch()
     const getUserState = useQuery(GET_USER_SETTING,{
@@ -47,12 +53,16 @@ const Personal = () => {
                         instagram : fetchedUser.social_instagram,
                         whatsapp : fetchedUser.social_whatsapp,
                         telegram : fetchedUser.social_telegram,
+                        education_level : fetchedUser.onboarding_info.education_level,
+                        language_preference : fetchedUser.onboarding_info.language_preference,
+                        work_experience : fetchedUser.onboarding_info.work_experience,
                     }))
         }
     })
     
     
     const [updateUser,{loading,error,data,reset}] = useMutation(UPDATE_USER)
+    const [updateUserOnboarding,onboardingStatus] = useMutation(UPDATE_USER_ONBOARDING)
     const [form,setForm] = useState<formInf>(initialData)
     const [err,setErr] = useState<string | null>(null)
     const errRef = useRef<any>(null)
@@ -78,13 +88,28 @@ const Personal = () => {
             internal_agent : false
         }
         dispatch(userFetched(userFromApi))
-        scrollToTop()
-        alert("You successfuly updated your status.")
+        updateUserOnboarding({
+            variables : {
+                _eq : getUserState.data.user_by_pk.onboarding_id,
+                education_level : form.education_level,
+                work_experience : form.work_experience,
+            }
+        })
         reset()
     }
+    if(onboardingStatus.data){
+        alert("You successfuly updated your status.")
+        onboardingStatus.reset()
+        scrollToTop()
+    }
+
     if(error){
         scrollToTop()
         console.log("error")
+    }
+    if(onboardingStatus.error){
+        scrollToTop()
+        console.log("error2")
     }
     if(loading){
         console.log("loading")
@@ -118,7 +143,9 @@ const Personal = () => {
             instagram : form.instagram,
             whatsapp : form.whatsapp,
             telegram : form.telegram,
+            
         }})
+       
     }
   return (
     <div className='w-full '>
@@ -149,6 +176,15 @@ const Personal = () => {
                 <CustomeInput name="twitter" value={form.twitter} onChange={onChange} label='Twitter' placeholder='Enter your twitter' divClass='w-full'  />
             </div>
             <CustomeInput name="telegram" value={form.telegram} onChange={onChange} label='Telegram' placeholder='Enter your telegram' divClass='w-full'  />
+           
+            <p className='text-xl font-semibold mb-2 mt-5'>Onboarding Info</p>
+            <p className='text-sm my-2 text-lightGray mb-7'>Your onboarding informations.</p>
+            
+            <div className='flex gap-5  w-full mb-5'>
+                <CustomeInput name="education_level" value={form.education_level} onChange={onChange} label='Education level' placeholder='Enter your Education level' divClass='w-full'  />
+                <CustomeInput name="work_experience" value={form.work_experience} onChange={onChange} label='Work experience' placeholder='Enter your Work experience' divClass='w-full'  />
+                {/* <CustomeInput name="language_preference" value={form.language_preference} onChange={onChange} label='Language preference' placeholder='Enter your Language preference' divClass='w-full'  /> */}
+            </div>
             
 
             
@@ -157,7 +193,7 @@ const Personal = () => {
                 <button onClick={submit} className='flex gap-2 text-lg px-4 py-2 hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white '>
                     <Image src={goImg} className="w-6 my-auto" alt="" />
                     <span className='text-[16px] my-auto'>
-                    {loading ? "loading" : "Save Changes"}   
+                    {loading || onboardingStatus.loading ? "loading" : "Save Changes"}   
                     </span>
                 </button> 
 

@@ -31,17 +31,10 @@ const ImageSlider = ({ house } : Props) => {
       <Lightbox
         open={open}
         plugins={[ Zoom]}
+        carousel={{ finite: true }}
         zoom={{ 
             ref: zoomRef,
             maxZoomPixelRatio : 10,
-            // zoomInMultiplier,
-            // doubleTapDelay,
-            // doubleClickDelay,
-            // doubleClickMaxStops,
-            // keyboardMoveDistance,
-            // wheelZoomDistanceFactor,
-            // pinchZoomDistanceFactor,
-            // scrollToZoom,
          }}
         close={() => setOpen(false)}
         slides={
@@ -65,7 +58,7 @@ const ImageSlider = ({ house } : Props) => {
                      onClick={() =>setOpen(true)}
                      src={imgs.length > 0 ? imgs[curr]?.url : ""}
                      width={100} height={100} 
-                     className='w-full cursor-pointer h-full object-cover rounded-lg' 
+                     className='w-full cursor-zoom-in h-full object-cover rounded-lg' 
                      alt="" 
                      unoptimized={true}
                  />        

@@ -36,7 +36,7 @@ const Search = ({ region , setRegion, setPropertyType , propertyType , search} :
                   <input type="text" onChange={({ target } : any) => setPropertyType(target.value)} className="px-3 py-2 outline-none" placeholder="Enter property type" />
                 </div>
   
-                <button onClick={() => search()} className={` flex gap-2  hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white m-auto  px-3 py-2 text-sm  flex-row-reverse`}>
+                <button onClick={() => search(region,propertyType)} className={` flex gap-2  hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white m-auto  px-3 py-2 text-sm  flex-row-reverse`}>
                   <span className="max-tablet:hidden" >Search</span>
                   <div className={`m-auto border p-[1px] rounded border-none`}>
                     <SearchIcon className={`m-auto text-lg`} />

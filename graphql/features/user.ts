@@ -28,6 +28,12 @@ export const GET_USER_SETTING = gql`
           social_telegram
           social_whatsapp
           social_instagram
+          onboarding_id 
+          onboarding_info {
+              education_level
+              language_preference
+              work_experience
+          }
         }
       }
 `
@@ -58,6 +64,22 @@ export const UPDATE_USER = gql`
     }
   }
 `
+export const UPDATE_USER_ONBOARDING = gql`
+  mutation a($_eq: uuid!,$education_level: String!,$work_experience : String!) {
+    update_onboarding_info(_set: 
+      {
+        education_level : $education_level, 
+        work_experience : $work_experience
+      }, where: {uuid: {_eq: $_eq}}) {
+      affected_rows
+      returning {
+        education_level
+        work_experience
+      }
+    }
+  }
+`
+
 export const GET_USER_ONBOARDING = gql`
     query{
       user_by_pk(user_id :  "b42bf319-a6ad-49b8-8836-cc707a790c1d"){

@@ -35,12 +35,6 @@ api Integration
     - Change property type to dropdown (villa, etc …) this is a search field needs to be dropdown
     Sell type: sell & rent.
     Choose site filter (dropdown for real estates) (this is sth new since real estates have differnet "construction sites" we need to add another option to filter through those)
-  - on progress
-    -
-  - remaining
-  - latter
-    - message
-
     - Status for the construction 
     - Payment program
     - broker | owner | none
@@ -64,36 +58,36 @@ api Integration
       - Gymnasium
       - SPA
       - Other
-
     - community and neighborhood (the whole thing)
     - Construction (the whole thing)
     - financial 
     - const calculator
+    - search bar on the home page
+    - image preview infinite
+    - edit educational level and language preference
+  - on progress
+  - remaining
+    - logo 
+    - signup
+    - constact us on the about page and this teams page
+
+    - built up area
+    - utilities
+    {
+      air conditioning system
+    }
+
+    - community {
+      other
+    }
+  - latter
+    - message
 
     ====
   
 _______________________________
 
 
-https://blog.stackademic.com/sending-and-verifying-mobile-otp-with-firebase-and-react-d1d0244690a9
- 
- I am not sure which person to talk to
- What kind of project
- delay email
-
- word press | Code base
- email and password
-
-ou r startups
-
-verfication
-height on the realestate
-header on the realestate
-sell property - add new listing
-telegram
-
-
-overlap
 
 
 
