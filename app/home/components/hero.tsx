@@ -11,7 +11,7 @@ import { useState } from "react";
 interface Props{
     setIsDrawer : Function
 }
-const hero = ({ setIsDrawer } : Props) => {
+const Hero = ({ setIsDrawer } : Props) => {
   
 
     const [search,setSearch] = useState("")
@@ -66,4 +66,4 @@ const hero = ({ setIsDrawer } : Props) => {
   )
 }
 
-export default hero
+export default Hero

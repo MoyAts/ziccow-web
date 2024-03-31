@@ -29,6 +29,8 @@ const Form = () => {
     }
 
     if (error) {
+        console.log("THis form ",form)
+        console.log("THis error ",error)
         alert(error.graphQLErrors[0].message)
         reset()
     }
@@ -149,6 +151,17 @@ const Form = () => {
                             ordinary_material: form.construction.ordinaryMaterial,
                             unique_material: form.construction.uniqueMaterial,
                             construction_custom: form.constructionCustom,
+                            air_conditioning_system : form.utility.airConditioning,
+                            basement : form.utility.basement,
+                            back_yard : form.utility.backYard,
+                            service_rooms : form.utility.service_rooms,
+                            electricity : form.utility.electricity,
+                            garbage_shutter : form.utility.garbageShutter,
+                            water : form.utility.water,
+                            ground_water : form.utility.ground_water,
+                            security_system : form.utility.security,
+                            swimming : form.utility.swimming,
+                            other_community : form.utility.other,
                         }
                     },
 

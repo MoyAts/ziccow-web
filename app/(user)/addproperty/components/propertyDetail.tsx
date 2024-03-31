@@ -300,19 +300,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       </div>
       <p className="text-lightGray text-sm mt-2">Please select an option.</p>
 
-      <div className="text-xl mb-4 mt-8">Utilities</div>
-      <div className="flex tablet:gap-24 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
-        <CheckBoxDiv
-          label="Parking features"
-          name="property" isRadio={false}
-          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "parkingFeature": data.parkingFeature != null ? !data.parkingFeature : true }))}
-          checked={form.parkingFeature != null && form.parkingFeature == true}
-        />
-
-        
-
-
-      </div>
+     
       <div className="text-xl mb-4 mt-8">Property Description (Home Details)</div>
       <textarea
         className="w-full bg-white text-lightGray px-5 py-4 rounded-lg"
@@ -320,37 +308,71 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         name="" id="" cols={30} rows={10} placeholder="your description"
       />
 
-      {/* <div className="text-xl mb-4 mt-8">Utilities</div>
+      <div className="text-xl mb-4 mt-8">Utilities</div>
         <div className="flex tablet:gap-32 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
-
           <div className="flex flex-col gap-5">
-            <CheckBoxDiv 
-              label="Room in a home" 
-              name="utility" isRadio={false} 
-              setChange={() => setUtitlities("rooms")} 
-              checked = {form.utility.rooms!}
+              <CheckBoxDiv
+                label="Parking features"
+                name="utility" isRadio={false}
+                setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "parkingFeature": data.parkingFeature != null ? !data.parkingFeature : true }))}
+                checked={form.parkingFeature != null && form.parkingFeature == true}
+              />
+              <CheckBoxDiv 
+                label="Security 24/7" 
+                name="utility" isRadio={false} 
+                setChange={() => setUtitlities("security")} 
+                checked = {form.utility.security!}
             />
-             <CheckBoxDiv 
-              label="Access to shared spaces." 
-              name="utility" isRadio={false} 
-              setChange={() => setUtitlities("accessToSharedPlace")} 
-              checked = {form.utility.accessToSharedPlace!}
+              <CheckBoxDiv 
+                label="Basement" 
+                name="utility" isRadio={false} 
+                setChange={() => setUtitlities("basement")} 
+                checked = {form.utility.basement!}
             />
+             
              <CheckBoxDiv 
-              label="Great for remote work" 
-              name="utility" isRadio={false} 
-              setChange={() => setUtitlities("greateForRemoteWork")} 
-              checked = {form.utility.greateForRemoteWork!}
+                label="Back yard" 
+                name="utility" isRadio={false} 
+                setChange={() => setUtitlities("backYard")} 
+                checked = {form.utility.backYard!}
+            />
+              <CheckBoxDiv 
+                label="water" 
+                name="utility" isRadio={false} 
+                setChange={() => setUtitlities("water")} 
+                checked = {form.utility.water!}
+            />
+            
+             <CheckBoxDiv 
+                label="electricity" 
+                name="utility" isRadio={false} 
+                setChange={() => setUtitlities("electricity")} 
+                checked = {form.utility.electricity!}
             />
           </div>
 
           <div className="flex flex-col gap-5">
+          
             <CheckBoxDiv 
-              label="Security 24/7" 
-              name="utility" isRadio={false} 
-              setChange={() => setUtitlities("security")} 
-              checked = {form.utility.security!}
+                label="Air Conditioning system" 
+                name="utility" isRadio={false} 
+                setChange={() => setUtitlities("airConditioning")} 
+                checked = {form.utility.airConditioning!}
             />
+             <CheckBoxDiv 
+                label="ground water" 
+                name="utility" isRadio={false} 
+                setChange={() => setUtitlities("ground_water")} 
+                checked = {form.utility.ground_water!}
+            />
+
+            <CheckBoxDiv 
+                label="swimming" 
+                name="utility" isRadio={false} 
+                setChange={() => setUtitlities("swimming")} 
+                checked = {form.utility.swimming!}
+            />
+           
              <CheckBoxDiv 
               label="Garbage shutter." 
               name="utility" isRadio={false} 
@@ -358,14 +380,23 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
               checked = {form.utility.garbageShutter!}
             />
              <CheckBoxDiv 
-              label="Back up or secondary electric power source" 
+              label="Back up electric power" 
               name="utility" isRadio={false} 
               setChange={() => setUtitlities("backupElectricity")} 
               checked = {form.utility.backupElectricity!}
             />
           </div>
 
-        </div> */}
+        </div>
+      <div className="text-lg mb-2 mt-3">Other</div>
+      <textarea
+        className="w-full bg-white text-lightGray px-5 py-4 rounded-lg h-32"
+        onChange={({ target }: any) =>{
+           const newData = {...form.utility,"other" : target.value }
+           setForm((data: PropertyDetailInf) => ({ ...data, "utility": newData }))
+        }}
+        name="" id="" cols={10} rows={10} placeholder="your description"
+      />
       <p className="text-lightGray text-sm mt-2">Please select an option.</p>
 
       <div className="text-xl mb-4 mt-8">Community</div>
@@ -377,6 +408,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           setChange={() => setCommunity("primarySchool")}
           checked={form.community.primarySchool!}
         />
+        
         <CheckBoxDiv
           label="Secondary School"
           name="community" isRadio={false}
@@ -402,6 +434,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           setChange={() => setCommunity("supermarket")}
           checked={form.community.supermarket!}
         />
+       
 
       </div>
 
@@ -437,16 +470,10 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
 
 
 
-      <div className="text-xl mb-4 mt-8">Financial</div>
-      <div className="flex gap-5 flex-wrap">
-        <CustomeInput
-          label="Estimated rental price per month Birr/month"
-          name={"estRentalPrice"} placeholder='Estimated rental price per month Birr/month'
-          divClass='mb-5'
-          onChange={setChange}
-          value={form.estRentalPrice}
-        />
-      </div>
+      {/* <div className="text-xl mb-4 mt-8">Financial</div>
+      <div className="flex gap-5 flex-wrap w-full">
+        
+      </div> */}
 
 
 
@@ -459,6 +486,13 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         onChange={setChange}
         value={form.govPaymentAshura}
       />
+      <CustomeInput
+          label="Estimated rental price per month Birr/month"
+          name={"estRentalPrice"} placeholder='Estimated rental price per month Birr/month'
+          divClass='mb-5 w-full'
+          onChange={setChange}
+          value={form.estRentalPrice}
+        />
       <CustomeInput
         label="Leasing payment"
         name={"leasingPayment"} placeholder='Estimated rental price per month Birr/month'

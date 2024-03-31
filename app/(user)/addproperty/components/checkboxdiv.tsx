@@ -12,7 +12,7 @@ interface Props {
     return (
       <div className="flex gap-3">
           <input onChange={setChange} type={isRadio ? "radio" : "checkbox"} name={name} id={label} placeholder="check" checked={checked} />
-          <label htmlFor={label} className="">{label}</label>
+          <label htmlFor={label} className="capitalize">{label}</label>
         </div>
     )
   }
