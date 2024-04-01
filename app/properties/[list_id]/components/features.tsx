@@ -52,15 +52,7 @@ const features = ({ house }: Props) => {
                     </li> */}
                     </ul>
                  
-                    <div className="text-lg mt-5 font-semibold my">Extra feature</div>
-                    <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                        <li className="before:content-['\2022']  before:mr-2">
-                            {house.extra_features?.applicances ?? 0}
-                        </li>
-                        <li className="before:content-['\2022']  before:mr-2">
-                            Complition status : {house.completion_status}
-                        </li>
-                    </ul>
+                    
                     <div className="text-lg mt-5 font-semibold my">Other interior features</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
@@ -160,32 +152,7 @@ const features = ({ house }: Props) => {
                             </li>
                         </ul>
                 </div>
-                {/* 
-            <div className='w-full '>
-                <div className="text-lightGray font-semibold text-xl">Utilities</div>
-                <div className="text-lg mt-5 font-semibold my">Utility</div>
-                <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Parking features
-                    </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Garbage shutter
-                    </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Ground water
-                    </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Security systems
-                    </li>
-                    <li className="before:content-['\2022']  before:pr-2 flex">
-                        Back up or secondary electric power source
-                    </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Great for remote work
-                    </li>
-                </ul>
-            </div> */}
-
+              
             </div>
             {house.extra_features?.construction_custom && 
             <>
@@ -195,6 +162,86 @@ const features = ({ house }: Props) => {
                 </div>
             </>
             }
+
+            <div className='flex justify-between my-5'>
+                <div className='w-full '>
+                    <div className="text-lg  font-semibold my">Utiliity</div>
+                    <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+                            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                    Air Conditioning System :
+                                </p>
+                                {house.extra_features?.air_conditioning_system ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                     Back yard :
+                                </p>
+                                {house.extra_features?.back_yard ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                    basement :
+                                </p>
+                                {house.extra_features?.basement ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                    electricity :
+                                </p>
+                                {house.extra_features?.electricity ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                    garbage shutter :
+                                </p>
+                                {house.extra_features?.garbage_shutter ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                    water :
+                                </p>
+                                {house.extra_features?.water ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                    secondary electricity :
+                                </p>
+                                {house.extra_features?.secondary_electricity ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                    security system :
+                                </p>
+                                {house.extra_features?.security_system ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                    swimming :
+                                </p>
+                                {house.extra_features?.swimming ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                    ground water :
+                                </p>
+                                {house.extra_features?.ground_water ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                    </ul>
+                </div>
+                <div className="w-full">
+                    <div className="text-lg mt-5 font-semibold my">Extra feature</div>
+                    <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+                        <li className="before:content-['\2022']  before:mr-2">
+                            {house.extra_features?.applicances ?? 0}
+                        </li>
+                        <li className="before:content-['\2022']  before:mr-2">
+                            Complition status : {house.completion_status} %
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
 
             <div className='flex justify-between '>
 
@@ -270,6 +317,7 @@ const features = ({ house }: Props) => {
                 </div>
 
             </div>
+                    
 
 
 

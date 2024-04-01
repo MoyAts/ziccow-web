@@ -142,9 +142,8 @@ export const GET_LIST_BY_ID = gql`query a($list_id: uuid!) {
       social_whatsapp
       phone_number
     }
-    
-    views_count 
-    save_count 
+    views_count
+    save_count
     created_at
     verified
     address_data
@@ -177,6 +176,20 @@ export const GET_LIST_BY_ID = gql`query a($list_id: uuid!) {
       supermarket
       unique_material
       ordinary_material
+      air_conditioning_system
+      back_yard
+      basement
+      created_at
+      electricity
+      garbage_shutter
+      ground_water
+      other_community
+      parking_feature
+      secondary_electricity
+      security_system
+      service_rooms
+      swimming
+      water
     }
     payment_program
     gov_payment_ashura
