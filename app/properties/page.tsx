@@ -5,7 +5,8 @@ import GetStarted from "../_components/get_started"
 import Footer from "../_components/footer"
 import Drawer from "../_components/drawer"
 import Search from "./components/search"
-import { useState } from "react"
+import { useState,Suspense } from "react"
+
 const Pages = () => {
   const [isDrawer,setIsDrawer] = useState(false)
   return (
@@ -16,7 +17,9 @@ const Pages = () => {
         <div className={` ${isDrawer && "hidden"}  relative bg-lightBg`}>
             <GetStarted />
             <Nav setIsDrawer={setIsDrawer} withsearch={false} />
-            <Hero />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Hero />
+            </Suspense>
             <Footer />
       
         </div>
