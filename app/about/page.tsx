@@ -10,7 +10,7 @@ import GetStarted from "../_components/get_started"
 import Honor from "./components/honor"
 import Drawer from "../_components/drawer"
 import { useState } from "react"
-
+import Join from "../_components/join"
 const Page = () => {
   const [isDrawer,setIsDrawer] = useState(false)
     return (
@@ -23,7 +23,7 @@ const Page = () => {
           <Help />
           <Teams />
           {/* <Honor /> */}
-          <Contact />
+          <Join />
           <Footer /> 
         </div>
     </div>

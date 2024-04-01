@@ -1,7 +1,8 @@
 "use client"
 
 import logoG from "../../assets/images/googleLogo.svg";
-import img from "../../assets/images/Widget 5.svg"
+import img from "../../assets/images/zirrow.jpg"
+
 import CustomeInput from "../../_components/customeInput"
 import bg from "../../assets/images/Background.png"
 import Link from "next/link";
@@ -98,7 +99,7 @@ const Register = () => {
                 <div className='mx-auto'>
                     
                     <Link href={"/"} className='w-full my-auto justify-center flex gap-2 cursor-pointer' onClick={() => location.href = "#home"}>
-                        <Image src={img} alt="" />
+                        <Image src={img} width={40} alt="" />
                         <h1 className='font-semibold text-g my-auto'>
                             Zirrow General Trading
                         </h1>

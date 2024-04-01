@@ -39,7 +39,7 @@ const MegaMenu = () => {
 
             <div className='z-50 flex flex-col basis-1/3'>
 
-              <Link href={"/login"} className='text-mainBlue font-semibold text-lg'>Sell a Property</Link>
+              <Link href={"/login"} className='text-mainBlue font-semibold text-lg capitalize'>add new listing </Link>
 
               <div className='z-50 my-2 w-full h-[1px] bg-slate-400'></div>
 

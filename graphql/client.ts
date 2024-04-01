@@ -14,6 +14,7 @@ const head = typeof window !== "undefined" ?
     }
   :
   {
+    "X-Hasura-Role": "anonymous"
   }
 
 const supserAdmin = false
