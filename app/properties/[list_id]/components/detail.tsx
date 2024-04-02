@@ -21,6 +21,22 @@ import BuildStar from "./buildstar"
 import { IoArrowBackSharp } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import { calculateTimeDifference } from "@/lib/auth";
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  TelegramIcon,
+  TelegramShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from "react-share";
+import { useState } from "react";
+import { IoCopyOutline } from "react-icons/io5";
+import { useMutation } from "@apollo/client";
+import { ADD_TO_BOOKMARK } from "@/graphql/features/listing";
+import { useSelector } from "react-redux";
+import { AuthInf, getState } from "@/store/features/auth/authSlice";
 
 interface Props {
   house: houseInf,
@@ -30,7 +46,18 @@ interface Props {
 const Detail = ({ house, list_id }: Props) => {
   const router = useRouter()
   const id = house?.real_estate?.real_estate_uuid
-  
+  const currentUrl = "https://zirrowproperties.com/properties/" + list_id
+  const [showShare,setShowShare] = useState(false)
+  const state : AuthInf = useSelector(getState)
+  const [addtobookmark, {loading,data,error}] = useMutation(ADD_TO_BOOKMARK,{
+    variables : {
+      list_id,
+      user_id : state.user?.userId,
+    }
+  })
+  if(loading){
+    console.log(state.user?.userId,list_id)
+  }
 
   return (
 
@@ -41,7 +68,7 @@ const Detail = ({ house, list_id }: Props) => {
         </div>
         <div className="flex gap-1">
           <Image src={propertyImg} alt="" />
-          <div>Property</div>
+          <div>Property </div>
         </div>
         <div>/</div>
         <div>Rental</div>
@@ -66,15 +93,43 @@ const Detail = ({ house, list_id }: Props) => {
 
 
 
-        <div className="flex gap-10  max-tablet:hidden ">
+        <div className="flex gap-10  max-tablet:hidden relative">
           <div className="flex gap-2">
             <Image src={saveImg} className="my-auto" alt="" />
-            <p className="my-auto">save</p>
+            <div onClick={() => addtobookmark()} className="my-auto">
+              {loading ? "..." : error ? "error" : data ? "added" : "Save"}
+            </div>
           </div>
           <div className="flex gap-2">
             <Image src={shareImg} alt="" className="my-auto" />
-            <p className="my-auto">share</p>
+            <p role="button" onClick={() => setShowShare((data : boolean) => !data)} className="my-auto cursor-pointer">share </p>
+            <div className={`absolute ${showShare ? "scale-100" : "scale-0"} duration-150 flex flex-col gap-3 top-12 left-0 w-fit px-5 py-3 bg-white rounded-lg shadow-2xl`}>
+                {/* <div className="text-sm">
+                  Share This property
+                </div> */}
+                <div className="flex gap-3">
+                  <div 
+                    onClick={()=> navigator.clipboard.writeText(currentUrl)}
+                    className="w-7 h-7 rounded-full flex bg-mainBlue cursor-pointer">
+                    <IoCopyOutline className="text-lg text-white m-auto" onClick={() => alert("come")} />
+                  </div>
+                  <WhatsappShareButton url={currentUrl} >
+                    { <WhatsappIcon  className="w-7 h-7 rounded-full" /> }
+                  </WhatsappShareButton>
+                  <FacebookShareButton url={currentUrl} >
+                    { <FacebookIcon  className="w-7 h-7 rounded-full" /> }
+                  </FacebookShareButton>
+                  <TwitterShareButton url={currentUrl} >
+                    { <TwitterIcon  className="w-7 h-7 rounded-full" /> }
+                  </TwitterShareButton>
+                  <TelegramShareButton url={currentUrl} >
+                    { <TelegramIcon  className="w-7 h-7 rounded-full" /> }
+                  </TelegramShareButton>
+                 
+                </div>
+            </div>
           </div>
+
           <div className="flex gap-2">
             <Image src={reportImg} alt="" className="my-auto" />
             <p className="my-auto text-[#b16d0e]">Report</p>
@@ -91,7 +146,7 @@ const Detail = ({ house, list_id }: Props) => {
           </div>
           <div className="w-[1px] h-5 my-auto bg-gray-300"></div>
           <div className="flex gap-1">
-            <span>{house.views_count}</span>
+            <span>{house.views_count ?? 0}</span>
             <span className="text-lightGray">View</span>
           </div>
           <div className="w-[1px] h-5 my-auto bg-gray-300"></div>
@@ -100,14 +155,41 @@ const Detail = ({ house, list_id }: Props) => {
             <span className="text-lightGray">Saves</span>
           </div>
         </div>
-        <div className="flex gap-10 tablet:hidden place-self-end">
+        <div className="flex gap-10 tablet:hidden place-self-start max-mobile:mt-5 relative">
           <div className="flex gap-2">
             <Image src={saveImg} className="my-auto" alt="" />
-            <p className="my-auto">save</p>
+            <div onClick={() => addtobookmark()} className="my-auto">
+              {loading ? "..." : error ? "error" : data ? "added" : "Save"}
+            </div>
           </div>
           <div className="flex gap-2">
             <Image src={shareImg} alt="" className="my-auto" />
-            <p className="my-auto">share</p>
+            <p role="button" onClick={() => setShowShare((data : boolean) => !data)} className="my-auto cursor-pointer">share </p>
+            <div className={`absolute z-50 ${showShare ? "scale-100" : "scale-0"} duration-150 flex flex-col gap-3 top-12 left-0 w-fit px-5 py-3 bg-white rounded-lg shadow-2xl`}>
+                <div className="text-sm">
+                  Share This property
+                </div>
+                <div className="flex gap-3">
+                  <div 
+                    onClick={()=> navigator.clipboard.writeText(currentUrl)}
+                    className="w-7 h-7 rounded-full flex bg-mainBlue cursor-pointer">
+                    <IoCopyOutline className="text-lg text-white m-auto" onClick={() => alert("come")} />
+                  </div>
+                  <WhatsappShareButton url={currentUrl} >
+                    { <WhatsappIcon  className="w-7 h-7 rounded-full" /> }
+                  </WhatsappShareButton>
+                  <FacebookShareButton url={currentUrl} >
+                    { <FacebookIcon  className="w-7 h-7 rounded-full" /> }
+                  </FacebookShareButton>
+                  <TwitterShareButton url={currentUrl} >
+                    { <TwitterIcon  className="w-7 h-7 rounded-full" /> }
+                  </TwitterShareButton>
+                  <TelegramShareButton url={currentUrl} >
+                    { <TelegramIcon  className="w-7 h-7 rounded-full" /> }
+                  </TelegramShareButton>
+                 
+                </div>
+            </div>
           </div>
           <div className="flex gap-2">
             <Image src={reportImg} alt="" className="my-auto" />
