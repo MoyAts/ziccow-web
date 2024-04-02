@@ -111,6 +111,7 @@ const Form = () => {
                 "objects": {
                     ...name,
                     ...sellType,
+                    "property_number" : form.phone,
                     "address_data": form.address,
                     "build_date": form.yearBuilt,
                     "description": form.description,

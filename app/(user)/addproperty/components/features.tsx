@@ -1,64 +1,93 @@
 "use client"
 import { houseInf } from "@/utils/interfaces"
-
+import { PropertyDetailInf } from "./interface"
  
 
+import { FaCheck } from "react-icons/fa";
+import { IoCloseSharp } from "react-icons/io5";
 
 
-const features = ({ form } : any) => {
+const features = ({ form } : { form : PropertyDetailInf}) => {
   return (
     <div className="mt-8 h-fit text-lightGray ">
         <div className="text-2xl  font-semibold">Facts & Features</div>
         <div className='flex justify-between mt-5'>
             <div className='w-full '>
                 <div className="text-lightGray font-semibold text-xl">Interior</div>
-                <div className="text-lg mt-5 font-semibold my">Bedrooms & bathrooms</div>
+                <div className="text-lg mt-5 font-semibold my">Facilities</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Bedrooms: {form.numOfBedrooms}
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Bedrooms: {form.facilities.numOfBedrooms}
                     </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Bathrooms: {form.numOfBathrooms}
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Bathrooms: {form.facilities.numOfBathrooms}
                     </li>
-                    <li className="before:content-['\2022']  before:mr-2">
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
                         Built up area: {form.squareFootage}
                     </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Living rooms up area: {form.facilities.numOfLivingrooms}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Living rooms up area: {form.facilities.numOfLivingrooms}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Kitchens : {form.facilities.numOfKitchens}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Libraries : {form.facilities.numOfLibs}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Maids Room : {form.facilities.numOfMaidsRooms}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Spas : {form.facilities.numOfSpas}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Stores : {form.facilities.numOfStores}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Gyms : {form.facilities.numOfGyms}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Prayer room : {form.facilities.numOfPrayerRoom}
+                    </li>
+                   
+                    
                 </ul>
-                <div className="text-lg mt-5 font-semibold my">Appliances</div>
+                {/* <div className="text-lg mt-5 font-semibold my">Appliances</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
                     {form.appliances ? "Appliances included" : "Appliances not included"} 
                     
                     </li>
-                </ul>
-                <div className="text-lg mt-5 font-semibold my">Other interior features</div>
-                <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Built up area: {form.squareFootage}
-                    </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Total interior livable area: {form.squareFootage} sqft
-                    </li>
-                </ul>
+                </ul> */}
+               
             </div>
 
             <div className='w-full '>
                 <div className="text-lightGray font-semibold text-xl">Construction</div>
                 <div className="text-lg mt-5 font-semibold my">Type & style</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
                         Home type: {form.propertyManagment}
                     </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Property subType: {form.propertyName}, {form.propertyManagment}
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        construction Material : {form.construction.ordinaryMaterial ? "ordinary material" : "Unknown"}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Completion status : {form.completionStatus} %
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Matterport Link : {form.matterportLink} 
                     </li>
                 </ul>
                 <div className="text-lg mt-5 font-semibold my">Condition</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
                         New construction: No
                     </li>
-                    <li className="before:content-['\2022']  before:mr-2">
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
                         Year built: {form.yearBuilt}
                     </li>
                 </ul>
@@ -74,50 +103,104 @@ const features = ({ form } : any) => {
 
 
         <div className='flex justify-between mt-5'>
-            <div className='w-full '>
-                <div className="text-lightGray font-semibold text-xl">Property</div>
-                <div className="text-lg mt-5 font-semibold my">Parking</div>
-                <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Parking features
-                    </li>
-                </ul>
-                <div className="text-lg mt-5 font-semibold my">Lot</div>
-                <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Lot features: Near Public Transit
-                    </li>
-                </ul>
-                <div className="text-lg mt-5 font-semibold my">Other property information</div>
-                <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Parcel number: 012671164
-                    </li>
-                </ul>
-            </div>
+            
 
 
             <div className='w-full '>
                 <div className="text-lightGray font-semibold text-xl">Utilities</div>
                 <div className="text-lg mt-5 font-semibold my">Utility</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Parking features
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            Air Conditioning System :
+                        </p>
+                        {form.utility.airConditioning ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
                     </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Garbage shutter
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            swimming :
+                        </p>
+                        {form.utility.swimming ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
                     </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Ground water
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            Ground water :
+                        </p>
+                        {form.utility.ground_water ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
                     </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Security systems
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            back yard :
+                        </p>
+                        {form.utility.backYard ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
                     </li>
-                    <li className="before:content-['\2022']  before:pr-2 flex">
-                        Back up or secondary electric power source
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            water :
+                        </p>
+                        {form.utility.water ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
                     </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Great for remote work
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            electricity :
+                        </p>
+                        {form.utility.electricity ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            service room :
+                        </p>
+                        {form.utility.service_rooms ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            basement :
+                        </p>
+                        {form.utility.basement ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            backup electricity :
+                        </p>
+                        {form.utility.backupElectricity ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                    </li>
+                    
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            garbage shutter :
+                        </p>
+                        {form.utility.garbageShutter ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            security :
+                        </p>
+                        {form.utility.security ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                    </li>
+                    
+                    { form.utility.other.trim() &&
+                    <div className="mt-2">
+                        {form.utility.other}
+                    </div>
+                    }
+                </ul>
+            </div>
+                <div className='w-full '>
+                <div className="text-lightGray font-semibold text-xl">Property</div>
+                
+                <div className="text-lg mt-5 font-semibold my">Other property information</div>
+                <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Property id: {form.phone}
+                    </li>
+                </ul>
+                <div className="text-lg mt-5 font-semibold my">Other interior features</div>
+                <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Built up area: {form.squareFootage}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Total interior livable area: {form.squareFootage} sqft
                     </li>
                 </ul>
             </div>
@@ -132,37 +215,63 @@ const features = ({ form } : any) => {
                 <div className="text-lightGray font-semibold text-xl">Community & neighborhood</div>
                 <div className="text-lg mt-5 font-semibold my">Community</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Near a local park
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            Primary school :
+                        </p>
+                        {form.community.primarySchool ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            secondary school :
+                        </p>
+                        {form.community.secondarySchool ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            College and University :
+                        </p>
+                        {form.community.collegeAndUni ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            hospital :
+                        </p>
+                        {form.community.hospital ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
+                        <p>
+                            super market :
+                        </p>
+                        {form.community.supermarket ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
                     </li>
                 </ul>
-                <div className="text-lg mt-5 font-semibold my">Location</div>
-                <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
-                        4kilo around parliament
-                    </li>
-                </ul>
+               
             </div>
 
             <div className='w-full '>
                 <div className="text-lightGray font-semibold text-xl">HOA & financial</div>
-                <div className="text-lg mt-5 font-semibold my">HOA</div>
-                <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Has HOA: Yes
-                    </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        HOA fee: $335 monthly
-                    </li>
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Services included
-                    </li>
-                </ul>
+               
                 <div className="text-lg mt-5 font-semibold my">Other financial information</div>
                 <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                    <li className="before:content-['\2022']  before:mr-2">
-                        Buyer agency compensation: 2%
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Estimated rental price : {form.estRentalPrice}
                     </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Government Payment : {form.govPaymentAshura}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Leasing  payment : {form.leasingPayment}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Conveyancing Payment  : {form.conveyancingPayment}
+                    </li>
+                    <li className="before:content-['\2022'] capitalize  before:mr-2">
+                        Commission Payment: {form.commission} %
+                    </li>
+                    
+
+
                 </ul>
             </div>
             
