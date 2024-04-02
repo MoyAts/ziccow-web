@@ -141,7 +141,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       />
 
       <OptionInput
-        label='Home Types'
+        label='Property Types'
         name='homeType'
         onChange={setForm}
         placeholder='Apartment, High rise'

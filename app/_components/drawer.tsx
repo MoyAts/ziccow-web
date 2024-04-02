@@ -31,9 +31,11 @@ const Drawer = ({ setIsDrawer }: Props) => {
             </div>
             <div className='flex justify-between px-10 max-sm:px-5 relative'>
                 <div className='my-auto  flex gap-2 cursor-pointer' >
-                    <Image src={img}  width={40} alt="" />
+                    <Link href={"/"} >
+                        <Image src={img}  width={40} alt="" />
+                    </Link>
                     {isLogedIn ? 
-                    <div onClick={() => setShowProfile(data => !data)} className='font-semibold text-g my-auto' >
+                    <div onClick={() => setShowProfile(data => !data)} className='font-semibold capitalize text-g my-auto' >
                         {state.user?.firstName ? state.user.firstName : "Name"}
                     </div>
                     :
