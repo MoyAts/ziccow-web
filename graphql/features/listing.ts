@@ -77,7 +77,7 @@ export const GET_LISTING  = gql`
 `
 export const ADD_TO_BOOKMARK = gql`
   mutation a($list_id: uuid!,$user_id : uuid! ) {
-    insert_bookmark(objects: {listing_id: $list_id,user_id : $user_id}) {
+    insert_bookmark(objects: {listing_id: $list_id}) {
       affected_rows
     }
   }
