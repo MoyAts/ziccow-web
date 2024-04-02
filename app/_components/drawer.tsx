@@ -10,8 +10,9 @@ import serviceImg from "../assets/images/Group (4).svg"
 import propertyImg from "../assets/images/property.svg"
 import confirmImg from "../assets/images/confirm.svg"
 import { IoIosArrowBack as ListIcon } from "react-icons/io";
-import { useSelector } from 'react-redux'
-import { LogInf, getState } from "../../store/features/auth/authSlice"
+import { useDispatch, useSelector } from 'react-redux'
+import { LogInf, getState, logoutUser } from "../../store/features/auth/authSlice"
+import ProfileCard from './profileCard'
 
 interface Props {
     setIsDrawer: Function
@@ -21,25 +22,36 @@ const Drawer = ({ setIsDrawer }: Props) => {
     const state = useSelector(getState)
     const [toggle, setToggle] = useState(false)
     const isLogedIn = state.isLogedIn == LogInf.LOGED_IN
+    const dispatch = useDispatch()
+    const [showProfile,setShowProfile] = useState(false)
     return (
         <div className='absolute h-fit pb-10 w-full  z-[9999]  bg-gray-200 '>
             <div className='bg-mainDark w-full py-3 text-white mb-5 text-center'>
                 Having Troubles? Call 0000
             </div>
-            <div className='flex justify-between px-10 max-sm:px-5'>
+            <div className='flex justify-between px-10 max-sm:px-5 relative'>
                 <div className='my-auto  flex gap-2 cursor-pointer' >
                     <Image src={img}  width={40} alt="" />
+                    {isLogedIn ? 
+                    <div onClick={() => setShowProfile(data => !data)} className='font-semibold text-g my-auto' >
+                        {state.user?.firstName ? state.user.firstName : "Name"}
+                    </div>
+                    :
                     <Link href={"/"} className='font-semibold text-g my-auto'>
-                        <p className="">{
-                            isLogedIn && state.user?.firstName ? state.user.firstName : "Zirrow General Trading"
-                        }</p>
+                             Zirrow General Trading
                     </Link>
+                    }
                 </div>
                 <div className='cursor-pointer' onClick={() => setIsDrawer(false)}>
                     <Image src={closeImg} alt='' />
                 </div>
             </div>
-            <div className='w-full border-t mt-5'></div>
+            <div className='w-full border-t mt-5 '>
+               {isLogedIn && <ProfileCard 
+                    logoutUser={() => { dispatch(logoutUser())}} 
+                    mobile={true} show={showProfile} state={state} 
+                />}
+            </div>
 
             <div className={` ${!toggle ? "h-[80vh] mt-12" : " my-10"} overflow-y-scroll flex flex-col  px-10 max-sm:px-5`}>
 

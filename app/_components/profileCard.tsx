@@ -6,12 +6,13 @@ import style from "../css/propertiesCard.module.css"
 interface Props {
   show : boolean,
   logoutUser : Function,
-  state : any
+  state : any,
+  mobile? : boolean,
 }
 
-const profileCard = ({ show,logoutUser,state } : Props) => {
+const ProfileCard = ({ show,logoutUser,state,mobile } : Props) => {
   return (
-    <div className={`${show ? style.showPopup : "hidden"} duration-0 w-fit flex min-w-[200px] shadow text-lightGray flex-col text-sm  bg-white rounded-lg absolute z-[3000] right-0 top-12 `}>
+    <div className={`${show ? style.showPopup : "hidden"} ${mobile ? "w-full top-4" : "absolute right-0 top-12 "} duration-0 w-fit flex min-w-[200px] shadow text-lightGray flex-col text-sm  bg-white rounded-lg  z-[3000] `}>
         <div className='px-3 py-2 mt-2 '>
           <div className='font-bold text-black'>{state.user.firstName}</div>
           <p className='text-xs'>{state.user.email}</p>
@@ -31,5 +32,5 @@ const profileCard = ({ show,logoutUser,state } : Props) => {
   )
 }
 
-export default profileCard
+export default ProfileCard
 
