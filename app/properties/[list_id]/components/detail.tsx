@@ -97,7 +97,7 @@ const Detail = ({ house, list_id }: Props) => {
           <div className="flex gap-2">
             <Image src={saveImg} className="my-auto" alt="" />
             <div onClick={() => addtobookmark()} className="my-auto">
-              {loading ? "..." : error ? "error" : data ? "added" : "Save"}
+              {loading ? "..." : error ? "error" : data ? "Added" : "Save"}
             </div>
           </div>
           <div className="flex gap-2">
@@ -159,7 +159,7 @@ const Detail = ({ house, list_id }: Props) => {
           <div className="flex gap-2">
             <Image src={saveImg} className="my-auto" alt="" />
             <div onClick={() => addtobookmark()} className="my-auto">
-              {loading ? "..." : error ? "error" : data ? "added" : "Save"}
+              {loading ? "..." : error ? "error" : data ? "Added" : "Save"}
             </div>
           </div>
           <div className="flex gap-2">
