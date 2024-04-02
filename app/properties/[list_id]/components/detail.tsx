@@ -94,9 +94,9 @@ const Detail = ({ house, list_id }: Props) => {
 
 
         <div className="flex gap-10  max-tablet:hidden relative">
-          <div className="flex gap-2">
+          <div onClick={() => addtobookmark()} className="flex gap-2 cursor-pointer">
             <Image src={saveImg} className="my-auto" alt="" />
-            <div onClick={() => addtobookmark()} className="my-auto">
+            <div  className="my-auto ">
               {loading ? "..." : error ? "error" : data ? "Added" : "Save"}
             </div>
           </div>
@@ -109,9 +109,9 @@ const Detail = ({ house, list_id }: Props) => {
                 </div> */}
                 <div className="flex gap-3">
                   <div 
-                    onClick={()=> navigator.clipboard.writeText(currentUrl)}
+                    onClick={()=> {navigator.clipboard.writeText(currentUrl); setShowShare(false);}}
                     className="w-7 h-7 rounded-full flex bg-mainBlue cursor-pointer">
-                    <IoCopyOutline className="text-lg text-white m-auto" onClick={() => alert("come")} />
+                    <IoCopyOutline className="text-lg text-white m-auto"  />
                   </div>
                   <WhatsappShareButton url={currentUrl} >
                     { <WhatsappIcon  className="w-7 h-7 rounded-full" /> }
@@ -156,9 +156,9 @@ const Detail = ({ house, list_id }: Props) => {
           </div>
         </div>
         <div className="flex gap-10 tablet:hidden place-self-start max-mobile:mt-5 relative">
-          <div className="flex gap-2">
+          <div onClick={() => addtobookmark()} className="flex gap-2 cursor-pointer">
             <Image src={saveImg} className="my-auto" alt="" />
-            <div onClick={() => addtobookmark()} className="my-auto">
+            <div  className="my-auto ">
               {loading ? "..." : error ? "error" : data ? "Added" : "Save"}
             </div>
           </div>
@@ -171,9 +171,9 @@ const Detail = ({ house, list_id }: Props) => {
                 </div>
                 <div className="flex gap-3">
                   <div 
-                    onClick={()=> navigator.clipboard.writeText(currentUrl)}
+                    onClick={()=> {navigator.clipboard.writeText(currentUrl); setShowShare(false);}}
                     className="w-7 h-7 rounded-full flex bg-mainBlue cursor-pointer">
-                    <IoCopyOutline className="text-lg text-white m-auto" onClick={() => alert("come")} />
+                    <IoCopyOutline className="text-lg text-white m-auto"  />
                   </div>
                   <WhatsappShareButton url={currentUrl} >
                     { <WhatsappIcon  className="w-7 h-7 rounded-full" /> }
