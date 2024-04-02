@@ -29,9 +29,9 @@ const Hero = ({ setIsDrawer } : Props) => {
                         <Image src={img2} className='w-[27px]' alt="" />
                         <input onChange={({target} : any) => setSearch(target.value)} className='outline-none my-auto w-full py-3' style={{color:"#6D6C6E"}} placeholder='Enter a location, property type or budget' />
                     </div>
-                    <div className="mobile:hidden w-fit px-6 flex justify-center ">
+                    <Link href={!search.trim() ? "/properties" : "/properties/?search="+search}  className="mobile:hidden w-fit px-6 flex justify-center ">
                         <Image src={mobileSearchImg} className="w-6" alt="" />
-                    </div>
+                    </Link>
                     <Link href={!search.trim() ? "/properties" : "/properties/?search="+search} className='flex gap-2 w-fit max-mobile:hidden  bg-mainBlue text-white px-6 text-sm justify-center hover:bg-blue-500 py-3 rounded-lg'>
                         <Image src={searchImg} className="" alt="" />
                         <span className='my-auto w-full max-mobile:hidden'>See&nbsp;Suggestions</span>
