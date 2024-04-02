@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { PropertyDetailInf } from "./interface";
 import Image from "next/image";
 import dropimg from "../../../assets/images/dropimg.svg"
-
+import { MdOutlineEdit } from "react-icons/md";
 interface Props{
     divClass? : string,
     setImages : any,
@@ -28,12 +28,19 @@ interface Props{
     return (
      <div className={"w-full rounded-xl bg-white border-2 h-full flex p-1"}>
           
+          <input type="file" multiple hidden placeholder="image" ref={ref} onChange={onSelect} />
+          
           {
           form.previewImages[ind] ?
-          <Image src={form.previewImages[ind]} className="w-full rounded-lg object-contain" height={100} width={100} alt="" />
+          <div className="w-full relative">
+            <div onClick={() =>{ref.current && ref.current.click()}} className="absolute top-2 right-5 px-2 py-2 rounded-lg cursor-pointer bg-slate-700 bg-opacity-45 hover:bg-opacity-100">
+              <MdOutlineEdit className="text-white" />
+            </div>
+            <Image  src={form.previewImages[ind]} className="w-full rounded-lg object-contain" height={100} width={100} alt="" />
+          </div>
+          
           :
           <>
-            <input type="file" multiple hidden placeholder="image" ref={ref} onChange={onSelect} />
             <div className={"flex m-auto gap-3 flex-col w-3/4 items-center "}>
               <Image src={dropimg} className={"w-2/5 "} alt="" />
               <div className={"flex text-center flex-col gap-1 " + divClass}>
