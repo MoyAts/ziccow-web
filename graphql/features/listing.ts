@@ -134,9 +134,11 @@ export const GET_LIST_BY_ID = gql`query a($list_id: uuid!) {
     }
     owner {
       first_name
+      last_name
       profile_pic
       social_twitter
       social_facebook
+      social_youtube
       social_instagram
       social_telegram
       social_whatsapp
@@ -327,8 +329,25 @@ export const GET_MY_LISTING  = gql`
       url
       type
     }
+    owner {
+      first_name
+      last_name
+      profile_pic
+      social_twitter
+      social_facebook
+      social_youtube
+      social_instagram
+      social_telegram
+      social_whatsapp
+      phone_number
+    }
+    views_count
+    save_count
+    created_at
+    verified
     address_data
     currency
+    real_estate_name
     build_date
     description
     listing_id
@@ -339,8 +358,53 @@ export const GET_MY_LISTING  = gql`
     sale_price
     sale_type
     status
+    house_type {
+      house_type_id
+      icon
+      type_name
+      available
+    }
+    extra_features {
+      applicances
+      lot_features
+      primary_school
+      secondary_school
+      college_and_uni
+      construction_custom
+      hospital
+      supermarket
+      unique_material
+      ordinary_material
+      air_conditioning_system
+      back_yard
+      basement
+      created_at
+      electricity
+      garbage_shutter
+      ground_water
+      other_community
+      parking_feature
+      secondary_electricity
+      security_system
+      service_rooms
+      swimming
+      water
+    }
+    payment_program
+    gov_payment_ashura
+    completion_status
+    matterport_link
+    est_rental_price
+    leasing_payment
+    conveyancing_payment
+    commission_payment
     real_estate {
       name
+      real_estate_uuid
+    }
+    rental_price {
+      cycle
+      price
     }
     listing_property {
       bathroom_count
@@ -354,7 +418,9 @@ export const GET_MY_LISTING  = gql`
       maids_room
       square_ft
       spa
+      praying_room
       store_rooms
+      praying_room
     }
   }
 }

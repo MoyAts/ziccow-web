@@ -9,7 +9,7 @@ import { houseFeaturedInf, houseInf } from "@/utils/interfaces";
 import { CiLinkedin } from "react-icons/ci";
 import { BsTelegram, BsTwitterX } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram,FaYoutube } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
 import Link from "next/link";
@@ -45,7 +45,7 @@ const broker = ({ house } : Props) => {
                         </div>}
                     <div className="flex flex-col my-auto">
                         <div>Jan 03, 2024</div>
-                        <div className="text-slate-700">{house.owner?.first_name}</div>
+                        <div className="text-slate-700 capitalize">{house.owner?.first_name} {house.owner?.last_name}</div>
                     </div>
                 </div>
                 <a href={'tel:'+house.owner?.phone_number ?? ""}>
@@ -58,7 +58,12 @@ const broker = ({ house } : Props) => {
                
                 <div className="text-xl text-black mt-5">Social Medias</div>
                 <div className="flex gap-4 mt-2 justify-between">
-                   {house.owner?.social_facebook &&
+                   {house.owner?.social_youtube &&
+                    <Link href={house.owner?.social_youtube ?? ""}>
+                        <FaYoutube className="text-3xl hover:text-blue-600 text-blue-500" />
+                    </Link>
+                    }
+                    {house.owner?.social_facebook &&
                     <Link href={house.owner?.social_facebook ?? ""}>
                         <FaFacebookF className="text-3xl hover:text-blue-600 text-blue-500" />
                     </Link>

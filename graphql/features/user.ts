@@ -24,6 +24,7 @@ export const GET_USER_SETTING = gql`
           phone_number
           email
           social_twitter
+          social_youtube
           social_facebook
           social_telegram
           social_whatsapp
@@ -39,7 +40,7 @@ export const GET_USER_SETTING = gql`
 `
 
 export const UPDATE_USER = gql`
-  mutation a($_eq: uuid!,$whatsapp : String!,$telegram : String!,$twitter : String!,$facebook: String!,$instagram: String!, $first_name: name!, $last_name: name!, $phone_number: String!, $email: String!) {
+  mutation a($_eq: uuid!,$youtube : String!,$whatsapp : String!,$telegram : String!,$twitter : String!,$facebook: String!,$instagram: String!, $first_name: name!, $last_name: name!, $phone_number: String!, $email: String!) {
     update_user(_set: 
       {
         first_name: $first_name,
@@ -50,6 +51,7 @@ export const UPDATE_USER = gql`
         social_instagram : $instagram,
         social_twitter : $twitter,
         social_whatsapp : $whatsapp,
+        social_youtube : $youtube,
         social_telegram : $telegram,
       }, where: {user_id: {_eq: $_eq}}) {
       affected_rows

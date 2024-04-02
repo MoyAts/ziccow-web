@@ -19,6 +19,7 @@ interface formInf{
     whatsapp : string,
     instagram : string,
     telegram : string,
+    youtube : string,
     education_level : string,
     language_preference : string,
     work_experience : string,
@@ -29,6 +30,7 @@ const Personal = () => {
     const initialData : formInf = {
         firstName: "", lastName: "", email: "", phone: "", userName: "",
         twitter: '',
+        youtube: '',
         facebook: '',
         whatsapp: '',
         instagram: '',
@@ -52,6 +54,7 @@ const Personal = () => {
                         facebook : fetchedUser.social_facebook,
                         instagram : fetchedUser.social_instagram,
                         whatsapp : fetchedUser.social_whatsapp,
+                        youtube : fetchedUser.social_youtube,
                         telegram : fetchedUser.social_telegram,
                         education_level : fetchedUser.onboarding_info.education_level,
                         language_preference : fetchedUser.onboarding_info.language_preference,
@@ -143,6 +146,7 @@ const Personal = () => {
             instagram : form.instagram,
             whatsapp : form.whatsapp,
             telegram : form.telegram,
+            youtube : form.youtube,
             
         }})
        
@@ -175,7 +179,10 @@ const Personal = () => {
                 <CustomeInput name="instagram" value={form.instagram} onChange={onChange} label='Instagram' placeholder='Enter your instagram' divClass='w-full'  />
                 <CustomeInput name="twitter" value={form.twitter} onChange={onChange} label='Twitter' placeholder='Enter your twitter' divClass='w-full'  />
             </div>
-            <CustomeInput name="telegram" value={form.telegram} onChange={onChange} label='Telegram' placeholder='Enter your telegram' divClass='w-full'  />
+            <div className='flex gap-5 w-full mb-5'>
+                <CustomeInput name="youtube" value={form.youtube} onChange={onChange} label='Youtube' placeholder='Enter your youtube' divClass='w-full'  />
+                <CustomeInput name="telegram" value={form.telegram} onChange={onChange} label='Telegram' placeholder='Enter your telegram' divClass='w-full'  />
+            </div>
            
             <p className='text-xl font-semibold mb-2 mt-5'>Onboarding Info</p>
             <p className='text-sm my-2 text-lightGray mb-7'>Your onboarding informations.</p>

@@ -27,10 +27,10 @@ const price = ({ house }: Props) => {
       <div className="flex flex-col my-4 mt-6 gap-5 text-[16px] text-lightGray">
 
 
-        <div className="flex flex-col gap-2 border-b px-2 pb-4 ">
+        {/* <div className="flex flex-col gap-2 border-b px-2 pb-4 ">
           <div>status</div>
           <div className="text-slate-700">High end property</div>
-        </div>
+        </div> */}
 
         <div className="flex flex-col gap-2 border-b px-2 pb-4 ">
           <div>Property Type</div>

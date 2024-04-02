@@ -11,7 +11,7 @@ const features = ({ house }: Props) => {
     return (
         <div className="mt-8 h-fit ">
             <div className="text-3xl font-semibold">Facts & Features</div>
-            <div className='flex justify-between mt-5'>
+            <div className='flex justify-between max-sm:flex-col max-sm:gap-2  mt-5'>
                 <div className='w-full '>
                     <div className="text-lightGray font-semibold text-xl">Interior</div>
                     <div className="text-lg mt-5 font-semibold my">Bedrooms & bathrooms</div>
@@ -121,39 +121,7 @@ const features = ({ house }: Props) => {
 
 
 
-            <div className='flex justify-between mt-10'>
-                <div className='w-full '>
-                    <div className="text-lightGray font-semibold text-xl">Property</div>
-                    <div className="text-lg mt-5 font-semibold my">Parking</div>
-                    <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                        {
-                            house.extra_features?.parking_feature ?
-                            <li className="before:content-['\2022']  before:mr-2">
-                                Parking features
-                            </li>
-                            : <li className="before:content-['\2022']  before:mr-2">
-                                No Parking features
-                            </li>
-                        }
-                    </ul>
-                   
-                </div>
-                <div className='w-full '>
-                    <div className="text-lg mt-5 font-semibold my">Lot</div>
-                        <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                            {house.extra_features?.lot_features && <li className="before:content-['\2022']  before:mr-2">
-                                Lot features: Near Public Transit
-                            </li>}
-                        </ul>
-                        <div className="text-lg mt-5 font-semibold my">Other property information</div>
-                        <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                            <li className="before:content-['\2022']  before:mr-2">
-                                Property number: {house.property_number ?? "Unknown"}
-                            </li>
-                        </ul>
-                </div>
-              
-            </div>
+            
             {house.extra_features?.construction_custom && 
             <>
                 <div className="text-lg mt-5 font-semibold ">Construction custom</div>
@@ -163,7 +131,7 @@ const features = ({ house }: Props) => {
             </>
             }
 
-            <div className='flex justify-between my-5'>
+            <div className='flex justify-between max-sm:flex-col max-sm:gap-2  my-5'>
                 <div className='w-full '>
                     <div className="text-lg  font-semibold my">Utiliity</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
@@ -178,6 +146,18 @@ const features = ({ house }: Props) => {
                                      Back yard :
                                 </p>
                                 {house.extra_features?.back_yard ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                     Parking feature :
+                                </p>
+                                {house.extra_features?.parking_feature ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
+                            </li>
+                            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+                                <p>
+                                     Lot feature :
+                                </p>
+                                {house.extra_features?.lot_features ? <FaCheck className="my-auto text-green-600" /> : <IoCloseSharp className="my-auto text-red-600" />}
                             </li>
                             <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
                                 <p>
@@ -230,20 +210,17 @@ const features = ({ house }: Props) => {
                     </ul>
                 </div>
                 <div className="w-full">
-                    <div className="text-lg mt-5 font-semibold my">Extra feature</div>
+                    <div className="text-lg mt-5 font-semibold my">Status</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
-                            {house.extra_features?.applicances ?? 0}
-                        </li>
-                        <li className="before:content-['\2022']  before:mr-2">
-                            Complition status : {house.completion_status} %
+                            Complition status : {house.completion_status ? house.completion_status + "%" : "Unknown"}
                         </li>
                     </ul>
 
                 </div>
             </div>
 
-            <div className='flex justify-between '>
+            <div className='flex justify-between max-sm:flex-col max-sm:gap-2  '>
 
                 <div className='w-full '>
                     {/* <div className="text-lightGray font-semibold text-xl">Community & neighborhood</div> */}
@@ -289,12 +266,12 @@ const features = ({ house }: Props) => {
                
 
                 <div className='w-full '>
-                <div className="text-lg mt-5 font-semibold my">Property Location</div>
+                {/* <div className="text-lg mt-5 font-semibold my">Property Location</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
                            {house.address_data}
                         </li>
-                    </ul>
+                    </ul> */}
                     {/* <div className="text-lightGray font-semibold text-xl">HOA & financial</div>
                     <div className="text-lg mt-5 font-semibold my">HOA</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">

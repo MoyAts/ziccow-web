@@ -41,7 +41,9 @@ const Table = () => {
                 <td className="py-2 ps-4 border-b border-gray-300  text-left">
                       <input type="checkbox" placeholder='check' />
                 </td>
-                <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left font-semibold text-mainBlue">{data.real_estate?.name ?? "Unknown"}</td>
+                <Link href={"/properties/" + data.listing_id}>
+                  <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left font-semibold text-mainBlue">{data.real_estate?.name ?? "Unknown"}</td>
+                </Link>
                 <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left"></td>
                 <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left">{data.sale_type ?? "Sell"}</td>
                 <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left">{data.real_estate?.name ?? "Unknown"}</td>

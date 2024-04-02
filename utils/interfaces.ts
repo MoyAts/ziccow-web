@@ -18,9 +18,11 @@ export interface houseInf {
     owner :  {
         phone_number : string,
         first_name : string | null,
+        last_name : string | null,
         profile_pic: string | null,
         social_twitter: string | null,
         social_facebook: string | null,
+        social_youtube: string | null,
         social_instagram: string | null,
         social_telegram: string | null,
         social_whatsapp: string | null,
