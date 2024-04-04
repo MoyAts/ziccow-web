@@ -143,6 +143,7 @@ export const GET_LIST_BY_ID = gql`query a($list_id: uuid!) {
       social_telegram
       social_whatsapp
       phone_number
+      user_id
     }
     views_count
     save_count

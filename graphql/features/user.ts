@@ -1,5 +1,25 @@
 import { gql } from "@apollo/client"
 
+export const ADD_TOUR = gql`
+  mutation ($date : String!,$time :String!,$broker_id :uuid!,$visitor_id :uuid!,$touring_type :String!,$listing_id : uuid!){
+    insert_schedule(
+      objects: {
+        date: $date, 
+        time: $time, 
+        broker_id: $broker_id, 
+        visitor_id : $visitor_id, 
+        touring_type: $touring_type,
+        listing_id :$listing_id,
+
+    }) {
+      affected_rows
+      returning {
+        time
+      }
+    }
+}
+`
+
 export const GET_USER = gql`
 
     query user($user_id : uuid!){

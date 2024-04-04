@@ -229,7 +229,7 @@ const Detail = ({ house, list_id }: Props) => {
         <div className="w-5/12 flex flex-col">
           <GeneralInformation house={house} />
           <Price house={house} />
-          <TimeLine />
+          {house.owner && <TimeLine list_id={house.listing_id}  owner_id={house.owner.user_id} />}
           {house.owner && <Broker house={house} />}
           <AddComment listing_id={house.listing_id} />
         </div>
@@ -241,7 +241,7 @@ const Detail = ({ house, list_id }: Props) => {
         {house.matterport_link && <MatterPortEmbed link={house.matterport_link} height={400} />}
         <GeneralInformation house={house} />
         <Price house={house} />
-        <TimeLine />
+        {house.owner && <TimeLine list_id={house.listing_id}  owner_id={house.owner.user_id} />}
         {house.owner && <Broker house={house} />}
         <Features house={house} />
       </div>

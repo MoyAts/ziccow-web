@@ -26,6 +26,7 @@ export interface houseInf {
         social_instagram: string | null,
         social_telegram: string | null,
         social_whatsapp: string | null,
+        user_id : string | null,
       } | null,
     rental_price : {
         cycle : string,
