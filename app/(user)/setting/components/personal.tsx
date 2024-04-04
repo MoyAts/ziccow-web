@@ -87,6 +87,7 @@ const Personal = () => {
             first_name : userData.first_name,
             last_name : userData.last_name,
             user_id : userData.user_id,
+            profile_pic : userData.profile_pic,
             onboarding_complete : userData.onboarding_complete,
             internal_agent : false
         }
