@@ -31,10 +31,10 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { useMutation, useQuery } from "@apollo/client";
-import { ADD_TO_BOOKMARK, GET_NUMBER_OF_SAVES } from "@/graphql/features/listing";
+import { ADD_LISTING_VIEW, ADD_TO_BOOKMARK, GET_NUMBER_OF_SAVES } from "@/graphql/features/listing";
 import { useSelector } from "react-redux";
 import { AuthInf, getState } from "@/store/features/auth/authSlice";
 
@@ -56,6 +56,12 @@ const Detail = ({ house, list_id }: Props) => {
       user_id : state.user?.userId,
     }
   })
+  const [addListView, addViewStatus] = useMutation(ADD_LISTING_VIEW,{
+    variables : {
+      listing_id : list_id,
+    }
+  })
+
   const saveQueryStatus = useQuery(GET_NUMBER_OF_SAVES,{
     variables : {
       list_id,
@@ -63,17 +69,14 @@ const Detail = ({ house, list_id }: Props) => {
     fetchPolicy : "no-cache"
   })
 
-  if(loading){
-    console.log(state.user?.userId,list_id)
-  }
-
   if(data){
     saveQueryStatus.refetch()
     reset()
   }
-  if(saveQueryStatus.data){
-    console.log(saveQueryStatus.data,"+")
-  }
+  
+  useEffect(()=>{
+    addListView()
+  },[])
 
   return (
 

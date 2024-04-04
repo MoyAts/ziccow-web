@@ -457,3 +457,11 @@ export const GET_NUMBER_OF_SAVES = gql`
     }
   }
 `
+
+export const ADD_LISTING_VIEW = gql`
+  mutation($listing_id :uuid!){
+    update_listing(_inc: {views_count: 1}, where: {listing_id: { _eq : $listing_id}}) {
+      affected_rows
+    }
+  }
+`
