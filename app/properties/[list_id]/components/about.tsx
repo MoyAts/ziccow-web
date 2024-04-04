@@ -8,10 +8,7 @@ const about = ({ description } : any ) => {
           <p>
             {description ?? "No description found!"}
           </p>
-          
-          <b>
-              Call or Message today to view!
-          </b>
+        
        </div>
       
     </div>

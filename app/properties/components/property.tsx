@@ -46,7 +46,7 @@ const Home = ( { house , userId} : Props) => {
             house.digital_assets[0]?.url &&
             <Image 
                 src={house.digital_assets[0].url} 
-                className="rounded-lg w-full object-cover my-auto hover:scale-105    duration-300" 
+                className="rounded-lg max-h-[300px] w-full object-cover my-auto hover:scale-105    duration-300" 
                 width={100}
                 height={100}
                 quality={100}
@@ -69,36 +69,34 @@ const Home = ( { house , userId} : Props) => {
             
             <p className="text-sm flex flex-wrap mb-2 mt-2">{house?.real_estate?.name ?? "unknown"} {house?.address_data ?? "unknown"}</p>
             <div className={`  flex w-full justify-between pe-2`}>
-                <p className="flex text-sm text-black font-semibold gap-1">
-                    <Image className="w-[20px] h-[20px]" src={locationIcon} alt="" />
+                <p className="flex text-sm text-gray-700 font-semibold gap-1">
+                    {/* <Image className="w-[20px] h-[20px]" src={locationIcon} alt="" /> */}
                     <p className="my-auto">
-                        2 km away from current location
+                        {house.description ? house.description.slice(0,100) + "..." :   "No description"}
                     </p>
                 </p>
             </div>
             <div className='justify-between font-semibold text-black flex gap-y-2 flex-wrap' >
-               {house.listing_property?.bathroom_count && 
-                    <div className='flex mt-2 gap-1'>
-                        <Image src={img5} width={15} className="my-auto"  alt="" />
-                        <span className='text-sm my-auto'>{house.listing_property.bathroom_count} Bathroom</span>
-                    </div>
-                }  
-                {
+                <div className='flex mt-2 gap-1 '>
+                    <Image src={img5} width={15} className="my-auto"  alt="" />
+                    <span className='text-sm my-auto'>{house.listing_property?.bedroom_count ?? 0} Bathroom</span>
+                </div>
+                {/* {
                     house.listing_property?.bedroom_count &&
                     <div className='flex mt-2 gap-1 '>
                         <Image src={img3} width={13} className="my-auto"  alt="" />
-                        <span className='text-sm my-auto'>{house.listing_property.bedroom_count} Bathroom</span>
+                        <span className='text-sm my-auto'>{house.listing_property.bedroom_count} Bedroom</span>
                     </div>
-                }
+                } */}
                 {
                     house.listing_property?.square_ft && 
                     <div className='flex mt-2 gap-1 '>
                         <Image src={img4} width={19} className="my-auto" alt="" />
-                        <span className='text-sm my-auto'>{house.listing_property.square_ft}Built up area</span>
+                        <span className='text-sm my-auto'>{house.listing_property.square_ft} M<sup>2</sup> Built up area</span>
                     </div>
                 }
             </div>
-            <div className="flex justify-between pe-2 mt-2">
+            <div className="flex justify-between pe-2 mt-4">
                 {
                     house.sale_price && 
                     <h1 className="">
@@ -110,7 +108,7 @@ const Home = ( { house , userId} : Props) => {
                loading ? 
                "..." : 
                data ? 
-               <Image src={bookMarkedSvg} className="w-6" alt="" />
+               <Image src={bookMarkedSvg} className="w-6 " alt="" />
                :
                <Image onClick={() => addToBookmark({ variables : { list_id : house.listing_id, user_id : userId}})} src={bookMarkSvg} className="w-6 cursor-pointer" alt="" />
                }                

@@ -33,8 +33,8 @@ import {
 } from "react-share";
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
-import { useMutation } from "@apollo/client";
-import { ADD_TO_BOOKMARK } from "@/graphql/features/listing";
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_TO_BOOKMARK, GET_NUMBER_OF_SAVES } from "@/graphql/features/listing";
 import { useSelector } from "react-redux";
 import { AuthInf, getState } from "@/store/features/auth/authSlice";
 
@@ -49,14 +49,30 @@ const Detail = ({ house, list_id }: Props) => {
   const currentUrl = "https://zirrowproperties.com/properties/" + list_id
   const [showShare,setShowShare] = useState(false)
   const state : AuthInf = useSelector(getState)
-  const [addtobookmark, {loading,data,error}] = useMutation(ADD_TO_BOOKMARK,{
+  
+  const [addtobookmark, {loading,data,error,reset}] = useMutation(ADD_TO_BOOKMARK,{
     variables : {
       list_id,
       user_id : state.user?.userId,
     }
   })
+  const saveQueryStatus = useQuery(GET_NUMBER_OF_SAVES,{
+    variables : {
+      list_id,
+    },
+    fetchPolicy : "no-cache"
+  })
+
   if(loading){
     console.log(state.user?.userId,list_id)
+  }
+
+  if(data){
+    saveQueryStatus.refetch()
+    reset()
+  }
+  if(saveQueryStatus.data){
+    console.log(saveQueryStatus.data,"+")
   }
 
   return (
@@ -151,7 +167,7 @@ const Detail = ({ house, list_id }: Props) => {
           </div>
           <div className="w-[1px] h-5 my-auto bg-gray-300"></div>
           <div className="flex gap-1">
-            <span>{house.save_count}</span>
+            <span>{saveQueryStatus.loading ? "..." : saveQueryStatus.error ? "error" : saveQueryStatus.data? saveQueryStatus.data.bookmark.length  : ""}</span>
             <span className="text-lightGray">Saves</span>
           </div>
         </div>
@@ -217,18 +233,15 @@ const Detail = ({ house, list_id }: Props) => {
 
       <div className="flex flex-col w-full pb-12 gap-10 pt-8 tablet:hidden">
         <ImageSlider house={house} />
-        {/* <About /> */}
+        <About description={house.description} />
         {house.matterport_link && <MatterPortEmbed link={house.matterport_link} height={400} />}
         <GeneralInformation house={house} />
         <Price house={house} />
         <TimeLine />
         {house.owner && <Broker house={house} />}
         <Features house={house} />
-        {/* <Nearby /> */}
       </div>
-      {/* <div className=" ">
-      <AddComment />
-    </div> */}
+     
     </div>
   )
 }

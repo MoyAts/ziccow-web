@@ -449,3 +449,11 @@ query {
 }
 
 `
+
+export const GET_NUMBER_OF_SAVES = gql`
+  query($list_id : uuid!){
+    bookmark(where: {listing_id: {_eq: $list_id}},distinct_on : user_id) {
+      created_at
+    }
+  }
+`

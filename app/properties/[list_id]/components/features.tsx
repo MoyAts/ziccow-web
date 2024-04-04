@@ -56,10 +56,10 @@ const features = ({ house }: Props) => {
                     <div className="text-lg mt-5 font-semibold my">Other interior features</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
-                            Total structure area: {house.listing_property.square_ft}
+                            Total  area: {house.listing_property.square_ft}
                         </li>
                         <li className="before:content-['\2022']  before:mr-2">
-                            Built up area: {house.listing_property.square_ft} sqft
+                            Built-up area: {house.listing_property.square_ft} M<sup>2</sup>
                         </li>
                     </ul>
                 </div>
@@ -101,7 +101,7 @@ const features = ({ house }: Props) => {
                             Leasing Payment  : {house.leasing_payment} Birr
                         </li>
                         <li className="before:content-['\2022']  before:mr-2">
-                            Commission Payment  : {house.commission_payment} Birr
+                            Commission Payment  : {house.commission_payment} %
                         </li>
                         <li className="before:content-['\2022']  before:mr-2">
                             Estimated Rent Price : {house.est_rental_price} Birr
@@ -210,7 +210,7 @@ const features = ({ house }: Props) => {
                     </ul>
                 </div>
                 <div className="w-full">
-                    <div className="text-lg mt-5 font-semibold my">Status</div>
+                    <div className="text-lg mt-5 font-semibold my">Construction Status</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         <li className="before:content-['\2022']  before:mr-2">
                             Complition status : {house.completion_status ? house.completion_status + "%" : "Unknown"}
@@ -224,7 +224,7 @@ const features = ({ house }: Props) => {
 
                 <div className='w-full '>
                     {/* <div className="text-lightGray font-semibold text-xl">Community & neighborhood</div> */}
-                    <div className="text-lg  font-semibold my">Community</div>
+                    <div className="text-lg  font-semibold my">Community and neighborhood</div>
                     <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
                         {/* <li className="before:content-['\2022']  before:mr-2">
                             Near a local park

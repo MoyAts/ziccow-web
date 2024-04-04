@@ -29,7 +29,7 @@ const generalInformation = ({ house }: Props) => {
         <div className="flex gap-5 border-b px-2 pb-4 ">
           <Image src={locImg} className="w-5  my-auto mt-1" alt="" />
           <p>
-            {house.real_estate?.name ?? "Real State"}, {house.address_data ?? ""}.
+             {house.address_data ?? ""}.
           </p>
         </div>
         <div className="flex gap-5 border-b px-2 pb-4 ">
@@ -38,12 +38,14 @@ const generalInformation = ({ house }: Props) => {
             Property Id: {house.property_number ?? ' N/A'}
           </p>
         </div>
-        <div className="flex gap-5 border-b px-2 pb-4 ">
-          <Image src={propertyImg} className="w-5  my-auto mt-1" alt="" />
-          <p>
-            {house.house_type?.type_name ?? "Apartment"}
-          </p>
-        </div>
+          {house.house_type?.type_name && 
+          <div className="flex gap-5 border-b px-2 pb-4 ">
+            <Image src={propertyImg} className="w-5  my-auto mt-1" alt="" />
+            <p>
+              {house.house_type?.type_name}
+            </p>
+          </div>
+        }
         <div className="flex gap-5 border-b px-2 pb-4 ">
           <Image src={builtImg} className="w-5  my-auto mt-1" alt="" />
           <p>
@@ -54,14 +56,14 @@ const generalInformation = ({ house }: Props) => {
         <div className="flex gap-5 border-b px-2 pb-4 ">
           <Image src={img5} className="w-5  my-auto mt-1" alt="" />
           <p>
-            Built up area {house.listing_property?.square_ft ?? 0} sq ft
+            Built up area {house.listing_property?.square_ft ?? 0} m<sup>2</sup>
           </p>
         </div>
 
         <div className="flex gap-5 border-b px-2 pb-4 ">
           <Image src={img4} className="w-5  my-auto mt-1" alt="" />
           <p>
-            {house.listing_property.bathroom_count} Dedicated Bathroom
+            {house.listing_property.bathroom_count}  Bathroom
           </p>
         </div>
 

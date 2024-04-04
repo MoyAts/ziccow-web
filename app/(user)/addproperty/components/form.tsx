@@ -65,7 +65,7 @@ const Form = () => {
             return res.url
         } catch (e) {
             console.log(e, "--")
-            alert("something goes wrong")
+            alert("check you connection please!")
         }
         return null
     }
