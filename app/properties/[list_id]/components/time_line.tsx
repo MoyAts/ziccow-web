@@ -11,7 +11,7 @@ import { ADD_TOUR } from "@/graphql/features/user";
 import { useMutation } from "@apollo/client";
 import { useSelector } from "react-redux";
 import { getState } from "@/store/features/auth/authSlice";
-const timeLine = ({ list_id,owner_id } : any) => {
+const TimeLine = ({ list_id,owner_id } : any) => {
     const ref = useRef<any>(null)
     const today = new Date().toISOString().split('T')[0];
     const [date,setDate] = useState(new Date())
@@ -125,5 +125,5 @@ const timeLine = ({ list_id,owner_id } : any) => {
     )
   }
   
-  export default timeLine
+  export default TimeLine
   
