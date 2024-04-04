@@ -11,7 +11,7 @@ const Page = () => {
     <div>
       {isDrawer && <Drawer setIsDrawer={setIsDrawer}/>}
       <div className={` ${isDrawer && "hidden"} bg-lightBg `}>
-        <Nav setIsDrawer={setIsDrawer} withsearch={true}/>
+        <Nav setIsDrawer={setIsDrawer} withsearch={false}/>
         <SettingInfo />
         <Footer />
       </div>

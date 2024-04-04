@@ -70,9 +70,18 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
 
                       <div  className="relative max-tablet:text-[16px] max-mobile:hidden">
                         <div onClick={() => setShowProfile(data => !data)} className="flex gap-5 max-tablet:gap-3" >
-                          <div className="cursor-pointer capitalize bg-blue-200 my-auto p-2 w-10 h-10 rounded-full flex items-center justify-center">
-                            {state.user?.firstName !== null && typeof state.user?.firstName !== 'undefined' && state.user?.firstName.length > 0 ? state.user?.firstName[0] : state.user?.email![0] }
-                          </div>
+                            {
+                              state.user?.profile_pic 
+                              ?
+                              <div className="">
+                                <Image src={state.user?.profile_pic ?? ""} className=" w-[3em] h-[3em] rounded-full" width={100} height={100} alt="profile" />
+                              </div>
+                              :
+                              <div className="cursor-pointer capitalize bg-blue-200 my-auto p-2 w-10 h-10 rounded-full flex items-center justify-center">
+                                {state.user?.firstName !== null && typeof state.user?.firstName !== 'undefined' && state.user?.firstName.length > 0 ? state.user?.firstName[0] : state.user?.email![0] }
+                              </div> 
+                              }
+                          
                           <p className="cursor-pointer my-auto text-lightGray">{state.user?.firstName}</p>
                         </div>
                        <ProfileCard logoutUser={() => { dispatch(logoutUser())}} show={showProfile} state={state} />

@@ -7,6 +7,7 @@ export const GET_USER = gql`
           first_name
           last_name
           email
+          profile_pic
           user_id
           onboarding_complete
           internal_agent
@@ -23,6 +24,7 @@ export const GET_USER_SETTING = gql`
           last_name
           phone_number
           email
+          profile_pic
           social_twitter
           social_youtube
           social_facebook
@@ -38,6 +40,14 @@ export const GET_USER_SETTING = gql`
         }
       }
 `
+export const UPDATE_PROFILE_PICTURE = gql`
+mutation($profile_pic : String!,$user_id : uuid!){
+  update_user(_set :{ profile_pic : $profile_pic }, where : { user_id :{ _eq : $user_id} }){
+    returning {
+      profile_pic
+    }
+  }
+}`
 
 export const UPDATE_USER = gql`
   mutation a($_eq: uuid!,$youtube : String!,$whatsapp : String!,$telegram : String!,$twitter : String!,$facebook: String!,$instagram: String!, $first_name: name!, $last_name: name!, $phone_number: String!, $email: String!) {

@@ -10,6 +10,7 @@ export interface UserFromApi {
   email : string ,
   onboarding_complete : boolean
   internal_agent : boolean,
+  profile_pic : string | null,
 } 
 
 export interface DatasInf {
@@ -18,6 +19,7 @@ export interface DatasInf {
   userId : string  | null,
   email : string  | null,
   internal_agent : boolean | null
+  profile_pic : string | null,
 
 } 
 
@@ -48,6 +50,7 @@ export const initialState: AuthInf = {
     firstName : null,
     lastName : null,
     email : null,
+    profile_pic : null,
     internal_agent : null,
   },
   isLogedIn : LogInf.NOT_FETCHED,
@@ -74,6 +77,19 @@ export const authSlice : any = createSlice({
     fetchingUser : (state) => {
       state.isLogedIn = LogInf.LOADING
     },
+    updateLocalProfile : (state,action : PayloadAction<string>) => {
+      const url = action.payload
+      if(state.user){
+        state.user = {
+          userId : state.user.userId,
+          firstName : state.user.firstName,
+          lastName : state.user.lastName,
+          email : state.user.email,
+          profile_pic : url,
+          internal_agent : state.user.internal_agent
+        }
+      }
+    },
     
     userFetched : (state,action : PayloadAction<UserFromApi>) => {
       const user = action.payload
@@ -82,8 +98,8 @@ export const authSlice : any = createSlice({
         firstName : user.first_name,
         lastName : user.last_name,
         email : user.email,
+        profile_pic : user.profile_pic,
         internal_agent : user.internal_agent
-
       }
       state.isLogedIn = LogInf.LOGED_IN
       state.doesTokenExist =true
@@ -107,7 +123,7 @@ export const authSlice : any = createSlice({
   },
 })
 
-export const { loginUser,userNotFound,logoutUser,fetchingUser,userFetched,userFetchedError } = authSlice.actions
+export const { loginUser,userNotFound,logoutUser,fetchingUser,userFetched,userFetchedError,updateLocalProfile } = authSlice.actions
 
 export const getState = (state : any) => {
     return state.auth
