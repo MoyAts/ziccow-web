@@ -465,3 +465,28 @@ export const ADD_LISTING_VIEW = gql`
     }
   }
 `
+
+export const ADD_LISTING_REVIEW  = gql`
+  mutation($comment : String!,$rating : bigint!, $user_id : uuid!,$listing_id :uuid!){
+    insert_property_review(objects: {comment: $comment, rating: $rating, user_id: $user_id, listing_id: $listing_id}) {
+      returning {
+        comment
+      }
+    }
+  }
+`
+
+export const GET_LISTING_REVIEW  = gql`
+  query($listing_id : uuid!){
+    property_review(order_by: {created_at: desc},where :{ listing_id : {_eq :$listing_id}}) {
+      comment
+      rating
+      created_at
+      user{
+        profile_pic
+        first_name
+        last_name
+      }
+    }
+  }
+`

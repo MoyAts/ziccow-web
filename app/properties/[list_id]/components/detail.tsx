@@ -231,6 +231,7 @@ const Detail = ({ house, list_id }: Props) => {
           <Price house={house} />
           <TimeLine />
           {house.owner && <Broker house={house} />}
+          <AddComment listing_id={house.listing_id} />
         </div>
       </div>
 
