@@ -49,7 +49,6 @@ const Detail = ({ house, list_id }: Props) => {
   const currentUrl = "https://zirrowproperties.com/properties/" + list_id
   const [showShare,setShowShare] = useState(false)
   const state : AuthInf = useSelector(getState)
-  
   const [addtobookmark, {loading,data,error,reset}] = useMutation(ADD_TO_BOOKMARK,{
     variables : {
       list_id,
@@ -90,7 +89,7 @@ const Detail = ({ house, list_id }: Props) => {
           <div>Property </div>
         </div>
         <div>/</div>
-        <div>Rental</div>
+        <div>{house.sale_type ?? "unknown"} </div>
         <div>/</div>
         <div>{house?.real_estate_name ?? house?.real_estate?.name ?? "Real Estate"}</div>
         {/* <div>{house?.real_estate_name ?? house?.real_estate?.name ?? "Real State"}</div> */}

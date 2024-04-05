@@ -12,7 +12,7 @@ import { getState } from '@/store/features/auth/authSlice';
 
 const AddComment = ({ listing_id } : any) => {
   
-  const userData = useSelector(getState)
+  const state = useSelector(getState)
 
   const [comments, setComments] = useState<any[]>([])
 
@@ -51,7 +51,7 @@ const AddComment = ({ listing_id } : any) => {
     addReview({ variables : {
         comment,
         rating,
-        user_id : userData.user.userId,
+        user_id : state.user.userId,
         listing_id,
     }})
   }
@@ -61,14 +61,19 @@ const AddComment = ({ listing_id } : any) => {
       <p className='text-lg text-center'>Leave your review about your experience with this Real Estate</p>
       <div className=' flex gap-5'>
         <div className='flex gap-5 w-full'>
-          <div className='w-[3em] flex h-[3em] rounded-full bg-slate-900'>
-            <div className='m-auto text-white'>N</div>
-          </div>
+          {
+            state.user.profile_pic ?
+              <Image className='rounded-full w-[4em] h-[4em]' src={state.user.profile_pic} width={100} height={100} alt="" />
+            :
+            <div className='w-[4em] h-[3em] flex rounded-full bg-slate-900'>
+              <div className='m-auto text-white'>N</div>
+            </div>
+          }
          {loading ? 
-         <div>loading</div>
+         <div className='m-auto'>loading</div>
          :
          error ?
-         <div>error</div>
+         <div className='m-auto'>error</div>
          :
          <div className='flex flex-col gap-2 w-full '>
             <div className='my-auto'>
