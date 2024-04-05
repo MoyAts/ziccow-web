@@ -161,7 +161,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         />
         <CustomeInput
           label='Built up area (above ground)'
-          name='squareFootage' placeholder='e.g. 125 sq ft'
+          name='squareFootage' placeholder='e.g. 125 Meter square'
           IconClass={"text-3xl my-auto text-mainBlue rotate-90"}
           ReactIcon={MdNavigateNext}
           divClass='w-full'

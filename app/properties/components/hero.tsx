@@ -14,7 +14,8 @@ import { useSearchParams } from "next/navigation";
 
 const Hero = () => {
     const searchParams = useSearchParams()
-    const searchData = searchParams.get('search')
+    const searchDataParam = searchParams.get('search')
+    const saleTypeDataParam = searchParams.get('property_managment')
    
     const priceFilter = [
         { name :  "$15k and Below", price : [0,15000]},
@@ -31,21 +32,30 @@ const Hero = () => {
     const houseFilter = [
         "Sell","Rental"
     ]
-    const initialData = searchData  ? {
+    const intialSearchQuery =  searchDataParam?.trim() ? [
+        {
+            address_data:{_ilike:searchDataParam.trim() ? `%${searchDataParam}%` : ""}
+        },
+      {
+        house_type:{
+            type_name : {
+                _ilike: searchDataParam.trim() ? `%${searchDataParam}%` : ""
+                }
+            }
+      } 
+    ] : []
+    const intialSaleTypeDataParam =  saleTypeDataParam?.trim() ? [
+        { sale_type :{_eq : saleTypeDataParam?.trim()} }
+    ] : []
+    const initialData = intialSearchQuery.length > 0 || intialSaleTypeDataParam.length > 0 ?
+     {
          where : {
         _or:[
-          {
-            address_data:{_ilike:searchData.trim() ? `%${searchData}%` : ""}
-          },
-          {
-            house_type:{
-                type_name : {
-                    _ilike: searchData.trim() ? `%${searchData}%` : ""
-                    }
-                }
-          }
+          ...intialSearchQuery,
+          ...intialSaleTypeDataParam
         ]
-      },order_by : {}} : 
+      },order_by : {}} 
+      : 
       { where : {},order_by : {}
     }
 

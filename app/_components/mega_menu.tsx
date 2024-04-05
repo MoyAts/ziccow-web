@@ -19,7 +19,7 @@ const MegaMenu = () => {
 
             <div className='z-50 flex flex-col basis-1/3'>
 
-              <Link href={"/properties"} className='text-mainBlue font-semibold text-lg'>Buy a Property</Link>
+              <Link href={"/properties?property_managment=Sell"} className='text-mainBlue font-semibold text-lg'>Buy a Property</Link>
               <div className='z-50 my-2 w-full h-[1px] bg-slate-400'></div>
               <div className='z-50 flex flex-col gap-1 mt-5'>
                   <h5 className='font-normal text-lg'>Properties</h5>
@@ -39,7 +39,7 @@ const MegaMenu = () => {
 
             <div className='z-50 flex flex-col basis-1/3'>
 
-              <Link href={"/login"} className='text-mainBlue font-semibold text-lg capitalize'>add new listing </Link>
+              <Link href={"/addproperty"} className='text-mainBlue font-semibold text-lg capitalize'>add new listing </Link>
 
               <div className='z-50 my-2 w-full h-[1px] bg-slate-400'></div>
 
@@ -62,7 +62,7 @@ const MegaMenu = () => {
 
             <div className='z-50 flex flex-col basis-1/3'>
 
-              <Link href={"/properties"} className='text-mainBlue font-semibold text-lg'>Rent a Property</Link>
+              <Link href={"/properties?property_managment=Rental"} className='text-mainBlue font-semibold text-lg'>Rent a Property</Link>
               <div className='z-50 my-2 w-full h-[1px] bg-slate-400'></div>
               <div className='z-50 flex flex-col gap-1 mt-5'>
                   <h5 className='font-normal text-lg'>Search for rentals</h5>
