@@ -11,7 +11,6 @@ interface Props {
 const price = ({ house }: Props) => {
   const isDolar = house.currency != null && house.currency == "USD" 
   let price = house.sale_type == 'Sell' ? house.sale_price : house.rental_price?.price ?? ""
-  console.log(price)
   price = price ? price.toString() : ""
   price = price ? isDolar ?  price : price.slice(1) + " Birr" : "0"
   return (

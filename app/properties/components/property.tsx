@@ -98,11 +98,22 @@ const Home = ( { house , userId} : Props) => {
             </div>
             <div className="flex justify-between pe-2 mt-4">
                 {
-                    house.sale_price && 
+                    house.sale_type == "Sell" && house.sale_price && house.sale_price.length > 2 &&
                     <h1 className="">
-                        <span className="text-xl font-semibold text-black">{house.currency ?? "Birr "}{house.sale_price.slice(1,house.sale_price.length)}</span> 
-                        {house.sale_type != "Sell" && <span className=""> /month</span>}
+                        <span className="text-xl font-semibold text-black">
+                            {house.currency ?? "Birr "} {house.sale_price.slice(1,house.sale_price.length)}
+                        </span> 
                     </h1>
+                }
+                {
+                     house.sale_type == "Rental"  && 
+                     <h1 className="">
+                         <span className="text-xl font-semibold text-black">
+                            {/* {house.rental_price?.price} */}
+                             {house.currency ?? "Birr "} {house.rental_price?.price?.toString().slice(1,house.rental_price.price.length) ?? "0"}
+                         </span> 
+                         <span className=""> {house.rental_price?.cycle && "/" + house.rental_price?.cycle}</span>
+                     </h1>
                 }
                { 
                loading ? 

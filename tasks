@@ -99,15 +99,14 @@ api Integration
   - on progress
     - search for the mobile
     - delete some note after description
+    - views and saves
+    - profile picture update
+    - account setting should not include search bar
+    - recommendation page description
   - remaining
     - built up area | sq ft  -> m2
     - remove bathroom
-    - recommendation page description
-    
-    - views and saves
     - overlap in recommendation
-    - profile picture update
-    - account setting should not include search bar
   - questions
     - region memrecha ?
     - Language yelawem ?
