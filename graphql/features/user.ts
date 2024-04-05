@@ -49,6 +49,7 @@ export const GET_USER_SETTING = gql`
           social_youtube
           social_facebook
           social_telegram
+          social_tiktok
           social_whatsapp
           social_instagram
           onboarding_id 
@@ -70,7 +71,7 @@ mutation($profile_pic : String!,$user_id : uuid!){
 }`
 
 export const UPDATE_USER = gql`
-  mutation a($_eq: uuid!,$youtube : String!,$whatsapp : String!,$telegram : String!,$twitter : String!,$facebook: String!,$instagram: String!, $first_name: name!, $last_name: name!, $phone_number: String!, $email: String!) {
+  mutation a($_eq: uuid!,$tiktok : String!,$youtube : String!,$whatsapp : String!,$telegram : String!,$twitter : String!,$facebook: String!,$instagram: String!, $first_name: name!, $last_name: name!, $phone_number: String!, $email: String!) {
     update_user(_set: 
       {
         first_name: $first_name,
@@ -78,6 +79,7 @@ export const UPDATE_USER = gql`
         phone_number: $phone_number, 
         email: $email,
         social_facebook : $facebook,
+        social_tiktok : $tiktok,
         social_instagram : $instagram,
         social_twitter : $twitter,
         social_whatsapp : $whatsapp,
@@ -97,11 +99,12 @@ export const UPDATE_USER = gql`
   }
 `
 export const UPDATE_USER_ONBOARDING = gql`
-  mutation a($_eq: uuid!,$education_level: String!,$work_experience : String!) {
+  mutation a($_eq: uuid!,$language_preference : String!,$education_level: String!,$work_experience : String!) {
     update_onboarding_info(_set: 
       {
         education_level : $education_level, 
-        work_experience : $work_experience
+        work_experience : $work_experience,
+        language_preference : $language_preference,
       }, where: {uuid: {_eq: $_eq}}) {
       affected_rows
       returning {

@@ -23,6 +23,7 @@ export interface houseInf {
         social_twitter: string | null,
         social_facebook: string | null,
         social_youtube: string | null,
+        social_tiktok: string | null,
         social_instagram: string | null,
         social_telegram: string | null,
         social_whatsapp: string | null,

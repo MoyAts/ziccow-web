@@ -182,6 +182,7 @@ export const GET_LIST_BY_ID = gql`query a($list_id: uuid!) {
       social_youtube
       social_instagram
       social_telegram
+      social_tiktok
       social_whatsapp
       phone_number
       user_id

@@ -7,6 +7,7 @@ import { useQuery } from "@apollo/client"
 import { useRouter } from "next/navigation"
 import Drawer from "@/app/_components/drawer"
 import { useState } from "react"
+import Link from "next/link"
 
 const Page = ({ params : { list_id }} : { params : { list_id : string}}) => {
   const router = useRouter()
@@ -16,8 +17,9 @@ const Page = ({ params : { list_id }} : { params : { list_id : string}}) => {
     }
   })
   if(error){
-    console.log(error)
     // router.replace("/properties")
+    console.log(error)
+    // return <>Not found</>
   }
   if(data){
     console.log("--",data)
@@ -33,7 +35,16 @@ const Page = ({ params : { list_id }} : { params : { list_id : string}}) => {
           <GetStarted />
           <Hero setIsDrawer={setIsDrawer} />
           {loading && "loading"}
-          {data && <Detail house={data.listing[0]} list_id={list_id} />}
+          {data && data.listing.length == 0 && 
+          <div className="w-full h-full bg-white flex">
+            <div className="mt-32 mx-auto flex flex-col  justify-center align-middle">
+              <div className="capitalize text-xl text-center">
+                sorry :( property not found
+              </div>
+              <Link href="/properties" className="text-blue text-center text-blue-500 font-semibold" > Go Back</Link>
+            </div>
+          </div>}
+          {data && data.listing.length > 0 && <Detail house={data.listing[0]} list_id={list_id} />}
         </div>
     </div>
   )

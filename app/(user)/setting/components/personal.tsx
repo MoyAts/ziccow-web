@@ -7,6 +7,7 @@ import { GET_USER_SETTING, UPDATE_USER, UPDATE_USER_ONBOARDING } from '@/graphql
 import Error from '@/app/_components/error'
 import { useSelector,useDispatch } from 'react-redux'
 import { getState,UserFromApi,userFetched } from "@/store/features/auth/authSlice"
+import AddLanguage from './addlanguage'
 
 interface formInf{
     firstName : string,
@@ -19,12 +20,20 @@ interface formInf{
     whatsapp : string,
     instagram : string,
     telegram : string,
+    tiktok : string,
     youtube : string,
     education_level : string,
-    language_preference : string,
+    language_preference : string[],
     work_experience : string,
 }
 
+const getLang = (data : string ) : string[] => {
+    try{
+        return JSON.parse(data);
+    }catch(err){
+        return []
+    }
+} 
 const Personal = () => {
     const userData : any = useSelector(getState)
     const initialData : formInf = {
@@ -34,9 +43,10 @@ const Personal = () => {
         facebook: '',
         whatsapp: '',
         instagram: '',
+        tiktok : '',
         telegram: '',
         education_level: '',
-        language_preference: '',
+        language_preference: [],
         work_experience: '',
     }
     const dispatch = useDispatch()
@@ -55,14 +65,16 @@ const Personal = () => {
                         instagram : fetchedUser.social_instagram,
                         whatsapp : fetchedUser.social_whatsapp,
                         youtube : fetchedUser.social_youtube,
+                        tiktok : fetchedUser.social_tiktok,
                         telegram : fetchedUser.social_telegram,
                         education_level : fetchedUser.onboarding_info.education_level,
-                        language_preference : fetchedUser.onboarding_info.language_preference,
+                        language_preference : getLang(fetchedUser.onboarding_info?.language_preference),
                         work_experience : fetchedUser.onboarding_info.work_experience,
                     }))
         }
     })
     
+
     
     const [updateUser,{loading,error,data,reset}] = useMutation(UPDATE_USER)
     const [updateUserOnboarding,onboardingStatus] = useMutation(UPDATE_USER_ONBOARDING)
@@ -97,6 +109,8 @@ const Personal = () => {
                 _eq : getUserState.data.user_by_pk.onboarding_id,
                 education_level : form.education_level,
                 work_experience : form.work_experience,
+                language_preference : JSON.stringify(form.language_preference)
+
             }
         })
         reset()
@@ -146,12 +160,14 @@ const Personal = () => {
             facebook : form.facebook,
             instagram : form.instagram,
             whatsapp : form.whatsapp,
+            tiktok : form.tiktok,
             telegram : form.telegram,
             youtube : form.youtube,
             
         }})
        
     }
+
   return (
     <div className='w-full '>
        <h2 ref={errRef} className='text-2xl font-semibold mb-8'>Profile Information</h2>  
@@ -184,16 +200,25 @@ const Personal = () => {
                 <CustomeInput name="youtube" value={form.youtube} onChange={onChange} label='Youtube' placeholder='Enter your youtube' divClass='w-full'  />
                 <CustomeInput name="telegram" value={form.telegram} onChange={onChange} label='Telegram' placeholder='Enter your telegram' divClass='w-full'  />
             </div>
+            <CustomeInput name="tiktok" value={form.tiktok} onChange={onChange} label='Tiktok' placeholder='Enter your tiktok' divClass='w-full'  />
+
            
             <p className='text-xl font-semibold mb-2 mt-5'>Onboarding Info</p>
             <p className='text-sm my-2 text-lightGray mb-7'>Your onboarding informations.</p>
             
-            <div className='flex gap-5  w-full mb-5'>
+            {getUserState.data 
+            && <AddLanguage
+                updateValue={()=>{}} 
+                langs={form.language_preference}
+                setForm={setForm}
+                name='language' 
+                label={"Languate Preference"} 
+                placeholder={"Language"}
+            />}
+            <div className='flex gap-5 mt-5 w-full mb-5'>
                 <CustomeInput name="education_level" value={form.education_level} onChange={onChange} label='Education level' placeholder='Enter your Education level' divClass='w-full'  />
                 <CustomeInput name="work_experience" value={form.work_experience} onChange={onChange} label='Work experience' placeholder='Enter your Work experience' divClass='w-full'  />
-                {/* <CustomeInput name="language_preference" value={form.language_preference} onChange={onChange} label='Language preference' placeholder='Enter your Language preference' divClass='w-full'  /> */}
             </div>
-            
 
             
             <div className='flex justify-between mt-8'>

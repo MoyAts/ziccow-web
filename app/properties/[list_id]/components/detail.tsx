@@ -92,14 +92,15 @@ const Detail = ({ house, list_id }: Props) => {
         <div>/</div>
         <div>Rental</div>
         <div>/</div>
-        <div>{house.real_estate_name ?? house.real_estate?.name ?? "Real State"}</div>
+        <div>{house?.real_estate_name ?? house?.real_estate?.name ?? "Real Estate"}</div>
+        {/* <div>{house?.real_estate_name ?? house?.real_estate?.name ?? "Real State"}</div> */}
       </div>
 
       <div className="flex justify-between mt-5">
         <div className="flex gap-7">
-          <h1 className="text-[35px] max-tablet:text-[25px]"> {house.real_estate?.name ?? "Real State"}</h1>
+          <h1 className="text-[35px] max-tablet:text-[25px]"> {house?.real_estate?.name ?? "Real State"}</h1>
     
-          {house.verified &&
+          {house?.verified &&
             <div className="flex gap-1 m-auto">
               <Image src={img} width={25} alt="" />
               <p className="my-auto text-mainBlue">Verified </p>
@@ -160,12 +161,12 @@ const Detail = ({ house, list_id }: Props) => {
       <div className="flex justify-between max-mobile:flex-col max-small:gap-5">
         <div className="flex gap-4 my-auto">
           <div className="flex gap-1">
-            <span>{calculateTimeDifference(house.created_at) ?? ""}</span>
+            <span>{calculateTimeDifference(house?.created_at) ?? ""}</span>
             <span className="text-lightGray">on Zirrow</span>
           </div>
           <div className="w-[1px] h-5 my-auto bg-gray-300"></div>
           <div className="flex gap-1">
-            <span>{house.views_count ?? 0}</span>
+            <span>{house?.views_count ?? 0}</span>
             <span className="text-lightGray">View</span>
           </div>
           <div className="w-[1px] h-5 my-auto bg-gray-300"></div>
@@ -221,28 +222,28 @@ const Detail = ({ house, list_id }: Props) => {
       <div className="flex w-full pb-12 gap-10 pt-8 max-tablet:hidden">
         <div className="w-7/12 flex flex-col">
           <ImageSlider house={house} />
-          <About description={house.description} />
-          {house.matterport_link && <MatterPortEmbed link={house.matterport_link} height={400} />}
+          <About description={house?.description} />
+          {house?.matterport_link && <MatterPortEmbed link={house?.matterport_link} height={400} />}
           <Features house={house} />
           {/* <Nearby /> */}
         </div>
         <div className="w-5/12 flex flex-col">
           <GeneralInformation house={house} />
           <Price house={house} />
-          {house.owner && <TimeLine list_id={house.listing_id}  owner_id={house.owner.user_id} />}
-          {house.owner && <Broker house={house} />}
-          <AddComment listing_id={house.listing_id} />
+          {house?.owner && <TimeLine list_id={house?.listing_id}  owner_id={house?.owner.user_id} />}
+          {house?.owner && <Broker house={house} />}
+          <AddComment listing_id={house?.listing_id} />
         </div>
       </div>
 
       <div className="flex flex-col w-full pb-12 gap-10 pt-8 tablet:hidden">
         <ImageSlider house={house} />
-        <About description={house.description} />
-        {house.matterport_link && <MatterPortEmbed link={house.matterport_link} height={400} />}
+        <About description={house?.description} />
+        {house?.matterport_link && <MatterPortEmbed link={house?.matterport_link} height={400} />}
         <GeneralInformation house={house} />
         <Price house={house} />
-        {house.owner && <TimeLine list_id={house.listing_id}  owner_id={house.owner.user_id} />}
-        {house.owner && <Broker house={house} />}
+        {house?.owner && <TimeLine list_id={house?.listing_id}  owner_id={house?.owner.user_id} />}
+        {house?.owner && <Broker house={house} />}
         <Features house={house} />
       </div>
      

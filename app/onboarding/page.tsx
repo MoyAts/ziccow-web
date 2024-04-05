@@ -75,7 +75,9 @@ const LoginPage = () => {
                         
                         <AddLanguage 
                             updateValue={setLanguage} 
-                            name='language' label={"Languate Preference"} placeholder={"Language"}
+                            name='language' 
+                            label={"Languate Preference"} 
+                            placeholder={"Language"}
                         />
                         <CustomeInput 
                             value={education} 

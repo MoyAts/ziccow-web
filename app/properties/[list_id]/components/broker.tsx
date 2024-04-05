@@ -7,7 +7,7 @@ import send from "../../../assets/images/send.svg"
 import userSvg from "../../../assets/images/user.svg"
 import { houseFeaturedInf, houseInf } from "@/utils/interfaces";
 import { CiLinkedin } from "react-icons/ci";
-import { BsTelegram, BsTwitterX } from "react-icons/bs";
+import { BsTelegram, BsTiktok, BsTwitterX } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram,FaYoutube } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
@@ -83,9 +83,9 @@ const broker = ({ house } : Props) => {
                         <FaInstagram className="text-3xl hover:text-blue-600 text-blue-500" />
                     </Link>
                     }
-                    {house.owner?.social_twitter &&
-                    <Link href={house.owner?.social_twitter ?? ""}>
-                        <BsTwitterX className="text-3xl hover:text-blue-600 text-blue-500" />
+                    {house.owner?.social_tiktok &&
+                    <Link href={house.owner?.social_tiktok ?? ""}>
+                        <BsTiktok className="text-3xl hover:text-blue-600 text-blue-500" />
                     </Link>
                     }
                    
