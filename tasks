@@ -96,23 +96,39 @@ api Integration
     - change sell a property to add new listing 
     - broker detail
     - mobile account 
-  - on progress
-    - search for the mobile
     - delete some note after description
+    - search for the mobile
     - views and saves
     - profile picture update
     - account setting should not include search bar
     - recommendation page description
-  - remaining
     - built up area | sq ft  -> m2
     - remove bathroom
-    - overlap in recommendation
+    - review on normal listing 
+    - "And the rivew must exist for every post he or she post"
+  - on progress
+    - check upload house type
+    - Add number of bedroom and bathrom on products page
+    - Add 250 word limit on description section in the listing form
+    - Show latest listings first without filter on the property listing page
+    - on property listing form "remove above ground for built up area"
+    - Add "other" input under community section so they can add sth else other than primary and secondary
+    - Estimated rental price should only show for sell listings and not rental
+    - Rental or Sale selector on the forn should be the frist step because we have some conditional inputs depending on that
+    - Add a red asterisk(*) indicator for required fields
+  - remaining
+    - Error with mega meny navigation
+    - Back navigation on listings page takes to real estates page still
+    - show ownership or agent status on the detail page as a badge
+    - Property type and region should be a dropdown instead of search on all pages in the top filter
+    - Share icons should go away on click outside
+    - Real estate page needs title to show those are real estates
+    - For Schedule timeline add a notification indicator we'll implement notifications feature for that
   - questions
+    - overlap in recommendation ?
     - region memrecha ?
     - Language yelawem ?
     - reset password ?
-    - review on normal listing ?
-    - "And the rivew must exist for every post he or she post"
     - review all the texts ?
     ====
   

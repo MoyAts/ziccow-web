@@ -11,11 +11,15 @@ import img4 from "../../../assets/images/bathroom.svg"
 import type { PropertyDetailInf } from "./interface"
 import { useRef, useState } from "react";
 import goImg from "../../../assets/images/go.svg"
-import ImagePicker from "./imagePicker";
 import OptionInput from "./optionInput2";
 import RealEstateOptionInput from "./realEstateInput";
 import { useSelector } from "react-redux";
 import { getState } from "@/store/features/auth/authSlice";
+
+import Checkboxdiv from "./checkboxdiv";
+import OptionInputNew from "./optionInput";
+import OptionInput3 from "./optionInput3";
+import OptionInput4 from "./optionInput4";
 interface MainProps {
   setForm: Function,
   form: PropertyDetailInf,
@@ -24,7 +28,6 @@ interface MainProps {
 
 const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
   const state = useSelector(getState)
-  const [images, setImages] = useState<any>([])
   const [err, setErr] = useState<string | null>(null)
   const errRef = useRef<any>(null)
   const setChange = ({ target }: any) => {
@@ -43,18 +46,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       return { ...data, facilities: newFacility }
     })
   }
-  const setCommunity = (target: string) => {
-    setForm((data: any) => {
-      const newCommunity = { ...data.community, [target]: !data.community[target] }
-      return { ...data, community: newCommunity }
-    })
-  }
-  const setConstruction = (target: string) => {
-    setForm((data: any) => {
-      const newConstruction = { ...data.construction, [target]: !data.construction[target] }
-      return { ...data, construction: newConstruction }
-    })
-  }
+  
 
   const checkString = (value: string | null) => {
     if (value == null || value.length < 1) {
@@ -79,26 +71,38 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
     const errFound = (err: string) => {
       setErr(err)
     }
-    if (state.user.internal_agent == false && !checkString(form.propertyName)) {
-      return errFound("Wrong Property Name")
+    if (!checkString(form.realEstateId ?? "")) {
+      return errFound("Please choose real estate")
     }
     if (!checkString(form.address)) {
-      return errFound("Wrong Address")
+      return errFound("Please insert your address")
+    }
+    if (!checkString(form.homeType)) {
+      return errFound("Please choose your property type")
+    }
+    if (state.user.internal_agent == false && !checkString(form.propertyName)) {
+      return errFound("Please insert Property Name")
     }
     if (!checkNumber(form.yearBuilt)) {
-      return errFound("Wrong year built")
+      return errFound("Please insert year built")
     }
     if (!checkNumber(form.squareFootage)) {
-      return errFound("Wrong square footage")
+      return errFound("Please insert square footage")
     }
-    for (let i in form.previewImages) {
-      if (form.previewImages[i] != null) {
-        setErr("")
-        setPage(2)
-        return
-      }
+    if (!checkString(form.propertyManagment)) {
+      return errFound("Please specify property management")
     }
-    return errFound("Empty Images")
+    if (form.propertyManagment == "Rental") {
+      if(!checkNumber(form.rentalPrice))
+        return errFound("Please specify Rental Price " + form.rentalPrice)
+      if(!checkString(form.cycle))
+        return errFound("Please specify Rental Price cycle")
+    } else {
+      if(!checkNumber(form.sellingPrice))
+        return errFound("Please specify selling Price " + form.sellingPrice)
+    }
+    setPage(2)
+    
 
   }
 
@@ -130,7 +134,15 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         />
       }
 
-      <CustomeInput value={form.phone} onChange={setChange} label='Property Id ' name={"phone"} placeholder='012671164' divClass='mb-5' />
+      <CustomeInput 
+        value={form.phone} 
+        onChange={setChange} 
+        label='Property Id ' 
+        name={"phone"} 
+        placeholder='012671164' 
+        divClass='mb-5' 
+        isRequired={false}
+      />
       <CustomeInput
         label='Enter the Home Address you’re going to sell/rent.'
         name={"address"} placeholder='e.g. A0001 “A” is the first letter of your name'
@@ -160,7 +172,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           value={form.yearBuilt}
         />
         <CustomeInput
-          label='Built up area (above ground)'
+          label='Built up area'
           name='squareFootage' placeholder='e.g. 125 Meter square'
           IconClass={"text-3xl my-auto text-mainBlue rotate-90"}
           ReactIcon={MdNavigateNext}
@@ -175,6 +187,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         divClass='mb-5'
         onChange={setChange}
         Icon={searachImg}
+        isRequired={false}
         value={form.completionStatus}
       />
 
@@ -184,6 +197,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         divClass='mb-5'
         onChange={setChange}
         Icon={searachImg}
+        isRequired={false}
         value={form.paymentProgram}
       />
       <CustomeInput
@@ -192,9 +206,58 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         divClass='mb-5'
         onChange={setChange}
         Icon={searachImg}
+        isRequired={false}
         value={form.matterportLink}
       />
-      <div className="flex justify-between mb-8">
+      <div className='flex flex-col mt-3 gap-3'>
+        <OptionInputNew
+          onChange={setForm}
+          ReactIcon={MdNavigateNext}
+          IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
+          name='propertymanagment' label='Property managements' placeholder='Property Managment'
+          value={form.propertyManagment}
+        />
+        {
+          form.propertyManagment == "Rental" ?
+            <div className="flex justify-between gap-5">
+              <CustomeInput
+                onChange={({ target }: any) => setForm((data: PropertyDetailInf) => ({ ...data, "rentalPrice": target.value }))}
+                IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
+                name='price' label='Rental price' placeholder='15,000'
+                value={form.rentalPrice}
+                divClass="w-full"
+              />
+
+              <OptionInput4
+                onChange={setForm}
+                ReactIcon={MdNavigateNext}
+                IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
+                name='cycle' label='Cycle' placeholder='cycle'
+                value={form.cycle}
+                divClass="w-full "
+              />
+            </div>
+            :
+            form.propertyManagment == "Sell" ?
+              <CustomeInput
+                onChange={({ target }: any) => setForm((data: PropertyDetailInf) => ({ ...data, "sellingPrice": target.value }))}
+                IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
+                name='price' label='Selling price' placeholder='15,000'
+                value={form.sellingPrice}
+              /> : <></>
+
+        }
+
+        <OptionInput3
+          onChange={setForm}
+          ReactIcon={MdNavigateNext}
+          IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
+          name='currency' label='Currency' placeholder='currency'
+          value={form.currency}
+        />
+
+      </div>
+      <div className="flex justify-between my-5 mb-8">
         <div className="text-xl">Facilities</div>
         <MdNavigateNext className="text-3xl my-auto text-mainBlue -rotate-90" />
       </div>
@@ -304,9 +367,14 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       <div className="text-xl mb-4 mt-8">Property Description (Home Details)</div>
       <textarea
         className="w-full bg-white text-lightGray px-5 py-4 rounded-lg"
-        onChange={({ target }: any) => setForm((data: PropertyDetailInf) => ({ ...data, "description": target.value }))}
+        onChange={({ target }: any) => {
+          if(target.value.length > 250) return "" 
+          setForm((data: PropertyDetailInf) => ({ ...data, "description": target.value }))
+        }}
+        value={form.description}
         name="" id="" cols={30} rows={10} placeholder="your description"
       />
+      <span>{form.description.length}/250</span>
 
       <div className="text-xl mb-4 mt-8">Utilities</div>
         <div className="flex tablet:gap-32 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
@@ -388,155 +456,21 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           </div>
 
         </div>
-      <div className="text-lg mb-2 mt-3">Other</div>
+      <div className="mb-2 mt-3">Other</div>
       <textarea
         className="w-full bg-white text-lightGray px-5 py-4 rounded-lg h-32"
         onChange={({ target }: any) =>{
+           if(target.value.length > 250) return ""
            const newData = {...form.utility,"other" : target.value }
            setForm((data: PropertyDetailInf) => ({ ...data, "utility": newData }))
         }}
+        value={form.utility.other}
         name="" id="" cols={10} rows={10} placeholder="your description"
       />
-      <p className="text-lightGray text-sm mt-2">Please select an option.</p>
-
-      <div className="text-xl mb-4 mt-8">Community</div>
-      <div className="flex gap-5 flex-wrap">
-
-        <CheckBoxDiv
-          label="Primary School"
-          name="communitys" isRadio={false}
-          setChange={() => setCommunity("primarySchool")}
-          checked={form.community.primarySchool!}
-        />
-        
-        <CheckBoxDiv
-          label="Secondary School"
-          name="community" isRadio={false}
-          setChange={() => setCommunity("secondarySchool")}
-          checked={form.community.secondarySchool!}
-        />
-        <CheckBoxDiv
-          label="College & University"
-          name="community" isRadio={false}
-          setChange={() => setCommunity("collegeAndUni")}
-          checked={form.community.collegeAndUni!}
-        />
-        <CheckBoxDiv
-          label="Hospital"
-          name="community" isRadio={false}
-          setChange={() => setCommunity("hospital")}
-          checked={form.community.hospital!}
-        />
-
-        <CheckBoxDiv
-          label="Supermarket"
-          name="community" isRadio={false}
-          setChange={() => setCommunity("supermarket")}
-          checked={form.community.supermarket!}
-        />
-       
-
-      </div>
-
-
-      <div className="text-xl mb-4 mt-8">Construction Material</div>
-      <div className="flex gap-5 flex-wrap">
-
-        <CheckBoxDiv
-          label="Ordinary Material"
-          name="construction" isRadio={false}
-          setChange={() => setConstruction("ordinaryMaterial")}
-          checked={form.construction.ordinaryMaterial!}
-        />
-        <CheckBoxDiv
-          label="It has unique construction material"
-          name="construction" isRadio={false}
-          setChange={() => setConstruction("uniqueMaterial")}
-          checked={form.construction.uniqueMaterial!}
-        />
-        {
-          form.construction.uniqueMaterial ?
-            <CustomeInput
-              label="Describe material if it's unique"
-              name={"constructionCustom"} placeholder='add % completed Eg. 80% completed'
-              divClass='mb-5'
-              onChange={setChange}
-              Icon={searachImg}
-              value={form.constructionCustom}
-            /> : <></>
-        }
-      </div>
-
-
-
-
-      {/* <div className="text-xl mb-4 mt-8">Financial</div>
-      <div className="flex gap-5 flex-wrap w-full">
-        
-      </div> */}
-
-
-
-      <div className="text-xl mb-4 mt-8">Additional Costs</div>
-
-      <CustomeInput
-        label="Government payment (Ashura)"
-        name={"govPaymentAshura"} placeholder='Estimated rental price per month Birr/month'
-        divClass='mb-5'
-        onChange={setChange}
-        value={form.govPaymentAshura}
-      />
-      <CustomeInput
-          label="Estimated rental price per month Birr/month"
-          name={"estRentalPrice"} placeholder='Estimated rental price per month Birr/month'
-          divClass='mb-5 w-full'
-          onChange={setChange}
-          value={form.estRentalPrice}
-        />
-      <CustomeInput
-        label="Leasing payment"
-        name={"leasingPayment"} placeholder='Estimated rental price per month Birr/month'
-        divClass='mb-5'
-        onChange={setChange}
-        value={form.leasingPayment}
-      />
-      <CustomeInput
-        label="Conveyancing payment Birr"
-        name={"conveyancingPayment"} placeholder='Estimated rental price per month Birr/month'
-        divClass='mb-5'
-        onChange={setChange}
-        value={form.conveyancingPayment}
-      />
-      <CustomeInput
-        label="Commission payment %"
-        name={"commission"} placeholder='Estimated rental price per month Birr/month'
-        divClass='mb-5'
-        onChange={setChange}
-        value={form.commission}
-      />
+      <span>{form.utility.other.length}/250</span>
 
 
      
-
-
-
-      <div className="text-xl mb-4 mt-8">Upload Image(s)</div>
-      <div className="mt-5 grid grid-cols-2 max-mobile:grid-cols-1  max-mobile:h-fit gap-5">
-
-        <ImagePicker divClass="" images={images} setForm={setForm} setImages={setImages} form={form} ind={0} />
-
-        <div className="grid grid-cols-2 gap-5 h-full ">
-          <div className="flex flex-col gap-5">
-            <ImagePicker divClass="text-xs" images={images} setForm={setForm} setImages={setImages} form={form} ind={1} />
-            <ImagePicker divClass="text-xs" images={images} setForm={setForm} setImages={setImages} form={form} ind={2} />
-          </div>
-          <div className="flex flex-col gap-5">
-            <ImagePicker divClass="text-xs" images={images} setForm={setForm} setImages={setImages} form={form} ind={3} />
-            <ImagePicker divClass="text-xs" images={images} setForm={setForm} setImages={setImages} form={form} ind={4} />
-          </div>
-        </div>
-
-      </div>
       <p className="text-lightGray text-sm mt-2 max-mobile:mt-5">
         Start with a brief overview that describes your item’s finest features.
       </p>

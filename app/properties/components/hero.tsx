@@ -54,9 +54,9 @@ const Hero = () => {
           ...intialSearchQuery,
           ...intialSaleTypeDataParam
         ]
-      },order_by : {}} 
+      },order_by :  { created_at: "desc"}} 
       : 
-      { where : {},order_by : {}
+      { where : {},order_by : { created_at: "desc"}
     }
 
     const [where,setWhere] = useState<any>(initialData)
@@ -67,7 +67,7 @@ const Hero = () => {
 
     const reset = () => {
         setCurr(null)
-        setWhere({ where : {},order_by : {}})
+        setWhere({ where : {},order_by :  { created_at: "desc"}})
     }
     const filterByPrice  = (ls : number , lg : number) => {
         setWhere((data : any)=>{

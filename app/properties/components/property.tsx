@@ -31,12 +31,7 @@ const Home = ( { house , userId} : Props) => {
   }
   const state = useSelector(getState)
   const url = state.isLogedIn == LogInf.LOGED_IN ? "/properties/"+house.listing_id : "/auth/register"
-  const BuildStar = ({num} : any) => {
-      var randomNumber = 2 + Math.floor(Math.random() * 4);
-      return <>
-        {[0,0,0,0,0].map((_,ind : number) => ind < randomNumber ? <StarIcon key={ind} className="text-lg fill-yellow-500" /> : <StarIcon  key={ind} className="text-lg fill-gray-600" /> )}
-    </>
-  }  
+ 
 
   return (
     
@@ -76,25 +71,23 @@ const Home = ( { house , userId} : Props) => {
                     </p>
                 </p>
             </div>
-            <div className='justify-between font-semibold text-black flex gap-y-2 flex-wrap' >
+            <div className='justify-between font-semibold text-black flex gap-2 flex-wrap' >
+                <div className='flex mt-2 gap-1 '>
+                    <Image src={img4} width={19} className="my-auto" alt="" />
+                    <span className='text-sm my-auto'>{house.listing_property?.square_ft ?? 0} M<sup>2</sup> Built up area</span>
+                </div>
                 <div className='flex mt-2 gap-1 '>
                     <Image src={img5} width={15} className="my-auto"  alt="" />
                     <span className='text-sm my-auto'>{house.listing_property?.bedroom_count ?? 0} Bathroom</span>
                 </div>
-                {/* {
-                    house.listing_property?.bedroom_count &&
-                    <div className='flex mt-2 gap-1 '>
-                        <Image src={img3} width={13} className="my-auto"  alt="" />
-                        <span className='text-sm my-auto'>{house.listing_property.bedroom_count} Bedroom</span>
-                    </div>
-                } */}
-                {
-                    house.listing_property?.square_ft && 
-                    <div className='flex mt-2 gap-1 '>
-                        <Image src={img4} width={19} className="my-auto" alt="" />
-                        <span className='text-sm my-auto'>{house.listing_property.square_ft} M<sup>2</sup> Built up area</span>
-                    </div>
-                }
+                <div className='flex mt-2 gap-1 '>
+                    <Image src={img3} width={13} className="my-auto"  alt="" />
+                    <span className='text-sm my-auto'>{house.listing_property?.bedroom_count ?? 0} Bedroom</span>
+                </div>
+                <div className='flex mt-2 gap-1 '>
+                    <Image src={img4} width={19} className="my-auto" alt="" />
+                    <span className='text-sm my-auto'>{house.listing_property?.kitchen_count ?? 0} Kitchens</span>
+                </div>
             </div>
             <div className="flex justify-between pe-2 mt-4">
                 {

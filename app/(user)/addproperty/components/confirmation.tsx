@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Image from "next/image"
 import img from "../../../assets/images/image.png"
 import Features from "./features"
@@ -13,8 +13,17 @@ interface MainProps {
   }
   
 const Confirmation = ({ addList,setForm,form,loading } : MainProps ) => {
+  const ref = useRef<any>()
+  useEffect(() => {
+    ref && ref.current && ref.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+   
+  }, [])
+  
   return (
-    <div className='w-full h-fit pb-32'>
+    <div className='w-full h-fit pb-32' ref={ref}>
         <div className='text-2xl max-mobile:text-xl mb-3'>Preview your entry before confirmation.</div>
         {/* <div className='text-[28px] max-mobile:text-2xl text-lightGray'>Glam Apartment No.3</div> */}
         <div className="mt-5 grid grid-cols-2 max-mobile:grid-cols-1  max-mobile:h-fit gap-5">

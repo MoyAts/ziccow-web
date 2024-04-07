@@ -17,15 +17,18 @@ interface Props {
   IconClass? : any,
   preIcon? : any,
   value? : any,
-  onChange? : any 
+  onChange? : any,
+  isRequired ?: boolean
 }
 
-const OptionInput = ({label,name,onChange,value,preIcon,placeholder,pass,inputClass,imgClass,labelClass,divClass,Icon,IconClass,ReactIcon} : Props) => {
+const OptionInput = ({label,isRequired = false,name,onChange,value,preIcon,placeholder,pass,inputClass,imgClass,labelClass,divClass,Icon,IconClass,ReactIcon} : Props) => {
   const [show,setShow] = useState(false)
   
   return (
     <div className={'flex flex-col gap-2 capitalize '  + divClass}>
-        <label htmlFor="" className={'font-semibold ' + labelClass}>{label}</label>
+        <label htmlFor="" className={'font-semibold ' + labelClass}>
+          {isRequired && <span className="text-red-600">* </span>}
+          {label}</label>
         <div onClick={() => setShow(data => !data)} className={'w-full cursor-pointer bg-white flex rounded-xl px-2 border ' } style={{borderColor:"#DBD7DD"}}>
             <Image src={preIcon ? preIcon : InputIcon} alt="" width={23} className={'me-3 ' +imgClass }/>
             <div className={`w-full py py-2 ${!value && "text-gray-500"}`}>{value} </div>

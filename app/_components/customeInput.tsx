@@ -42,13 +42,16 @@ interface Props {
   IconClass? : any,
   preIcon? : any,
   value? : any,
-  onChange? : any
+  onChange? : any,
+  isRequired? : boolean
 }
 
-const customeInput = ({label,name,onChange,value,preIcon,placeholder,pass,inputClass,imgClass,labelClass,divClass,Icon,IconClass,ReactIcon} : Props) => {
+const customeInput = ({label,name,onChange,isRequired = true,value,preIcon,placeholder,pass,inputClass,imgClass,labelClass,divClass,Icon,IconClass,ReactIcon} : Props) => {
   return (
     <div className={'flex flex-col gap-2 capitalize '  + divClass}>
-        <label htmlFor="" className={'font-semibold ' + labelClass}>{label}</label>
+        <label htmlFor="" className={'font-semibold ' + labelClass}>
+          {isRequired && <span className="text-red-600">*</span>} {label}
+        </label>
         <div className={'w-full  bg-white flex rounded-xl px-2 border ' } style={{borderColor:"#DBD7DD"}}>
             <Image src={preIcon ? preIcon : InputIcon} alt="" width={23} className={'me-3 ' +imgClass }/>
             <input type={pass && pass == true ? "password" : "text"} value={value ? value : ""} onChange={onChange} name={name} placeholder={placeholder} className={'py-3  w-full outline-none rounded-lg ' + inputClass}/>

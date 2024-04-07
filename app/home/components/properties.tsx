@@ -14,9 +14,6 @@ import { houseFeaturedInf } from "@/utils/interfaces";
 const Properties = () => {
 
   const {loading,error,data} = useQuery(GET_FEATURED_LISTS)
-  loading && console.log("loading")
-  error && console.log(error,"++=")
-  data && console.log(data)
   
   return (
     <div className="w-full mb-12 max-tablet:mb-5 h-[105vh]   tablet:max-h-[800px] max-tablet:h-fit">

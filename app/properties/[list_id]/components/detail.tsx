@@ -222,7 +222,7 @@ const Detail = ({ house, list_id }: Props) => {
         <div className="w-7/12 flex flex-col">
           <ImageSlider house={house} />
           <About description={house?.description} />
-          {house?.matterport_link && <MatterPortEmbed link={house?.matterport_link} height={400} />}
+          {house?.matterport_link  && <MatterPortEmbed link={house?.matterport_link} height={400} />}
           <Features house={house} />
           {/* <Nearby /> */}
         </div>

@@ -50,7 +50,7 @@ export interface PropertyDetailInf {
         collegeAndUni: boolean,
         hospital: boolean,
         supermarket: boolean,
-        // basement
+        other : string,     
     },
     construction: {
         ordinaryMaterial: boolean,
@@ -120,7 +120,7 @@ export const initialForm: PropertyDetailInf = {
         collegeAndUni: false,
         hospital: false,
         supermarket: false,
-        
+        other: "",
 
     },
     construction: {

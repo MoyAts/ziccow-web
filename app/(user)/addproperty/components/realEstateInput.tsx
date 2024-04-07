@@ -38,7 +38,9 @@ const RealEstateOptionInput = ({ label, name, onChange, value, preIcon, placehol
     }
     return (
         <div className={'flex flex-col gap-2 capitalize ' + divClass}>
-            <label htmlFor="" className={'font-semibold ' + labelClass}>{label}</label>
+            <label htmlFor="" className={'font-semibold ' + labelClass}>
+            {<span className="text-red-600">* </span>}
+            {label}</label>
             <div onClick={() => setShow(data => !data)} className={'w-full cursor-pointer bg-white flex rounded-xl px-2 border '} style={{ borderColor: "#DBD7DD" }}>
                 <Image src={preIcon ? preIcon : InputIcon} alt="" width={23} className={'me-3 ' + imgClass} />
                 <div className={`w-full py py-2 ${!value && "text-gray-500"}`}>{value ? m[value] : placeholder} </div>

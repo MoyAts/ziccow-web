@@ -69,6 +69,7 @@ const Form = () => {
         }
         return null
     }
+    console.log(form.homeType,"KKK")
     const addList = async () => {
         let imgs: any = []
         setLoading2(true)
@@ -111,6 +112,7 @@ const Form = () => {
                 "objects": {
                     ...name,
                     ...sellType,
+                    "house_type_id" : form.homeType,
                     "property_number" : form.phone,
                     "address_data": form.address,
                     "build_date": form.yearBuilt,
@@ -162,7 +164,8 @@ const Form = () => {
                             ground_water : form.utility.ground_water,
                             security_system : form.utility.security,
                             swimming : form.utility.swimming,
-                            other_community : form.utility.other,
+                            other_community : form.community.other,
+                            other_utility : form.utility.other,
                         }
                     },
 
@@ -196,7 +199,7 @@ const Form = () => {
                             }
                         </div>
                     </p>
-                    <p onClick={() => page > 1 && setPage(2)} className={`${page == 2 && "font-semibold text-black"} gap-3    duration-200 flex justify-between`}>
+                    <p onClick={() => page > 1 || true && setPage(2)} className={`${page == 2 && "font-semibold text-black"} gap-3    duration-200 flex justify-between`}>
                         <p className={`cursor-pointer ${page > 2 && "text-accept"} `}>
                             2. Property Management
                         </p>
