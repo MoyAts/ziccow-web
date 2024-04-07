@@ -14,6 +14,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { IoMdMenu as MenuIcon } from "react-icons/io";
 import navaddImg from "../assets/images/navadd.svg"
+import Lightbox  from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import { useRef } from "react"
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 import { AuthInf } from "../../store/features/auth/authSlice";
 import { useSelector, useDispatch } from 'react-redux'
@@ -27,8 +31,10 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
   const state : AuthInf = useSelector(getState)
   const dispatch = useDispatch()
   const [showProfile,setShowProfile] = useState(false)
-  const [showNotification,setShowNotification] = useState(false)
+  const [showNotification,setShowNotification] = useState(true)
   const url = state.isLogedIn == LogInf.LOGED_IN ? "/addproperty/" : "/auth/signup"
+  const [open, setOpen] = useState(false);
+  const zoomRef = useRef(null);
   
   
   return (
@@ -48,6 +54,24 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
                       <MenuIcon onClick={() => setIsDrawer(true)} className="text-3xl my-auto text-mainBlue" />
                     </div>
 
+                    <Lightbox
+                        open={open}
+                        plugins={[ Zoom]}
+                        carousel={{ finite: true }}
+                        zoom={{ 
+                            ref: zoomRef,
+                            maxZoomPixelRatio : 10,
+                        }}
+                        close={() => setOpen(false)}
+                        slides={
+                          [
+                            {
+                              src: state?.user?.profile_pic ?? "",
+                              alt: "profile ",
+                            }
+                          ]
+                        }
+                      />
 
                     <div className='flex capitalize my-auto max-mobile:hidden gap-12 max-tablet:gap-8 max-tablet:text-[16px]'>
                         <Link href={"/about"} className='hover:text-blue-500 cursor-pointer ' >About</Link>
@@ -69,11 +93,11 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
                     state.isLogedIn == LogInf.LOGED_IN ?
 
                       <div  className="relative max-tablet:text-[16px] max-mobile:hidden">
-                        <div onClick={() => setShowProfile(data => !data)} className="flex gap-5 max-tablet:gap-3" >
+                        <div className="flex gap-5 max-tablet:gap-3" >
                             {
                               state.user?.profile_pic 
                               ?
-                              <div className="">
+                              <div className="cursor-pointer" onClick={() => setOpen(true)}>
                                 <Image src={state.user?.profile_pic ?? ""} className=" w-[3em] h-[3em] rounded-full" width={100} height={100} alt="profile" />
                               </div>
                               :
@@ -82,7 +106,7 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
                               </div> 
                               }
                           
-                          <p className="cursor-pointer my-auto text-lightGray">{state.user?.firstName}</p>
+                          <p onClick={() => setShowProfile(data => !data)} className="cursor-pointer my-auto text-lightGray">{state.user?.firstName}</p>
                         </div>
                        <ProfileCard logoutUser={() => { dispatch(logoutUser())}} show={showProfile} state={state} />
                       </div>

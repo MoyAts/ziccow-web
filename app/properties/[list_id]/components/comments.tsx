@@ -27,14 +27,7 @@ const AddComment = ({ listing_id } : any) => {
       }
     }
   })
-  if(newDatas.error){
-    console.log(newDatas.error,"____")
-    // alert("wow")
-  }
-  if(newDatas.data){
-    console.log(newDatas.data,"__00000__")
-    // alert("wow")
-  }
+  
   const [comment, setComment] = useState("")
   const [curr, setCurr] = useState(-1)
   const [rating, setRating] = useState<number | null>(null)
@@ -58,7 +51,7 @@ const AddComment = ({ listing_id } : any) => {
   return (
     <div className='flex pb-32 flex-col gap-5 mt-12'>
 
-      <p className='text-lg text-center'>Leave your review about your experience with this Real Estate</p>
+      <p className='text-lg text-center'>Leave your review about your experience on agents </p>
       <div className=' flex gap-5'>
         <div className='flex gap-5 w-full'>
           {

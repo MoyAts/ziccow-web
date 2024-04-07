@@ -5,12 +5,14 @@ import { houseInf } from "@/utils/interfaces";
 import Link from "next/link";
 
 const box = ({ house } : { house : houseInf}) => {
- 
+  // const encodedPathname = "/properties/" + house.listing_id + encodeURIComponent("?r=true");
+  const encodedPathname = "/properties/" + house.listing_id ;
   return (
     <Link 
         // href={} 
         href={{
-          pathname: "/properties/" + house.listing_id,
+          pathname: encodedPathname,
+          query : "r=true",
         }}
         className='flex w-full flex-col text-sm  gap-1 '
       >

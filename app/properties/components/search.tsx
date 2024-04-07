@@ -8,6 +8,7 @@ import Image from 'next/image';
 import navaddImg from "../../assets/images/navadd.svg"
 import { useSelector } from 'react-redux';
 import { LogInf, getState } from '@/store/features/auth/authSlice';
+import notificationIcon from '../../assets/images/notification.svg';
 
 interface Props{
     region: string, 
@@ -45,6 +46,16 @@ const Search = ({ region , setRegion, setPropertyType , propertyType , search} :
             </div>
           <div className="flex gap-5 relative">
             {showNotification && <Notification />}
+            {state.isLogedIn == LogInf.LOGED_IN  &&
+              <>
+                <div onClick={()=>setShowNotification(data => !data)} className="flex max-tablet:hidden  relative cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
+                  <Image src={notificationIcon} width={20} alt="" className="" />
+                </div>
+                {/* <Link href="/message" className="flex max-tablet:hidden cursor-pointer hover:bg-blue-200 h-fit my-auto p-[3px] rounded-lg">
+                  <Image src={messageIcon} width={20} alt="" />
+                </Link> */}
+              </>
+            }
             <Link href={url} className="flex text-mainBlue gap-1 text-sm">
               <Image src={navaddImg} className="m-auto" alt="" />
               <p className="m-auto ">

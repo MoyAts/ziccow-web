@@ -8,7 +8,7 @@ import CustomeInputNumber from "./customeInputNumber";
 import CheckBoxDiv from "./checkboxdiv";
 import img3 from "../../../assets/images/bed.svg"
 import img4 from "../../../assets/images/bathroom.svg"
-import type { PropertyDetailInf } from "./interface"
+import { initialForm, type PropertyDetailInf } from "./interface"
 import { useRef, useState } from "react";
 import goImg from "../../../assets/images/go.svg"
 import OptionInput from "./optionInput2";
@@ -71,7 +71,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
     const errFound = (err: string) => {
       setErr(err)
     }
-    if (!checkString(form.realEstateId ?? "")) {
+    if (state.user.internal_agent == true && !checkString(form.realEstateId ?? "")) {
       return errFound("Please choose real estate")
     }
     if (!checkString(form.address)) {
@@ -476,7 +476,15 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       </p>
 
       <div className="flex mt-8 justify-between ">
-        <button className="text-mainBlue">Cancel</button>
+        <button 
+        onClick={()=>{
+          const result = confirm("Every thing you added will be removed. Are you sure you want to cancel All!")
+          if(result){
+            setForm(initialForm)
+            setPage(1)
+          }
+        }}
+        className="text-mainBlue">Cancel</button>
         <button onClick={validate} className="px-5 py-3 rounded-lg bg-mainBlue hover:bg-blue-500 text-white flex gap-3">
           <Image src={goImg} className="my-auto" alt="" />
           <p>Next Step</p>

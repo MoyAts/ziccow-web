@@ -19,7 +19,7 @@ import { houseInf } from "@/utils/interfaces";
 import AddComment from "./comments";
 import BuildStar from "./buildstar"
 import { IoArrowBackSharp } from "react-icons/io5";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { calculateTimeDifference } from "@/lib/auth";
 import {
   FacebookIcon,
@@ -37,7 +37,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { ADD_LISTING_VIEW, ADD_TO_BOOKMARK, GET_NUMBER_OF_SAVES } from "@/graphql/features/listing";
 import { useSelector } from "react-redux";
 import { AuthInf, getState } from "@/store/features/auth/authSlice";
-
+import Notification from "@/app/_components/notification";
 interface Props {
   house: houseInf,
   list_id: string,
@@ -45,6 +45,8 @@ interface Props {
 
 const Detail = ({ house, list_id }: Props) => {
   const router = useRouter()
+  const params = useSearchParams()
+  const r = params.get("r")
   const id = house?.real_estate?.real_estate_uuid
   const currentUrl = "https://zirrowproperties.com/properties/" + list_id
   const [showShare,setShowShare] = useState(false)
@@ -58,7 +60,8 @@ const Detail = ({ house, list_id }: Props) => {
   const [addListView, addViewStatus] = useMutation(ADD_LISTING_VIEW,{
     variables : {
       listing_id : list_id,
-    }
+    },
+    fetchPolicy : "no-cache"
   })
 
   const saveQueryStatus = useQuery(GET_NUMBER_OF_SAVES,{
@@ -72,6 +75,7 @@ const Detail = ({ house, list_id }: Props) => {
     saveQueryStatus.refetch()
     reset()
   }
+  const owner = house.owner?.user_id == state.user?.userId
   
   useEffect(()=>{
     addListView()
@@ -81,7 +85,7 @@ const Detail = ({ house, list_id }: Props) => {
 
     <div className='w-full mt-12 h-fit px-20 max-w-[1700px]  max-tablet:px-10 max-small:px-5 mx-auto'>
       <div className='flex text-sm gap-2 items-center'>
-        <div onClick={() => id ? router.push(`/recommendation?realestateType=${id}`) : router.back()} className="me-4">
+        <div onClick={() => r && r=="true" ? router.push(`/recommendation?realestateType=${id}`) : router.back()} className="me-4">
           <IoArrowBackSharp className="text-3xl cursor-pointer text-mainBlue" />
         </div>
         <div className="flex gap-1">
@@ -98,7 +102,10 @@ const Detail = ({ house, list_id }: Props) => {
       <div className="flex justify-between mt-5">
         <div className="flex gap-7">
           <h1 className="text-[35px] max-tablet:text-[25px]"> {house?.real_estate?.name ?? "Real State"}</h1>
-    
+         {owner && 
+         <div className="my-auto px-2 py-1 rounded-lg bg-mainBlue text-white text-xs shadow-lg">
+            You are the owner
+          </div>}
           {house?.verified &&
             <div className="flex gap-1 m-auto">
               <Image src={img} width={25} alt="" />
@@ -113,10 +120,18 @@ const Detail = ({ house, list_id }: Props) => {
 
 
         <div className="flex gap-10  max-tablet:hidden relative">
+          
+
+          {/* <div className="relative flex gap-2 cursor-pointer"> */}
+            {/* <Notification />
+            <div className="my-auto">
+               Notification
+            </div>
+          </div> */}
           <div onClick={() => addtobookmark()} className="flex gap-2 cursor-pointer">
             <Image src={saveImg} className="my-auto" alt="" />
             <div  className="my-auto ">
-              {loading ? "..." : error ? "error" : data ? "Added" : "Save"}
+              {loading ? "..." : error ? "error" : data ? "Saved" : "Save"}
             </div>
           </div>
           <div className="flex gap-2">

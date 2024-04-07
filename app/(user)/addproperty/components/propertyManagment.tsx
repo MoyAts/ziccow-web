@@ -4,13 +4,14 @@ import React, { useRef, useState } from 'react'
 import CustomeInput from '../../../_components/customeInput'
 import { MdNavigateNext } from "react-icons/md";
 import goImg from "../../../assets/images/go.svg"
-import { PropertyDetailInf } from "./interface";
 import searachImg from "../../../assets/images/searchLocation.svg"
 // import OptionInput from "./optionInput";
 // import OptionInput3 from "./optionInput3";
 // import OptionInput4 from "./optionInput4";
 import CheckBoxDiv from "./checkboxdiv";
 import ImagePicker from "./imagePicker";
+import { PropertyDetailInf, initialForm } from "./interface";
+
 
 interface Props {
   setForm: Function,
@@ -275,7 +276,13 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
       
       
       <div className="flex mt-8 justify-between ">
-        <button className="text-mainBlue">Cancel</button>
+        <button onClick={()=>{
+          const result = confirm("Every thing you added will be removed. Are you sure you want to cancel All!")
+          if(result){
+            setForm(initialForm)
+            setPage(1)
+          }
+        }} className="text-mainBlue">Cancel</button>
         <button onClick={validate} className="px-5 py-2 rounded-lg bg-mainBlue hover:bg-blue-500 text-white flex gap-3">
           <Image src={goImg} className="my-auto" alt="" />
           <p>Next Step</p>

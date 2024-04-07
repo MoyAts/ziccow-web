@@ -9,7 +9,7 @@ import Drawer from "@/app/_components/drawer"
 import { useState } from "react"
 import Link from "next/link"
 
-const Page = ({ params : { list_id }} : { params : { list_id : string}}) => {
+const Page = ({ params : { list_id  }} : { params : { list_id : string, }}) => {
   const router = useRouter()
   const {loading,data,error} = useQuery(GET_LIST_BY_ID, {
     variables : {

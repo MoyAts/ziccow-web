@@ -18,6 +18,7 @@ interface Props {
     house : houseInf
 }
 const broker = ({ house } : Props) => {
+    const date = new Date(house.created_at)
     return (
       <div className="mt-5 bg-white py-4 px-4 rounded-xl shadow h-fit">
           <div className="flex gap-2 text-xl font-semibold">
@@ -44,7 +45,7 @@ const broker = ({ house } : Props) => {
                             </p>
                         </div>}
                     <div className="flex flex-col my-auto">
-                        <div>Jan 03, 2024</div>
+                        <div>{date.getMonth()}/{date.getDate()}/{date.getFullYear()}</div>
                         <div className="text-slate-700 capitalize">{house.owner?.first_name} {house.owner?.last_name}</div>
                     </div>
                 </div>

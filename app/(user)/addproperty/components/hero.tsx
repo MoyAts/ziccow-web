@@ -23,10 +23,10 @@ const hero = () => {
             <h1 className="text-[35px] mt-10 mb-1">Add a new listing</h1>
             <p className="text-lightGray">Answer a few questions and get your selling options in as little as 3 minutes.</p>
           </div>
-          <button className="my-auto flex gap-3 max-mobile:hidden">
+          {/* <button className="my-auto flex gap-3 max-mobile:hidden">
             <Image src={cancelImg} alt="" className="my-auto" />
             <p className="text-[#b16d0e] font-semibold">Cancel Entry</p>
-          </button>
+          </button> */}
         </div>
 
         <Form />
