@@ -184,9 +184,9 @@ const Form = () => {
 
 
     return (
-        <div className='min-h-[400px]'>
-            <div className='flex justify-between mt-12 max-tablet:flex-col'>
-                <div className='flex tablet:flex-col mobile:gap-12 max-mobile:flex-col max-mobile:gap-4 basis-5/12 text-lightGray max-tablet:mb-7 '>
+        <div className='min-h-[400px] relative'>
+            <div className='flex justify-between relative  mt-12 max-tablet:flex-col'>
+                <div className='flex  lg:sticky h-fit bg--300 top-[100px] lg:pb-32 bg--300 tablet:flex-col mobile:gap-12 max-mobile:flex-col max-mobile:gap-4 basis-5/12 text-lightGray max-tablet:mb-7 '>
                     <p onClick={() => setPage(1)} className={`${page == 1 && "font-semibold text-black"} gap-3    duration-200 flex justify-between`}>
                         <p className={`cursor-pointer ${page > 1 && "text-accept"} `}>
                             1. Property details

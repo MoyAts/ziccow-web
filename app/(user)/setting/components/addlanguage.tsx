@@ -103,7 +103,7 @@ const AddLanguage = ({label,name,langs,setForm,updateValue,preIcon,placeholder,p
             </div>
             {languages.length > 0 &&
                 <div className={`${!focused&& "hidden"} mt-2 max-h-[200px] overflow-y-auto  absolute w-full py-4 bg-white top-[4.2rem] rounded-lg shadow`}>
-                    {languages.map((data) => <div key={data} onMouseDown={() => change(data)} className="ps-5 py-2 hover:bg-blue-200 cursor-pointer" >{data}</div>)}
+                    {languages.map((data) => langs.indexOf(data) == -1 && <div key={data} onMouseDown={() => change(data)} className="ps-5 py-2 hover:bg-blue-200 cursor-pointer" >{data}</div>)}
                 </div>
             }
         </div>
