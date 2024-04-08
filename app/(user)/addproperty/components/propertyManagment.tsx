@@ -272,8 +272,16 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
           </div>
         </div>
 
+        <div className="flex gap-5">
+          <ImagePicker divClass="text-xs" images={images} setForm={setForm} setImages={setImages} form={form} ind={5} />
+          <ImagePicker divClass="text-xs" images={images} setForm={setForm} setImages={setImages} form={form} ind={6} />
+        </div>
+        <div className="flex gap-5">
+          <ImagePicker divClass="text-xs" images={images} setForm={setForm} setImages={setImages} form={form} ind={7} />
+          <ImagePicker divClass="text-xs" images={images} setForm={setForm} setImages={setImages} form={form} ind={8} />
+        </div>
+        
       </div>
-      
       
       <div className="flex mt-8 justify-between ">
         <button onClick={()=>{

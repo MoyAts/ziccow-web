@@ -62,15 +62,15 @@ export interface PropertyDetailInf {
     leasingPayment: string,
     conveyancingPayment: string,
     commission: string,
-    images: [any, any, any, any, any],
-    previewImages: [any, any, any, any, any],
+    images: [any, any, any, any, any,any, any, any, any],
+    previewImages: [any, any, any, any, any,any, any, any, any],
     typeOfPerson: "agent" | "owner" | "none" ,
     timeToSell: "now" | "1month" | "2-3month" | "4+month" ,
     propertyManagment: string ,
     sellingPrice: number | null ,
     rentalPrice: number | null,
     urls: any,
-    currency: "ETH" | "USA",
+    currency: "ETB" | "USA",
     cycle: "1 month" | "3 months" | "6 months" | "1 year"
     description: string
 }
@@ -133,8 +133,8 @@ export const initialForm: PropertyDetailInf = {
     leasingPayment: "",
     conveyancingPayment: "",
     commission: "",
-    images: [null, null, null, null, null],
-    previewImages: [null, null, null, null, null],
+    images: [null, null, null, null, null, null, null, null, null],
+    previewImages: [null, null, null, null, null, null, null, null, null],
     typeOfPerson: "none",
     timeToSell: "now",
     propertyManagment: "",
@@ -143,7 +143,7 @@ export const initialForm: PropertyDetailInf = {
     urls: null,
     parkingFeature: false,
     lotFeature: false,
-    currency: "ETH",
+    currency: "ETB",
     cycle: "1 month",
     description: "",
 }

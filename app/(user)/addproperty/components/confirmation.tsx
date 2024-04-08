@@ -39,6 +39,14 @@ const Confirmation = ({ addList,setForm,form,loading } : MainProps ) => {
               <ShowImage divClass="text-xs" image={form.previewImages[4]}/>
             </div>
           </div>
+          <div className="flex gap-5">
+            <ShowImage divClass="text-xs" image={form.previewImages[5]}/>
+            <ShowImage divClass="text-xs" image={form.previewImages[6]}/>
+          </div>
+          <div className="flex gap-5">
+            <ShowImage divClass="text-xs" image={form.previewImages[7]}/>
+            <ShowImage divClass="text-xs" image={form.previewImages[8]}/>
+          </div>
 
       </div>
 

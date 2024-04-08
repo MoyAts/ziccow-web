@@ -9,6 +9,8 @@ import navaddImg from "../../assets/images/navadd.svg"
 import { useSelector } from 'react-redux';
 import { LogInf, getState } from '@/store/features/auth/authSlice';
 import notificationIcon from '../../assets/images/notification.svg';
+import { useQuery } from '@apollo/client';
+import { GET_HOME_TYPES } from '@/graphql/features/listing';
 
 interface Props{
     region: string, 
@@ -22,7 +24,11 @@ const Search = ({ region , setRegion, setPropertyType , propertyType , search} :
   const [showNotification,setShowNotification] = useState(false)
   const state = useSelector(getState)
   const url = state.isLogedIn == LogInf.LOGED_IN ? "/addproperty" : "/auth/signup"
-  
+  const { loading, error, data } = useQuery(GET_HOME_TYPES, {
+    fetchPolicy: "no-cache"
+  });
+
+  const [show,setShow] = useState(false)
   return (
     <div className='pb-5 '>
       <div className="w-full mb-2 mt-2 max-mobile:hidden h-[1px] bg-slate-300"></div>
@@ -32,9 +38,26 @@ const Search = ({ region , setRegion, setPropertyType , propertyType , search} :
                   <LocationIcon className="text-mainBlue m-auto" />
                   <input type="text" onChange={({ target } : any) => setRegion(target.value)} className="px-3 py-2 outline-none" placeholder="Enter a region" />
                 </div>
-                <div className="border w-fit flex px-2 rounded-xl font-light bg-white">
+                <div className="border relative w-fit flex px-2 rounded-xl font-light bg-white">
                   <BuildingIcon className="text-mainBlue m-auto " />
-                  <input type="text" onChange={({ target } : any) => setPropertyType(target.value)} className="px-3 py-2 outline-none" placeholder="Enter property type" />
+                  {/* <input type="text" onChange={({ target } : any) => setPropertyType(target.value)} className="px-3 py-2 outline-none" placeholder="Enter property type" /> */}
+                  <button onClick={()=>setShow(d => !d)} className={`px-3 w-full py-2 my-auto  ${propertyType == "" && "text-gray-400"}`} > {propertyType != "" ? propertyType : "select property type" }</button>
+                  {loading ? <div>Loading</div> : error ? <div>Error</div> :
+                        show && <div className='absolute top-12 shadow-xl rounded-lg z-40 bg-white w-fit  overflow-scroll'> {
+                          data.house_type.map((e : any) => (<>
+                              <div
+                                  onClick={() => {
+                                      setShow(s => !s);
+                                      setPropertyType(e.type_name)
+                                  }}
+                                  className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
+                              >
+                                {e.type_name}
+                              </div>
+                          </>))
+                          }
+                        </div>
+                      }
                 </div>
   
                 <button onClick={() => search(region,propertyType)} className={` flex gap-2  hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white m-auto  px-3 py-2 text-sm  flex-row-reverse`}>

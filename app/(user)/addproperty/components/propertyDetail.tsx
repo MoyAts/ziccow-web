@@ -20,6 +20,7 @@ import Checkboxdiv from "./checkboxdiv";
 import OptionInputNew from "./optionInput";
 import OptionInput3 from "./optionInput3";
 import OptionInput4 from "./optionInput4";
+import OptionInput5 from "./optionInput5";
 interface MainProps {
   setForm: Function,
   form: PropertyDetailInf,
@@ -143,13 +144,15 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         divClass='mb-5' 
         isRequired={false}
       />
-      <CustomeInput
+     
+      <OptionInput5
         label='Enter the Home Address you’re going to sell/rent.'
         name={"address"} placeholder='e.g. A0001 “A” is the first letter of your name'
         divClass='mb-5'
-        onChange={setChange}
+        onChange={setForm}
         Icon={searachImg}
         value={form.address}
+        isRequired={true}
       />
 
       <OptionInput

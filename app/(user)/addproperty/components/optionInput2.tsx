@@ -38,7 +38,6 @@ const OptionInput = ({label,name,isRequired = true,onChange,value,preIcon,placeh
             m[item.house_type_id] = item.type_name;
         }
     }
-  console.log(m, ">>>")
   return (
     <div className={'flex flex-col gap-2 capitalize '  + divClass}>
         <label htmlFor="" className={'font-semibold ' + labelClass}>

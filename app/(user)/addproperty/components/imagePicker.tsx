@@ -4,6 +4,7 @@ import Image from "next/image";
 import dropimg from "../../../assets/images/dropimg.svg"
 import { MdOutlineEdit } from "react-icons/md";
 interface Props{
+    imgClass? : string,
     divClass? : string,
     setImages : any,
     setForm : any,
@@ -12,7 +13,7 @@ interface Props{
     form : PropertyDetailInf,
   }
   
-  function ImagePicker ({ divClass , images,setImages,ind,setForm,form} : Props) {
+  function ImagePicker ({ divClass , images,setImages,ind,setForm,form,imgClass} : Props) {
     const ref = useRef<any>(null)
     const onSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
       const file = event.target.files ? event.target.files[0] : null;
@@ -36,13 +37,13 @@ interface Props{
             <div onClick={() =>{ref.current && ref.current.click()}} className="absolute top-2 right-5 px-2 py-2 rounded-lg cursor-pointer bg-slate-700 bg-opacity-45 hover:bg-opacity-100">
               <MdOutlineEdit className="text-white" />
             </div>
-            <Image  src={form.previewImages[ind]} className="w-full rounded-lg object-contain" height={100} width={100} alt="" />
+            <Image  src={form.previewImages[ind]} className={`w-full rounded-lg object-contain ${imgClass} `}  height={100} width={100} alt="" />
           </div>
           
           :
           <>
             <div className={"flex m-auto gap-3 flex-col w-3/4 items-center "}>
-              <Image src={dropimg} className={"w-2/5 "} alt="" />
+              <Image src={dropimg} className={"w-2/5 " + imgClass} alt="" />
               <div className={"flex text-center flex-col gap-1 " + divClass}>
                 <p>
                   Drop your image here, or select

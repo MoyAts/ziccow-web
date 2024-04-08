@@ -126,16 +126,18 @@ api Integration
     - brokers info shuld visibel to all coustemer  who wants to see his profile 
     - on the brokers review the titel shuld be corected. it says give your review on real estats. but it shuld says give your review on agents 
     - on buy or sell pages, on the brokers info part there is a date 'jan 3,2024' subestitute that by the 'property owner' if he is the owner but for the brokers bado yihun 
-  - remaining
-    - Error with mega meny navigation
-    - Property type and region should be a dropdown instead of search on all pages in the top filter
     - increas a number of photos form 5 to 10
+    - Property type and region should be a dropdown instead of search on all pages in the top filter
+  - remaining
+    * mobile
+    - Error with mega meny navigation
     - in the service menu add new property milew page link altederegem
-    
-    - Real estate page needs title to show those are real estates
+    * not now
     - on add a new property page correct the  message on the answering section 
-    - real estate page  review mifelegew for real estat companies becha new lepropertiwochu ayasfelegim
     - Share icons should go away on click outside
+    * not understood
+    - Real estate page needs title to show those are real estates
+    - real estate page  review mifelegew for real estat companies becha new lepropertiwochu ayasfelegim
 
   - questions
     - overlap in recommendation ?
