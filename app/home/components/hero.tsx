@@ -57,7 +57,7 @@ const Hero = ({ setIsDrawer } : Props) => {
                     <div className='h-10 my-auto bg-gray-200 w-[1px] max-mobile:hidden'></div>
                     <Link href={"/recommendation"}  className='flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35'>
                         <Image src={img3} width={50} alt="" />
-                        <p className='text-white text-center  font-semibold'>Explore Realestates</p>
+                        <p className='text-white text-center  font-semibold'>Explore Real Estates</p>
                     </Link>
                     
                 </div>

@@ -204,8 +204,8 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         value={form.paymentProgram}
       />
       <CustomeInput
-        label='3D Link (please add a link from matterport 3d viewer)'
-        name={"matterportLink"} placeholder='add 3d link from matterport 3d viewer'
+        label='Specify Vedio Link (matterport 3d viewer , tiktok Video , Youtube Video Or other vedio link)'
+        name={"matterportLink"} placeholder='matterport link , tiktok, youtube or other'
         divClass='mb-5'
         onChange={setChange}
         Icon={searachImg}

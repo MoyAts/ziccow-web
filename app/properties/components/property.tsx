@@ -49,42 +49,35 @@ const Home = ( { house , userId} : Props) => {
                 alt="" 
             />
             }
-            {/* <div className="absolute top-5 flex gap-1 px-2 py-1 rounded-xl right-5 bg-gray-100 bg-opacity-40">
+            <div className="absolute top-5 flex gap-1 px-2 py-1 rounded-xl right-5 bg-gray-100 bg-opacity-40">
                 <BuildStar num={3} />
-            </div> */}
+            </div>
         </Link>
         <div className="flex h-full  flex-grow"></div>
         <div className={`flex flex-col basis-2/3 py-2 px-1  `}>
             <div className={` flex justify-between`}>
-                <h1 className="text-lg my-auto me-2 text-black">{house?.real_estate?.name ?? "Real state"}</h1>
+                <h1 className="text-lg my-auto me-2 font-semibold text-black">{house?.real_estate?.name ?? "Real state"}</h1>
                 <div className={`  w-fit  bg-blue-300 text-black text-sm px-2 rounded-lg h-fit my-auto bg-opacity-55`}>
-                       Appartment
+                       {house?.house_type?.type_name ?? "Unknown house type"}
                 </div>
             </div>
             
-            <p className="text-sm flex flex-wrap mb-2 mt-2">{house?.real_estate?.name ?? "unknown"} {house?.address_data ?? "unknown"}</p>
-            <div className={`  flex w-full justify-between pe-2`}>
-                <p className="flex text-sm text-gray-700 font-semibold gap-1">
-                    {/* <Image className="w-[20px] h-[20px]" src={locationIcon} alt="" /> */}
-                    <p className="my-auto">
-                        {house.description ? house.description.slice(0,100) + "..." :   "No description"}
-                    </p>
-                </p>
-            </div>
-            <div className='justify-between font-semibold text-black flex gap-2 flex-wrap' >
+            <p className="text-sm flex flex-wrap mb-2 mt-2 capitalize">{house?.sale_type ? "For " +  house?.sale_type : "unknown property managment"} </p>
+           
+            <div className='justify-between  text-black grid grid-cols-2 gap-2 flex-wrap' >
                 <div className='flex mt-2 gap-1 '>
                     <Image src={img4} width={19} className="my-auto" alt="" />
                     <span className='text-sm my-auto'>{house.listing_property?.square_ft ?? 0} M<sup>2</sup> Built up area</span>
                 </div>
-                <div className='flex mt-2 gap-1 '>
+                <div className='flex mt-2 gap-1  place-self-end'>
                     <Image src={img5} width={15} className="my-auto"  alt="" />
                     <span className='text-sm my-auto'>{house.listing_property?.bedroom_count ?? 0} Bathroom</span>
                 </div>
-                <div className='flex mt-2 gap-1 '>
+                <div className='flex mt-2 gap-1  '>
                     <Image src={img3} width={13} className="my-auto"  alt="" />
                     <span className='text-sm my-auto'>{house.listing_property?.bedroom_count ?? 0} Bedroom</span>
                 </div>
-                <div className='flex mt-2 gap-1 '>
+                <div className='flex mt-2 gap-1 place-self-end'>
                     <Image src={img4} width={19} className="my-auto" alt="" />
                     <span className='text-sm my-auto'>{house.listing_property?.kitchen_count ?? 0} Kitchens</span>
                 </div>
@@ -101,7 +94,7 @@ const Home = ( { house , userId} : Props) => {
                 {
                      house.sale_type == "Rental"  && 
                      <h1 className="">
-                         <span className="text-xl font-semibold text-black">
+                         <span className="text-xl  text-black">
                             {/* {house.rental_price?.price} */}
                              {house.currency ?? "Birr "} {house.rental_price?.price?.toString().slice(1,house.rental_price.price.length) ?? "0"}
                          </span> 

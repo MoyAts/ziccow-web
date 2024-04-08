@@ -126,7 +126,7 @@ const Realestates = () => {
             <div className='h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10'>
                 <div className='flex  flex-col gap-7 max-tablet:flex-col max-tablet:items-center'>
                     <h1 className='flex gap-2 text-3xl max-tablet:text-xl max-tablet:mb-5'>
-                        <span className=''>Property type</span>
+                        <span className=''>Real Estats</span>
                     </h1>
                     {propertyType &&
                     <h1 className='flex gap-2 mt-5 text-2xl max-tablet:text-xl max-tablet:mb-5'>

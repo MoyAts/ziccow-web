@@ -219,7 +219,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
 
 
 
-      <div className="text-xl mb-4 mt-8">Additional Costs</div>
+      <div className="text-xl mb-4 mt-8">Additional Cost Information </div>
 
       <CustomeInput
         label="Government payment (Ashura)"
