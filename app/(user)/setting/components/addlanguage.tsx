@@ -25,12 +25,12 @@ interface Props {
 
 const AddLanguage = ({label,name,langs,setForm,updateValue,preIcon,placeholder,pass,inputClass,imgClass,labelClass,divClass,Icon,IconClass,ReactIcon} : Props) => {
     const lgs = [
-        'Afaan oromo',
-        'Arabic',
-        'Tigray', 
-        'Somali', 
-        'French',
         'Amharic',
+        'Afaan oromo',
+        'Tigray',
+        'Somali',
+        'Arabic',
+        'French',
         'English',
         'Spanish',
         'Mandarin Chinese',
@@ -49,10 +49,8 @@ const AddLanguage = ({label,name,langs,setForm,updateValue,preIcon,placeholder,p
         'Tamil',
         'Italian',
         'Vietnamese'
-    ];
-//   console.log(defaultValue)
+    ]
   const [languages,setLanguages] = useState(lgs)
-//   const [langs,setLangs] = useState<String[]>(defaultValue)
   const deleteLang = (value : string) => {
     const newDatas = langs.filter(d => d != value)
     setForm((datas : any)=>({...datas,language_preference : newDatas}))

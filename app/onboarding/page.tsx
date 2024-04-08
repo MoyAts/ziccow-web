@@ -12,7 +12,7 @@ import { ADD_ONBOARDING_DATA } from "../../graphql/features/user"
 import { useDispatch } from "react-redux"
 import AddLanguage from "./components/addlanguage"
 
-const LoginPage = () => {
+const Onboarding = () => {
     const dispatch = useDispatch()
     // const router = useRouter();
     const [language, setLanguage] = useState('');
@@ -32,7 +32,7 @@ const LoginPage = () => {
     }
     const submit = () => {
         if(language.length < 2){
-            return setUierror("invalid language preference")
+            return setUierror("invalid language skills")
         }
         if(work.length < 2){
             return setUierror("invalid work experience")
@@ -75,8 +75,8 @@ const LoginPage = () => {
                         
                         <AddLanguage 
                             updateValue={setLanguage} 
-                            name='language' 
-                            label={"Languate Preference"} 
+                            name='language skills' 
+                            label={"Language skills"} 
                             placeholder={"Language"}
                         />
                         <CustomeInput 
@@ -118,4 +118,4 @@ const LoginPage = () => {
 }
 
 
-export default LoginPage
+export default Onboarding

@@ -212,7 +212,7 @@ const Personal = () => {
                 langs={form.language_preference}
                 setForm={setForm}
                 name='language' 
-                label={"Languate Preference"} 
+                label={"Language skills"} 
                 placeholder={"Language"}
             />}
             <div className='flex gap-5 mt-5 w-full mb-5'>

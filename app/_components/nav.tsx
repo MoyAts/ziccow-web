@@ -44,9 +44,9 @@ const Nav = ({ withsearch , setIsDrawer} : Props) => {
                 <div className={"flex  pt-3 h-fit min-h-14  justify-between px-20 max-small:px-5 max-tablet:px-10 "}>
                     <div className='my-auto  flex gap-2 cursor-pointer' >
                         <Image src={img} width={40} alt="" />
-                        <Link href={"/"} className='font-semibold text-g my-auto'>
+                        <Link href={"/"} className='font-semibold hover:text-blue-900 text-g my-auto'>
                           <p className="tablet:hidden">Zirrow</p>
-                          <p className="max-tablet:hidden">Zirrow General Trading</p>
+                          <p className="max-tablet:hidden  duration-300">Zirrow General Trading</p>
                         </Link>
                     </div>
                     

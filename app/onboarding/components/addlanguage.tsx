@@ -23,12 +23,12 @@ interface Props {
 
 const AddLanguage = ({label,name,updateValue,preIcon,placeholder,pass,inputClass,imgClass,labelClass,divClass,Icon,IconClass,ReactIcon} : Props) => {
     const lgs = [
-        'Afaan oromo',
-        'Arabic',
-        'Tigray', 
-        'Somali', 
-        'French',
         'Amharic',
+        'Afaan oromo',
+        'Tigray',
+        'Somali',
+        'Arabic',
+        'French',
         'English',
         'Spanish',
         'Mandarin Chinese',
@@ -47,7 +47,7 @@ const AddLanguage = ({label,name,updateValue,preIcon,placeholder,pass,inputClass
         'Tamil',
         'Italian',
         'Vietnamese'
-    ];
+    ]
   
   const [languages,setLanguages] = useState(lgs)
   const [langs,setLangs] = useState<String[]>([])

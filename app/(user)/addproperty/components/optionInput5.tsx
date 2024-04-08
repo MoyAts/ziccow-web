@@ -79,6 +79,7 @@ const OptionInput5 = ({label,isRequired = false,name,onChange,value,preIcon,plac
             {
               lists.map(val =>(
                 <div 
+                key={val}
                 onMouseDown={() => {
                   setFocused(false); 
                   onChange((data : any) => ({ ...data,"address" : val}))
