@@ -14,6 +14,7 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { LogInf, getState } from "@/store/features/auth/authSlice";
 import { FaStar as StarIcon } from "react-icons/fa6";
+import BuildStar from "./buildstar";
 interface Props {
   house: houseInf;
   userId: string | null;
