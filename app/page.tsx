@@ -1,9 +1,6 @@
-"use client"
-import Page from "./home/page"
-
+"use client";
+import Page from "./home/page";
 
 export default function Home() {
-  return (
-      <Page />
-  );
+  return <Page />;
 }

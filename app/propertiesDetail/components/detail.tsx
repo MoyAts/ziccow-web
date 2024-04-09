@@ -1,23 +1,23 @@
-"use client" 
-import Image from "next/image"; 
-import propertyImg from "../../assets/images/property.svg"
-import img from "../../assets/images/solar_medal-ribbons-star-bold-duotone.png"
-import saveImg from "../../assets/images/save.svg"
-import shareImg from "../../assets/images/share.svg"
-import reportImg from "../../assets/images/report.svg"
-import ImageSlider from "./image_slider"
-import GeneralInformation from "./general_information"
-import About from "./about"
-import Price from "./price"
-import Features from "./features"
-import Graph from "./graph"
-import TimeLine from "./time_line"
-import Broker from "./broker"
-import Nearby from "./nearby"
+"use client";
+import Image from "next/image";
+import propertyImg from "../../assets/images/property.svg";
+import img from "../../assets/images/solar_medal-ribbons-star-bold-duotone.png";
+import saveImg from "../../assets/images/save.svg";
+import shareImg from "../../assets/images/share.svg";
+import reportImg from "../../assets/images/report.svg";
+import ImageSlider from "./image_slider";
+import GeneralInformation from "./general_information";
+import About from "./about";
+import Price from "./price";
+import Features from "./features";
+import Graph from "./graph";
+import TimeLine from "./time_line";
+import Broker from "./broker";
+import Nearby from "./nearby";
 
 const detail = () => (
-  <div className='w-full h-fit px-20 max-w-[1700px]  max-tablet:px-10 max-small:px-5 mx-auto'>
-    <div className='flex text-sm gap-2'>
+  <div className="w-full h-fit px-20 max-w-[1700px]  max-tablet:px-10 max-small:px-5 mx-auto">
+    <div className="flex text-sm gap-2">
       <div className="flex gap-1">
         <Image src={propertyImg} alt="" />
         <div>Property</div>
@@ -28,7 +28,10 @@ const detail = () => (
 
     <div className="flex justify-between">
       <div className="flex gap-7">
-        <h1 className="text-[35px] max-tablet:text-[25px]"> Glam Apartment No.3</h1>
+        <h1 className="text-[35px] max-tablet:text-[25px]">
+          {" "}
+          Glam Apartment No.3
+        </h1>
 
         <div className="flex gap-1 m-auto">
           <Image src={img} width={25} alt="" />
@@ -49,9 +52,7 @@ const detail = () => (
           <Image src={reportImg} alt="" className="my-auto" />
           <p className="my-auto text-[#b16d0e]">Report</p>
         </div>
-
       </div>
-
     </div>
     <div className="flex justify-between max-mobile:flex-col max-small:gap-5">
       <div className="flex gap-4 my-auto">
@@ -83,7 +84,6 @@ const detail = () => (
           <Image src={reportImg} alt="" className="my-auto" />
           <p className="my-auto text-[#b16d0e]">Report</p>
         </div>
-
       </div>
     </div>
 
@@ -104,18 +104,17 @@ const detail = () => (
     </div>
 
     <div className="flex flex-col w-full pb-12 gap-10 pt-8 tablet:hidden">
-        <ImageSlider />
-        <About />
-        <GeneralInformation />
-        <Price />
-        <TimeLine />
-        <Broker />
-        <Features />
-        {/* {typeof window !== "undefined" && <Graph />} */}
-        <Nearby />
+      <ImageSlider />
+      <About />
+      <GeneralInformation />
+      <Price />
+      <TimeLine />
+      <Broker />
+      <Features />
+      {/* {typeof window !== "undefined" && <Graph />} */}
+      <Nearby />
     </div>
-
   </div>
-)
+);
 
-export default detail
+export default detail;

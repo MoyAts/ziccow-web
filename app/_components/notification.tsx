@@ -1,6 +1,6 @@
-"use client" 
-import Image from "next/image"; 
-import img from "../assets/images/Photo.png"
+"use client";
+import Image from "next/image";
+import img from "../assets/images/Photo.png";
 
 const notification = () => {
   return (
@@ -14,8 +14,8 @@ const notification = () => {
         <Single />
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Single = () => {
   return (
@@ -23,16 +23,13 @@ const Single = () => {
       <Image src={img} alt="" className="w-12 h-12 rounded-full" />
       <div className=" flex flex-col gap-2 py-2 ">
         <p>
-          New message from Jese Leos: &quot;Hey, what&quot;s up? All set for the presentation?&quot; 
+          New message from Jese Leos: &quot;Hey, what&quot;s up? All set for the
+          presentation?&quot;
         </p>
-        <span className="text-mainBlue font-semibold">
-          A few moments ago
-        </span>
-
+        <span className="text-mainBlue font-semibold">A few moments ago</span>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default notification
+export default notification;

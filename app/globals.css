@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 @layer utilities {
-
-  
   ::-webkit-scrollbar {
     /* height: 1px; */
     width: 0px;
@@ -22,24 +20,22 @@
   .scroller::-webkit-scrollbar {
     width: 10px;
   }
- 
 
   .scroller::-webkit-scrollbar-track {
     border-radius: 100vh;
-    background:transparent;
+    background: transparent;
   }
   .scroller::-webkit-scrollbar-thumb {
-    background: #6D6C6E;
+    background: #6d6c6e;
     border-radius: 100vh;
     border: 3px solid rgb(243, 239, 245);
   }
 
   .scroller::-webkit-scrollbar-thumb:hover {
-    background: #5B595C;
+    background: #5b595c;
   }
 
-
   html {
-    scroll-behavior : smooth
+    scroll-behavior: smooth;
   }
 }

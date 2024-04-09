@@ -106,7 +106,6 @@ api Integration
     - remove bathroom
     - review on normal listing 
     - "And the rivew must exist for every post he or she post"
-  - on progress
     - check upload house type
     - Add number of bedroom and bathrom on products page
     - Add 250 word limit on description section in the listing form
@@ -128,19 +127,22 @@ api Integration
     - on buy or sell pages, on the brokers info part there is a date 'jan 3,2024' subestitute that by the 'property owner' if he is the owner but for the brokers bado yihun 
     - increas a number of photos form 5 to 10
     - Property type and region should be a dropdown instead of search on all pages in the top filter
-  - remaining
+  - on progress
     - make shure that on the real estat pages authorized yaltederege broker post madreg aychelem but they can only see
     - logout and cancel setting
-    - Deactivate my account
+  - remaining
+    - make the same every single information on new listing, preview and final listing (sell and rent) with the document I sent on watsapp  
+    
     - in the account setting "sigen in" or "signup" thire must be an option to make our password visebel if we want to see it and limit the no of password catactor with  4 characters 
     - in my listing page "issued date" is not working, "property type" and "property managment" bota tekeyayrewal
     - in my listing page on the check list raw put an option to select all at ones
-    - make the same every single information on new listing, preview and final listing (sell and rent) with the document I sent on watsapp  
+    
     - who verifies the house ?
     * mobile
     - Error with mega meny navigation
     - in the service menu add new property milew page link altederegem
     * not now
+    - Deactivate my account
     - on add a new property page correct the  message on the answering section 
     - Share icons should go away on click outside
     * not understood
