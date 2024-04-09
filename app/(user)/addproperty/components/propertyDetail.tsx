@@ -81,6 +81,9 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
     ) {
       return errFound("Please choose real estate");
     }
+    if (!checkString(form.phone)) {
+      return errFound("Please insert property Id");
+    }   
     if (!checkString(form.address)) {
       return errFound("Please insert your address");
     }
@@ -149,7 +152,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         name={"phone"}
         placeholder="012671164"
         divClass="mb-5"
-        isRequired={false}
+        isRequired={true}
       />
 
       <OptionInput5

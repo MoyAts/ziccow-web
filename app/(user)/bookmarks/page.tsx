@@ -13,7 +13,7 @@ const Page = () => {
       {isDrawer && <Drawer setIsDrawer={setIsDrawer} />}
       <div className={`relative ${isDrawer && "hidden"} bg-lightBg `}>
         <GetStarted />
-        <Nav setIsDrawer={setIsDrawer} withsearch={true} />
+        <Nav setIsDrawer={setIsDrawer} withsearch={false} />
         <Bookmarks />
         <Footer />
       </div>

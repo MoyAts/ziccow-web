@@ -53,7 +53,7 @@ const Form = () => {
     data.append("folder", "Cloudinary-React");
     try {
       const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${"de7yugvwl"}/image/upload`,
+        `https://api.cloudinary.com/v1_1/${"de7yugvwl"}/image/upload/`,
         {
           method: "POST",
           body: data,

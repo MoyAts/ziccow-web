@@ -46,9 +46,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
         block: "center",
       });
 
-    if (form.propertyManagment == "Sell" && !checkNumber(form.estRentalPrice)) {
-      return setErr("Please insert valid Estimated price");
-    }
+   
     if (!checkNumber(form.govPaymentAshura)) {
       return setErr("Please insert valid govermental price ashura");
     }
@@ -139,6 +137,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
           divClass="my-5  w-full"
           onChange={setChange}
           value={form.estRentalPrice}
+          isRequired={false}
         />
       )}
 
@@ -202,7 +201,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
       />
       <span>{form.community.other.length}/250</span>
 
-      <div className="text-xl mb-4 mt-8">Construction Material</div>
+      <div className="text-xl mb-4 mt-8">About construction material</div>
       <div className="flex gap-5 flex-wrap">
         <CheckBoxDiv
           label="Ordinary Material"

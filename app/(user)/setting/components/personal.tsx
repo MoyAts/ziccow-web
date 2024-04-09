@@ -195,6 +195,7 @@ const Personal = () => {
       <form action=" mt-8" onSubmit={(e) => e.preventDefault()}>
         <div className="flex justify-between gap-5">
           <CustomeInput
+            isRequired={false}
             name="firstName"
             value={form.firstName}
             onChange={onChange}
@@ -203,6 +204,7 @@ const Personal = () => {
             placeholder="Enter your name"
           />
           <CustomeInput
+            isRequired={false}
             name="lastName"
             value={form.lastName}
             onChange={onChange}
@@ -216,6 +218,7 @@ const Personal = () => {
         </p>
         <div className="flex gap-5 w-full mb-5">
           <CustomeInput
+            isRequired={false}
             name="phone"
             value={form.phone}
             onChange={onChange}
@@ -224,6 +227,7 @@ const Personal = () => {
             divClass="w-full"
           />
           <CustomeInput
+            isRequired={false}
             name="email"
             value={form.email}
             onChange={onChange}
@@ -239,6 +243,7 @@ const Personal = () => {
 
         <div className="flex gap-5 w-full mb-5">
           <CustomeInput
+            isRequired={false}
             name="whatsapp"
             value={form.whatsapp}
             onChange={onChange}
@@ -247,6 +252,7 @@ const Personal = () => {
             divClass="w-full"
           />
           <CustomeInput
+            isRequired={false}
             name="facebook"
             value={form.facebook}
             onChange={onChange}
@@ -257,6 +263,7 @@ const Personal = () => {
         </div>
         <div className="flex gap-5 w-full mb-5">
           <CustomeInput
+            isRequired={false}
             name="instagram"
             value={form.instagram}
             onChange={onChange}
@@ -265,6 +272,7 @@ const Personal = () => {
             divClass="w-full"
           />
           <CustomeInput
+            isRequired={false}
             name="twitter"
             value={form.twitter}
             onChange={onChange}
@@ -275,6 +283,7 @@ const Personal = () => {
         </div>
         <div className="flex gap-5 w-full mb-5">
           <CustomeInput
+            isRequired={false}
             name="youtube"
             value={form.youtube}
             onChange={onChange}
@@ -283,6 +292,7 @@ const Personal = () => {
             divClass="w-full"
           />
           <CustomeInput
+            isRequired={false}
             name="telegram"
             value={form.telegram}
             onChange={onChange}
@@ -292,6 +302,7 @@ const Personal = () => {
           />
         </div>
         <CustomeInput
+          isRequired={false}
           name="tiktok"
           value={form.tiktok}
           onChange={onChange}
@@ -317,6 +328,7 @@ const Personal = () => {
         )}
         <div className="flex gap-5 mt-5 w-full mb-5">
           <CustomeInput
+            isRequired={false}
             name="education_level"
             value={form.education_level}
             onChange={onChange}
@@ -325,6 +337,7 @@ const Personal = () => {
             divClass="w-full"
           />
           <CustomeInput
+            isRequired={false}
             name="work_experience"
             value={form.work_experience}
             onChange={onChange}

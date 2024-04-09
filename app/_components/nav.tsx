@@ -35,7 +35,7 @@ const Nav = ({ withsearch, setIsDrawer }: Props) => {
   const state: AuthInf = useSelector(getState);
   const dispatch = useDispatch();
   const [showProfile, setShowProfile] = useState(false);
-  const [showNotification, setShowNotification] = useState(true);
+  const [showNotification, setShowNotification] = useState(false);
   const url =
     state.isLogedIn == LogInf.LOGED_IN ? "/addproperty/" : "/auth/signup";
   const [open, setOpen] = useState(false);

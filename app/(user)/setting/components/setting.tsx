@@ -174,8 +174,8 @@ const Setting = () => {
           <AlertModal isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
 
-        <div className="flex justify-between mt-12 max-tablet:flex-col">
-          <div className="flex tablet:flex-col gap-5 basis-5/12 text-lightGray max-tablet:mb-12">
+        <div className="flex relative  justify-between mt-12 max-tablet:flex-col">
+          <div className="flex sticky h-fit top-12  tablet:flex-col gap-5 basis-5/12 text-lightGray max-tablet:mb-12">
             <p
               onClick={() => setIsSecurity(false)}
               className={`${!isSecurity && "font-semibold text-black"} cursor-pointer duration-200`}
