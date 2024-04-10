@@ -9,7 +9,7 @@ import Drawer from "../_components/drawer";
 import { useState } from "react";
 import "react-multi-carousel/lib/styles.css";
 import { useSearchParams } from "next/navigation";
-
+import { Suspense } from "react";
 const Page = () => {
   const [isDrawer, setIsDrawer] = useState(false);
 
@@ -20,7 +20,9 @@ const Page = () => {
         <GetStarted />
         <Hero setIsDrawer={setIsDrawer} />
         {/* <PropertyTypes /> */}
-        <Realestates />
+        <Suspense fallback={<>loading...</>} >
+          <Realestates />
+        </Suspense>
         <Join />
         <Footer />
       </div>
