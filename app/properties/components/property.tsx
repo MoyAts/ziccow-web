@@ -13,8 +13,6 @@ import { ADD_TO_BOOKMARK } from "@/graphql/features/listing";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { LogInf, getState } from "@/store/features/auth/authSlice";
-import { FaStar as StarIcon } from "react-icons/fa6";
-import BuildStar from "./buildstar";
 interface Props {
   house: houseInf;
   userId: string | null;
@@ -53,9 +51,7 @@ const Home = ({ house, userId }: Props) => {
             alt=""
           />
         )}
-        <div className="absolute top-5 flex gap-1 px-2 py-1 rounded-xl right-5 bg-gray-100 bg-opacity-40">
-          <BuildStar num={3} />
-        </div>
+      
       </Link>
       <div className="flex h-full  flex-grow"></div>
       <div className={`flex flex-col basis-2/3 py-2 px-1  `}>
