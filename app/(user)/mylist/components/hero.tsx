@@ -15,13 +15,13 @@ const options = ["choice1", "choice2", "choice3"];
 const hero = () => {
   return (
     <div className="h-fit pb-20 px-20 max-tablet:px-0   max-w-[1700px] mx-auto">
-      <div className=" flex justify-between max-mobile:flex-col mt-5 max-tablet:px-10 max-mobile:px-5">
+      {/* <div className=" flex justify-between max-mobile:flex-col mt-5 max-tablet:px-10 max-mobile:px-5">
         <h1 className="text-3xl max-tablet:text-xl">Property Listing</h1>
         <div className="flex gap-5 max-mobile:w-full max-mobile:justify-between max-mobile:mt-5">
           <SelectBox list={options} img={monthImg} />
           <SelectBox list={options} img={houseImg} />
         </div>
-      </div>
+      </div> */}
 
       <Table />
 

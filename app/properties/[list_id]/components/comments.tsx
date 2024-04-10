@@ -13,7 +13,7 @@ import { calculateTimeDifference } from "@/lib/auth";
 import { useSelector } from "react-redux";
 import { getState } from "@/store/features/auth/authSlice";
 
-const AddComment = ({ listing_id }: any) => {
+const AddComment = ({ listing_id, broker_id }: any) => {
   const state = useSelector(getState);
 
   const [comments, setComments] = useState<any[]>([]);
@@ -21,7 +21,7 @@ const AddComment = ({ listing_id }: any) => {
   const newDatas = useQuery(GET_LISTING_REVIEW, {
     fetchPolicy: "network-only",
     variables: {
-      listing_id: listing_id,
+      broker_id: broker_id,
     },
     onCompleted: () => {
       if (newDatas.data) {
@@ -51,6 +51,7 @@ const AddComment = ({ listing_id }: any) => {
         comment,
         rating,
         user_id: state.user.userId,
+        broker_id,
         listing_id,
       },
     });

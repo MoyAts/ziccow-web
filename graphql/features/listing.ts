@@ -582,6 +582,7 @@ export const ADD_LISTING_REVIEW = gql`
     $comment: String!
     $rating: bigint!
     $user_id: uuid!
+    $broker_id: uuid!
     $listing_id: uuid!
   ) {
     insert_property_review(
@@ -589,6 +590,7 @@ export const ADD_LISTING_REVIEW = gql`
         comment: $comment
         rating: $rating
         user_id: $user_id
+        broker_id: $broker_id
         listing_id: $listing_id
       }
     ) {
@@ -600,10 +602,10 @@ export const ADD_LISTING_REVIEW = gql`
 `;
 
 export const GET_LISTING_REVIEW = gql`
-  query ($listing_id: uuid!) {
+  query ($broker_id: uuid!) {
     property_review(
       order_by: { created_at: desc }
-      where: { listing_id: { _eq: $listing_id } }
+      where: { broker_id: { _eq: $broker_id } }
     ) {
       comment
       rating
