@@ -14,9 +14,9 @@ import { useSelector } from "react-redux";
 import { getState, LogInf } from "@/store/features/auth/authSlice";
 const AddComment = ({ realEstate }: any) => {
   const state = useSelector(getState);
-  if (state.isLogedIn != LogInf.LOGED_IN) {
-    return <></>;
-  }
+  // if () {
+  // return <></>;
+  // }
   const [comments, setComments] = useState<any[]>([]);
   const newDatas = useQuery(GET_REALESTATE_REVIEW, {
     fetchPolicy: "network-only",
@@ -49,7 +49,9 @@ const AddComment = ({ realEstate }: any) => {
       },
     });
   };
-  return (
+  return state.isLogedIn != LogInf.LOGED_IN ? (
+    <></>
+  ) : (
     <div className="flex pb-32 flex-col gap-5">
       <p className="text-lg">
         Leave your review about your experience with this Real Estate
