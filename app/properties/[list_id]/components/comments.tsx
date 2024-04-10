@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { LuSend } from "react-icons/lu";
 import { FaStar as StarIcon } from "react-icons/fa6";

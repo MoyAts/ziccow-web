@@ -23,7 +23,7 @@ interface Props {
   isRequired?: boolean;
 }
 
-const customeInput = ({
+const CustomeInput = ({
   label,
   name,
   onChange,
@@ -90,4 +90,4 @@ const customeInput = ({
   );
 };
 
-export default customeInput;
+export default CustomeInput;
