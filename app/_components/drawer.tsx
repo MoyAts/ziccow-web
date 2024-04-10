@@ -17,6 +17,7 @@ import {
   logoutUser,
 } from "../../store/features/auth/authSlice";
 import ProfileCard from "./profileCard";
+import ShowImage from "./showImage";
 
 interface Props {
   setIsDrawer: Function;
@@ -25,6 +26,7 @@ interface Props {
 const Drawer = ({ setIsDrawer }: Props) => {
   const state = useSelector(getState);
   const [toggle, setToggle] = useState(false);
+  const [open, setOpen] = useState(false);
   const isLogedIn = state.isLogedIn == LogInf.LOGED_IN;
   const dispatch = useDispatch();
   const [showProfile, setShowProfile] = useState(false);
@@ -33,11 +35,35 @@ const Drawer = ({ setIsDrawer }: Props) => {
       <div className="bg-mainDark w-full py-3 text-white mb-5 text-center">
         Having Troubles? Call 0000
       </div>
+      <ShowImage
+        imageLink={state.user?.profile_pic ?? ""}
+        open={open}
+        setOpen={setOpen}
+      />
       <div className="flex justify-between px-10 max-sm:px-5 relative">
         <div className="my-auto  flex gap-2 cursor-pointer">
-          <Link href={"/"}>
-            <Image src={img} width={40} alt="" />
-          </Link>
+          {isLogedIn ? (
+            state.user.profile_pic ? (
+              <Image
+                src={state.user.profile_pic}
+                width={100}
+                height={100}
+                className="rounded-full w-[4em] h-[4em]"
+                alt="Profile"
+                onClick={() => setOpen(true)}
+              />
+            ) : (
+              <div className="w-[3em] grid place-items-center capitalize h-[3em] rounded-full bg-mainBlue text-white">
+                {state?.user?.firstName.length > 0
+                  ? state?.user?.firstName[0]
+                  : "U"}
+              </div>
+            )
+          ) : (
+            <Link href={"/"}>
+              <Image src={img} width={40} alt="" />
+            </Link>
+          )}
           {isLogedIn ? (
             <div
               onClick={() => setShowProfile((data) => !data)}

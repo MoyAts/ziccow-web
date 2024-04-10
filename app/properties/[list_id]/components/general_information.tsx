@@ -42,6 +42,13 @@ const generalInformation = ({ house }: Props) => {
           <p>Property built on {house.build_date}</p>
         </div>
 
+        {house.extra_features?.applicances && (
+          <div className="flex gap-5 border-b px-2 pb-4 ">
+            <Image src={propertyImg} className="w-5  my-auto mt-1" alt="" />
+            <p>{house.extra_features?.applicances}</p>
+          </div>
+        )}
+
         <div className="flex gap-5 border-b px-2 pb-4 ">
           <Image src={img5} className="w-5  my-auto mt-1" alt="" />
           <p>

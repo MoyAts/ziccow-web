@@ -72,6 +72,7 @@ export interface houseInf {
     garbage_shutter: boolean | null;
     ground_water: boolean | null;
     other_community: boolean | null;
+    other_utility: boolean | null;
     secondary_electricity: boolean | null;
     security_system: boolean | null;
     service_rooms: boolean | null;

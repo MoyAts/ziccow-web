@@ -32,7 +32,14 @@ const Confirmation = ({ addList, setForm, form, loading }: MainProps) => {
       <div className="mt-5 grid grid-cols-2 max-mobile:grid-cols-1  max-mobile:h-fit gap-5">
         <ShowImage divClass="" image={form.previewImages[0]} />
         <div className="grid grid-cols-2 gap-5 h-full ">
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col{house.extra_features?.applicancesgap-5">
+            {" "}
+            && (
+            <div className="flex gap-5 border-b px-2 pb-4 ">
+              {/* <Image src={propertyImg} className="w-5  my-auto mt-1" alt="" /> */}
+              {/* <p>{house.extra_features?.applicances}</p> */}
+            </div>
+            {/* )}  */}
             <ShowImage divClass="text-xs" image={form.previewImages[1]} />
             <ShowImage divClass="text-xs" image={form.previewImages[2]} />
           </div>

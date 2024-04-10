@@ -26,6 +26,7 @@ import {
   logoutUser,
   LogInf,
 } from "../../store/features/auth/authSlice";
+import ShowImage from "./showImage";
 interface Props {
   withsearch: boolean;
   setIsDrawer: Function;
@@ -75,21 +76,10 @@ const Nav = ({ withsearch, setIsDrawer }: Props) => {
               />
             </div>
 
-            <Lightbox
+            <ShowImage
               open={open}
-              plugins={[Zoom]}
-              carousel={{ finite: true }}
-              zoom={{
-                ref: zoomRef,
-                maxZoomPixelRatio: 10,
-              }}
-              close={() => setOpen(false)}
-              slides={[
-                {
-                  src: state?.user?.profile_pic ?? "",
-                  alt: "profile ",
-                },
-              ]}
+              setOpen={setOpen}
+              imageLink={state?.user?.profile_pic ?? ""}
             />
 
             <div className="flex capitalize my-auto max-mobile:hidden gap-12 max-tablet:gap-8 max-tablet:text-[16px]">

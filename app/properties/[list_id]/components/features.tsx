@@ -225,6 +225,16 @@ const features = ({ house }: Props) => {
               )}
             </li>
           </ul>
+          {house.extra_features?.other_utility && (
+            <div className=" mt-5 flex gap-2 flex-wrap">
+              <p className="font-semibold">Other utility specifications</p>
+              <ul className="ps-5">
+                <li className="text-lightGray">
+                  {house.extra_features?.other_utility}
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
         <div className="w-full">
           <div className="text-lg mt-5 font-semibold my">
@@ -293,6 +303,16 @@ const features = ({ house }: Props) => {
               )}
             </li>
           </ul>
+          {house.extra_features?.other_community && (
+            <div className=" mt-5 flex gap-2 flex-wrap">
+              <p className="font-semibold">Other community specifications</p>
+              <ul className="ps-5">
+                <li className="text-lightGray">
+                  {house.extra_features?.other_community}
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
 
         <div className="w-full ">

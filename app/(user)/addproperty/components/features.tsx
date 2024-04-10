@@ -97,7 +97,6 @@ const features = ({ form }: { form: PropertyDetailInf }) => {
       <div className="flex justify-between mt-5">
         <div className="w-full ">
           <div className="text-lightGray font-semibold text-xl">Utilities</div>
-          <div className="text-lg mt-5 font-semibold my">Utility</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
               <p>Air Conditioning System :</p>
@@ -188,11 +187,15 @@ const features = ({ form }: { form: PropertyDetailInf }) => {
                 <IoCloseSharp className="my-auto text-red-600" />
               )}
             </li>
-
-            {form.utility.other.trim() && (
-              <div className="mt-2">{form.utility.other}</div>
-            )}
           </ul>
+          {form.utility?.other && (
+            <div className=" mt-5 flex gap-2 flex-wrap flex-col">
+              <p className="font-semibold">Other Utility specifications</p>
+              <ul className="ps-5">
+                <li className="text-lightGray">{form.utility?.other}</li>
+              </ul>
+            </div>
+          )}
         </div>
         <div className="w-full ">
           <div className="text-lightGray font-semibold text-xl">Property</div>
@@ -224,7 +227,6 @@ const features = ({ form }: { form: PropertyDetailInf }) => {
           <div className="text-lightGray font-semibold text-xl">
             Community & neighborhood
           </div>
-          <div className="text-lg mt-5 font-semibold my">Community</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             <li className="before:content-['\2022'] capitalize  before:mr-2 flex gap-2 flex-wrap">
               <p>Primary school :</p>
@@ -267,14 +269,18 @@ const features = ({ form }: { form: PropertyDetailInf }) => {
               )}
             </li>
           </ul>
+          {form.community?.other && (
+            <div className=" mt-5 flex gap-2 flex-wrap flex-col">
+              <p className="font-semibold">Other community specifications</p>
+              <ul className="ps-5">
+                <li className="text-lightGray">{form.community?.other}</li>
+              </ul>
+            </div>
+          )}
         </div>
 
         <div className="w-full ">
-          <div className="text-lightGray font-semibold text-xl">
-            HOA & financial
-          </div>
-
-          <div className="text-lg mt-5 font-semibold my">
+          <div className="text-lg  font-semibold my">
             Other financial information
           </div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">

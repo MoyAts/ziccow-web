@@ -1,32 +1,9 @@
 "use client";
 import Image from "next/image";
-// import InputIcon from "../assets/images/inputIcon.svg"
-
-// interface Props {
-//   label : string,
-//   name : string,
-//   placeholder : string,
-//   pass? : boolean,
-//   inputClass? : string,
-//   imgClass? : string,
-//   labelClass? : string,
-//   divClass? : string,
-// }
-
-// const customeInput = ({label,name,placeholder,pass,inputClass,imgClass,labelClass,divClass} : Props) => {
-//   return (
-//     <div className={'flex flex-col gap-2 capitalize '  + divClass}>
-//         <label htmlFor="" className={'font-semibold ' + labelClass}>{label}</label>
-//         <div className={'w-full  bg-white flex rounded-xl px-2 border ' } style={{borderColor:"#DBD7DD"}}>
-//             <Image src={InputIcon} alt="" width={23} className={'me-3 ' +imgClass }/>
-//             <input type={pass && pass == true ? "password" : "text"} name={name} placeholder={placeholder} className={'py-3  w-full outline-none rounded-lg ' + inputClass}/>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default customeInput
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa";
 import InputIcon from "../assets/images/inputIcon.svg";
+import { useState } from "react";
 
 interface Props {
   label: string;
@@ -63,6 +40,7 @@ const customeInput = ({
   IconClass,
   ReactIcon,
 }: Props) => {
+  const [showPass, setShowPass] = useState(false);
   return (
     <div className={"flex flex-col gap-2 capitalize " + divClass}>
       <label htmlFor="" className={"font-semibold " + labelClass}>
@@ -79,7 +57,7 @@ const customeInput = ({
           className={"me-3 " + imgClass}
         />
         <input
-          type={pass && pass == true ? "password" : "text"}
+          type={pass && pass == true && !showPass ? "password" : "text"}
           value={value ? value : ""}
           onChange={onChange}
           name={name}
@@ -88,19 +66,28 @@ const customeInput = ({
         />
         {Icon && <Image src={Icon} alt="" className={"w-fit " + IconClass} />}
         {ReactIcon && <ReactIcon className={"w-fit " + IconClass} />}
+        {pass && (
+          <div className="flex my-auto cursor-pointer px-2">
+            {showPass ? (
+              <FaRegEyeSlash
+                onClick={() => {
+                  setShowPass(false);
+                }}
+                className="text-slate-700 text-lg"
+              />
+            ) : (
+              <FaRegEye
+                onClick={() => {
+                  setShowPass(true);
+                }}
+                className="text-slate-700 text-lg"
+              />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default customeInput;
-
-{
-  /* <div className={'flex flex-col gap-2 capitalize '}>
-                <label htmlFor="" className={'font-semibold '}></label>
-                <div className={'w-full  bg-white flex rounded-xl px-2 border ' } style={{borderColor:"#DBD7DD"}}>
-                    <img src={""} alt="" width={23} className={'me-3 ' }/>
-                    <input type={"text"} name={"name"} placeholder={"placeholder"} className={'py-3  w-full outline-none rounded-lg '}/>
-                </div>
-            </div> */
-}

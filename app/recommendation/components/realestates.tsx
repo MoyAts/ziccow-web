@@ -11,8 +11,11 @@ import { FILTER_LIST, GET_LISTING } from "@/graphql/features/listing";
 import NameSlide from "./name_slide";
 import AddComment from "./comments";
 import { useSearchParams } from "next/navigation";
+import { useSelector } from "react-redux";
+import { getState, LogInf } from "@/store/features/auth/authSlice";
 
 const Realestates = () => {
+  const state = useSelector(getState);
   const searchParams = useSearchParams();
   const region = useState(searchParams.get("region"));
   const initialRealestateType = useState(searchParams.get("realestateType"));
@@ -245,7 +248,7 @@ const Realestates = () => {
           variables={{ ...where, status: { _eq: "ACTIVE" } }}
         />
       </div>
-      {realEstate && (
+      {realEstate && state == LogInf.LOGED_IN && (
         <>
           <div className="h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10">
             <AddComment realEstate={realEstate} />

@@ -46,7 +46,6 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
         block: "center",
       });
 
-   
     if (!checkNumber(form.govPaymentAshura)) {
       return setErr("Please insert valid govermental price ashura");
     }
@@ -129,17 +128,6 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
           setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "typeOfPerson": "none" }))}
         />
       </div> */}
-      {form.propertyManagment == "Sell" && (
-        <CustomeInput
-          label="Estimated rental price per month Birr/month"
-          name={"estRentalPrice"}
-          placeholder="Estimated rental price per month Birr/month"
-          divClass="my-5  w-full"
-          onChange={setChange}
-          value={form.estRentalPrice}
-          isRequired={false}
-        />
-      )}
 
       <div className="text-xl mb-4 mt-8">Community</div>
       <div className="flex gap-5 flex-wrap">

@@ -27,6 +27,38 @@ const Search = ({
   propertyType,
   search,
 }: Props) => {
+  const [focused, setFocused] = useState(false);
+  const onFocus = () => setFocused(true);
+  const onBlur = () => setFocused(false);
+  const cities = [
+    "Addis Ababa",
+    "sheger city",
+    "bishoftu",
+    "adama",
+    "Jim",
+    "MOJO",
+    "qoqa",
+    "Batu",
+    "shashemene",
+    "hawasa",
+    "Arbaminch",
+  ];
+  const [lists, setLists] = useState(cities);
+  const update = ({ target }: any) => {
+    setRegion(target.value);
+    setLists((_) => {
+      if (target.value.length < 1) {
+        return cities;
+      }
+      try {
+        const pattern = new RegExp(target.value, "gi");
+        const filteredArray = cities.filter((word) => pattern.test(word));
+        return filteredArray;
+      } catch (err) {
+        return [];
+      }
+    });
+  };
   const [showNotification, setShowNotification] = useState(false);
   const state = useSelector(getState);
   const url =
@@ -37,18 +69,41 @@ const Search = ({
 
   const [show, setShow] = useState(false);
   return (
-    <div className="pb-5 ">
+    <div className="pb-5 relative">
       <div className="w-full mb-2 mt-2 max-mobile:hidden h-[1px] bg-slate-300"></div>
       <div className="flex pt-2 justify-between px-20 max-small:px-5 max-tablet:px-10 max-mobile:hidden ">
         <div className="flex gap-4">
           <div className="border w-fit flex px-2 rounded-xl font-light bg-white">
             <LocationIcon className="text-mainBlue m-auto" />
+
             <input
-              type="text"
-              onChange={({ target }: any) => setRegion(target.value)}
-              className="px-3 py-2 outline-none"
-              placeholder="Enter a region"
+              type={"text"}
+              value={region}
+              onChange={update}
+              name={"search region"}
+              placeholder={"search with region"}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              className={"py-2 ps-2 w-full outline-none rounded-lg "}
             />
+            {
+              <div
+                className={`${!focused && "h-0 hidden"} absolute z-[4353] max-h-[300px] overflow-auto top-14 w-fit duration-1000 shadow-xl bg-white  rounded-lg border  flex flex-col gap-2`}
+              >
+                {lists.map((val) => (
+                  <div
+                    key={val}
+                    onMouseDown={() => {
+                      setFocused(false);
+                      setRegion(val);
+                    }}
+                    className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
+                  >
+                    {val}
+                  </div>
+                ))}
+              </div>
+            }
           </div>
           <div className="border relative w-fit flex px-2 rounded-xl font-light bg-white">
             <BuildingIcon className="text-mainBlue m-auto " />
@@ -61,13 +116,12 @@ const Search = ({
               {propertyType != "" ? propertyType : "select property type"}
             </button>
             {loading ? (
-              <div>Loading</div>
+              <div>...</div>
             ) : error ? (
               <div>Error</div>
             ) : (
               show && (
                 <div className="absolute top-12 shadow-xl rounded-lg z-40 bg-white w-fit  overflow-scroll">
-                  {" "}
                   {data.house_type.map((e: any) => (
                     <>
                       <div

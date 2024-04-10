@@ -228,6 +228,7 @@ export const GET_LIST_BY_ID = gql`
         garbage_shutter
         ground_water
         other_community
+        other_utility
         parking_feature
         secondary_electricity
         security_system
@@ -270,6 +271,7 @@ export const GET_LIST_BY_ID = gql`
     }
   }
 `;
+
 export const DELET_BOOKMARK = gql`
   mutation ($uuid: uuid!) {
     delete_bookmark_by_pk(uuid: $uuid) {

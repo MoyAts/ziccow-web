@@ -83,7 +83,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
     }
     if (!checkString(form.phone)) {
       return errFound("Please insert property Id");
-    }   
+    }
     if (!checkString(form.address)) {
       return errFound("Please insert your address");
     }
@@ -158,7 +158,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       <OptionInput5
         label="Enter the Home Address you’re going to sell/rent."
         name={"address"}
-        placeholder="e.g. A0001 “A” is the first letter of your name"
+        placeholder="e.g Addis Ababa"
         divClass="mb-5"
         onChange={setForm}
         Icon={searachImg}
@@ -176,6 +176,84 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         IconClass={"text-3xl my-auto text-mainBlue rotate-90"}
         value={form.homeType}
       />
+
+      <div className="flex flex-col my-5 gap-3">
+        <OptionInputNew
+          onChange={setForm}
+          ReactIcon={MdNavigateNext}
+          IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
+          name="propertymanagment"
+          label="Property managements"
+          placeholder="Property Managment"
+          value={form.propertyManagment}
+        />
+        {form.propertyManagment == "Rental" ? (
+          <div className="flex justify-between gap-5">
+            <CustomeInput
+              onChange={({ target }: any) =>
+                setForm((data: PropertyDetailInf) => ({
+                  ...data,
+                  rentalPrice: target.value,
+                }))
+              }
+              IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
+              name="price"
+              label="Rental price"
+              placeholder="15,000"
+              value={form.rentalPrice}
+              divClass="w-full"
+            />
+
+            <OptionInput4
+              onChange={setForm}
+              ReactIcon={MdNavigateNext}
+              IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
+              name="cycle"
+              label="Cycle"
+              placeholder="cycle"
+              value={form.cycle}
+              divClass="w-full "
+            />
+          </div>
+        ) : form.propertyManagment == "Sell" ? (
+          <>
+            <CustomeInput
+              onChange={({ target }: any) =>
+                setForm((data: PropertyDetailInf) => ({
+                  ...data,
+                  sellingPrice: target.value,
+                }))
+              }
+              IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
+              name="price"
+              label="Selling price"
+              placeholder="15,000"
+              value={form.sellingPrice}
+            />
+            <CustomeInput
+              label="Estimated rental price per month Birr/month"
+              name={"estRentalPrice"}
+              placeholder="Estimated rental price per month Birr/month"
+              divClass="w-full"
+              onChange={setChange}
+              value={form.estRentalPrice}
+              isRequired={false}
+            />
+          </>
+        ) : (
+          <></>
+        )}
+
+        <OptionInput3
+          onChange={setForm}
+          ReactIcon={MdNavigateNext}
+          IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
+          name="currency"
+          label="Currency"
+          placeholder="currency"
+          value={form.currency}
+        />
+      </div>
 
       <div className="flex gap-5 mb-8 w-full max-mobile:flex-col">
         <CustomeInput
@@ -228,72 +306,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         isRequired={false}
         value={form.matterportLink}
       />
-      <div className="flex flex-col mt-3 gap-3">
-        <OptionInputNew
-          onChange={setForm}
-          ReactIcon={MdNavigateNext}
-          IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
-          name="propertymanagment"
-          label="Property managements"
-          placeholder="Property Managment"
-          value={form.propertyManagment}
-        />
-        {form.propertyManagment == "Rental" ? (
-          <div className="flex justify-between gap-5">
-            <CustomeInput
-              onChange={({ target }: any) =>
-                setForm((data: PropertyDetailInf) => ({
-                  ...data,
-                  rentalPrice: target.value,
-                }))
-              }
-              IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
-              name="price"
-              label="Rental price"
-              placeholder="15,000"
-              value={form.rentalPrice}
-              divClass="w-full"
-            />
 
-            <OptionInput4
-              onChange={setForm}
-              ReactIcon={MdNavigateNext}
-              IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
-              name="cycle"
-              label="Cycle"
-              placeholder="cycle"
-              value={form.cycle}
-              divClass="w-full "
-            />
-          </div>
-        ) : form.propertyManagment == "Sell" ? (
-          <CustomeInput
-            onChange={({ target }: any) =>
-              setForm((data: PropertyDetailInf) => ({
-                ...data,
-                sellingPrice: target.value,
-              }))
-            }
-            IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
-            name="price"
-            label="Selling price"
-            placeholder="15,000"
-            value={form.sellingPrice}
-          />
-        ) : (
-          <></>
-        )}
-
-        <OptionInput3
-          onChange={setForm}
-          ReactIcon={MdNavigateNext}
-          IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
-          name="currency"
-          label="Currency"
-          placeholder="currency"
-          value={form.currency}
-        />
-      </div>
       <div className="flex justify-between my-5 mb-8">
         <div className="text-xl">Facilities</div>
         <MdNavigateNext className="text-3xl my-auto text-mainBlue -rotate-90" />

@@ -4,7 +4,7 @@ import bg from "../../assets/images/unsplash_B0aCvAVSX8E.png";
 import Nav from "../../_components/nav";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Search from "./search";
+import Search from "../../properties/components/search";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
