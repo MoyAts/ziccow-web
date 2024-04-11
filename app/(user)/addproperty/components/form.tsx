@@ -88,11 +88,11 @@ const Form = () => {
           real_estate_id: form.realEstateId ?? null,
         }
       : {
-          real_estate: {
-            data: {
-              name: form.propertyName,
-            },
-          },
+          // real_estate: {
+          //   data: {
+          //     name: form.propertyName,
+          //   },
+          // },
         };
     const sellType =
       form.propertyManagment != "Sell"
@@ -116,6 +116,7 @@ const Form = () => {
           ...sellType,
           house_type_id: form.homeType,
           property_number: form.phone,
+          property_name: form.propertyName ?? "",
           address_data: form.address,
           build_date: form.yearBuilt,
           description: form.description,
