@@ -16,6 +16,7 @@ export interface UtilityInf {
 export interface PropertyDetailInf {
   propertyName: string;
   phone: string;
+  locationDetail: string;
   address: string;
   homeType: string;
   realEstateId?: string;
@@ -76,6 +77,7 @@ export const initialForm: PropertyDetailInf = {
   propertyName: "",
   phone: "",
   address: "",
+  locationDetail: "",
   homeType: "",
   yearBuilt: "",
   squareFootage: "",

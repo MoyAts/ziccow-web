@@ -155,16 +155,31 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         isRequired={true}
       />
 
-      <OptionInput5
-        label="Enter the Home Address you’re going to sell/rent."
-        name={"address"}
-        placeholder="e.g Addis Ababa"
-        divClass="mb-5"
-        onChange={setForm}
-        Icon={searachImg}
-        value={form.address}
-        isRequired={true}
-      />
+      <div className="flex  gap-4">
+        <div className="w-full">
+          <CustomeInput
+            value={form.locationDetail}
+            onChange={setChange}
+            label="Your Location"
+            name={"locationDetail"}
+            placeholder="Add a clear detail of your location, city, town etc..."
+            divClass="mb-5"
+            isRequired={true}
+          />
+        </div>
+        <div className="w-full">
+          <OptionInput5
+            label="Select the Home Address you’re going to sell/rent."
+            name={"address"}
+            placeholder="e.g Addis Ababa"
+            divClass="mb-5"
+            onChange={setForm}
+            Icon={searachImg}
+            value={form.address}
+            isRequired={true}
+          />
+        </div>
+      </div>
 
       <OptionInput
         label="Property Types"
