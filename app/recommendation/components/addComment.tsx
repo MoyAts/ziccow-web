@@ -2,64 +2,59 @@
 import React, { useState } from "react";
 import { LuSend } from "react-icons/lu";
 import { FaStar as StarIcon } from "react-icons/fa6";
-import BuildStar from "./buildstar";
 import { useMutation, useQuery } from "@apollo/client";
 import {
-  ADD_LISTING_REVIEW,
-  GET_LISTING_REVIEW,
-} from "@/graphql/features/listing";
+  ADD_REALESTATE_REVIEW,
+  GET_REALESTATE_REVIEW,
+} from "@/graphql/features/realestate";
 import Image from "next/image";
-import { calculateTimeDifference } from "@/lib/auth";
 import { useSelector } from "react-redux";
-import { getState } from "@/store/features/auth/authSlice";
-import { FaAngleLeft } from "react-icons/fa6";
-const AddComment = ({ listing_id, broker_id }: any) => {
+import { getState, LogInf } from "@/store/features/auth/authSlice";
+import Review from "@/app/_components/review";
+
+const AddComment = ({ realEstate }: any) => {
   const state = useSelector(getState);
-
+  // if () {
+  // return <></>;
+  // }
   const [comments, setComments] = useState<any[]>([]);
-
-  const newDatas = useQuery(GET_LISTING_REVIEW, {
+  const newDatas = useQuery(GET_REALESTATE_REVIEW, {
     fetchPolicy: "network-only",
     variables: {
-      broker_id: broker_id,
+      _eq: realEstate,
     },
     onCompleted: () => {
       if (newDatas.data) {
-        setComments(newDatas.data.property_review);
+        setComments(newDatas.data.real_estate_review);
       }
     },
   });
-
   const [comment, setComment] = useState("");
   const [curr, setCurr] = useState(-1);
   const [rating, setRating] = useState<number | null>(null);
-
+  // $comment : String!,$real_estate_id : uuid!,$ : bigint!
   const [addReview, { loading, data, error }] = useMutation(
-    ADD_LISTING_REVIEW,
+    ADD_REALESTATE_REVIEW,
     {
       fetchPolicy: "network-only",
     },
   );
-
-  if (error) {
-    alert("error");
-  }
 
   const post = () => {
     addReview({
       variables: {
         comment,
         rating,
-        user_id: state.user.userId,
-        broker_id,
-        listing_id,
+        real_estate_id: realEstate,
       },
     });
   };
-  return (
-    <div className="flex pb-32 flex-col gap-5 mt-12">
-      <p className="text-lg text-center">
-        Leave your review about your experience on agents{" "}
+  return state.isLogedIn != LogInf.LOGED_IN ? (
+    <></>
+  ) : (
+    <div className="flex pb-32 flex-col gap-5">
+      <p className="text-lg">
+        Leave your review about your experience with this Real Estate
       </p>
       <div className=" flex gap-5">
         <div className="flex gap-5 w-full">
@@ -77,17 +72,17 @@ const AddComment = ({ listing_id, broker_id }: any) => {
             </div>
           )}
           {loading ? (
-            <div className="m-auto">loading</div>
+            <div>loading</div>
           ) : error ? (
-            <div className="m-auto">error</div>
+            <div>error</div>
           ) : (
-            <div className="flex flex-col gap-2 w-full ">
+            <div className="flex flex-col gap-2 w-full">
               <div className="my-auto">
                 <div
                   onMouseOut={() => {
                     setCurr(-1);
                   }}
-                  className="flex my-auto gap-2 w-full px-2 py-1"
+                  className="flex my-auto gap-2  px-2 py-1"
                 >
                   {[0, 0, 0, 0, 0].map((_, ind: number) => {
                     return (
@@ -106,7 +101,7 @@ const AddComment = ({ listing_id, broker_id }: any) => {
                 </div>
               </div>
               {rating != null && (
-                <form className="flex w-full border  border-slate-400 rounded-xl ps-2 bg-white ">
+                <form className="flex border w-3/4 border-slate-400 rounded-xl ps-2 bg-white ">
                   <input
                     value={comment}
                     onChange={({ target }: any) => setComment(target.value)}
@@ -142,7 +137,10 @@ const AddComment = ({ listing_id, broker_id }: any) => {
                     }}
                     className="px-5 py-5 rounded-lg  flex gap-3"
                   >
-                    {<LuSend className="m-auto text-lg text-mainBlue" />}
+                    {/* <p>
+                          Send
+                      </p> */}
+                    <LuSend className="m-auto text-lg text-mainBlue" />
                   </button>
                 </form>
               )}
@@ -152,9 +150,9 @@ const AddComment = ({ listing_id, broker_id }: any) => {
       </div>
       <div className="flex flex-col gap-4 ps-5">
         {comments.map((data: any, ind: number) => (
-          <Comment
+          <Review
             key={ind}
-            created_at={data.created_at}
+            created_at={data.create_at}
             rating={data.rating}
             message={data.comment}
             user={data.user}
@@ -173,85 +171,42 @@ const timeStamp = () => {
   return formattedDate;
 };
 
-interface Pr {
-  message: string;
-  rating: number;
-  created_at: string;
-  user: {
-    first_name: string;
-    last_name: string;
-    profile_pic: string;
-  };
-}
-const Comment = ({ message, rating, user, created_at }: Pr) => {
-  const time = created_at ? calculateTimeDifference(created_at) : "1 sec";
-  const [showAll, setShowAll] = useState(false);
-  const minDesc = message.slice(0, 50);
-  const minDescDiv =
-    message.length < 50 ? (
-      <>
-        <div>{minDesc}</div>
-      </>
-    ) : (
-      <div>
-        {minDesc}...
-        <button
-          className="text-mainBlue text-sm capitalize"
-          onClick={() => setShowAll(true)}
-        >
-          see More
-        </button>{" "}
-      </div>
-    );
-  const messageDiv = (
-    <div className="flex flex-col">
-      {message}
-      <button
-        className="text-mainBlue text-sm capitalize"
-        onClick={() => setShowAll(false)}
-      >
-        show less
-      </button>{" "}
-    </div>
-  );
-  return (
-    <div className="flex gap-5  max-w-[100%] ">
-      {user && user.profile_pic ? (
-        <div>
-          <Image
-            className="rounded-full min-w-[3em] w-[3em] min-h-[3em] h-[3em]"
-            src={user.profile_pic}
-            width={100}
-            height={100}
-            alt="profile"
-          />
-        </div>
-      ) : (
-        <div className="w-[3em] flex h-[3em] rounded-full bg-mainBlue">
-          <div className="m-auto text-white">{user?.first_name[0] ?? "U"}</div>
-        </div>
-      )}
-      <div className="flex flex-col gap-2 w-full max-w-full ">
-        <div className="py-2 flex flex-col overflow-wrap-break-word break-words flex-wrap px-4 w-full  rounded-lg bg-white">
-          <div className="text-gray-500 text-sm">{user?.first_name ?? ""}</div>
-          <div className="overflow-wrap-break-word w-full">
-            {showAll ? messageDiv : minDescDiv}
-          </div>
-          <div className="flex gap-5 justify-between">
-            <div className="flex gap-1  place-content-end place-items-end ">
-              <BuildStar num={rating + 1} />
-            </div>
-            <div className="text-xs mt-2 text-gray-500 place-self-end place-items-end self-end">
-              {time} Ago
-            </div>
-            {/* <div  className="cursor-pointer">
-              <FaAngleLeft className={`${showAll ? "rotate-90" : "-rotate-90"} `} />
-            </div> */}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+// const Comment = ({ message, rating, user, create_at }: Pr) => {
+//   const time = create_at ? calculateTimeDifference(create_at) : "1 sec";
+
+//   return (
+//     <div className="flex gap-5 ">
+//       {user && user.profile_pic ? (
+//         <div>
+//           <Image
+//             className="rounded-full w-[3em] h-[3em]"
+//             src={user.profile_pic}
+//             width={100}
+//             height={100}
+//             alt="profile"
+//           />
+//         </div>
+//       ) : (
+//         <div className="w-[3em] flex h-[3em] rounded-full bg-mainBlue">
+//           <div className="m-auto text-white">{user?.first_name[0] ?? "U"}</div>
+//         </div>
+//       )}
+//       <div className="flex flex-col gap-2">
+//         <div className="py-2 flex flex-col break-words flex-wrap px-4 w-fit  rounded-lg bg-white">
+//           <div className="text-gray-500 text-sm">{user?.first_name ?? ""}</div>
+//           <div>{message}</div>
+//           <div className="flex gap-5 justify-between">
+//             <div className="flex gap-1  place-content-end place-items-end ">
+//               <BuildStar num={rating + 1} />
+//             </div>
+//             <div className="text-xs mt-2 text-gray-500 place-self-end place-items-end self-end">
+//               {time} Ago
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 export default AddComment;

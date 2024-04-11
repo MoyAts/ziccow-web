@@ -9,7 +9,7 @@ import Boxes from "./boxes";
 import { useEffect, useState } from "react";
 import { FILTER_LIST, GET_LISTING } from "@/graphql/features/listing";
 import NameSlide from "./name_slide";
-import AddComment from "./comments";
+import AddComment from "./addComment";
 import { useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import { getState, LogInf } from "@/store/features/auth/authSlice";

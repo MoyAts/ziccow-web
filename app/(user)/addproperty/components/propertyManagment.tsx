@@ -11,6 +11,7 @@ import searachImg from "../../../assets/images/searchLocation.svg";
 import CheckBoxDiv from "./checkboxdiv";
 import ImagePicker from "./imagePicker";
 import { PropertyDetailInf, initialForm } from "./interface";
+import Checkboxdiv from "./checkboxdiv";
 
 interface Props {
   setForm: Function;
@@ -45,19 +46,6 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
         behavior: "smooth",
         block: "center",
       });
-
-    if (!checkNumber(form.govPaymentAshura)) {
-      return setErr("Please insert valid govermental price ashura");
-    }
-    if (!checkNumber(form.leasingPayment)) {
-      return setErr("Please insert valid leasing payment");
-    }
-    if (!checkNumber(form.conveyancingPayment)) {
-      return setErr("Please insert valid Conveyancing payment");
-    }
-    if (!checkString(form.commission)) {
-      return setErr("Please insert valid Commission Payment");
-    }
 
     for (let i in form.previewImages) {
       if (form.previewImages[i] != null) {
@@ -103,31 +91,46 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
       >
         {err}
       </div>
-      {/* <div>Which one of the following apply to you?</div>
-      <div className='pt-4 flex w-full justify-between max-mobile:flex-col max-mobile:gap-2'>
+      <div>Which one of the following apply to you?</div>
+      <div className="pt-4 flex w-full justify-between max-mobile:flex-col max-mobile:gap-2">
         <Checkboxdiv
-          label='I am a real estate agent'
-          name='type'
+          label="I am a real estate agent"
+          name="type"
           isRadio={true}
           checked={form.typeOfPerson != null && form.typeOfPerson == "agent"}
-          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "typeOfPerson": "agent" }))}
+          setChange={() =>
+            setForm((data: PropertyDetailInf) => ({
+              ...data,
+              typeOfPerson: "agent",
+            }))
+          }
         />
-        
+
         <Checkboxdiv
-          label='I am the owner'
-          name='type'
+          label="I am the owner"
+          name="type"
           isRadio={true}
           checked={form.typeOfPerson != null && form.typeOfPerson == "owner"}
-          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "typeOfPerson": "owner" }))}
+          setChange={() =>
+            setForm((data: PropertyDetailInf) => ({
+              ...data,
+              typeOfPerson: "owner",
+            }))
+          }
         />
         <Checkboxdiv
-          label='None of these apply to me'
-          name='type'
+          label="None of these apply to me"
+          name="type"
           isRadio={true}
           checked={form.typeOfPerson != null && form.typeOfPerson == "none"}
-          setChange={() => setForm((data: PropertyDetailInf) => ({ ...data, "typeOfPerson": "none" }))}
+          setChange={() =>
+            setForm((data: PropertyDetailInf) => ({
+              ...data,
+              typeOfPerson: "none",
+            }))
+          }
         />
-      </div> */}
+      </div>
 
       <div className="text-xl mb-4 mt-8">Community</div>
       <div className="flex gap-5 flex-wrap">
@@ -235,6 +238,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
             divClass="mb-5"
             onChange={setChange}
             value={form.govPaymentAshura}
+            isRequired={false}
           />
 
           <CustomeInput
@@ -243,6 +247,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
             placeholder="Leasing payment"
             divClass="mb-5"
             onChange={setChange}
+            isRequired={false}
             value={form.leasingPayment}
           />
           <CustomeInput
@@ -251,6 +256,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
             placeholder="Conveyancing payment Birr"
             divClass="mb-5"
             onChange={setChange}
+            isRequired={false}
             value={form.conveyancingPayment}
           />
           <CustomeInput
@@ -259,6 +265,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
             placeholder="Commission payment eg: 45%"
             divClass="mb-5"
             onChange={setChange}
+            isRequired={false}
             value={form.commission}
           />
         </>

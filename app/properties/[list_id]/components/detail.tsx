@@ -15,7 +15,7 @@ import TimeLine from "./time_line";
 import Broker from "./broker";
 import Nearby from "./nearby";
 import { houseInf } from "@/utils/interfaces";
-import AddComment from "./comments";
+import AddComment from "./addComment";
 import BuildStar from "./buildstar";
 import { IoArrowBackSharp } from "react-icons/io5";
 import { useRouter, useSearchParams } from "next/navigation";

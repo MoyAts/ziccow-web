@@ -8,6 +8,9 @@ import Nav from "../../_components/nav";
 import searchImg from "../../assets/images/search.svg";
 import mobileSearchImg from "../../assets/images/mobilesearch.svg";
 import { useState } from "react";
+import { CgShoppingCart } from "react-icons/cg";
+import { MdBedroomParent } from "react-icons/md";
+import { MdRealEstateAgent } from "react-icons/md";
 interface Props {
   setIsDrawer: Function;
 }
@@ -70,20 +73,21 @@ const Hero = ({ setIsDrawer }: Props) => {
         </p>
         <div className="flex   justify-center max-mobile:flex-col max-mobile:gap-4 gap-12 w-full mt-16 xl:mt-10 z-[1000] ">
           <Link
-            href={"/properties"}
+            href={"/properties?propertyManagment=Sell"}
             className="flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35"
           >
-            <Image src={img3} width={50} alt="" />
+            {/* <Image src={img3} width={50} alt="" /> */}
+            <CgShoppingCart className="text-white text-[40px] font-bold" />
             <p className="text-white text-center  font-semibold">
               Buy a property
             </p>
           </Link>
           <div className="h-10 my-auto bg-gray-200 w-[1px] max-mobile:hidden"></div>
           <Link
-            href={"/properties"}
+            href={"/properties?propertyManagment=Rental"}
             className="flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35"
           >
-            <Image src={img3} width={50} alt="" />
+            <MdBedroomParent className="text-white text-[40px] font-bold" />
             <p className="text-white text-center  font-semibold">
               Rent a property
             </p>
@@ -103,7 +107,7 @@ const Hero = ({ setIsDrawer }: Props) => {
             href={"/recommendation"}
             className="flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35"
           >
-            <Image src={img3} width={50} alt="" />
+            <MdRealEstateAgent className="text-white text-[40px] font-bold" />
             <p className="text-white text-center  font-semibold">
               Explore Real Estates
             </p>

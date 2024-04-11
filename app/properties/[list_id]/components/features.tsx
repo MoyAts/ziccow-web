@@ -13,10 +13,7 @@ const features = ({ house }: Props) => {
       <div className="text-3xl font-semibold">Facts & Features</div>
       <div className="flex justify-between max-sm:flex-col max-sm:gap-2  mt-5">
         <div className="w-full ">
-          <div className="text-lightGray font-semibold text-xl">Interior</div>
-          <div className="text-lg mt-5 font-semibold my">
-            Bedrooms & bathrooms
-          </div>
+          <div className="text-lg mt-5 font-semibold my">Interior</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             <li className="before:content-['\2022']  before:mr-2">
               Bedrooms: {house.listing_property.bedroom_count}
@@ -59,18 +56,12 @@ const features = ({ house }: Props) => {
           </div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             <li className="before:content-['\2022']  before:mr-2">
-              Total area: {house.listing_property.square_ft}
-            </li>
-            <li className="before:content-['\2022']  before:mr-2">
               Built-up area: {house.listing_property.square_ft} M<sup>2</sup>
             </li>
           </ul>
         </div>
 
         <div className="w-full ">
-          <div className="text-lightGray font-semibold text-xl">
-            Construction
-          </div>
           <div className="text-lg mt-5 font-semibold my">Type & style</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             <li className="before:content-['\2022']  before:mr-2">
@@ -82,9 +73,6 @@ const features = ({ house }: Props) => {
           </ul>
           <div className="text-lg mt-5 font-semibold my">Condition</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            <li className="before:content-['\2022']  before:mr-2">
-              New construction: No
-            </li>
             <li className="before:content-['\2022']  before:mr-2">
               Year built: {house.build_date}
             </li>
@@ -247,6 +235,11 @@ const features = ({ house }: Props) => {
                 ? house.completion_status + "%"
                 : "Unknown"}
             </li>
+            {house.extra_features.unique_material && (
+              <li className="before:content-['\2022']  before:mr-2">
+                Unique Materials
+              </li>
+            )}
           </ul>
         </div>
       </div>
