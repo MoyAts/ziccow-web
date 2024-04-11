@@ -16,13 +16,9 @@ const Page = ({ params: { list_id } }: { params: { list_id: string } }) => {
       list_id,
     },
   });
+
   if (error) {
-    // router.replace("/properties")
-    // console.log(error);
-    return <h1>Not found</h1>;
-  }
-  if (data) {
-    console.log("--", data);
+    router.replace("/properties");
   }
 
   const [isDrawer, setIsDrawer] = useState(false);
