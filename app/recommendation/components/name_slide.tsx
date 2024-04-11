@@ -5,6 +5,8 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useQuery } from "@apollo/client";
 import { GET_REAL_ESTATES } from "@/graphql/features/listing";
+// import RightU
+import { FaArrowRight } from "react-icons/fa6";
 
 const NameSlide = ({
   selectedRealEstate,
@@ -54,8 +56,29 @@ const NameSlide = ({
           );
       });
   }, [data]);
+  const ButtonGroup = ({ next, previous, goToSlide, ...rest }: any) => {
+    const {
+      carouselState: { currentSlide },
+    } = rest;
+    return (
+      <div className="carousel-button-group my-4   gap-4 flex justify-between w-full">
+        <button
+          className="bg-mainBlue grid place-items-center rounded-full w-[2.5em] h-[2.5em]"
+          onClick={() => previous()}
+        >
+          {<FaArrowRight className="text-white rotate-180" />}
+        </button>
+        <button
+          className="bg-mainBlue grid place-items-center rounded-full w-[2.5em] h-[2.5em]"
+          onClick={() => next()}
+        >
+          {<FaArrowRight className="text-white" />}
+        </button>
+      </div>
+    );
+  };
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <Carousel
         ssr
         infinite={false}
@@ -65,7 +88,10 @@ const NameSlide = ({
         // autoPlaySpeed={6000}
         responsive={responsive}
         className=" max-lg:max-w-[100vw]   mt-12"
-        slidesToSlide={1}
+        slidesToSlide={2}
+        arrows={false}
+        renderButtonGroupOutside={true}
+        customButtonGroup={<ButtonGroup />}
       >
         {loading ? (
           <div>Loading</div>
