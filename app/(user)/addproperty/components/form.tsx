@@ -116,7 +116,7 @@ const Form = () => {
           ...sellType,
           house_type_id: form.homeType,
           property_number: form.phone,
-          address_data: form.address,
+          address_data: form.locationDetail + "," + form.address,
           build_date: form.yearBuilt,
           description: form.description,
           sale_type: form.propertyManagment,

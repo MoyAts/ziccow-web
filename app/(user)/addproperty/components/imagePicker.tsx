@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { PropertyDetailInf } from "./interface";
 import Image from "next/image";
 import dropimg from "../../../assets/images/dropimg.svg";
-import { MdOutlineEdit } from "react-icons/md";
+import { MdOutlineEdit, MdOutlineDelete } from "react-icons/md";
 interface Props {
   imgClass?: string;
   divClass?: string;
@@ -52,9 +52,27 @@ function ImagePicker({
             onClick={() => {
               ref.current && ref.current.click();
             }}
-            className="absolute top-2 right-5 px-2 py-2 rounded-lg cursor-pointer bg-slate-700 bg-opacity-45 hover:bg-opacity-100"
+            className="absolute top-2 left-5 px-2 py-2 rounded-lg cursor-pointer bg-slate-700 bg-opacity-45 hover:bg-opacity-100"
           >
             <MdOutlineEdit className="text-white" />
+          </div>
+          <div
+            onClick={() => {
+              setForm((data: PropertyDetailInf) => {
+                let newImages = [...data.images];
+                newImages[ind] = null;
+                let newPreviewImages = [...data.previewImages];
+                newPreviewImages[ind] = null;
+                return {
+                  ...data,
+                  images: newImages,
+                  previewImages: newPreviewImages,
+                };
+              });
+            }}
+            className="absolute top-2 right-5 px-2 py-2 rounded-lg cursor-pointer bg-slate-700 bg-opacity-45 hover:bg-opacity-100"
+          >
+            <MdOutlineDelete className="text-white" />
           </div>
           <Image
             src={form.previewImages[ind]}

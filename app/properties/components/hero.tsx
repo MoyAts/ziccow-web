@@ -200,6 +200,7 @@ const Hero = () => {
           </div>
           <Properties
             query={where ? FILTER_LIST : GET_LISTING}
+            setWhere={setWhere}
             variables={{ ...where, status: { _eq: "ACTIVE" } }}
           />
         </div>
