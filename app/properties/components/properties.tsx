@@ -7,8 +7,11 @@ import { GET_LISTING } from "@/graphql/features/listing";
 import { getUser } from "@/lib/auth";
 
 const Properties = ({ query, variables }: any) => {
+  let temp = { where: variables.where ?? {}, order_by: variables.order_by };
+  temp.where["real_estate_id"] = { _is_null: true };
+
   const { loading, error, data } = useQuery(query, {
-    variables,
+    variables: temp,
   });
   const state = useSelector(getUser);
   if (data) {

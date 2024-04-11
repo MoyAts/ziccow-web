@@ -170,7 +170,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         <div className="w-full">
           <OptionInput5
             label="Select the Home Address you’re going to sell/rent."
-            name={"address"}
+            name={"address_new"}
             placeholder="e.g Addis Ababa"
             divClass="mb-5"
             onChange={setForm}
