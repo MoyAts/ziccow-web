@@ -4,7 +4,6 @@ import propertyImg from "../../../assets/images/property.svg";
 import img from "../../../assets/images/solar_medal-ribbons-star-bold-duotone.png";
 import saveImg from "../../../assets/images/save.svg";
 import shareImg from "../../../assets/images/share.svg";
-import reportImg from "../../../assets/images/report.svg";
 import ImageSlider from "./image_slider";
 import GeneralInformation from "./general_information";
 import About from "./about";
@@ -87,7 +86,10 @@ const Detail = ({ house, list_id }: Props) => {
   useEffect(() => {
     addListView();
   }, []);
-
+  const propertName =
+    house?.real_estate_id == null
+      ? house.property_name ?? "Property"
+      : house?.real_estate_name ?? house?.real_estate?.name ?? "Real Estate";
   return (
     <div className="w-full mt-12 h-fit px-20 max-w-[1700px]  max-tablet:px-10 max-small:px-5 mx-auto">
       <div className="flex text-sm gap-2 items-center">
@@ -108,18 +110,13 @@ const Detail = ({ house, list_id }: Props) => {
         <div>/</div>
         <div>{house.sale_type ?? "unknown"} </div>
         <div>/</div>
-        <div>
-          {house?.real_estate_name ?? house?.real_estate?.name ?? "Real Estate"}
-        </div>
+        <div>{propertName}</div>
         {/* <div>{house?.real_estate_name ?? house?.real_estate?.name ?? "Real State"}</div> */}
       </div>
 
       <div className="flex justify-between mt-5">
         <div className="flex gap-7">
-          <h1 className="text-[35px] max-tablet:text-[25px]">
-            {" "}
-            {house?.real_estate?.name ?? "Real State"}
-          </h1>
+          <h1 className="text-[35px] max-tablet:text-[25px]">{propertName}</h1>
           {owner && (
             <div className="my-auto px-2 py-1 rounded-lg bg-mainBlue text-white text-xs shadow-lg">
               You are the owner
@@ -191,11 +188,6 @@ const Detail = ({ house, list_id }: Props) => {
                 </TelegramShareButton>
               </div>
             </div>
-          </div>
-
-          <div className="flex gap-2">
-            <Image src={reportImg} alt="" className="my-auto" />
-            <p className="my-auto text-[#b16d0e]">Report</p>
           </div>
         </div>
       </div>
@@ -271,10 +263,6 @@ const Detail = ({ house, list_id }: Props) => {
                 </TelegramShareButton>
               </div>
             </div>
-          </div>
-          <div className="flex gap-2">
-            <Image src={reportImg} alt="" className="my-auto" />
-            <p className="my-auto text-[#b16d0e]">Report</p>
           </div>
         </div>
       </div>

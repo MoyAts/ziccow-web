@@ -11,7 +11,8 @@ export interface houseInf {
   description: string;
   property_number: string;
   real_estate_name: string;
-
+  property_name: string;
+  real_estate_id: string | null;
   views_count: number;
   save_count: number;
   owner: {

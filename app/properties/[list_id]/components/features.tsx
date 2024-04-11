@@ -93,9 +93,6 @@ const features = ({ house }: Props) => {
           <div className="text-lg mt-5 font-semibold my">Payments</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             <li className="before:content-['\2022']  before:mr-2">
-              Payment program : {house.payment_program ?? "Unknown"}
-            </li>
-            <li className="before:content-['\2022']  before:mr-2">
               Conveyancing program : {house.conveyancing_payment} Birr
             </li>
 

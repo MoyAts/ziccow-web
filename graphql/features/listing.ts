@@ -172,6 +172,7 @@ export const GET_LIST_BY_ID = gql`
         url
         type
       }
+      property_name
       owner {
         first_name
         last_name

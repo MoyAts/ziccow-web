@@ -18,8 +18,8 @@ const Page = ({ params: { list_id } }: { params: { list_id: string } }) => {
   });
   if (error) {
     // router.replace("/properties")
-    console.log(error);
-    // return <>Not found</>
+    // console.log(error);
+    return <h1>Not found</h1>;
   }
   if (data) {
     console.log("--", data);
