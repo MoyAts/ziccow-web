@@ -81,13 +81,13 @@ export const UPDATE_PROFILE_PICTURE = gql`
 export const UPDATE_USER = gql`
   mutation a(
     $_eq: uuid!
-    $tiktok: String!
-    $youtube: String!
-    $whatsapp: String!
-    $telegram: String!
-    $twitter: String!
-    $facebook: String!
-    $instagram: String!
+    $tiktok: String
+    $youtube: String
+    $whatsapp: String
+    $telegram: String
+    $twitter: String
+    $facebook: String
+    $instagram: String
     $first_name: name!
     $last_name: name!
     $phone_number: String!
