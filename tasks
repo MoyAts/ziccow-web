@@ -143,24 +143,69 @@ api Integration
     - make region drop down
     - Error with mega meny navigation
     - in the service menu add new property milew page link altederegem
+    - on buy and reant property page payment program is not avelabel but the questions is avelabel on add new property page form 
+    - About construction material
   - remaining
     
     
     * New
+    - on the real estats page we don't have any preview info about the property under the photo
+    - pliz make shure that every content and information given by the agent in add new listing page should appear on the buy property page or reant property page accordingly 
+    - on buy property page under community and neighborhood titel there is " unique material " ??? and also the description tect we write on add new property page is not here 
+    - on buy property page under" other interior features " titel there is " total aria" mil but we don't have this type of question under add new property page ???
+    - on buy property page "payment " milew additional cost info" bemil yeteka and estimated rental price milew bezi categori ser ayikatetim or remove it 
+    - on the buy property page under condition " new construction:no"  text ale ayasfelegin since we mention the built year
+    - on buy property page facts and features milew ser "bedrooms and bathroom" and "construction " milu texts alu I don't understand lemin endetesafu but instade of " bedroom and bathroom " it shuld be " interior " boldly and we don't need construction since we have it keser 
+    - on all pages "property type " yalebachew drop downs list west "apartment" yemil yelem pliz add " apartment " on the top of  list 
+    - I don't know why but you remove "which one of this applied to you" from add anew property page form ?? it shuld be there for bothe sell and rent we must tell the coustemer post yaderegew owner, broker 
+    - in my listing page the property ID shuld be visebel 
+    - for add new listing page / utilities don't miss any point from pind world document on watsapp 
+    - add new property, preview, and final results still have a prblame check it in detail it shuld be exactly the same as the word file I pind on wats app
+    - change the icons on the homepage (icon for buy property, rent property, and explore real estate)
+    - if it is possible put our youtube video  link which shows how to fill the form and how to take a real estat photos on ( add new property) page
+    - on mobile we need property type filter, major cities filter, aria filter,  price filter 
+    - on all reviews section revewer's  photo, name and also when click on name and photo profile of reviewer shuld be visebel 
+    - on the add new proprty after we upload a photo we don't have an option to delete a specific photo that we don't want 
+    - I don't know why but it takes a long time to apload 
+    - but while it keeps me waiting there must be a message telling me to wait patently or show me some progress. and it must let me if the process terminated 
+    - it is better to use a phone no writing system in a simple way e.g 0911... instade on +251 9... 
+    - broker/ owners review is not avelabel on mobile 
+    - on new listing indicare 3d tour,tiktok, and youtube videos  links masgebat endemichal 
+    - on buy property and rent property page we don't have folder paths description e.g (property /sell) or (property/rent)
+    - ETH milew be ETB, USA milew be USD yistekakel
+    - brokers review shuld visebel on all post he or she posted not for the specific listing 
+Zirrow Properties QA Details
+Zirrow Properties QA Details
+100%
+10
+A77
+
+property type doesn't have apartment in its menu 
+ 
+ 
+ 	
+property type doesn't have apartment in its menu 
+Turn on screen reader support
+To enable screen reader support, press Ctrl+Alt+Z To learn about keyboard shortcuts, press Ctrl+slashAnonymous Capybara has joined the document.
     * not now
     - Deactivate my account
     - on add a new property page correct the  message on the answering section 
     - Share icons should go away on click outside
+    - allow brokers/ owners to edit there listing info after they post it 
     * not understood
     - add text to the propertyt listing form "listing payment prgram" to initial payment or down payment
     - in my listing page on the check list raw put an option to select all at ones
     - broker (new page ?)
+    - pliz refer the word file I pind on our watsapp group for add new property form in addition to the cities we need a space to write  pecific location where the property located e.g megenagna ,Addis Ababa or piyasa, hawasa but the name of specific place is not in the form of drop down it shuld be text 
 
     - Real estate page needs title to show those are real estates
     - real estate page  review mifelegew for real estat companies becha new lepropertiwochu ayasfelegim
     - who verifies the house ?
     - broker info not visible ?
-
+    - the notification is not working 
+    - the website don't  upload large pictures 
+    - it posibel to filter high rated agents and real estate based on their ratings right ?? 
+    - on add new property section substitute estimated rental price by financial information with text box  and make it appear on buy property page lebichaw under financial info headline 
   - questions
     - overlap in recommendation ?
     - region memrecha ?

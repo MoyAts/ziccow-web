@@ -111,6 +111,9 @@ const features = ({ house }: Props) => {
             <li className="before:content-['\2022']  before:mr-2">
               Estimated Rent Price : {house.est_rental_price} Birr
             </li>
+            <li className="before:content-['\2022']  before:mr-2">
+              Payment Program : {house.payment_program} Birr
+            </li>
           </ul>
         </div>
       </div>

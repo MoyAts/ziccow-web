@@ -299,6 +299,9 @@ const features = ({ form }: { form: PropertyDetailInf }) => {
             <li className="before:content-['\2022'] capitalize  before:mr-2">
               Commission Payment: {form.commission} %
             </li>
+            <li className="before:content-['\2022'] capitalize  before:mr-2">
+              Payment Program: {form.paymentProgram} %
+            </li>
           </ul>
         </div>
       </div>

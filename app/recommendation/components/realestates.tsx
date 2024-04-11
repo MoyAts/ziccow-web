@@ -248,7 +248,7 @@ const Realestates = () => {
           variables={{ ...where, status: { _eq: "ACTIVE" } }}
         />
       </div>
-      {realEstate && state == LogInf.LOGED_IN && (
+      {realEstate && state.isLogedIn == LogInf.LOGED_IN && (
         <>
           <div className="h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10">
             <AddComment realEstate={realEstate} />
