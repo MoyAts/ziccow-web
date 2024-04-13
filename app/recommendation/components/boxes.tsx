@@ -4,6 +4,8 @@ import { useQuery } from "@apollo/client";
 import { houseInf } from "@/utils/interfaces";
 
 const Boxes = ({ query, variables }: any) => {
+  let newWhere = { where: variables.where ?? {}, order_by: variables.order_by };
+  newWhere.where["status"] = { _eq: "PENDING" };
   const { loading, error, data } = useQuery(query, {
     variables,
   });

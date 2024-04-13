@@ -632,3 +632,16 @@ export const DELET_MYLIST = gql`
     }
   }
 `;
+
+export const UPDATE_STATUS_MYLIST = gql`
+  mutation ($uuid: uuid!, $status: String!) {
+    update_listing(
+      where: { listing_id: { _eq: $uuid } }
+      _set: { status: $status }
+    ) {
+      returning {
+        status
+      }
+    }
+  }
+`;

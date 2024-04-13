@@ -14,9 +14,6 @@ import Review from "@/app/_components/review";
 
 const AddComment = ({ realEstate }: any) => {
   const state = useSelector(getState);
-  // if () {
-  // return <></>;
-  // }
   const [comments, setComments] = useState<any[]>([]);
   const newDatas = useQuery(GET_REALESTATE_REVIEW, {
     fetchPolicy: "network-only",
@@ -170,43 +167,5 @@ const timeStamp = () => {
   var formattedDate = date.toLocaleDateString(); // Adjust the format based on your preference
   return formattedDate;
 };
-
-// const Comment = ({ message, rating, user, create_at }: Pr) => {
-//   const time = create_at ? calculateTimeDifference(create_at) : "1 sec";
-
-//   return (
-//     <div className="flex gap-5 ">
-//       {user && user.profile_pic ? (
-//         <div>
-//           <Image
-//             className="rounded-full w-[3em] h-[3em]"
-//             src={user.profile_pic}
-//             width={100}
-//             height={100}
-//             alt="profile"
-//           />
-//         </div>
-//       ) : (
-//         <div className="w-[3em] flex h-[3em] rounded-full bg-mainBlue">
-//           <div className="m-auto text-white">{user?.first_name[0] ?? "U"}</div>
-//         </div>
-//       )}
-//       <div className="flex flex-col gap-2">
-//         <div className="py-2 flex flex-col break-words flex-wrap px-4 w-fit  rounded-lg bg-white">
-//           <div className="text-gray-500 text-sm">{user?.first_name ?? ""}</div>
-//           <div>{message}</div>
-//           <div className="flex gap-5 justify-between">
-//             <div className="flex gap-1  place-content-end place-items-end ">
-//               <BuildStar num={rating + 1} />
-//             </div>
-//             <div className="text-xs mt-2 text-gray-500 place-self-end place-items-end self-end">
-//               {time} Ago
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default AddComment;

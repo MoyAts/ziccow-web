@@ -7,16 +7,15 @@ import { GET_LISTING } from "@/graphql/features/listing";
 import { getUser } from "@/lib/auth";
 
 const Properties = ({ query, variables }: any) => {
-  let temp = { where: variables.where ?? {}, order_by: variables.order_by };
-  temp.where["real_estate_id"] = { _is_null: true };
+  let newWhere = { where: variables.where ?? {}, order_by: variables.order_by };
+  newWhere.where["real_estate_id"] = { _is_null: true };
+  newWhere.where["status"] = { _eq: "PENDING" };
 
   const { loading, error, data } = useQuery(query, {
-    variables: temp,
+    variables: newWhere,
   });
   const state = useSelector(getUser);
-  if (data) {
-    console.log("data", data);
-  }
+
   return (
     <div
       className={`grid grid-cols-3 mt-5 2xl:grid-cols-4 max-tablet:grid-cols-2 max-sm:grid-cols-1 overflow-scroll gap-10 pb-10`}

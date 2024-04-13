@@ -16,7 +16,7 @@ const SelectOption = ({ list, img, checkbox, name, filter }: Props) => {
       <div className="flex justify-between bg-white py-1 rounded px-2">
         <div className="flex justify-between gap-2  px-2 ">
           <Image src={img} width={16} className="" alt="" />
-          <span className="">Sell Type</span>
+          <span className="">Property Managment</span>
         </div>
         <ListIcon className="m-auto text-mainBlue group-hover:rotate-90 duration-150 -rotate-90" />
       </div>
