@@ -131,6 +131,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           name={"propertyName"}
           placeholder="Tourist Plus Apartment"
           divClass="mb-5"
+          isRequired={true}
         />
       ) : (
         <RealEstateOptionInput

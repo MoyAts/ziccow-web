@@ -51,13 +51,12 @@ const Home = ({ house, userId }: Props) => {
             alt=""
           />
         )}
-      
       </Link>
       <div className="flex h-full  flex-grow"></div>
       <div className={`flex flex-col basis-2/3 py-2 px-1  `}>
         <div className={` flex justify-between`}>
           <h1 className="text-lg my-auto me-2 font-semibold text-black">
-            {house?.real_estate?.name ?? "Real state"}
+            {house?.property_name ?? "New Property"}
           </h1>
           <div
             className={`  w-fit  bg-blue-300 text-black text-sm px-2 rounded-lg h-fit my-auto bg-opacity-55`}
@@ -115,9 +114,7 @@ const Home = ({ house, userId }: Props) => {
               <span className="text-xl  text-black">
                 {/* {house.rental_price?.price} */}
                 {house.currency ?? "Birr "}{" "}
-                {house.rental_price?.price
-                  ?.toString()
-                  .slice(1, house.rental_price.price.length) ?? "0"}
+                {house.rental_price?.price?.toString() ?? "0"}
               </span>
               <span className="">
                 {" "}

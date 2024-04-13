@@ -81,11 +81,11 @@ const OptionInput = ({
           <div
             onClick={() => {
               setShow(false);
-              onChange((data: any) => ({ ...data, currency: "USB" }));
+              onChange((data: any) => ({ ...data, currency: "USD" }));
             }}
             className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
           >
-            USB
+            USD
           </div>
         </div>
       }

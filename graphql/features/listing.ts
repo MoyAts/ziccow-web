@@ -18,6 +18,7 @@ export const GET_LISTING = gql`
         url
         type
       }
+      property_name
       owner {
         first_name
         last_name
@@ -291,6 +292,7 @@ export const FILTER_LIST = gql`
         url
         type
       }
+      property_name
       owner {
         first_name
         last_name
@@ -615,6 +617,16 @@ export const GET_LISTING_REVIEW = gql`
         profile_pic
         first_name
         last_name
+      }
+    }
+  }
+`;
+
+export const DELET_MYLIST = gql`
+  mutation ($uuid: uuid!) {
+    delete_listing(where: { listing_id: { _eq: $uuid } }) {
+      returning {
+        listing_id
       }
     }
   }
