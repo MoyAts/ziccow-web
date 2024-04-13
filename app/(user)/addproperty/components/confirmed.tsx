@@ -1,6 +1,7 @@
+import Link from "next/link";
 import React from "react";
 
-const confirmed = () => {
+const confirmed = ({ listing_id }: { listing_id: string }) => {
   return (
     <div className="w-full">
       <div className="text-lg font-semibold">All done ...</div>
@@ -11,11 +12,9 @@ const confirmed = () => {
         <div className="mb-3">
           Your property has been successfully added to the listing.
         </div>
-        <div>
-          Welcome to Apartment 314 located on the third floor of Novo 64 in the
-          heart of Forest Hills! This unit features a spacious living area with
-          beautiful maple hardwood floors and expansive windows overlooking a
-          quiet street.
+        <div className="flex gap-2">
+          <p>You can can check your property</p>
+          <Link href={"/properties/" + listing_id}>here.</Link>
         </div>
       </div>
     </div>

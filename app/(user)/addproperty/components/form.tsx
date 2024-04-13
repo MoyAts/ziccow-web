@@ -27,6 +27,7 @@ const Form = () => {
 
   if (data) {
     page != 4 && setPage(4);
+    console.log(data.insert_listing.returning[0].listing_id, "??");
   }
 
   if (error) {
@@ -117,7 +118,7 @@ const Form = () => {
           house_type_id: form.homeType,
           property_number: form.phone,
           property_name: form.propertyName ?? "",
-          address_data: form.address,
+          address_data: form.address + ", " + form.locationDetail,
           build_date: form.yearBuilt,
           description: form.description,
           sale_type: form.propertyManagment,
@@ -201,7 +202,7 @@ const Form = () => {
             </div>
           </p>
           <p
-            onClick={() => page > 1 || setPage(2)}
+            onClick={() => page > 1 && setPage(2)}
             className={`${page == 2 && "font-semibold text-black"} gap-3    duration-200 flex justify-between`}
           >
             <p className={`cursor-pointer ${page > 2 && "text-accept"} `}>
@@ -251,7 +252,7 @@ const Form = () => {
             addList={addList}
           />
         ) : (
-          <Confirmed />
+          <Confirmed listing_id={data.insert_listing.returning[0].listing_id} />
         )}
       </div>
     </div>

@@ -5,6 +5,7 @@ export const Add_LISTING_NEW = gql`
     insert_listing(objects: $objects) {
       returning {
         coordinate
+        listing_id
         __typename
       }
       __typename

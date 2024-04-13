@@ -223,53 +223,47 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
         )}
       </div>
 
-      {/* <div className="text-xl mb-4 mt-8">Financial</div>
-      <div className="flex gap-5 flex-wrap w-full">
-        
-      </div> */}
-      {form.propertyManagment == "Sell" && (
-        <>
-          <div className="text-xl mb-4 mt-8">Additional Cost Information </div>
+      <>
+        <div className="text-xl mb-4 mt-8">Additional Cost Information </div>
 
-          <CustomeInput
-            label="Government payment (Ashura)"
-            name={"govPaymentAshura"}
-            placeholder="Government payment"
-            divClass="mb-5"
-            onChange={setChange}
-            value={form.govPaymentAshura}
-            isRequired={false}
-          />
+        <CustomeInput
+          label="Government payment (Ashura)"
+          name={"govPaymentAshura"}
+          placeholder="Government payment"
+          divClass="mb-5"
+          onChange={setChange}
+          value={form.govPaymentAshura}
+          isRequired={false}
+        />
 
-          <CustomeInput
-            label="Leasing payment"
-            name={"leasingPayment"}
-            placeholder="Leasing payment"
-            divClass="mb-5"
-            onChange={setChange}
-            isRequired={false}
-            value={form.leasingPayment}
-          />
-          <CustomeInput
-            label="Conveyancing payment Birr"
-            name={"conveyancingPayment"}
-            placeholder="Conveyancing payment Birr"
-            divClass="mb-5"
-            onChange={setChange}
-            isRequired={false}
-            value={form.conveyancingPayment}
-          />
-          <CustomeInput
-            label="Commission payment %"
-            name={"commission"}
-            placeholder="Commission payment eg: 45%"
-            divClass="mb-5"
-            onChange={setChange}
-            isRequired={false}
-            value={form.commission}
-          />
-        </>
-      )}
+        <CustomeInput
+          label="Leasing payment"
+          name={"leasingPayment"}
+          placeholder="Leasing payment"
+          divClass="mb-5"
+          onChange={setChange}
+          isRequired={false}
+          value={form.leasingPayment}
+        />
+        <CustomeInput
+          label="Conveyancing payment Birr"
+          name={"conveyancingPayment"}
+          placeholder="Conveyancing payment Birr"
+          divClass="mb-5"
+          onChange={setChange}
+          isRequired={false}
+          value={form.conveyancingPayment}
+        />
+        <CustomeInput
+          label="Commission payment %"
+          name={"commission"}
+          placeholder="Commission payment eg: 45%"
+          divClass="mb-5"
+          onChange={setChange}
+          isRequired={false}
+          value={form.commission}
+        />
+      </>
 
       <div className="text-xl mb-4 mt-8">Upload Image(s)</div>
       <div className="mt-5 grid grid-cols-2 max-mobile:grid-cols-1  max-mobile:h-fit gap-5">

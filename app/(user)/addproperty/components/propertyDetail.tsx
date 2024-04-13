@@ -161,9 +161,9 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           <CustomeInput
             value={form.locationDetail}
             onChange={setChange}
-            label="Your Location"
+            label="Property site Location"
             name={"locationDetail"}
-            placeholder="Add a clear detail of your location, city, town etc..."
+            placeholder="Add a clear detail of Property site location, city, town etc..."
             divClass="mb-5"
             isRequired={true}
           />

@@ -309,12 +309,11 @@ const Detail = ({ house, list_id }: Props) => {
           />
         )}
         {house?.owner && <Broker house={house} />}
+        <Features house={house} />
         <AddComment
           listing_id={house?.listing_id}
           broker_id={house.owner?.user_id}
         />
-
-        <Features house={house} />
       </div>
     </div>
   );

@@ -98,7 +98,10 @@ const Nav = ({ withsearch, setIsDrawer }: Props) => {
                   <MegaMenu />
                 </div>
               </div>
-              <div className="hover:text-blue-500 cursor-pointer ">
+              <div
+                onClick={() => alert("Comming soon!")}
+                className="hover:text-blue-500 cursor-pointer "
+              >
                 Group Buy
               </div>
               <Link
