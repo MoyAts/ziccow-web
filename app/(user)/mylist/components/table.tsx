@@ -101,7 +101,9 @@ const List = ({
       </td>
       <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left font-semibold text-mainBlue">
         <Link href={"/properties/" + data.listing_id}>
-          {data.real_estate?.name ?? data.real_estate?.name ?? "Unknown"}
+          {!data.real_estate_id
+            ? data.property_name
+            : data.real_estate?.name ?? data.real_estate?.name ?? "Unknown"}
         </Link>
       </td>
       <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left">

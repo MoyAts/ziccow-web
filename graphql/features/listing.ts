@@ -444,6 +444,7 @@ export const GET_MY_LISTING = gql`
         url
         type
       }
+      property_name
       owner {
         first_name
         last_name
