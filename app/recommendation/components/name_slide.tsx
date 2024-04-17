@@ -44,11 +44,6 @@ const NameSlide = ({
   useEffect(() => {
     data &&
       data.real_estate.map((realEstate: any, idx: any) => {
-        console.log(
-          initialRealestateType == realEstate.real_estate_uuid,
-          "trying",
-          initialRealestateType[0],
-        );
         initialRealestateType[0] == realEstate.real_estate_uuid &&
           realEstateSelected(
             realEstate.real_estate_uuid,
@@ -61,24 +56,28 @@ const NameSlide = ({
       carouselState: { currentSlide },
     } = rest;
     return (
-      <div className="carousel-button-group my-4   gap-4 flex justify-between w-full">
-        <button
-          className="bg-mainBlue grid place-items-center rounded-full w-[2.5em] h-[2.5em]"
-          onClick={() => previous()}
-        >
-          {<FaArrowRight className="text-white rotate-180" />}
-        </button>
-        <button
-          className="bg-mainBlue grid place-items-center rounded-full w-[2.5em] h-[2.5em]"
-          onClick={() => next()}
-        >
-          {<FaArrowRight className="text-white" />}
-        </button>
+      <div className="absolute top-[35%] pointer-events-none carousel-button-group my-4   gap-4 flex  w-full">
+        {currentSlide > 0 && (
+          <button
+            className={`bg-mainBlue grid pointer-events-auto place-items-center rounded-full w-[2.5em] h-[2.5em] `}
+            onClick={() => previous()}
+          >
+            {<FaArrowRight className="text-white rotate-180" />}
+          </button>
+        )}
+        {
+          <button
+            className="bg-mainBlue ml-auto pointer-events-auto grid place-items-center rounded-full w-[2.5em] h-[2.5em]"
+            onClick={() => next()}
+          >
+            {<FaArrowRight className="text-white" />}
+          </button>
+        }
       </div>
     );
   };
   return (
-    <div className="w-full ">
+    <div className="w-full relative ">
       <Carousel
         ssr
         infinite={false}
@@ -110,7 +109,7 @@ const NameSlide = ({
                   realEstate?.name ?? "Unknown",
                 )
               }
-              className={`w-fit flex flex-col gap-2 cursor-pointer duration-200 p-1 border-2  ${selected == realEstate.real_estate_uuid ? " bg-blue-200 rounded-lg border-blue-600" : "border-transparent"}`}
+              className={`w-fit flex  flex-col gap-2 cursor-pointer duration-200 p-1 border-2  ${selected == realEstate.real_estate_uuid ? " bg-blue-200 rounded-lg border-blue-600" : "border-transparent"}`}
             >
               <Image
                 src={realEstate?.icon ?? ""}

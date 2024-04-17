@@ -24,7 +24,7 @@ const join = () => {
             href="/auth/register"
             className="flex gap-2 text-lg px-4 py-2 hover:bg-blue-600 rounded-lg max-mobile:justify-center bg-mainBlue max-mobile:w-full w-fit text-white "
           >
-            <span className="text-[16px]">Join out agents</span>
+            <span className="text-[16px]">Find zirrow agents</span>
             <Image src={goImg} className="w-6 my-auto" alt="" />
           </a>
         </p>

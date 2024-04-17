@@ -10,7 +10,7 @@ interface Props {
 const features = ({ house }: Props) => {
   return (
     <div className="mt-8 h-fit ">
-      <div className="text-3xl font-semibold">Facts & Features</div>
+      <div className="text-3xl font-semibold">what's available ?</div>
       <div className="flex justify-between max-sm:flex-col max-sm:gap-2  mt-5">
         <div className="w-full ">
           <div className="text-lg mt-5 font-semibold my">Interior</div>

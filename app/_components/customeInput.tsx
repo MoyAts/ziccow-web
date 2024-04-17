@@ -69,14 +69,14 @@ const CustomeInput = ({
         {pass && (
           <div className="flex my-auto cursor-pointer px-2">
             {showPass ? (
-              <FaRegEyeSlash
+              <FaRegEye
                 onClick={() => {
                   setShowPass(false);
                 }}
                 className="text-slate-700 text-lg"
               />
             ) : (
-              <FaRegEye
+              <FaRegEyeSlash
                 onClick={() => {
                   setShowPass(true);
                 }}
