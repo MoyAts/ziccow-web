@@ -21,7 +21,7 @@ const Confirmation = ({ addList, setForm, form, loading }: MainProps) => {
         behavior: "smooth",
         block: "center",
       });
-  }, []);
+  }, [ref.current]);
 
   return (
     <div className="w-full h-fit pb-32" ref={ref}>

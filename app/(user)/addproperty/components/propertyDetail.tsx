@@ -9,7 +9,7 @@ import CheckBoxDiv from "./checkboxdiv";
 import img3 from "../../../assets/images/bed.svg";
 import img4 from "../../../assets/images/bathroom.svg";
 import { initialForm, type PropertyDetailInf } from "./interface";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import goImg from "../../../assets/images/go.svg";
 import OptionInput from "./optionInput2";
 import RealEstateOptionInput from "./realEstateInput";
@@ -67,11 +67,14 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
   };
 
   const validate = () => {
-    errRef &&
-      errRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
+    // errRef &&
+    //   errRef.current.scrollIntoView({
+    //     behavior: "smooth",
+    //     block: "center",
+    //   });
+    if (document) {
+      document?.getElementById("top-div")?.scrollIntoView();
+    }
     const errFound = (err: string) => {
       setErr(err);
     };
@@ -93,9 +96,6 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
     if (state.user.internal_agent == false && !checkString(form.propertyName)) {
       return errFound("Please insert Property Name");
     }
-    if (!checkNumber(form.yearBuilt)) {
-      return errFound("Please insert year built");
-    }
     if (!checkNumber(form.squareFootage)) {
       return errFound("Please insert square footage");
     }
@@ -113,6 +113,15 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
     }
     setPage(2);
   };
+
+  useEffect(() => {
+    if (errRef.current) {
+      errRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [errRef.current]);
 
   return (
     <div className="w-full h-fit pb-32">
@@ -279,6 +288,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           divClass="w-full"
           onChange={setChange}
           value={form.yearBuilt}
+          isRequired={false}
         />
         <CustomeInput
           label="Built up area"

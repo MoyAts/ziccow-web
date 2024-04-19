@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GoLocation as LocationIcon } from "react-icons/go";
 import { FaRegBuilding as BuildingIcon } from "react-icons/fa";
 import { CiSearch as SearchIcon } from "react-icons/ci";
@@ -68,6 +68,26 @@ const Search = ({
   });
 
   const [show, setShow] = useState(false);
+  const dropdownRef = useRef<any>(null);
+  const notifRef = useRef<any>(null);
+
+  // Handle clicks outside the dropdown list
+  const handleClickOutside = (event: any) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setShow(false);
+    }
+    if (notifRef.current && !notifRef.current.contains(event.target)) {
+      setShowNotification(false);
+    }
+  };
+
+  // Attach event listener to handle outside clicks
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <div className="pb-5 relative">
       <div className="w-full mb-2 mt-2 max-mobile:hidden h-[1px] bg-slate-300"></div>
@@ -121,7 +141,10 @@ const Search = ({
               <div>Error</div>
             ) : (
               show && (
-                <div className="absolute top-12 shadow-xl rounded-lg z-40 bg-white w-fit  overflow-scroll">
+                <div
+                  ref={dropdownRef}
+                  className="absolute top-12 shadow-xl rounded-lg z-40 bg-white w-fit  overflow-scroll"
+                >
                   {data.house_type.map((e: any) => (
                     <>
                       <div
@@ -151,7 +174,7 @@ const Search = ({
           </button>
         </div>
         <div className="flex gap-5 relative">
-          {showNotification && <Notification />}
+          <div ref={notifRef}>{showNotification && <Notification />}</div>
           {state.isLogedIn == LogInf.LOGED_IN && (
             <>
               <div

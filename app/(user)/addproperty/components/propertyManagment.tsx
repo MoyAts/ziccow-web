@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CustomeInput from "../../../_components/customeInput";
 import { MdNavigateNext } from "react-icons/md";
 import goImg from "../../../assets/images/go.svg";
@@ -81,6 +81,15 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
       [target.name]: target.value,
     }));
   };
+
+  useEffect(() => {
+    if (errRef.current) {
+      errRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [errRef.current]);
 
   return (
     <div className="w-full h-fit pb-32">

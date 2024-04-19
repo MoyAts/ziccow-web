@@ -30,7 +30,7 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { useMutation, useQuery } from "@apollo/client";
 import {
@@ -79,9 +79,26 @@ const Detail = ({ house, list_id }: Props) => {
 
   if (data) {
     saveQueryStatus.refetch();
-    reset();
+    // reset();
   }
   const owner = house.owner?.user_id == state.user?.userId;
+
+  const ref = useRef<any>(null);
+  const handleClickOutside = (event: any) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setShowShare(false);
+    }
+    // if (ref.current && !ref.current.contains(event.target)) {
+    //   setShowShare(false);
+    // }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     addListView();
@@ -140,23 +157,25 @@ const Detail = ({ house, list_id }: Props) => {
                Notification
             </div>
           </div> */}
-          <div
-            onClick={() => addtobookmark()}
-            className="flex gap-2 cursor-pointer"
-          >
-            <Image src={saveImg} className="my-auto" alt="" />
-            <div className="my-auto ">
-              {loading ? "..." : error ? "error" : data ? "Saved" : "Save"}
+          {data == null && (
+            <div
+              onClick={() => addtobookmark()}
+              className="flex gap-2 cursor-pointer"
+            >
+              <Image src={saveImg} className="my-auto" alt="" />
+              <div className="my-auto ">
+                {loading ? "..." : error ? "error" : data ? "" : "Save"}
+              </div>
             </div>
-          </div>
-          <div className="flex gap-2">
+          )}
+          <div ref={ref} className="flex gap-2">
             <Image src={shareImg} alt="" className="my-auto" />
             <p
               role="button"
-              onClick={() => setShowShare((data: boolean) => !data)}
+              onClick={() => setShowShare((data: boolean) => true)}
               className="my-auto cursor-pointer"
             >
-              share{" "}
+              share
             </p>
             <div
               className={`absolute ${showShare ? "scale-100" : "scale-0"} duration-150 flex flex-col gap-3 top-12 left-0 w-fit px-5 py-3 bg-white rounded-lg shadow-2xl`}
@@ -217,23 +236,25 @@ const Detail = ({ house, list_id }: Props) => {
           </div>
         </div>
         <div className="flex gap-10 tablet:hidden place-self-start max-mobile:mt-5 relative">
-          <div
-            onClick={() => addtobookmark()}
-            className="flex gap-2 cursor-pointer"
-          >
-            <Image src={saveImg} className="my-auto" alt="" />
-            <div className="my-auto ">
-              {loading ? "..." : error ? "error" : data ? "Added" : "Save"}
+          {data == null && (
+            <div
+              onClick={() => addtobookmark()}
+              className="flex gap-2 cursor-pointer"
+            >
+              <Image src={saveImg} className="my-auto" alt="" />
+              <div className="my-auto ">
+                {loading ? "..." : error ? "error" : data ? "" : "Save"}
+              </div>
             </div>
-          </div>
-          <div className="flex gap-2">
+          )}
+          <div ref={ref} className="flex gap-2">
             <Image src={shareImg} alt="" className="my-auto" />
             <p
               role="button"
-              onClick={() => setShowShare((data: boolean) => !data)}
+              onClick={() => setShowShare((data: boolean) => true)}
               className="my-auto cursor-pointer"
             >
-              share{" "}
+              share
             </p>
             <div
               className={`absolute z-50 ${showShare ? "scale-100" : "scale-0"} duration-150 flex flex-col gap-3 top-12 left-0 w-fit px-5 py-3 bg-white rounded-lg shadow-2xl`}

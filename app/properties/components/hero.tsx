@@ -167,12 +167,12 @@ const Hero = () => {
             </div>
             <div className="flex gap-2 my-auto text-lightGray me-12 place-self-end max-mobile:mt-5">
               <p>Sort:</p>
-              <div className="relative z-40 flex flex-col gap-2 w-fit px-2  group  ">
+              <div className="relative  flex flex-col gap-2 w-fit px-2  group  ">
                 <div className="flex  justify-between rounded gap-1">
                   <span className="">Default</span>
                   <ListIcon className="my-auto text-mainBlue group-hover:rotate-90 duration-150 -rotate-90" />
                 </div>
-                <div className="absolute text-sm top-6 shadow group-hover:flex hidden flex-col w-full text-black bg-white rounded p-1">
+                <div className="absolute z-40 text-sm top-6 shadow group-hover:flex hidden flex-col w-full text-black bg-white rounded p-1">
                   {["Default", "Price", "Date"].map((data, ind) => (
                     <div
                       onClick={() => sortList(ind)}

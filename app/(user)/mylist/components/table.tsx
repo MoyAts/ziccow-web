@@ -130,8 +130,8 @@ const List = ({
         </div>
         {showStatus == data.listing_id && (
           <div className="absolute w-fit z-50 left-28 top-0 rounded shadow-lg bg-white">
-            <div className="px-3 py-1 bg-mainBlue text-white">List Status</div>
-            <ul className="mt-2  py-1 flex flex-col gap-2">
+            <div className="px-3 py-1 bg-mainBlue text-white">Status</div>
+            <ul className="mt-2  py-1 flex flex-col gap-2 text-sm">
               <li
                 onClick={() => updateStatus("PENDING")}
                 role="button"

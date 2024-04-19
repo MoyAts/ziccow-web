@@ -81,11 +81,11 @@ const features = ({ house }: Props) => {
           <div className="text-lg mt-5 font-semibold my">Payments</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             <li className="before:content-['\2022']  before:mr-2">
-              Conveyancing program : {house.conveyancing_payment} Birr
+              Conveyancing payment : {house.conveyancing_payment} Birr
             </li>
 
             <li className="before:content-['\2022']  before:mr-2">
-              Goverment Payment Ashura : {house.gov_payment_ashura} Birr
+              Goverment Payment ( Ashura ) : {house.gov_payment_ashura} Birr
             </li>
             <li className="before:content-['\2022']  before:mr-2">
               Leasing Payment : {house.leasing_payment} Birr
@@ -94,10 +94,10 @@ const features = ({ house }: Props) => {
               Commission Payment : {house.commission_payment} %
             </li>
             <li className="before:content-['\2022']  before:mr-2">
-              Estimated Rent Price : {house.est_rental_price} Birr
+              Current Estimated Rental Price : {house.est_rental_price} Birr
             </li>
             <li className="before:content-['\2022']  before:mr-2">
-              Payment Program : {house.payment_program} Birr
+              Payment Program : {house.payment_program}
             </li>
           </ul>
         </div>
@@ -114,11 +114,19 @@ const features = ({ house }: Props) => {
 
       <div className="flex justify-between max-sm:flex-col max-sm:gap-2  my-5">
         <div className="w-full ">
-          <div className="text-lg  font-semibold my">Utiliity</div>
+          <div className="text-lg  font-semibold my">Utility</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
               <p>Air Conditioning System :</p>
               {house.extra_features?.air_conditioning_system ? (
+                <FaCheck className="my-auto text-green-600" />
+              ) : (
+                <IoCloseSharp className="my-auto text-red-600" />
+              )}
+            </li>
+            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+              <p>Unique Material :</p>
+              {house.extra_features.unique_material ? (
                 <FaCheck className="my-auto text-green-600" />
               ) : (
                 <IoCloseSharp className="my-auto text-red-600" />

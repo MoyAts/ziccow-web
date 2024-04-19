@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GoLocation as LocationIcon } from "react-icons/go";
 import { FaRegBuilding as BuildingIcon } from "react-icons/fa";
 import { CiSearch as SearchIcon } from "react-icons/ci";
@@ -37,7 +37,24 @@ const Search = ({
   });
 
   const [show, setShow] = useState(false);
+  const ref = useRef<any>(null);
   // const [propertyType,setPropertyType] = useState<null | string>(null)
+  const handleClickOutside = (event: any) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setShowNotification(false);
+    }
+    // if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    //   setShow(false);
+    // }
+  };
+
+  // Attach event listener to handle outside clicks
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="pb-5 rounded-b-xl ">
@@ -102,7 +119,7 @@ const Search = ({
           </button>
         </div>
         <div className="flex gap-5 relative">
-          {showNotification && <Notification />}
+          <div ref={ref}>{showNotification && <Notification />}</div>
           <Link href={url} className="flex text-mainBlue gap-1 text-sm">
             <Image src={navaddImg} className="m-auto" alt="" />
             <p className="m-auto ">Add new Listing</p>

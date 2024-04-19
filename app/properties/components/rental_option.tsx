@@ -12,7 +12,7 @@ interface Props {
 
 const SelectOption = ({ list, img, checkbox, name, filter }: Props) => {
   return (
-    <div className="relative z-40 flex flex-col gap-2 w-fit py-1 group rounded-lg  ">
+    <div className="relative  flex flex-col gap-2 w-fit py-1 group rounded-lg  ">
       <div className="flex justify-between bg-white py-1 rounded px-2">
         <div className="flex justify-between gap-2  px-2 ">
           <Image src={img} width={16} className="" alt="" />
@@ -20,7 +20,7 @@ const SelectOption = ({ list, img, checkbox, name, filter }: Props) => {
         </div>
         <ListIcon className="m-auto text-mainBlue group-hover:rotate-90 duration-150 -rotate-90" />
       </div>
-      <div className="absolute text-sm top-10 shadow group-hover:flex hidden flex-col w-full text-black bg-white rounded p-1">
+      <div className="absolute z-40 text-sm top-10 shadow group-hover:flex hidden flex-col w-full text-black bg-white rounded p-1">
         {list.map((data, ind) => (
           <div
             onClick={() => filter(data)}

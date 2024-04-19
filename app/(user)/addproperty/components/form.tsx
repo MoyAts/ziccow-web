@@ -38,11 +38,7 @@ const Form = () => {
   }
 
   const changePage = (num: number) => {
-    errRef &&
-      errRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
+    document.getElementById("nav-bar")?.scrollIntoView();
     setPage(num);
   };
 
@@ -202,7 +198,7 @@ const Form = () => {
             </div>
           </p>
           <p
-            onClick={() => page > 1 && setPage(2)}
+            onClick={() => (page > 1 || true) && setPage(2)}
             className={`${page == 2 && "font-semibold text-black"} gap-3    duration-200 flex justify-between`}
           >
             <p className={`cursor-pointer ${page > 2 && "text-accept"} `}>

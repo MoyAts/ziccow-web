@@ -18,7 +18,7 @@ const hero = () => {
         <div className="text-lightGray">Add new listing</div>
       </div>
 
-      <div className=" mb-1 flex justify-between">
+      <div className=" mb-1 flex justify-between" id="top-div">
         <div>
           <h1 className="text-[35px] mt-10 mb-1">Add a new listing</h1>
           <p className="text-lightGray">
