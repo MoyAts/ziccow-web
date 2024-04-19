@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import Drawer from "@/app/_components/drawer";
 import { useState } from "react";
 import Link from "next/link";
+import loadingImg from "@/app/assets/images/loading.svg";
+import Image from "next/image";
 
 const Page = ({ params: { list_id } }: { params: { list_id: string } }) => {
   const router = useRouter();
@@ -28,18 +30,27 @@ const Page = ({ params: { list_id } }: { params: { list_id: string } }) => {
       <div className={` ${isDrawer && "hidden"}  relative bg-lightBg`}>
         <GetStarted />
         <Hero setIsDrawer={setIsDrawer} />
-        {loading && "loading"}
-        {data && data.listing.length == 0 && (
+        {loading && (
+          <div className="w-full grow flex min-h-[300px] bg-white col-span-10 2xl:cols-span-4">
+            <Image
+              src={loadingImg}
+              width={100}
+              height={100}
+              alt="loading"
+              className="m-auto"
+            />
+          </div>
+        )}
+        {data && data.listing.length == 0 && false && (
           <div className="w-full h-full bg-white flex">
             <div className="mt-32 mx-auto flex flex-col  justify-center align-middle">
               <div className="capitalize text-xl text-center">
-                sorry :( property not found
+                sorry, property not found :(
               </div>
               <Link
                 href="/properties"
                 className="text-blue text-center text-blue-500 font-semibold"
               >
-                {" "}
                 Go Back
               </Link>
             </div>

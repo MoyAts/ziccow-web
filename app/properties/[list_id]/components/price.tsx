@@ -35,10 +35,10 @@ const price = ({ house }: Props) => {
         <div className="flex flex-col gap-3  px-2 pb-4 ">
           <div>Total Price</div>
           <div className="">
-            <span className="text-black text-2xl font-semibold">
+            <span className="text-black text-2xl font-semibold capitalize">
               {house.sale_type == "Sell"
                 ? price
-                : `${price}/${house.rental_price?.cycle ?? "Month"}`}
+                : `${house.currency ?? "ETB"} ${house.rental_price.price}/${house.rental_price?.cycle ?? "Month"}`}
             </span>
           </div>
         </div>

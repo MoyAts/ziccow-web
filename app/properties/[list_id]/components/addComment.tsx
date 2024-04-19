@@ -59,8 +59,8 @@ const AddComment = ({ listing_id, broker_id }: any) => {
   };
   return (
     <div className="flex pb-32 flex-col gap-5 mt-12">
-      <p className="text-lg text-center">
-        Leave your review about your experience on agents{" "}
+      <p className="text-xl text-center">
+        Leave your review about your experience with the agent
       </p>
       <div className=" flex gap-5">
         <div className="flex gap-5 w-full">

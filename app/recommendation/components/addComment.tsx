@@ -50,7 +50,7 @@ const AddComment = ({ realEstate }: any) => {
     <></>
   ) : (
     <div className="flex pb-32 flex-col gap-5">
-      <p className="text-lg">
+      <p className="text-xl text-center">
         Leave your review about your experience with this Real Estate
       </p>
       <div className=" flex gap-5">

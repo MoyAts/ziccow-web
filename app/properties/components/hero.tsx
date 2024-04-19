@@ -13,7 +13,7 @@ import { useSearchParams } from "next/navigation";
 const Hero = () => {
   const searchParams = useSearchParams();
   const searchDataParam = searchParams.get("search");
-  const saleTypeDataParam = searchParams.get("property_managment");
+  const saleTypeDataParam = searchParams.get("propertyManagment");
 
   const priceFilter = [
     { name: "$15k and Below", price: [0, 15000] },
@@ -48,14 +48,21 @@ const Hero = () => {
     ? [{ sale_type: { _eq: saleTypeDataParam?.trim() } }]
     : [];
   const initialData =
-    intialSearchQuery.length > 0 || intialSaleTypeDataParam.length > 0
+    intialSearchQuery.length > 0
       ? {
           where: {
-            _or: [...intialSearchQuery, ...intialSaleTypeDataParam],
+            _or: [...intialSearchQuery],
           },
           order_by: { created_at: "desc" },
         }
-      : { where: {}, order_by: { created_at: "desc" } };
+      : intialSaleTypeDataParam.length > 0
+        ? {
+            where: {
+              _or: [...intialSaleTypeDataParam],
+            },
+            order_by: { created_at: "desc" },
+          }
+        : { where: {}, order_by: { created_at: "desc" } };
 
   const [where, setWhere] = useState<any>(initialData);
   const [curr, setCurr] = useState<string | null>(null);
@@ -122,6 +129,7 @@ const Hero = () => {
   const runSearch = () => {
     search(region, propertyType);
   };
+  console.log({ ...where, status: { _eq: "ACTIVE" } }, "Before");
 
   return (
     <>
