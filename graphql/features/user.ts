@@ -172,3 +172,13 @@ export const GET_ONBOARDING_FLAG = gql`
     }
   }
 `;
+
+export const ADD_CONTACT_US = gql`
+  mutation d($email: String!, $message: String!, $name: String!) {
+    insert_Contact_us(
+      objects: { email: $email, message: $message, name: $name }
+    ) {
+      affected_rows
+    }
+  }
+`;

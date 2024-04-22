@@ -5,7 +5,17 @@ import Link from "next/link";
 import Nav from "../../_components/nav";
 import bg from "../../assets/images/Background_-_Copy-removebg-preview.png";
 import CustomeInput from "../../_components/customeInput";
+import { useMutation } from "@apollo/client";
+import { ADD_CONTACT_US } from "@/graphql/features/user";
+import { useState } from "react";
 const Hero = ({ setIsDrawer }: any) => {
+  const [send, { loading, error, data }] = useMutation(ADD_CONTACT_US, {
+    fetchPolicy: "no-cache",
+  });
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+
   return (
     <div className="w-full bg-[#547b87] bg-opacity-[85%]  ">
       <Nav setIsDrawer={setIsDrawer} withsearch={false} />
@@ -36,7 +46,7 @@ const Hero = ({ setIsDrawer }: any) => {
           </div>
 
           <div className="h-fit mt-1 w-fit max-tablet:w-full shadow-xl px-5 py-5 rounded-lg bg-lightBg text-black">
-            <p className="text-sm">
+            <p className="text-sm text-center">
               Submit the form, and a member of our team will get back to you as
               soon as possible.
             </p>
@@ -46,12 +56,16 @@ const Hero = ({ setIsDrawer }: any) => {
                 name="name"
                 placeholder="name"
                 labelClass="text-sm"
+                onChange={({ target }: any) => setName(target.value)}
+                value={name}
               />
               <CustomeInput
                 label="Email Address"
                 name="Email"
                 placeholder="Email"
                 labelClass="text-sm"
+                onChange={({ target }: any) => setEmail(target.value)}
+                value={email}
               />
               <div className="flex flex-col gap-3 capitalize">
                 <label htmlFor="" className="font-semibold  text-sm">
@@ -64,10 +78,28 @@ const Hero = ({ setIsDrawer }: any) => {
                   cols={30}
                   rows={4}
                   className="bg-white  p-2 outline-none rounded-lg border "
+                  onChange={({ target }: any) => setMessage(target.value)}
+                  value={message}
                 ></textarea>
               </div>
-              <button className="w-full bg-mainBlue py-2 rounded-lg text-white hover:bg-blue-700 duration-200">
-                submit form
+              {error && (
+                <div className="w-full text-red-800 text-sm text-center">
+                  Something goes Wrong
+                </div>
+              )}
+              <button
+                onClick={() => {
+                  send({
+                    variables: {
+                      email,
+                      name,
+                      message,
+                    },
+                  });
+                }}
+                className={`w-full capitalize ${loading ? "bg-blue-500" : "bg-mainBlue"} ${data && "bg-green-600"} py-2 rounded-lg text-white hover:bg-blue-700 duration-200`}
+              >
+                {loading ? "loading" : data ? "Sent" : "submit"}
               </button>
             </div>
           </div>

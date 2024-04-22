@@ -90,10 +90,10 @@ const Search = ({
   }, []);
   return (
     <div className="pb-5 relative">
-      <div className="w-full mb-2 mt-2 max-mobile:hidden h-[1px] bg-slate-300"></div>
-      <div className="flex pt-2 justify-between px-20 max-small:px-5 max-tablet:px-10 max-mobile:hidden ">
-        <div className="flex gap-4">
-          <div className="border w-fit flex px-2 rounded-xl font-light bg-white">
+      <div className="w-full mb-2 mt-2 max-mobile: h-[1px] bg-slate-300"></div>
+      <div className="flex pt-2 justify-between px-20 max-small:px-5 max-tablet:px-10 max-mobile:flex-col ">
+        <div className="flex gap-4 max-mobile:flex-col ">
+          <div className="border w-fit flex px-2 rounded-xl font-light max-mobile:w-full bg-white">
             <LocationIcon className="text-mainBlue m-auto" />
 
             <input
@@ -125,12 +125,12 @@ const Search = ({
               </div>
             }
           </div>
-          <div className="border relative w-fit flex px-2 rounded-xl font-light bg-white">
+          <div className="border max-mobile:w-full relative w-fit flex px-2 rounded-xl font-light bg-white">
             <BuildingIcon className="text-mainBlue m-auto " />
             {/* <input type="text" onChange={({ target } : any) => setPropertyType(target.value)} className="px-3 py-2 outline-none" placeholder="Enter property type" /> */}
             <button
               onClick={() => setShow((d) => !d)}
-              className={`px-3 w-full py-2 my-auto  ${propertyType == "" && "text-gray-400"}`}
+              className={`px-3 w-full py-2 my-auto text-start  ${propertyType == "" && "text-gray-400"}`}
             >
               {" "}
               {propertyType != "" ? propertyType : "select property type"}
@@ -165,7 +165,7 @@ const Search = ({
 
           <button
             onClick={() => search(region, propertyType)}
-            className={` flex gap-2  hover:bg-blue-600 rounded-lg bg-mainBlue w-fit text-white m-auto  px-3 py-2 text-sm  flex-row-reverse`}
+            className={` flex gap-2  hover:bg-blue-600 max-mobile:w-full rounded-lg bg-mainBlue w-fit text-white m-auto  px-3 py-2 text-sm  flex-row-reverse`}
           >
             <span className="max-tablet:hidden">Search</span>
             <div className={`m-auto border p-[1px] rounded border-none`}>
@@ -188,7 +188,10 @@ const Search = ({
                 </Link> */}
             </>
           )}
-          <Link href={url} className="flex text-mainBlue gap-1 text-sm">
+          <Link
+            href={url}
+            className="flex  text-mainBlue gap-1 max-mobile:mt-2 text-sm"
+          >
             <Image src={navaddImg} className="m-auto" alt="" />
             <p className="m-auto ">Add new Listing</p>
           </Link>

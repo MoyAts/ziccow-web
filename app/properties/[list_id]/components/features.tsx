@@ -288,6 +288,14 @@ const features = ({ house }: Props) => {
               )}
             </li>
             <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+              <p>Primary School :</p>
+              {house.extra_features?.primary_school ? (
+                <FaCheck className="my-auto text-green-600" />
+              ) : (
+                <IoCloseSharp className="my-auto text-red-600" />
+              )}
+            </li>
+            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
               <p>Supermarket :</p>
               {house.extra_features?.supermarket ? (
                 <FaCheck className="my-auto text-green-600" />

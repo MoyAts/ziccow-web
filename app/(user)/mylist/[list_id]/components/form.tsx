@@ -7,16 +7,28 @@ import PropertyManagment from "./propertyManagment";
 import Confirmation from "./confirmation";
 import Confirmed from "./confirmed";
 
-import accept from "../../../assets/images/goAccept.svg";
-import goImg from "../../../assets/images/goBlack.svg";
-import CancelImg from "../../../assets/images/cancelentry.svg";
+import accept from "../../../../assets/images/goAccept.svg";
+import goImg from "../../../../assets/images/goBlack.svg";
+import CancelImg from "../../../../assets/images/cancelentry.svg";
 import { PropertyDetailInf, initialForm } from "./interface";
 import { useMutation } from "@apollo/client";
 import { Add_LISTING_NEW } from "@/graphql/features/listing";
 import { useSelector } from "react-redux";
 import { getState } from "@/store/features/auth/authSlice";
+import { houseInf } from "@/utils/interfaces";
 
-const Form = () => {
+interface Props {
+  house: houseInf;
+  list_id: string;
+}
+
+const Form = ({ house, list_id }: Props) => {
+  const mapper = (): any => {
+    // const data : PropertyDetailInf = {
+    //   address : house.address_data,
+    // }
+    // return data
+  };
   const state = useSelector(getState);
   const errRef = useRef<any>(null);
   const [form, setForm] = useState(initialForm);
@@ -27,13 +39,10 @@ const Form = () => {
 
   if (data) {
     page != 4 && setPage(4);
-    console.log(data.insert_listing.returning[0].listing_id, "??");
   }
 
   if (error) {
-    console.log("THis form ", form);
-    console.log("THis error ", error);
-    alert(error.graphQLErrors[0].message);
+    alert(error.graphQLErrors[0].message ?? "Something goes Wrong");
     reset();
   }
 
@@ -59,12 +68,10 @@ const Form = () => {
       const res = await response.json();
       return res.url;
     } catch (e) {
-      console.log(e, "--");
       alert("check you connection please!");
     }
     return null;
   };
-  console.log(form.homeType, "KKK");
   const addList = async () => {
     let imgs: any = [];
     setLoading2(true);
@@ -112,7 +119,6 @@ const Form = () => {
           ...name,
           ...sellType,
           house_type_id: form.homeType,
-          type_of_person: form.typeOfPerson,
           property_number: form.phone,
           property_name: form.propertyName ?? "",
           address_data: form.address + ", " + form.locationDetail,
@@ -188,7 +194,7 @@ const Form = () => {
             className={`${page == 1 && "font-semibold text-black"} gap-3    duration-200 flex justify-between`}
           >
             <p className={`cursor-pointer ${page > 1 && "text-accept"} `}>
-              1. Property Management
+              1. Update Informations
             </p>
             <div className="">
               {page == 1 ? (
@@ -203,7 +209,7 @@ const Form = () => {
             className={`${page == 2 && "font-semibold text-black"} gap-3    duration-200 flex justify-between`}
           >
             <p className={`cursor-pointer ${page > 2 && "text-accept"} `}>
-              2. Property details
+              2. Update Image
             </p>
             <div className=" flex justify-center items-center">
               {page == 2 ? (

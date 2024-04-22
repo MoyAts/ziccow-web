@@ -22,11 +22,17 @@ interface Props {
 const Broker = ({ house }: Props) => {
   const date = new Date(house.created_at);
   const [open, setOpen] = useState(false);
+  console.log(house, "my house");
   return (
     <div className="mt-5 bg-white py-4 px-4 rounded-xl shadow h-fit">
       <div className="flex gap-2 text-xl font-semibold">
         <Image src={userSvg} className="w-7" alt="" />
-        <p>Broker’s Info</p>
+        <p>Agent’s Info </p>
+        {house.type_of_person == "owner" && (
+          <div className="my-auto px-2 py-1 rounded-lg bg-mainBlue text-white text-xs shadow-lg">
+            You are the owner
+          </div>
+        )}
       </div>
       <ShowImage
         open={open}
@@ -34,16 +40,16 @@ const Broker = ({ house }: Props) => {
         imageLink={house.owner?.profile_pic ?? ""}
       />
 
-      <div className="flex flex-col my-4 mt-6 gap-5 text-[16px] text-lightGray">
-        <div className="px-2 pb-4 flex justify-between">
-          <div className="flex gap-2">
+      <div className="flex flex-col my-4 mt-6 gap-2 text-[16px] text-lightGray">
+        <div className="px-2 pb-4 flex justify-between gap-3">
+          <div className="flex flex-col gap-2  w-full">
             {house.owner?.profile_pic ? (
               <Image
                 onClick={() => setOpen((data) => !data)}
                 src={house.owner?.profile_pic ?? ""}
                 width={100}
                 height={100}
-                className="w-16 h-16 rounded-full"
+                className="w-full object-cover h-[200px]"
                 alt=""
               />
             ) : (

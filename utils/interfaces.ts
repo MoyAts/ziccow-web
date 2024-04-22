@@ -15,6 +15,7 @@ export interface houseInf {
   real_estate_id: string | null;
   views_count: number;
   save_count: number;
+  type_of_person: string;
   owner: {
     phone_number: string;
     first_name: string | null;

@@ -20,6 +20,7 @@ export const GET_LISTING = gql`
         type
       }
       property_name
+      type_of_person
       owner {
         first_name
         last_name
@@ -175,6 +176,7 @@ export const GET_LIST_BY_ID = gql`
         type
       }
       property_name
+      type_of_person
       owner {
         first_name
         last_name
@@ -445,6 +447,7 @@ export const GET_MY_LISTING = gql`
         type
       }
       property_name
+      type_of_person
       owner {
         first_name
         last_name
