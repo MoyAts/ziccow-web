@@ -21,7 +21,7 @@ const MegaMenu = () => {
         <div className="flex gap-16">
           <div className="z-50 flex flex-col basis-1/3">
             <Link
-              href={"/properties?property_managment=Sell"}
+              href={"/properties?propertyManagment=Sell"}
               className="text-mainBlue font-semibold text-lg"
             >
               Buy a Property
@@ -67,7 +67,7 @@ const MegaMenu = () => {
 
           <div className="z-50 flex flex-col basis-1/3">
             <Link
-              href={"/properties?property_managment=Rental"}
+              href={"/properties?propertyManagment=Rental"}
               className="text-mainBlue font-semibold text-lg"
             >
               Rent a Property
