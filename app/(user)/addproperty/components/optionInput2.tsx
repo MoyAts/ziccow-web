@@ -105,7 +105,7 @@ const OptionInput = ({
                           }));
                         }}
                         key={e.house_type_id}
-                        className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
+                        className="py-2 px-6  hover:bg-slate-100 cursor-pointer rounded-lg border-b"
                       >
                         {e.type_name}
                       </div>
