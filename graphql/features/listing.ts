@@ -562,6 +562,7 @@ export const GET_HOME_TYPES = gql`
       type_name
       available
       house_type_id
+      is_realestate
     }
   }
 `;
@@ -646,6 +647,13 @@ export const UPDATE_STATUS_MYLIST = gql`
       returning {
         status
       }
+    }
+  }
+`;
+export const UPDATE_LIST = gql`
+  mutation UpdateListing($listing_id: uuid!, $_set: listing_set_input!) {
+    update_listing(_set: $_set, where: { listing_id: { _eq: $listing_id } }) {
+      affected_rows
     }
   }
 `;

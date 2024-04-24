@@ -25,10 +25,10 @@ import PropertyManagment from "./propertyManagment";
 interface MainProps {
   setForm: Function;
   form: PropertyDetailInf;
-  setPage: any;
+  updateList: any;
 }
 
-const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
+const PropertyDetail = ({ form, setForm, updateList }: MainProps) => {
   const state = useSelector(getState);
   const [err, setErr] = useState<string | null>(null);
   const errRef = useRef<any>(null);
@@ -73,6 +73,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
     //     behavior: "smooth",
     //     block: "center",
     //   });
+    console.log(form);
     if (document) {
       document?.getElementById("top-div")?.scrollIntoView();
     }
@@ -109,10 +110,10 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       if (!checkString(form.cycle))
         return errFound("Please specify Rental Price cycle");
     } else {
-      if (!checkNumber(form.sellingPrice))
+      if (!checkString(form.sellingPrice))
         return errFound("Please specify selling Price " + form.sellingPrice);
     }
-    setPage(2);
+    updateList();
   };
 
   useEffect(() => {
@@ -668,7 +669,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       <p className="text-lightGray text-sm mt-2 max-mobile:mt-5">
         Start with a brief overview that describes your item’s finest features.
       </p>
-      <PropertyManagment form={form} setForm={setForm} setPage={setPage} />
+      <PropertyManagment form={form} setForm={setForm} setPage={() => {}} />
 
       <div className="flex mt-0 justify-between ">
         <button
@@ -678,7 +679,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
             );
             if (result) {
               setForm(initialForm);
-              setPage(1);
+              // setPage(1);
             }
           }}
           className="text-mainBlue"

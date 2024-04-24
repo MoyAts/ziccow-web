@@ -67,8 +67,8 @@ export interface PropertyDetailInf {
   typeOfPerson: "agent" | "owner" | "none";
   timeToSell: "now" | "1month" | "2-3month" | "4+month";
   propertyManagment: string;
-  sellingPrice: number | null;
-  rentalPrice: number | null;
+  sellingPrice: string | null;
+  rentalPrice: string | null;
   urls: any;
   currency: "ETB" | "USA";
   cycle: "1 month" | "3 months" | "6 months" | "1 year";
@@ -147,45 +147,45 @@ export const initialForm: PropertyDetailInf = {
   description: "",
 };
 
-const toRemoteInf = (house: houseInf): PropertyDetailInf => {
+export const toLocalInf = (house: houseInf): PropertyDetailInf => {
   return {
     propertyName: house.property_name,
     phone: house.property_number,
     address: house.address_data,
     locationDetail: house.address_data,
-    homeType: "",
+    homeType: String(house.house_type?.house_type_id),
     yearBuilt: house.build_date,
     squareFootage: house.listing_property.square_ft,
     facilities: {
       numOfLivingrooms: !isNaN(Number(house.listing_property.living_room_count))
         ? Number(house.listing_property.living_room_count)
         : 0,
-      numOfBathrooms: !isNaN(Number(house.listing_property.living_room_count))
-        ? Number(house.listing_property.living_room_count)
+      numOfBathrooms: !isNaN(Number(house.listing_property.bathroom_count))
+        ? Number(house.listing_property.bathroom_count)
         : 0,
-      numOfBedrooms: !isNaN(Number(house.listing_property.living_room_count))
-        ? Number(house.listing_property.living_room_count)
+      numOfBedrooms: !isNaN(Number(house.listing_property.bedroom_count))
+        ? Number(house.listing_property.bedroom_count)
         : 0,
-      numOfKitchens: !isNaN(Number(house.listing_property.living_room_count))
-        ? Number(house.listing_property.living_room_count)
+      numOfKitchens: !isNaN(Number(house.listing_property.kitchen_count))
+        ? Number(house.listing_property.kitchen_count)
         : 0,
-      numOfLibs: !isNaN(Number(house.listing_property.living_room_count))
-        ? Number(house.listing_property.living_room_count)
+      numOfLibs: !isNaN(Number(house.listing_property.library))
+        ? Number(house.listing_property.library)
         : 0,
-      numOfMaidsRooms: !isNaN(Number(house.listing_property.living_room_count))
-        ? Number(house.listing_property.living_room_count)
+      numOfMaidsRooms: !isNaN(Number(house.listing_property.maids_room))
+        ? Number(house.listing_property.maids_room)
         : 0,
-      numOfSpas: !isNaN(Number(house.listing_property.living_room_count))
-        ? Number(house.listing_property.living_room_count)
+      numOfSpas: !isNaN(Number(house.listing_property.spa))
+        ? Number(house.listing_property.spa)
         : 0,
-      numOfStores: !isNaN(Number(house.listing_property.living_room_count))
-        ? Number(house.listing_property.living_room_count)
+      numOfStores: !isNaN(Number(house.listing_property.store_rooms))
+        ? Number(house.listing_property.store_rooms)
         : 0,
-      numOfGyms: !isNaN(Number(house.listing_property.living_room_count))
-        ? Number(house.listing_property.living_room_count)
+      numOfGyms: !isNaN(Number(house.listing_property.gymnasium))
+        ? Number(house.listing_property.gymnasium)
         : 0,
-      numOfPrayerRoom: !isNaN(Number(house.listing_property.living_room_count))
-        ? Number(house.listing_property.living_room_count)
+      numOfPrayerRoom: !isNaN(Number(house.listing_property.praying_room))
+        ? Number(house.listing_property.praying_room)
         : 0,
     },
     appliances: String(house.extra_features.applicances),
@@ -204,39 +204,49 @@ const toRemoteInf = (house: houseInf): PropertyDetailInf => {
       other: String(house.extra_features.other_utility),
       airConditioning: Boolean(house.extra_features.air_conditioning_system),
     },
-    completionStatus: "",
-    matterportLink: "",
-    paymentProgram: "",
+    completionStatus: String(house.completion_status),
+    matterportLink: house.matterport_link,
+    paymentProgram: String(house.payment_program),
     community: {
-      primarySchool: false,
-      secondarySchool: false,
-      collegeAndUni: false,
-      hospital: false,
-      supermarket: false,
-      other: "",
+      primarySchool: house.extra_features?.primary_school ?? false,
+      secondarySchool: house.extra_features?.secondary_school ?? false,
+      collegeAndUni: house.extra_features?.college_and_uni ?? false,
+      hospital: house.extra_features?.hospital ?? false,
+      supermarket: house.extra_features?.supermarket ?? false,
+      other: String(house.extra_features.other_community),
     },
     construction: {
-      ordinaryMaterial: false,
-      uniqueMaterial: false,
+      ordinaryMaterial: house.extra_features?.ordinary_material ?? false,
+      uniqueMaterial: house.extra_features?.unique_material ?? false,
     },
     constructionCustom: "",
-    estRentalPrice: "",
-    govPaymentAshura: "",
-    leasingPayment: "",
-    conveyancingPayment: "",
-    commission: "",
+    estRentalPrice: String(house.est_rental_price),
+    govPaymentAshura: String(house.gov_payment_ashura),
+    leasingPayment: String(house.leasing_payment),
+    conveyancingPayment: String(house.conveyancing_payment),
+    commission: String(house.commission_payment),
     images: [null, null, null, null, null, null, null, null, null],
     previewImages: [null, null, null, null, null, null, null, null, null],
-    typeOfPerson: "none",
+    typeOfPerson:
+      house.type_of_person == "agent"
+        ? "agent"
+        : house.type_of_person == "owner"
+          ? "owner"
+          : "none",
     timeToSell: "now",
-    propertyManagment: "",
-    sellingPrice: null,
-    rentalPrice: null,
+    propertyManagment: house.sale_type,
+    sellingPrice: house.sale_price,
+    rentalPrice: String(house.rental_price?.price) ?? null,
     urls: null,
     parkingFeature: false,
     lotFeature: false,
-    currency: "ETB",
-    cycle: "1 month",
-    description: "",
+    currency: house.currency == "ETB" ? "ETB" : "USA",
+    cycle:
+      house.rental_price?.cycle == "1 month"
+        ? "1 month"
+        : house.rental_price?.cycle == "3 months"
+          ? "3 months"
+          : "6 months",
+    description: house.description,
   };
 };

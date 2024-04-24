@@ -10,9 +10,9 @@ import Confirmed from "./confirmed";
 import accept from "../../../../assets/images/goAccept.svg";
 import goImg from "../../../../assets/images/goBlack.svg";
 import CancelImg from "../../../../assets/images/cancelentry.svg";
-import { PropertyDetailInf, initialForm } from "./interface";
+import { PropertyDetailInf, initialForm, toLocalInf } from "./interface";
 import { useMutation } from "@apollo/client";
-import { Add_LISTING_NEW } from "@/graphql/features/listing";
+import { Add_LISTING_NEW, UPDATE_LIST } from "@/graphql/features/listing";
 import { useSelector } from "react-redux";
 import { getState } from "@/store/features/auth/authSlice";
 import { houseInf } from "@/utils/interfaces";
@@ -23,25 +23,23 @@ interface Props {
 }
 
 const Form = ({ house, list_id }: Props) => {
-  const mapper = (): any => {
-    // const data : PropertyDetailInf = {
-    //   address : house.address_data,
-    // }
-    // return data
-  };
   const state = useSelector(getState);
   const errRef = useRef<any>(null);
-  const [form, setForm] = useState(initialForm);
+  const [form, setForm] = useState(toLocalInf(house));
   const [page, setPage] = useState(1);
   const [loading2, setLoading2] = useState(false);
-  const [sendList, { loading, error, data, reset }] =
-    useMutation(Add_LISTING_NEW);
+  const [sendList, { loading, error, data, reset }] = useMutation(UPDATE_LIST);
 
   if (data) {
-    page != 4 && setPage(4);
+    page != 3 && setPage(3);
+  }
+  if (loading) {
+    console.log("Loading");
+    reset();
   }
 
   if (error) {
+    console.log(error);
     alert(error.graphQLErrors[0].message ?? "Something goes Wrong");
     reset();
   }
@@ -72,32 +70,13 @@ const Form = ({ house, list_id }: Props) => {
     }
     return null;
   };
-  const addList = async () => {
-    let imgs: any = [];
-    setLoading2(true);
-    for (let i in form.images) {
-      let url = null;
-      if (form.images[i]) {
-        url = await uploadImage(form.images[i]);
-        imgs.push({
-          url,
-          type: `${i}`,
-          primary: imgs.length < 1,
-        });
-      }
-    }
-    setForm((data: any) => ({ ...data, urls: [...imgs] }));
+
+  const updateList = async () => {
     const name = state.user.internal_agent
       ? {
           real_estate_id: form.realEstateId ?? null,
         }
-      : {
-          // real_estate: {
-          //   data: {
-          //     name: form.propertyName,
-          //   },
-          // },
-        };
+      : {};
     const sellType =
       form.propertyManagment != "Sell"
         ? {
@@ -115,13 +94,14 @@ const Form = ({ house, list_id }: Props) => {
           };
     sendList({
       variables: {
-        objects: {
+        listing_id: list_id,
+        _set: {
           ...name,
-          ...sellType,
+          // ...sellType,
           house_type_id: form.homeType,
           property_number: form.phone,
           property_name: form.propertyName ?? "",
-          address_data: form.address + ", " + form.locationDetail,
+          address_data: form.address,
           build_date: form.yearBuilt,
           description: form.description,
           sale_type: form.propertyManagment,
@@ -175,10 +155,6 @@ const Form = ({ house, list_id }: Props) => {
               other_utility: form.utility.other,
             },
           },
-
-          digital_assets: {
-            data: imgs,
-          },
         },
       },
     });
@@ -222,7 +198,7 @@ const Form = ({ house, list_id }: Props) => {
             </div>
           </p>
 
-          <p
+          {/* <p
             ref={errRef}
             onClick={() => page > 2 && setPage(3)}
             className={`${page == 3 && "font-semibold text-black"} gap-3  cursor-pointer duration-200 flex justify-between`}
@@ -237,23 +213,16 @@ const Form = ({ house, list_id }: Props) => {
                 <></>
               )}
             </div>
-          </p>
+          </p> */}
         </div>
         {page == 1 ? (
-          <PropertyDetail setPage={changePage} setForm={setForm} form={form} />
+          <PropertyDetail
+            updateList={updateList}
+            setForm={setForm}
+            form={form}
+          />
         ) : page == 2 ? (
-          <PropertyManagment
-            setPage={changePage}
-            setForm={setForm}
-            form={form}
-          />
-        ) : page == 3 ? (
-          <Confirmation
-            loading={loading || loading2}
-            form={form}
-            setForm={setForm}
-            addList={addList}
-          />
+          <PropertyManagment setPage={() => {}} setForm={setForm} form={form} />
         ) : (
           <Confirmed listing_id={data.insert_listing.returning[0].listing_id} />
         )}

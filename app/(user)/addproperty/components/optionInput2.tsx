@@ -4,6 +4,8 @@ import InputIcon from "../../../assets/images/inputIcon.svg";
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_HOME_TYPES } from "@/graphql/features/listing";
+import { useSelector } from "react-redux";
+import { getState, LogInf } from "@/store/features/auth/authSlice";
 
 interface Props {
   label: string;
@@ -45,7 +47,9 @@ const OptionInput = ({
   const { loading, error, data } = useQuery(GET_HOME_TYPES, {
     fetchPolicy: "no-cache",
   });
-
+  const state = useSelector(getState);
+  const check_IA =
+    state.isLogedIn == LogInf.LOGED_IN && state.user.internal_agent;
   let m: any = {};
   if (data) {
     for (let x = 0; x < data.house_type.length; x++) {
@@ -73,7 +77,7 @@ const OptionInput = ({
           className={"me-3 " + imgClass}
         />
         <div className={`w-full py py-2 ${!value && "text-gray-500"}`}>
-          {value ? m[value] : placeholder}{" "}
+          {value ? m[value] : placeholder}
         </div>
         {Icon && <Image src={Icon} alt="" className={"w-fit " + IconClass} />}
         {ReactIcon && <ReactIcon className={"w-fit " + IconClass} />}
@@ -85,22 +89,48 @@ const OptionInput = ({
           {loading ? (
             <div>Loading</div>
           ) : error ? (
-            <div>Error</div>
+            <div>Error loading property type</div>
           ) : data ? (
             <div>
-              {" "}
-              {data.house_type.map((e: any) => (
-                <div
-                  onClick={() => {
-                    setShow(false);
-                    onChange((dt: any) => ({ ...dt, [name]: e.house_type_id }));
-                  }}
-                  key={e.house_type_id}
-                  className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
-                >
-                  {e.type_name}
-                </div>
-              ))}
+              {data.house_type.map((e: any) => {
+                if (check_IA) {
+                  if (e.is_realestate)
+                    return (
+                      <div
+                        onClick={() => {
+                          setShow(false);
+                          onChange((dt: any) => ({
+                            ...dt,
+                            [name]: e.house_type_id,
+                          }));
+                        }}
+                        key={e.house_type_id}
+                        className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
+                      >
+                        {e.type_name}
+                      </div>
+                    );
+                  else return <></>;
+                } else {
+                  if (e.is_realestate == false)
+                    return (
+                      <div
+                        onClick={() => {
+                          setShow(false);
+                          onChange((dt: any) => ({
+                            ...dt,
+                            [name]: e.house_type_id,
+                          }));
+                        }}
+                        key={e.house_type_id}
+                        className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
+                      >
+                        {e.type_name} {e.is_realestate && "True"}
+                      </div>
+                    );
+                  else return <></>;
+                }
+              })}
             </div>
           ) : (
             <></>
