@@ -149,7 +149,7 @@ const PropertyDetail = ({ form, setForm, updateList }: MainProps) => {
           label="Real Estate"
           name="realEstateId"
           onChange={setForm}
-          placeholder="Tsehay real estate"
+          placeholder="real estate name"
           divClass="mb-5"
           ReactIcon={MdNavigateNext}
           IconClass={"text-3xl my-auto text-mainBlue rotate-90"}

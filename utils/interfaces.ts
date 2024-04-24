@@ -1,6 +1,7 @@
 export interface houseInf {
   digital_assets: Array<{ url: string }>;
   address_data: string;
+  listing_property_id: string;
   listing_id: string;
   currency: string;
   build_date: string;
@@ -11,11 +12,12 @@ export interface houseInf {
   description: string;
   property_number: string;
   real_estate_name: string;
-  property_name: string;
+  property_name?: string;
   real_estate_id: string | null;
   views_count: number;
   save_count: number;
   type_of_person: string;
+  extra_features_id: string;
   owner: {
     phone_number: string;
     first_name: string | null;

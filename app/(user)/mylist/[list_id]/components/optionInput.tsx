@@ -60,7 +60,7 @@ const OptionInput = ({
           className={"me-3 " + imgClass}
         />
         <div className={`w-full py py-2 ${!value && "text-gray-500"}`}>
-          {!value ? placeholder : value}{" "}
+          {!value ? placeholder : value}
         </div>
         {Icon && <Image src={Icon} alt="" className={"w-fit " + IconClass} />}
         {ReactIcon && <ReactIcon className={"w-fit " + IconClass} />}

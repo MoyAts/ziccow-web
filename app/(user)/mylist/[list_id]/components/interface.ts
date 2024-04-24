@@ -18,6 +18,8 @@ export interface UtilityInf {
 export interface PropertyDetailInf {
   propertyName: string;
   phone: string;
+  extra_features_id: string;
+  listing_property_id: string;
   locationDetail: string;
   address: string;
   homeType: string;
@@ -76,6 +78,7 @@ export interface PropertyDetailInf {
 }
 
 export const initialForm: PropertyDetailInf = {
+  extra_features_id: "",
   propertyName: "",
   phone: "",
   address: "",
@@ -145,11 +148,15 @@ export const initialForm: PropertyDetailInf = {
   currency: "ETB",
   cycle: "1 month",
   description: "",
+  listing_property_id: "",
 };
 
 export const toLocalInf = (house: houseInf): PropertyDetailInf => {
   return {
-    propertyName: house.property_name,
+    listing_property_id: house.listing_property_id ?? "",
+    extra_features_id: house.extra_features_id ?? "",
+    propertyName: house.property_name ?? "",
+    realEstateId: house.real_estate_id ?? "",
     phone: house.property_number,
     address: house.address_data,
     locationDetail: house.address_data,

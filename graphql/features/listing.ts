@@ -175,8 +175,11 @@ export const GET_LIST_BY_ID = gql`
         url
         type
       }
+      real_estate_id
+      listing_property_id
       property_name
       type_of_person
+      extra_features_id
       owner {
         first_name
         last_name
@@ -202,7 +205,6 @@ export const GET_LIST_BY_ID = gql`
       description
       listing_id
       property_number
-      real_estate_id
       sale_compare_price
       rental_price_id
       sale_price
@@ -650,9 +652,27 @@ export const UPDATE_STATUS_MYLIST = gql`
     }
   }
 `;
+
 export const UPDATE_LIST = gql`
   mutation UpdateListing($listing_id: uuid!, $_set: listing_set_input!) {
     update_listing(_set: $_set, where: { listing_id: { _eq: $listing_id } }) {
+      affected_rows
+    }
+  }
+`;
+export const UPDATE_EXTRA_FEATURE = gql`
+  mutation b($id: uuid!, $set: extra_features_set_input!) {
+    update_extra_features(where: { uuid: { _eq: $id } }, _set: $set) {
+      affected_rows
+    }
+  }
+`;
+export const UPDATE_LISTING_PROPERTY = gql`
+  mutation b($id: uuid!, $set: listing_property_set_input!) {
+    update_listing_property(
+      where: { listing_property_id: { _eq: $id } }
+      _set: $set
+    ) {
       affected_rows
     }
   }

@@ -12,7 +12,12 @@ import goImg from "../../../../assets/images/goBlack.svg";
 import CancelImg from "../../../../assets/images/cancelentry.svg";
 import { PropertyDetailInf, initialForm, toLocalInf } from "./interface";
 import { useMutation } from "@apollo/client";
-import { Add_LISTING_NEW, UPDATE_LIST } from "@/graphql/features/listing";
+import {
+  Add_LISTING_NEW,
+  UPDATE_EXTRA_FEATURE,
+  UPDATE_LIST,
+  UPDATE_LISTING_PROPERTY,
+} from "@/graphql/features/listing";
 import { useSelector } from "react-redux";
 import { getState } from "@/store/features/auth/authSlice";
 import { houseInf } from "@/utils/interfaces";
@@ -28,20 +33,44 @@ const Form = ({ house, list_id }: Props) => {
   const [form, setForm] = useState(toLocalInf(house));
   const [page, setPage] = useState(1);
   const [loading2, setLoading2] = useState(false);
+  const [updateExtraFeature, extraFeatureStatus] =
+    useMutation(UPDATE_EXTRA_FEATURE);
+  const [updateListingProperty, listingPropertyStatus] = useMutation(
+    UPDATE_LISTING_PROPERTY,
+  );
   const [sendList, { loading, error, data, reset }] = useMutation(UPDATE_LIST);
 
-  if (data) {
-    page != 3 && setPage(3);
-  }
-  if (loading) {
-    console.log("Loading");
+  if (data && extraFeatureStatus.data && listingPropertyStatus.data) {
     reset();
+    extraFeatureStatus.reset();
+    alert("Works");
+    // page != 3 && setPage(3);
+  }
+  if (loading || extraFeatureStatus.loading) {
+    console.log("Loading");
   }
 
   if (error) {
     console.log(error);
     alert(error.graphQLErrors[0].message ?? "Something goes Wrong");
     reset();
+  }
+
+  if (extraFeatureStatus.error) {
+    console.log(extraFeatureStatus.error);
+    alert(
+      extraFeatureStatus.error.graphQLErrors[0].message ??
+        "Something goes Wrong",
+    );
+    extraFeatureStatus.reset();
+  }
+  if (listingPropertyStatus.error) {
+    console.log(listingPropertyStatus.error);
+    alert(
+      listingPropertyStatus.error.graphQLErrors[0].message ??
+        "Something goes Wrong",
+    );
+    listingPropertyStatus.reset();
   }
 
   const changePage = (num: number) => {
@@ -92,6 +121,54 @@ const Form = ({ house, list_id }: Props) => {
             sale_price: form.sellingPrice,
             rental_price: null,
           };
+    updateExtraFeature({
+      variables: {
+        id: form.extra_features_id,
+        set: {
+          applicances: form.appliances,
+          parking_feature: form.parkingFeature,
+          primary_school: form.community.primarySchool,
+          secondary_school: form.community.secondarySchool,
+          college_and_uni: form.community.collegeAndUni,
+          hospital: form.community.hospital,
+          supermarket: form.community.supermarket,
+          ordinary_material: form.construction.ordinaryMaterial,
+          unique_material: form.construction.uniqueMaterial,
+          construction_custom: form.constructionCustom,
+          air_conditioning_system: form.utility.airConditioning,
+          basement: form.utility.basement,
+          back_yard: form.utility.backYard,
+          service_rooms: form.utility.service_rooms,
+          electricity: form.utility.electricity,
+          garbage_shutter: form.utility.garbageShutter,
+          water: form.utility.water,
+          ground_water: form.utility.ground_water,
+          security_system: form.utility.security,
+          swimming: form.utility.swimming,
+          other_community: form.community.other,
+          other_utility: form.utility.other,
+        },
+      },
+    });
+    updateListingProperty({
+      variables: {
+        id: house.listing_property_id ?? "",
+        set: {
+          bathroom_count: form.facilities.numOfBathrooms,
+          bedroom_count: form.facilities.numOfBedrooms,
+          gymnasium: form.facilities.numOfGyms,
+          kitchen_count: form.facilities.numOfKitchens,
+          library: form.facilities.numOfLibs,
+          living_room_count: form.facilities.numOfLivingrooms,
+          maids_room: form.facilities.numOfMaidsRooms,
+          spa: form.facilities.numOfSpas,
+          square_ft: form.squareFootage,
+          store_rooms: form.facilities.numOfStores,
+          praying_room: form.facilities.numOfPrayerRoom,
+        },
+      },
+    });
+
     sendList({
       variables: {
         listing_id: list_id,
@@ -106,21 +183,7 @@ const Form = ({ house, list_id }: Props) => {
           description: form.description,
           sale_type: form.propertyManagment,
           currency: form.currency,
-          listing_property: {
-            data: {
-              bathroom_count: form.facilities.numOfBathrooms,
-              bedroom_count: form.facilities.numOfBedrooms,
-              gymnasium: form.facilities.numOfGyms,
-              kitchen_count: form.facilities.numOfKitchens,
-              library: form.facilities.numOfLibs,
-              living_room_count: form.facilities.numOfLivingrooms,
-              maids_room: form.facilities.numOfMaidsRooms,
-              spa: form.facilities.numOfSpas,
-              square_ft: form.squareFootage,
-              store_rooms: form.facilities.numOfStores,
-              praying_room: form.facilities.numOfPrayerRoom,
-            },
-          },
+
           completion_status: form.completionStatus,
           matterport_link: form.matterportLink,
           payment_program: form.paymentProgram,
@@ -129,32 +192,9 @@ const Form = ({ house, list_id }: Props) => {
           leasing_payment: form.leasingPayment,
           conveyancing_payment: form.conveyancingPayment,
           commission_payment: form.commission,
-          extra_features: {
-            data: {
-              applicances: form.appliances,
-              parking_feature: form.parkingFeature,
-              primary_school: form.community.primarySchool,
-              secondary_school: form.community.secondarySchool,
-              college_and_uni: form.community.collegeAndUni,
-              hospital: form.community.hospital,
-              supermarket: form.community.supermarket,
-              ordinary_material: form.construction.ordinaryMaterial,
-              unique_material: form.construction.uniqueMaterial,
-              construction_custom: form.constructionCustom,
-              air_conditioning_system: form.utility.airConditioning,
-              basement: form.utility.basement,
-              back_yard: form.utility.backYard,
-              service_rooms: form.utility.service_rooms,
-              electricity: form.utility.electricity,
-              garbage_shutter: form.utility.garbageShutter,
-              water: form.utility.water,
-              ground_water: form.utility.ground_water,
-              security_system: form.utility.security,
-              swimming: form.utility.swimming,
-              other_community: form.community.other,
-              other_utility: form.utility.other,
-            },
-          },
+          // extra_features: {
+          //   data:
+          // },
         },
       },
     });

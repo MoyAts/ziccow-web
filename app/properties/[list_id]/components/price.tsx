@@ -5,7 +5,7 @@ interface Props {
   house: houseInf;
 }
 
-const price = ({ house }: Props) => {
+const Price = ({ house }: Props) => {
   const isDolar = house.currency != null && house.currency == "USD";
   let price =
     house.sale_type == "Sell"
@@ -38,7 +38,7 @@ const price = ({ house }: Props) => {
             <span className="text-black text-2xl font-semibold capitalize">
               {house.sale_type == "Sell"
                 ? price
-                : `${house.currency ?? "ETB"} ${house.rental_price.price}/${house.rental_price?.cycle ?? "Month"}`}
+                : `${house.currency ?? "ETB"} ${house.rental_price?.price ?? "0"}/${house.rental_price?.cycle ?? "Month"}`}
             </span>
           </div>
         </div>
@@ -47,4 +47,6 @@ const price = ({ house }: Props) => {
   );
 };
 
-export default price;
+const Temp = ({ house }: Props) => <></>;
+
+export default Price;
