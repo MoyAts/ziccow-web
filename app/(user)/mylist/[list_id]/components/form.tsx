@@ -224,7 +224,7 @@ const Form = ({ house, list_id }: Props) => {
             onClick={() => (page > 1 || true) && setPage(2)}
             className={`${page == 2 && "font-semibold text-black"} gap-3    duration-200 flex justify-between`}
           >
-            <p className={`cursor-pointer ${page > 2 && "text-accept"} `}>
+            {/* <p className={`cursor-pointer ${page > 2 && "text-accept"} `}>
               2. Update Image
             </p>
             <div className=" flex justify-center items-center">
@@ -235,7 +235,7 @@ const Form = ({ house, list_id }: Props) => {
               ) : (
                 <></>
               )}
-            </div>
+            </div> */}
           </p>
 
           {/* <p

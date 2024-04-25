@@ -22,16 +22,13 @@ const Hero = ({ house, list_id }: Props) => {
           <div>Property</div>
         </div>
         <NextIcon className="my-auto rotate-180" />
-        <div className="text-lightGray">Add new listing</div>
+        <div className="text-lightGray">update your list</div>
       </div>
 
       <div className=" mb-1 flex justify-between" id="top-div">
         <div>
-          <h1 className="text-[35px] mt-10 mb-1">Add a new listing</h1>
-          <p className="text-lightGray">
-            Answer a few questions and get your selling options in as little as
-            3 minutes.
-          </p>
+          <h1 className="text-[35px] mt-10 mb-1">Update Your list</h1>
+          <p className="text-lightGray">update your listing</p>
         </div>
         {/* <button className="my-auto flex gap-3 max-mobile:hidden">
             <Image src={cancelImg} alt="" className="my-auto" />
