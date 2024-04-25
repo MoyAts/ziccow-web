@@ -11,6 +11,8 @@ import { houseInf } from "@/utils/interfaces";
 import { useMutation } from "@apollo/client";
 import { DELET_BOOKMARK } from "@/graphql/features/listing";
 import Link from "next/link";
+import { TbToolsKitchen2 } from "react-icons/tb";
+
 interface Props {
   house: houseInf;
   userId: string | null;
@@ -37,7 +39,7 @@ const Home = ({ house, userId, uuid }: Props) => {
       className={`flex w-full shrink-0 gap-2 bg-white  p-1 rounded-lg text-lightGray flex-col`}
     >
       <Link
-        href={"/properties/" + house.listing_id}
+        href={"/properties/" + house?.listing_id ?? ""}
         className="rounded-lg asis-1/3 flex"
       >
         {house.digital_assets[0]?.url && (
@@ -61,7 +63,7 @@ const Home = ({ house, userId, uuid }: Props) => {
           <div
             className={`  w-fit  bg-blue-300 text-black text-sm px-2 rounded-lg h-fit my-auto bg-opacity-55`}
           >
-            Appartment
+            {house?.house_type?.type_name ?? "Unknown house type"}
           </div>
         </div>
 
@@ -69,37 +71,34 @@ const Home = ({ house, userId, uuid }: Props) => {
           {house?.real_estate?.name ?? "unknown"}{" "}
           {house?.address_data ?? "unknown"}
         </p>
-        <div className={`  flex w-full justify-between pe-2`}>
-          <p className="flex text-sm text-black font-semibold gap-1">
-            <Image className="w-[20px] h-[20px]" src={locationIcon} alt="" />
-            <p className="my-auto">2 km away from current location</p>
-          </p>
-        </div>
-        <div className="justify-between font-semibold text-black flex gap-y-2 flex-wrap">
-          {house.listing_property?.bathroom_count && (
-            <div className="flex mt-2 gap-1">
-              <Image src={img5} width={15} className="my-auto" alt="" />
-              <span className="text-sm my-auto">
-                {house.listing_property.bathroom_count} Bathroom
-              </span>
-            </div>
-          )}
-          {house.listing_property?.bedroom_count && (
-            <div className="flex mt-2 gap-1 ">
-              <Image src={img3} width={13} className="my-auto" alt="" />
-              <span className="text-sm my-auto">
-                {house.listing_property.bedroom_count} Bathroom
-              </span>
-            </div>
-          )}
-          {house.listing_property?.square_ft && (
-            <div className="flex mt-2 gap-1 ">
-              <Image src={img4} width={19} className="my-auto" alt="" />
-              <span className="text-sm my-auto">
-                {house.listing_property.square_ft} square fit
-              </span>
-            </div>
-          )}
+
+        <div className="justify-between  text-black grid grid-cols-2 gap-2 flex-wrap">
+          <div className="flex mt-2 gap-1 ">
+            <Image src={img5} width={19} className="my-auto" alt="" />
+            <span className="text-sm my-auto">
+              {house.listing_property?.square_ft ?? 0} M<sup>2</sup> Built up
+              area
+            </span>
+          </div>
+          <div className="flex mt-2 gap-1  place-self-end">
+            <Image src={img4} width={15} className="my-auto" alt="" />
+            <span className="text-sm my-auto">
+              {house.listing_property?.bedroom_count ?? 0} Bathroom
+            </span>
+          </div>
+          <div className="flex mt-2 gap-1  ">
+            <Image src={img3} width={13} className="my-auto" alt="" />
+            <span className="text-sm my-auto">
+              {house.listing_property?.bedroom_count ?? 0} Bedroom
+            </span>
+          </div>
+          <div className="flex mt-2 gap-1 place-self-end">
+            {/* <Image src={img4} width={19} className="my-auto" alt="" /> */}
+            <TbToolsKitchen2 width={19} className="text-gray-500" />
+            <span className="text-sm my-auto">
+              {house.listing_property?.kitchen_count ?? 0} Kitchenss
+            </span>
+          </div>
         </div>
         <div className="flex justify-between pe-2 mt-2">
           {house.sale_price && (

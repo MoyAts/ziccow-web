@@ -69,7 +69,11 @@ const Bookmarks = () => {
           <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
             {error.graphQLErrors[0]?.message ?? "something goes wrong"}
           </div>
-        ) : data ? (
+        ) : data.bookmark.length < 1 ? (
+          <div className="col-span-10 text-2xl font-semibold text-center flex h-[200px]">
+            <p className="m-auto">Sorry, Nothing Found :(</p>
+          </div>
+        ) : (
           data.bookmark.map((house: any, ind: number) => (
             <Property
               uuid={house.uuid}
@@ -78,8 +82,6 @@ const Bookmarks = () => {
               house={house.listing}
             />
           ))
-        ) : (
-          <div>......</div>
         )}
       </div>
     </div>

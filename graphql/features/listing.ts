@@ -135,6 +135,9 @@ export const GET_BOOKMARK = gql`
           url
           type
         }
+        house_type {
+          type_name
+        }
         address_data
         currency
         build_date
