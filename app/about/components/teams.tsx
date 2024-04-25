@@ -82,25 +82,7 @@ const teams = () => {
             <h4 className="mx-auto">Ann Houben</h4>
             <p className="mx-auto text-sm text-mainBlue"></p>
           </Link>
-          <Link
-            href={{
-              pathname: "/about/detail",
-              query: {
-                id: 4,
-              },
-            }}
-            className="flex flex-col  w-fit gap-1 max-tablet:w-full"
-          >
-            <div className="mx-auto rounded-full">
-              <Image
-                src={img4}
-                className="rounded-full w-32 h-32 object-cover"
-                alt=""
-              />
-            </div>
-            <h4 className="mx-auto">Judge Hiwust Ashenafi G/mariam</h4>
-            <p className="mx-auto text-sm text-mainBlue"></p>
-          </Link>
+
           <Link
             href={{
               pathname: "/about/detail",

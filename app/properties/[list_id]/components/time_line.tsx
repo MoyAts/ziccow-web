@@ -108,10 +108,9 @@ const TimeLine = ({ list_id, owner_id }: any) => {
               onChange={({ target }) => setTourType(target.value)}
               type={"text"}
               name={"name"}
-              placeholder={"In-person touring"}
+              placeholder={"Add message for the owner "}
               className={"py-3  w-full outline-none rounded-lg "}
             />
-            <InfoIcon className="text-3xl my-auto text-mainBlue -rotate-90" />
           </div>
           <div
             className={"w-full  bg-white flex rounded-2xl px-2 py-1 border "}

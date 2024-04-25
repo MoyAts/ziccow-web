@@ -74,27 +74,27 @@ const Home = ({ house, userId }: Props) => {
 
         <div className="justify-between  text-black grid grid-cols-2 gap-2 flex-wrap">
           <div className="flex mt-2 gap-1 ">
-            <Image src={img5} width={19} className="my-auto" alt="" />
+            <Image src={img3} width={16} className="my-auto" alt="" />
             <span className="text-sm my-auto">
-              {house.listing_property?.square_ft ?? 0} M<sup>2</sup> Built up
-              area
+              {house.listing_property?.square_ft ?? 0} M<sup>2</sup>
+              Built up area
             </span>
           </div>
           <div className="flex mt-2 gap-1  place-self-end">
-            <Image src={img4} width={15} className="my-auto" alt="" />
+            <Image src={img5} width={16} className="my-auto" alt="" />
             <span className="text-sm my-auto">
               {house.listing_property?.bedroom_count ?? 0} Bathroom
             </span>
           </div>
           <div className="flex mt-2 gap-1  ">
-            <Image src={img3} width={13} className="my-auto" alt="" />
+            <Image src={img4} width={16} className="my-auto" alt="" />
             <span className="text-sm my-auto">
               {house.listing_property?.bedroom_count ?? 0} Bedroom
             </span>
           </div>
           <div className="flex mt-2 gap-1 place-self-end">
             {/* <Image src={img4} width={19} className="my-auto" alt="" /> */}
-            <TbToolsKitchen2 width={19} className="text-gray-500" />
+            <TbToolsKitchen2 width={16} className="text-gray-500" />
             <span className="text-sm my-auto">
               {house.listing_property?.kitchen_count ?? 0} Kitchenss
             </span>

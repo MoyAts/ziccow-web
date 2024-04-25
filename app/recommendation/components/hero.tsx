@@ -35,6 +35,8 @@ const Hero = ({ setIsDrawer }: any) => {
     );
   };
 
+  const [curr, setCurr] = useState(0);
+
   return (
     <>
       <Nav setIsDrawer={setIsDrawer} withsearch={false} />
@@ -81,9 +83,10 @@ const Hero = ({ setIsDrawer }: any) => {
             responsive={responsive}
             className=" max-lg:max-w-[100vw] h-[100vh]   z-50"
             slidesToSlide={1}
+            beforeChange={(a) => {
+              setCurr(a);
+            }}
           >
-            <Content />
-            <Content />
             <Content />
             <Content />
             <Content />
@@ -96,7 +99,7 @@ const Hero = ({ setIsDrawer }: any) => {
           {/* </div> */}
           <div className=" absolute bottom-0  w-full z-[9999] flex  text-white justify-center text-center py-4">
             <div className="px-4 bg-white bg-opacity-20 py-1 rounded-lg w-fit">
-              2 / 3
+              {curr + 1} / 3
             </div>
           </div>
         </div>

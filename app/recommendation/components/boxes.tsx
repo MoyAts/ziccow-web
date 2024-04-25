@@ -16,13 +16,10 @@ const Boxes = ({ query, variables }: any) => {
     <div className="mt-28 grid max-tablet:grid-cols-2 max-mobile:grid-cols-1 max-tablet:gap-15 grid-cols-3 gap-10">
       {loading ? (
         <div className="w-full grow flex min-h-[300px] col-span-10 2xl:cols-span-4">
-          <Image
-            src={loadingImg}
-            width={100}
-            height={100}
-            alt="loading"
-            className="m-auto"
-          />
+          <div className={"lds-ripple m-auto "}>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       ) : error ? (
         <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">

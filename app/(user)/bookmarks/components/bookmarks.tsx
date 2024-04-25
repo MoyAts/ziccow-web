@@ -21,7 +21,7 @@ const Bookmarks = () => {
   });
   return (
     <div className="flex flex-col px-20 max-w-[1700px] max-tablet:px-10 max-mobile:px-5 mx-auto border-t border-gray-300">
-      <div className="flex justify-between border-b border-gray-300 mb-4 py-4 max-tablet:flex-col">
+      <div className=" hidden justify-between border-b border-gray-300 mb-4 py-4 max-tablet:flex-col">
         <div className="flex gap-5 flex-wrap  ">
           <SelectOption list={["Rental", "Sell", "new"]} img={rentalIcon} />
           <SelectOption list={["House", "Sell", "new"]} img={houseIcon} />
@@ -62,12 +62,17 @@ const Bookmarks = () => {
           </div>
         </div>
       </div>
-      <div className="w-full grid grid-cols-3  2xl:grid-cols-4 max-tablet:grid-cols-2 max-mobile:grid-cols-1  gap-5 pb-32 max-xl:grid-cols-3 justify-between ">
+      <div className="w-full mt-12 grid grid-cols-3  2xl:grid-cols-4 max-tablet:grid-cols-2 max-mobile:grid-cols-1  gap-5 pb-32 max-xl:grid-cols-3 justify-between ">
         {loading ? (
-          <div>Loading</div>
+          <div className="w-full grow flex min-h-[300px] col-span-10 2xl:cols-span-4">
+            <div className={"lds-ripple m-auto "}>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
         ) : error ? (
           <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
-            {error.graphQLErrors[0]?.message ?? "something goes wrong"}
+            {error?.graphQLErrors[0]?.message ?? "something goes wrong"}
           </div>
         ) : data.bookmark.length < 1 ? (
           <div className="col-span-10 text-2xl font-semibold text-center flex h-[200px]">

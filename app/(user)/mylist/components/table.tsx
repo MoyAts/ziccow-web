@@ -12,7 +12,7 @@ import {
 import { useSelector } from "react-redux";
 import { calculateTimeDifference, getUser } from "@/lib/auth";
 import { houseInf } from "@/utils/interfaces";
-import { MdUpdate } from "react-icons/md";
+import { MdUpdate, MdEdit } from "react-icons/md";
 const Table = () => {
   const state = useSelector(getUser);
   const [showStatus, setShowStatus] = useState<null | string>();
@@ -43,6 +43,8 @@ const Table = () => {
             <th className="py-4 px-4 border-b border-gray-300 text-left">
               Status
             </th>
+            <th className="py-4 px-4 border-b border-gray-300 text-left"></th>
+
             <th className="py-4 px-4 border-b border-gray-300 text-left"></th>
           </tr>
         </thead>
@@ -177,6 +179,15 @@ const List = ({
                   : "Delete"}
           </p>
         </button>
+      </td>
+      <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left ">
+        <Link
+          href={"/mylist/edit/" + data.listing_id}
+          className="flex gap-2 cursor-pointer"
+        >
+          <MdEdit className="w-4 my-auto text-mainBlue" />
+          <p className="text-mainBlue font-semibold">Edit</p>
+        </Link>
       </td>
     </tr>
   );

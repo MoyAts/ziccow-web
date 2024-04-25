@@ -3,6 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import bg from "../../assets/images/Background (4).png";
 import img2 from "../../assets/images/a.svg";
+import sellImg from "../../assets/images/sell.svg";
+import rentImg from "../../assets/images/rent.svg";
+import cartImg from "../../assets/images/cart.svg";
+
 import img3 from "../../assets/images/solar_city-bold-duotone.svg";
 import Nav from "../../_components/nav";
 import searchImg from "../../assets/images/search.svg";
@@ -76,8 +80,7 @@ const Hero = ({ setIsDrawer }: Props) => {
             href={"/properties?propertyManagment=Sell"}
             className="flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35"
           >
-            {/* <Image src={img3} width={50} alt="" /> */}
-            <CgShoppingCart className="text-white text-[40px] font-bold" />
+            <Image src={cartImg} width={50} alt="" />
             <p className="text-white text-center  font-semibold">
               Buy a property
             </p>
@@ -87,7 +90,7 @@ const Hero = ({ setIsDrawer }: Props) => {
             href={"/properties?propertyManagment=Rental"}
             className="flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35"
           >
-            <MdBedroomParent className="text-white text-[40px] font-bold" />
+            <Image src={rentImg} width={50} alt="" />
             <p className="text-white text-center  font-semibold">
               Rent a property
             </p>
@@ -97,7 +100,7 @@ const Hero = ({ setIsDrawer }: Props) => {
             href={"/addproperty"}
             className="flex flex-col justify-center gap-4 items-center px-5 max-mobile:px-2 py-4 duration-700 hover:bg-slate-300 rounded-xl hover:bg-opacity-35"
           >
-            <Image src={img3} width={50} alt="" />
+            <Image src={sellImg} width={50} alt="" />
             <p className="text-white text-center  font-semibold">
               Add New Listing
             </p>

@@ -35,13 +35,13 @@ const footer = () => {
               <div className="capitalize font-normal text-white mb-4">
                 about us
               </div>
-              ABOUT US Zirrow General Trading PLC was established in the let
-              2023 GC by a team of multi-disciplinary entrepreneurs with
-              extensive experience in the industry. This tech-based private
-              limited company is dedicated to revolutionizing Ethiopia' property
-              marketing and administration industry by providing innovative,
-              reliable, and integrated system for real estate developers,
-              property sellers, buyers and lessees.
+              Zirrow General Trading PLC was established in the let 2023 GC by a
+              team of multi-disciplinary entrepreneurs with extensive experience
+              in the industry. This tech-based private limited company is
+              dedicated to revolutionizing Ethiopia' property marketing and
+              administration industry by providing innovative, reliable, and
+              integrated system for real estate developers, property sellers,
+              buyers and lessees.
             </p>
             <h4 className="mt-6 mb-2">Recent Region</h4>
             <div className="w-full bg-white py-4 flex justify-between rounded-xl cursor-pointer ps-5 pe-3">

@@ -28,11 +28,9 @@ const Broker = ({ house }: Props) => {
       <div className="flex gap-2 text-xl font-semibold">
         <Image src={userSvg} className="w-7" alt="" />
         <p>Agent’s Info </p>
-        {house.type_of_person == "owner" && (
-          <div className="my-auto px-2 py-1 rounded-lg bg-mainBlue text-white text-xs shadow-lg">
-            You are the owner
-          </div>
-        )}
+        <div className="my-auto capitalize px-2 py-1 rounded-lg bg-mainBlue text-white text-xs shadow-lg">
+          {house.type_of_person}
+        </div>
       </div>
       <ShowImage
         open={open}
@@ -42,19 +40,19 @@ const Broker = ({ house }: Props) => {
 
       <div className="flex flex-col my-4 mt-6 gap-2 text-[16px] text-lightGray">
         <div className="px-2 pb-4 flex justify-between gap-3">
-          <div className="flex flex-col gap-2  w-full">
+          <div className="flex  gap-4  w-full">
             {house.owner?.profile_pic ? (
               <Image
                 onClick={() => setOpen((data) => !data)}
                 src={house.owner?.profile_pic ?? ""}
                 width={100}
                 height={100}
-                className="w-full object-cover h-[200px]"
+                className="w-[50px] h-[50px] object-cover rounded-full"
                 alt=""
               />
             ) : (
               <div className="p-2 flex rounded-full w-[44px] bg-blue-500 text-white h-[44px]">
-                <p className="m-auto text-xl">
+                <p className="m-auto text-2xl">
                   {house.owner?.first_name ? house.owner?.first_name[0] : "U"}
                 </p>
               </div>

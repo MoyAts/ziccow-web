@@ -31,14 +31,11 @@ const Page = ({ params: { list_id } }: { params: { list_id: string } }) => {
         <GetStarted />
         <Hero setIsDrawer={setIsDrawer} />
         {loading && (
-          <div className="w-full grow flex min-h-[300px] bg-white col-span-10 2xl:cols-span-4">
-            <Image
-              src={loadingImg}
-              width={100}
-              height={100}
-              alt="loading"
-              className="m-auto"
-            />
+          <div className="w-full grow flex min-h-[300px]  col-span-10 2xl:cols-span-4">
+            <div className={"lds-ripple m-auto"}>
+              <div></div>
+              <div></div>
+            </div>
           </div>
         )}
         {data && data.listing.length == 0 && false && (

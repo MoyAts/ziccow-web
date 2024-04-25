@@ -10,7 +10,7 @@ import Image from "next/image";
 const Properties = ({ query, variables }: any) => {
   let newWhere = { where: variables.where ?? {}, order_by: variables.order_by };
   newWhere.where["real_estate_id"] = { _is_null: true };
-  newWhere.where["status"] = { _eq: "PENDING" };
+  newWhere.where["status"] = { _eq: "ACTIVE" };
   console.log(newWhere, "After");
 
   const { loading, error, data } = useQuery(query, {
@@ -24,13 +24,10 @@ const Properties = ({ query, variables }: any) => {
     >
       {loading ? (
         <div className="w-full grow flex min-h-[300px] col-span-10 2xl:cols-span-4">
-          <Image
-            src={loadingImg}
-            width={100}
-            height={100}
-            alt="loading"
-            className="m-auto"
-          />
+          <div className={"lds-ripple m-auto "}>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       ) : error ? (
         <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
