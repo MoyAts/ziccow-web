@@ -11,36 +11,10 @@ export default function Loading() {
         fontSize: "2rem",
       }}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="xMidYMid"
-        width="50"
-        height="50"
-      >
-        <circle
-          cx="50"
-          cy="50"
-          r="36"
-          fill="none"
-          stroke="#007bff"
-          stroke-width="12"
-        >
-          <animate
-            attributeName="stroke-dashoffset"
-            dur="1s"
-            repeatCount="indefinite"
-            from="0"
-            to="502"
-          ></animate>
-          <animate
-            attributeName="stroke-dasharray"
-            dur="1s"
-            repeatCount="indefinite"
-            values="150.6 100.4;1 250;150.6 100.4"
-          ></animate>
-        </circle>
-      </svg>
+      <div className={"lds-ripple"}>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   );
 }

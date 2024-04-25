@@ -124,14 +124,14 @@ const features = ({ house }: Props) => {
                 <IoCloseSharp className="my-auto text-red-600" />
               )}
             </li>
-            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+            {/* <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
               <p>Unique Material :</p>
               {house.extra_features.unique_material ? (
                 <FaCheck className="my-auto text-green-600" />
               ) : (
                 <IoCloseSharp className="my-auto text-red-600" />
               )}
-            </li>
+            </li> */}
             <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
               <p>Back yard :</p>
               {house.extra_features?.back_yard ? (
@@ -148,14 +148,14 @@ const features = ({ house }: Props) => {
                 <IoCloseSharp className="my-auto text-red-600" />
               )}
             </li>
-            <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
+            {/* <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
               <p>Lot feature :</p>
               {house.extra_features?.lot_features ? (
                 <FaCheck className="my-auto text-green-600" />
               ) : (
                 <IoCloseSharp className="my-auto text-red-600" />
               )}
-            </li>
+            </li> */}
             <li className="before:content-['\2022'] capitalizze before:mr-2 flex gap-2 flex-wrap">
               <p>basement :</p>
               {house.extra_features?.basement ? (
@@ -243,11 +243,11 @@ const features = ({ house }: Props) => {
                 ? house.completion_status + "%"
                 : "Unknown"}
             </li>
-            {house.extra_features.unique_material && (
+            {/* {house.extra_features.unique_material && (
               <li className="before:content-['\2022']  before:mr-2">
                 Unique Materials
               </li>
-            )}
+            )} */}
           </ul>
         </div>
       </div>
@@ -303,14 +303,14 @@ const features = ({ house }: Props) => {
                 <IoCloseSharp className="my-auto text-red-600" />
               )}
             </li>
-            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+            {/* <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
               <p>Unique Material :</p>
               {house.extra_features?.unique_material ? (
                 <FaCheck className="my-auto text-green-600" />
               ) : (
                 <IoCloseSharp className="my-auto text-red-600" />
               )}
-            </li>
+            </li> */}
           </ul>
           {house.extra_features?.other_community && (
             <div className=" mt-5 flex gap-2 flex-wrap">
