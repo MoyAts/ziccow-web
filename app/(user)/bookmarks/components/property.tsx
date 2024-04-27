@@ -42,9 +42,9 @@ const Home = ({ house, userId, uuid }: Props) => {
         href={"/properties/" + house?.listing_id ?? ""}
         className="rounded-lg asis-1/3 flex"
       >
-        {house.digital_assets[0]?.url && (
+        {house?.digital_assets[0]?.url && (
           <Image
-            src={house.digital_assets[0].url}
+            src={house?.digital_assets[0].url}
             className="rounded-lg w-full object-cover my-auto"
             width={100}
             height={100}
@@ -76,34 +76,34 @@ const Home = ({ house, userId, uuid }: Props) => {
           <div className="flex mt-2 gap-1 ">
             <Image src={img3} width={16} className="my-auto" alt="" />
             <span className="text-sm my-auto">
-              {house.listing_property?.square_ft ?? 0} M<sup>2</sup>
+              {house?.listing_property?.square_ft ?? 0} M<sup>2</sup>
               Built up area
             </span>
           </div>
           <div className="flex mt-2 gap-1  place-self-end">
             <Image src={img5} width={16} className="my-auto" alt="" />
             <span className="text-sm my-auto">
-              {house.listing_property?.bedroom_count ?? 0} Bathroom
+              {house?.listing_property?.bedroom_count ?? 0} Bathroom
             </span>
           </div>
           <div className="flex mt-2 gap-1  ">
             <Image src={img4} width={16} className="my-auto" alt="" />
             <span className="text-sm my-auto">
-              {house.listing_property?.bedroom_count ?? 0} Bedroom
+              {house?.listing_property?.bedroom_count ?? 0} Bedroom
             </span>
           </div>
           <div className="flex mt-2 gap-1 place-self-end">
             <TbToolsKitchen2 width={16} className="text-gray-500" />
             <span className="text-sm my-auto">
-              {house.listing_property?.kitchen_count ?? 0} Kitchenss
+              {house?.listing_property?.kitchen_count ?? 0} Kitchenss
             </span>
           </div>
         </div>
         <div className="flex justify-between pe-2 mt-2">
-          {house.sale_price && (
+          {house?.sale_price && (
             <h1 className="">
               <span className="text-xl font-semibold text-black">
-                {house.sale_price}
+                {house?.sale_price}
               </span>
               <span className="">/month</span>
             </h1>
