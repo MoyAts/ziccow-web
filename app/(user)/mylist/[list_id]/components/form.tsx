@@ -43,7 +43,7 @@ const Form = ({ house, list_id }: Props) => {
   if (data && extraFeatureStatus.data && listingPropertyStatus.data) {
     reset();
     extraFeatureStatus.reset();
-    alert("Works");
+    alert("Listing updated successfully!!!");
     // page != 3 && setPage(3);
   }
   if (loading || extraFeatureStatus.loading) {
