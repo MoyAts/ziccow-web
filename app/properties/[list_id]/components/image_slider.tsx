@@ -9,6 +9,7 @@ import "yet-another-react-lightbox/styles.css";
 import { useRef } from "react";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
+import Inline from "yet-another-react-lightbox/plugins/inline";
 interface Props {
   house: houseInf;
 }
@@ -25,9 +26,11 @@ const ImageSlider = ({ house }: Props) => {
   const sub = () => {
     setCurr((val) => (val - 1 > -1 ? val - 1 : val));
   };
+
   return (
     <>
       <Lightbox
+        index={curr}
         open={open}
         plugins={[Zoom]}
         carousel={{ finite: true }}
@@ -43,7 +46,38 @@ const ImageSlider = ({ house }: Props) => {
           };
         })}
       />
-      <div className="p-2  bg-red-00 h-fit">
+      <div className="w-full cursor-zoom-in overflow-hidden rounded-xl">
+        <Lightbox
+          index={curr}
+          slides={imgs.map((data: any, ind: number) => {
+            return {
+              src: data.url,
+              alt: "image " + ind,
+            };
+          })}
+          on={{
+            click: () => {
+              setOpen(true);
+            },
+          }}
+          plugins={[Inline]}
+          carousel={{
+            padding: 0,
+            spacing: 0,
+            imageFit: "cover",
+          }}
+          inline={{
+            style: {
+              width: "100%",
+              maxWidth: "900px",
+              aspectRatio: "3 / 2",
+              margin: "0 auto",
+              borderRadius: "20px",
+            },
+          }}
+        />
+      </div>
+      {/* <div className="p-2  bg-red-00 h-fit">
         <div className="w-full h-[65vh] max-h-[500px] rounded-lg relative">
           <div
             onClick={sub}
@@ -69,25 +103,7 @@ const ImageSlider = ({ house }: Props) => {
             unoptimized={true}
           />
         </div>
-        {/* <div className="mt-4 gap-5 grid grid-cols-4 justify-between overflow-hidden">
-                 <div onClick={() => alert("alert")} className="w-full flex flex-shrink-0 rounded-lg overflow-hidden cursor-pointer ">
-                     <Image src={img}  className='w-full duration-200 rounded-lg hover:scale-110 object-cover' alt="" />        
-                 </div>
-                 <div onClick={() => alert("alert")} className="w-full flex flex-shrink-0 rounded-lg overflow-hidden cursor-pointer ">
-                     <Image src={img}  className='w-full duration-200 rounded-lg hover:scale-110 object-cover' alt="" />        
-                 </div>
-
-                 <div onClick={() => alert("alert")} className="w-full flex flex-shrink-0 rounded-lg overflow-hidden cursor-pointer ">
-                     <Image src={img}  className='w-full duration-200 rounded-lg hover:scale-110 object-cover' alt="" />        
-                 </div>
-                 <div onClick={() => alert("alert")} className="w-full relative flex flex-shrink-0 rounded-lg overflow-hidden cursor-pointer ">
-                     <Image src={img}  className='w-full duration-200 rounded-lg hover:scale-110 object-cover' alt="" />        
-                     <div className="absolute left-0 right-0 bottom-0 top-0 bg-gray-900 bg-opacity-80 flex items-center justify-center">
-                         <p className="text-white text-3xl">6+</p>
-                     </div>
-                 </div>
-             </div>  */}
-      </div>
+      </div> */}
     </>
   );
 };
