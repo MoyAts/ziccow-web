@@ -58,7 +58,7 @@ const PriceOption = ({ list, img, name, filter, curr, reset }: Props) => {
         ))}
         <div className="flex  cursor-pointer duration-150 gap-2  px-2  py-1">
           <input
-            id={`clearit1`}
+            id={`clearit12233e`}
             name={name ?? ""}
             type={"radio"}
             placeholder="s"
@@ -66,7 +66,7 @@ const PriceOption = ({ list, img, name, filter, curr, reset }: Props) => {
             onClick={() => clear()}
           />
           <label
-            htmlFor={`clearit1`}
+            htmlFor={`clearit12233e`}
             className=" text-black cursor-pointer hover:text-mainBlue"
           >
             Clear

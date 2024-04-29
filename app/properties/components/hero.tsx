@@ -71,19 +71,27 @@ const Hero = () => {
   const [region, setRegion] = useState<string>("");
 
   const reset = () => {
-    setCurr(null);
-    setWhere({ where: {}, order_by: { created_at: "desc" } });
+    setWhere((wh: any) => ({
+      where: { sale_type: wh.where.sale_type },
+      order_by: { created_at: "desc" },
+    }));
   };
   const filterByPrice = (ls: number, lg: number) => {
     setWhere((data: any) => {
-      return { ...data, where: { sale_price: { _gte: ls, _lte: lg } } };
+      return {
+        ...data,
+        where: { ...data.where, sale_price: { _gte: ls, _lte: lg } },
+      };
     });
   };
   const filterByArea = (ls: number, lg: number) => {
     setWhere((data: any) => {
       return {
         ...data,
-        where: { listing_property: { square_ft: { _gte: ls, _lte: lg } } },
+        where: {
+          ...data.where,
+          listing_property: { square_ft: { _gte: ls, _lte: lg } },
+        },
       };
     });
   };
