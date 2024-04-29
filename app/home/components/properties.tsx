@@ -2,16 +2,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import Box from "./box";
+import RBox from "./recommendation_box";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import img1 from "../../assets/images/image (2).png";
 import img2 from "../../assets/images/image (3).png";
 import { useQuery } from "@apollo/client";
-import { GET_FEATURED_LISTS } from "@/graphql/features/listing";
+import {
+  GET_FEATURED_LISTS,
+  GET_RECOMMENDATION_FOR_HOME_PAGE,
+} from "@/graphql/features/listing";
 import { useEffect } from "react";
-import { houseFeaturedInf } from "@/utils/interfaces";
+import { houseFeaturedInf, houseInf } from "@/utils/interfaces";
 
 const Properties = () => {
-  const { loading, error, data } = useQuery(GET_FEATURED_LISTS);
+  const { loading, error, data } = useQuery(GET_RECOMMENDATION_FOR_HOME_PAGE);
+  // const { loading, error, data } = useQuery(GET_FEATURED_LISTS);
 
   return (
     <div className="w-full mb-12 max-tablet:mb-5 h-[105vh]   tablet:max-h-[800px] max-tablet:h-fit">
@@ -29,7 +34,7 @@ const Properties = () => {
             </p>
           </div>
           <Link
-            href={"/properties"}
+            href={"/recommendation"}
             className="my-auto max-small:hidden text-blue-500 flex gap-3 group duration-200 cursor-pointer"
           >
             <span>View more</span>
@@ -39,8 +44,10 @@ const Properties = () => {
 
         <div className="pt-10  h-[87%] mobile:max-h-[600px] flex gap-10 max-mobile:flex-col mobile:overflow-x-scroll ">
           {data &&
-            data.listing.map((data: houseFeaturedInf, ind: number) => (
-              <Box key={ind} data={data} />
+            data.listing.map((d: houseInf, ind: number) => (
+              // <>{"Working"}</>
+              // <>{JSON.stringify(d)}</>
+              <RBox key={ind} house={d} />
             ))}
         </div>
       </div>

@@ -103,19 +103,6 @@ const TimeLine = ({ list_id, owner_id }: any) => {
             className={"w-full  bg-white flex rounded-2xl px-2 py-1 border "}
             style={{ borderColor: "#DBD7DD" }}
           >
-            <Image src={InputIcon} alt="" width={23} className={"ms-2 me-3"} />
-            <input
-              onChange={({ target }) => setTourType(target.value)}
-              type={"text"}
-              name={"name"}
-              placeholder={"Add message for the owner "}
-              className={"py-3  w-full outline-none rounded-lg "}
-            />
-          </div>
-          <div
-            className={"w-full  bg-white flex rounded-2xl px-2 py-1 border "}
-            style={{ borderColor: "#DBD7DD" }}
-          >
             <Image src={InputIcon} alt="" width={23} className={"ms-2 me-3 "} />
             <input
               onChange={({ target }) => setTime(target.value)}
@@ -126,7 +113,19 @@ const TimeLine = ({ list_id, owner_id }: any) => {
                 "py-3  w-full outline-none rounded-lg appearance-none focus:outline-none"
               }
             />
-            {/* <Image src={timeIcon} alt="" width={23} className={'w-7 my-auto text-mainBlue -rotate-90'}/> */}
+          </div>
+          <div
+            className={"w-full  bg-white flex rounded-2xl px-2 py-1 border "}
+            style={{ borderColor: "#DBD7DD" }}
+          >
+            <Image src={InputIcon} alt="" width={23} className={"ms-2 me-3"} />
+            <input
+              onChange={({ target }) => setTourType(target.value)}
+              type={"text"}
+              name={"name"}
+              placeholder={"Add message for the owner "}
+              className={"py-3  w-full outline-none rounded-lg "}
+            />
           </div>
           <button
             onClick={submit}

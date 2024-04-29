@@ -8,8 +8,8 @@ import { useSelector } from "react-redux";
 import { getState } from "@/store/features/auth/authSlice";
 import { useMutation } from "@apollo/client";
 import {
-  LIKE_PROPERTY_REVIEW,
-  UNLIKE_PROPERTY_REVIEW,
+  LIKE_REALESTATE_REVIEW,
+  UNLIKE_REALESTATE_REVIEW,
 } from "@/graphql/features/listing";
 interface Pr {
   message: string;
@@ -23,7 +23,7 @@ interface Pr {
   likes: any;
   review_id: any;
 }
-const Review = ({
+const ReviewRealestate = ({
   message,
   rating,
   user,
@@ -31,15 +31,16 @@ const Review = ({
   created_at,
   likes,
 }: Pr) => {
+  console.log(review_id, "--");
   const state = useSelector(getState);
-  const [likeReview, likeReviewStatus] = useMutation(LIKE_PROPERTY_REVIEW, {
+  const [likeReview, likeReviewStatus] = useMutation(LIKE_REALESTATE_REVIEW, {
     variables: {
       user_id: state.user.userId,
       review_id,
     },
   });
   const [unlikeReview, unlikeReviewStatus] = useMutation(
-    UNLIKE_PROPERTY_REVIEW,
+    UNLIKE_REALESTATE_REVIEW,
     {
       variables: {
         user_id: state.user.userId,
@@ -69,11 +70,12 @@ const Review = ({
       </div>
     );
   let temp = false;
-  likes.map((d: any) => {
-    temp = temp || d.user_like_id == state.user.userId;
-  });
+  likes &&
+    likes.map((d: any) => {
+      temp = temp || d.user_like_id == state.user.userId;
+    });
   const [isLiked, setIsLiked] = useState(temp);
-  const [count, setCount] = useState(likes.length);
+  const [count, setCount] = useState(likes ? likes.length : 0);
   const like_it = () => {
     if (isLiked) {
       unlikeReview();
@@ -163,4 +165,4 @@ const Review = ({
   );
 };
 
-export default Review;
+export default ReviewRealestate;

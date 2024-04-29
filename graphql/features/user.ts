@@ -48,6 +48,7 @@ export const GET_USER_SETTING = gql`
       last_name
       phone_number
       email
+      bio
       profile_pic
       social_twitter
       social_youtube
@@ -87,6 +88,7 @@ export const UPDATE_USER = gql`
     $telegram: String
     $twitter: String
     $facebook: String
+    $bio: String
     $instagram: String
     $first_name: name!
     $last_name: name!
@@ -99,6 +101,7 @@ export const UPDATE_USER = gql`
         last_name: $last_name
         phone_number: $phone_number
         email: $email
+        bio: $bio
         social_facebook: $facebook
         social_tiktok: $tiktok
         social_instagram: $instagram
@@ -117,6 +120,7 @@ export const UPDATE_USER = gql`
         phone_number
         user_id
         onboarding_complete
+        profile_pic
       }
     }
   }

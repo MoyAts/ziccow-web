@@ -6,12 +6,16 @@ export const GET_REALESTATE_REVIEW = gql`
       order_by: { create_at: desc }
       where: { real_estate_id: { _eq: $_eq } }
     ) {
+      uuid
       comment
       create_at
       rating
       real_estate {
         name
         icon
+      }
+      review_likes {
+        user_like_id
       }
       user {
         first_name
@@ -31,7 +35,19 @@ export const ADD_REALESTATE_REVIEW = gql`
         real_estate_id: $real_estate_id
       }
     ) {
-      affected_rows
+      returning {
+        uuid
+        comment
+        rating
+        user {
+          profile_pic
+          first_name
+          last_name
+        }
+        review_likes {
+          user_like_id
+        }
+      }
     }
   }
 `;

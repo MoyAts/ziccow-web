@@ -27,6 +27,7 @@ interface formInf {
   facebook: string;
   whatsapp: string;
   instagram: string;
+  bio: string;
   telegram: string;
   tiktok: string;
   youtube: string;
@@ -54,6 +55,7 @@ const Personal = () => {
     youtube: "",
     facebook: "",
     whatsapp: "",
+    bio: "",
     instagram: "",
     tiktok: "",
     telegram: "",
@@ -72,6 +74,7 @@ const Personal = () => {
         ...data,
         firstName: fetchedUser.first_name,
         lastName: fetchedUser.last_name,
+        bio: fetchedUser.bio,
         email: fetchedUser.email,
         phone: fetchedUser.phone_number,
         twitter: fetchedUser.social_twitter,
@@ -181,6 +184,7 @@ const Personal = () => {
         tiktok: form.tiktok,
         telegram: form.telegram,
         youtube: form.youtube,
+        bio: form.bio,
       },
     });
   };
@@ -346,6 +350,15 @@ const Personal = () => {
             divClass="w-full"
           />
         </div>
+        <CustomeInput
+          isRequired={false}
+          name="bio"
+          value={form.bio}
+          onChange={onChange}
+          label="Bio"
+          placeholder="Enter your bio"
+          divClass="w-full"
+        />
 
         <div className="grid place-items-end mt-8">
           <button

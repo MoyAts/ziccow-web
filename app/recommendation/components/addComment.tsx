@@ -10,7 +10,7 @@ import {
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { getState, LogInf } from "@/store/features/auth/authSlice";
-import Review from "@/app/_components/review";
+import Review from "@/app/_components/review_realestate";
 
 const AddComment = ({ realEstate }: any) => {
   const state = useSelector(getState);
@@ -22,6 +22,7 @@ const AddComment = ({ realEstate }: any) => {
     },
     onCompleted: () => {
       if (newDatas.data) {
+        console.log(newDatas.data.real_estate_review, "++");
         setComments(newDatas.data.real_estate_review);
       }
     },
@@ -30,12 +31,25 @@ const AddComment = ({ realEstate }: any) => {
   const [curr, setCurr] = useState(-1);
   const [rating, setRating] = useState<number | null>(null);
   // $comment : String!,$real_estate_id : uuid!,$ : bigint!
-  const [addReview, { loading, data, error }] = useMutation(
+  const [addReview, { loading, data, error, reset }] = useMutation(
     ADD_REALESTATE_REVIEW,
     {
       fetchPolicy: "network-only",
     },
   );
+
+  if (data) {
+    if (!(data?.insert_real_estate_review?.returning.length > 0)) {
+      alert("Not saved!");
+    } else {
+      setComments((com) => {
+        return [data?.insert_real_estate_review?.returning[0], ...com];
+      });
+    }
+    setRating(null);
+    setComment("");
+    reset();
+  }
 
   const post = () => {
     addReview({
@@ -106,31 +120,12 @@ const AddComment = ({ realEstate }: any) => {
                     placeholder="Add your review here..."
                     name="Abcd"
                     onSubmit={() => {
-                      setComments((data) => [
-                        {
-                          comment,
-                          rating,
-                          user: { profile_pic: state.user.profile_pic },
-                        },
-                        ...data,
-                      ]);
-                      setComment("");
-                      setRating(null);
+                      !loading && post();
                     }}
                   />
                   <button
                     onClick={() => {
-                      setComments((data) => [
-                        {
-                          comment,
-                          rating,
-                          user: { profile_pic: state.user.profile_pic },
-                        },
-                        ...data,
-                      ]);
-                      setComment("");
-                      setRating(null);
-                      post();
+                      !loading && post();
                     }}
                     className="px-5 py-5 rounded-lg  flex gap-3"
                   >
@@ -145,14 +140,16 @@ const AddComment = ({ realEstate }: any) => {
           )}
         </div>
       </div>
-      <div className="flex flex-col gap-4 ps-5">
+      <div className="flex flex-col gap-4 ps-5 max-w-[500px]">
         {comments.map((data: any, ind: number) => (
           <Review
             key={ind}
-            created_at={data.create_at}
+            created_at={data.created_at}
             rating={data.rating}
             message={data.comment}
             user={data.user}
+            likes={data.review_likes}
+            review_id={data.uuid}
           />
         ))}
       </div>

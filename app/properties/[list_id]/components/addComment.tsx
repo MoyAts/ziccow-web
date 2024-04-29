@@ -35,12 +35,25 @@ const AddComment = ({ listing_id, broker_id }: any) => {
   const [curr, setCurr] = useState(-1);
   const [rating, setRating] = useState<number | null>(null);
 
-  const [addReview, { loading, data, error }] = useMutation(
+  const [addReview, { loading, data, error, reset }] = useMutation(
     ADD_LISTING_REVIEW,
     {
       fetchPolicy: "network-only",
     },
   );
+
+  if (data) {
+    if (!(data?.insert_property_review?.returning.length > 0)) {
+      alert("Not saved!");
+    } else {
+      setComments((com) => {
+        return [data?.insert_property_review?.returning[0], ...com];
+      });
+    }
+    setRating(null);
+    setComment("");
+    reset();
+  }
 
   if (error) {
     alert("error");
@@ -115,35 +128,20 @@ const AddComment = ({ listing_id, broker_id }: any) => {
                     placeholder="Add your review here..."
                     name="Abcd"
                     onSubmit={() => {
-                      setComments((data) => [
-                        {
-                          comment,
-                          rating,
-                          user: { profile_pic: state.user.profile_pic },
-                        },
-                        ...data,
-                      ]);
-                      setComment("");
-                      setRating(null);
+                      !loading && post();
                     }}
                   />
                   <button
                     onClick={() => {
-                      setComments((data) => [
-                        {
-                          comment,
-                          rating,
-                          user: { profile_pic: state.user.profile_pic },
-                        },
-                        ...data,
-                      ]);
-                      setComment("");
-                      setRating(null);
-                      post();
+                      !loading && post();
                     }}
                     className="px-5 py-5 rounded-lg  flex gap-3"
                   >
-                    {<LuSend className="m-auto text-lg text-mainBlue" />}
+                    {
+                      <LuSend
+                        className={`m-auto text-lg ${loading ? "text-slate-700" : "text-mainBlue"} `}
+                      />
+                    }
                   </button>
                 </form>
               )}
@@ -159,6 +157,8 @@ const AddComment = ({ listing_id, broker_id }: any) => {
             rating={data.rating}
             message={data.comment}
             user={data.user}
+            likes={data.review_likes}
+            review_id={data.uuid}
           />
         ))}
       </div>

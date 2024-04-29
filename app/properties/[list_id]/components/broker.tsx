@@ -22,7 +22,6 @@ interface Props {
 const Broker = ({ house }: Props) => {
   const date = new Date(house.created_at);
   const [open, setOpen] = useState(false);
-  console.log(house, "my house");
   return (
     <div className="mt-5 bg-white py-4 px-4 rounded-xl shadow h-fit">
       <div className="flex gap-2 text-xl font-semibold">
@@ -70,6 +69,7 @@ const Broker = ({ house }: Props) => {
             <Image src={phoneImg} className="w-7 my-auto" alt="" />
           </a>
         </div>
+        <p className="break-words">{house.owner?.bio ?? "No Bio"}</p>
 
         <div className={"flex flex-col gap-2 capitalize "}>
           <div className="text-xl text-black mt-5">Social Medias</div>
