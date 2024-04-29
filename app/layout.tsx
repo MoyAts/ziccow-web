@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextTopLoader />
+        <NextTopLoader zIndex={100000} />
         <Provider>{children}</Provider>
       </body>
     </html>
