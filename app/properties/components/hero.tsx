@@ -28,6 +28,10 @@ const Hero = () => {
     { name: "500 sq ft and Above", price: [500, 10000000000] },
   ];
   const houseFilter = ["Sell", "Rental"];
+  let must: any = {
+    real_estate_id: { _is_null: true },
+    status: { _eq: "ACTIVE" },
+  };
   const intialSearchQuery = searchDataParam?.trim()
     ? [
         {
@@ -44,25 +48,18 @@ const Hero = () => {
         },
       ]
     : [];
-  const intialSaleTypeDataParam = saleTypeDataParam?.trim()
-    ? [{ sale_type: { _eq: saleTypeDataParam?.trim() } }]
-    : [];
+  if (saleTypeDataParam?.trim())
+    must["sale_type"] = { _eq: saleTypeDataParam?.trim() };
   const initialData =
     intialSearchQuery.length > 0
       ? {
           where: {
+            ...must,
             _or: [...intialSearchQuery],
           },
           order_by: { created_at: "desc" },
         }
-      : intialSaleTypeDataParam.length > 0
-        ? {
-            where: {
-              _or: [...intialSaleTypeDataParam],
-            },
-            order_by: { created_at: "desc" },
-          }
-        : { where: {}, order_by: { created_at: "desc" } };
+      : { where: must, order_by: { created_at: "desc" } };
 
   const [where, setWhere] = useState<any>(initialData);
   const [curr, setCurr] = useState<string | null>(null);
@@ -70,17 +67,52 @@ const Hero = () => {
   const [propertyType, setpropertyType] = useState<string>("");
   const [region, setRegion] = useState<string>("");
 
-  const reset = () => {
-    setWhere((wh: any) => ({
-      where: { sale_type: wh.where.sale_type },
-      order_by: { created_at: "desc" },
-    }));
+  const resetPrice = () => {
+    setWhere((wh: any) => {
+      let temp = { ...wh.where };
+      delete temp["sale_price"];
+      delete temp["rental_price"];
+      console.log("Checking...", {
+        ...wh,
+        where: { ...temp },
+      });
+      console.log("From...", {
+        ...wh,
+      });
+      return {
+        ...wh,
+        where: { ...temp },
+      };
+    });
+  };
+  const resetArea = () => {
+    setWhere((wh: any) => {
+      let temp = { ...wh.where };
+      delete temp["listing_property"];
+      return {
+        ...wh,
+        where: { ...temp },
+      };
+    });
   };
   const filterByPrice = (ls: number, lg: number) => {
     setWhere((data: any) => {
+      let price = {};
+      if (data.where?.sale_type?._eq && data.where.sale_type._eq == "Rental") {
+        price = {
+          rental_price: {
+            price: {
+              _gte: ls,
+              _lte: lg,
+            },
+          },
+        };
+      } else {
+        price = { sale_price: { _gte: ls, _lte: lg } };
+      }
       return {
         ...data,
-        where: { ...data.where, sale_price: { _gte: ls, _lte: lg } },
+        where: { ...data.where, ...price },
       };
     });
   };
@@ -97,7 +129,7 @@ const Hero = () => {
   };
   const filterByHouseType = (val: string) => {
     setWhere((data: any) => {
-      return { ...data, where: { sale_type: { _eq: val } } };
+      return { ...data, where: { ...data.where, sale_type: { _eq: val } } };
     });
   };
   const sort_map = [
@@ -134,11 +166,6 @@ const Hero = () => {
     });
   };
 
-  const runSearch = () => {
-    search(region, propertyType);
-  };
-  console.log({ ...where, status: { _eq: "ACTIVE" } }, "Before");
-
   return (
     <>
       <Search
@@ -169,7 +196,7 @@ const Hero = () => {
                 checkbox={true}
                 img={amountIcon}
                 curr={curr}
-                reset={reset}
+                reset={resetPrice}
               />
               <PriceOption
                 list={areaFilter}
@@ -178,7 +205,7 @@ const Hero = () => {
                 checkbox={true}
                 img={amountIcon}
                 curr={curr}
-                reset={reset}
+                reset={resetArea}
               />
             </div>
             <div className="flex gap-2 my-auto text-lightGray me-12 place-self-end max-mobile:mt-5">

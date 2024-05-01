@@ -250,7 +250,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
         />
 
         <CustomeInput
-          label="Leasing payment"
+          label=" leasing / property tax"
           name={"leasingPayment"}
           placeholder="Leasing payment"
           divClass="mb-5"

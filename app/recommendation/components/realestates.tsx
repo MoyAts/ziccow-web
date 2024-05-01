@@ -14,7 +14,7 @@ import { useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import { getState, LogInf } from "@/store/features/auth/authSlice";
 
-const Realestates = () => {
+const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
   const state = useSelector(getState);
   const searchParams = useSearchParams();
   const region = useState(searchParams.get("region"));
@@ -125,7 +125,7 @@ const Realestates = () => {
   };
 
   return (
-    <div className="w-full bg-lightBg">
+    <div className="w-full bg-lightBg ">
       <div className="h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10">
         <div className="flex  flex-col gap-7 max-tablet:flex-col max-tablet:items-center">
           <h1 className="flex gap-2 text-3xl max-tablet:text-xl max-tablet:mb-5">
@@ -276,7 +276,7 @@ const Realestates = () => {
           variables={{ ...where, status: { _eq: "ACTIVE" } }}
         />
       </div>
-      {realEstate && state.isLogedIn == LogInf.LOGED_IN && (
+      {!fromHome && realEstate && state.isLogedIn == LogInf.LOGED_IN && (
         <>
           <div className="h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10">
             <AddComment realEstate={realEstate} />

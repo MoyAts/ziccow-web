@@ -11,10 +11,10 @@ const Properties = ({ query, variables }: any) => {
   let newWhere = { where: variables.where ?? {}, order_by: variables.order_by };
   newWhere.where["real_estate_id"] = { _is_null: true };
   newWhere.where["status"] = { _eq: "ACTIVE" };
-  console.log(newWhere, "After");
 
   const { loading, error, data } = useQuery(query, {
     variables: newWhere,
+    fetchPolicy: "network-only",
   });
   const state = useSelector(getUser);
 

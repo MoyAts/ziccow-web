@@ -24,7 +24,8 @@ const MegaMenu = () => {
               href={"/properties?propertyManagment=Sell"}
               className="text-mainBlue font-semibold text-lg"
             >
-              Buy a Property
+              Buy a Property <br />
+              ቤት ለመግዛት
             </Link>
             <div className="z-50 my-2 w-full h-[1px] bg-slate-400"></div>
             <div className="z-50 flex flex-col gap-1 mt-5">
@@ -60,7 +61,7 @@ const MegaMenu = () => {
             <div className="z-50 flex flex-col gap-1 mt-5">
               <h5 className="font-normal text-lg">Resources</h5>
               <p className=" text-lightGray">
-                Sellerâ€™s guide, Home values, Real estate app.
+                Sellers guide, Home values, Real estate app.
               </p>
             </div>
           </div>
@@ -70,7 +71,8 @@ const MegaMenu = () => {
               href={"/properties?propertyManagment=Rental"}
               className="text-mainBlue font-semibold text-lg"
             >
-              Rent a Property
+              Rent a Property <br />
+              ቤት ለመከራየት
             </Link>
             <div className="z-50 my-2 w-full h-[1px] bg-slate-400"></div>
             <div className="z-50 flex flex-col gap-1 mt-5">

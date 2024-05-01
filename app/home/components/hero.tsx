@@ -82,7 +82,7 @@ const Hero = ({ setIsDrawer }: Props) => {
           >
             <Image src={cartImg} width={50} alt="" />
             <p className="text-white text-center  font-semibold">
-              Buy a property
+              Buy a property <br /> ቤት ለመግዛት
             </p>
           </Link>
           <div className="h-10 my-auto bg-gray-200 w-[1px] max-mobile:hidden"></div>
@@ -92,7 +92,7 @@ const Hero = ({ setIsDrawer }: Props) => {
           >
             <Image src={rentImg} width={50} alt="" />
             <p className="text-white text-center  font-semibold">
-              Rent a property
+              Rent a property <br /> ቤት ለመከራየት
             </p>
           </Link>
           <div className="h-10 my-auto bg-gray-200 w-[1px] max-mobile:hidden"></div>
@@ -112,7 +112,8 @@ const Hero = ({ setIsDrawer }: Props) => {
           >
             <MdRealEstateAgent className="text-white text-[40px] font-bold" />
             <p className="text-white text-center  font-semibold">
-              Explore Real Estates
+              Explore Real Estates <br />
+              ሪል እስቴቶችን ለመጎብኘት
             </p>
           </Link>
         </div>

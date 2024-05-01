@@ -79,7 +79,7 @@ const OptionInput = ({
             }}
             className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
           >
-            Rental
+            Rental /
           </div>
           <div
             onClick={() => {

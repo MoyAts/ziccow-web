@@ -11,6 +11,7 @@ import Join from "../_components/join";
 import GetStarted from "../_components/get_started";
 import Drawer from "../_components/drawer";
 import { useState } from "react";
+import Realestates from "../recommendation/components/realestates";
 
 const Home = () => {
   const [isDrawer, setIsDrawer] = useState(false);
@@ -27,8 +28,9 @@ const Home = () => {
         <Hero setIsDrawer={setIsDrawer} />
         <Enjoy />
         <Difference />
-        <View />
         <Properties />
+        <View />
+        <Realestates fromHome={true} />
         <DowloadApp />
         <Join />
         <Footer />

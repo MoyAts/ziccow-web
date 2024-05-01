@@ -402,10 +402,17 @@ export const FILTER_LIST = gql`
 export const GET_FEATURED_LISTS = gql`
   query get_lists($_eq: Boolean = true, $limit: Int = 4) {
     listing(
-      where: { is_featured: { _eq: $_eq } }
+      where: {
+        _or: [
+          { is_featured: { _eq: $_eq } }
+          { is_discounted: { _eq: $_eq } }
+          { is_popular: { _eq: $_eq } }
+        ]
+      }
       limit: $limit
       order_by: { is_popular: desc }
     ) {
+      listing_id
       is_popular
       is_featured
       is_discounted
