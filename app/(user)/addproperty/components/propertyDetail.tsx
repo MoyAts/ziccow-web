@@ -136,7 +136,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         <CustomeInput
           value={form.propertyName}
           onChange={setChange}
-          label="Property Name"
+          label="Property Name / የቤቱ ስያሜ"
           name={"propertyName"}
           placeholder="Tourist Plus Apartment"
           divClass="mb-5"
@@ -158,7 +158,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       <CustomeInput
         value={form.phone}
         onChange={setChange}
-        label="Property Id "
+        label="Property Id / መለያ ቁጥር"
         name={"phone"}
         placeholder="012671164"
         divClass="mb-5"
@@ -192,7 +192,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       </div>
 
       <OptionInput
-        label="Property Types"
+        label="Property Types / የቤቱ አይነት"
         name="homeType"
         onChange={setForm}
         placeholder="Apartment, High rise"
@@ -208,7 +208,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           ReactIcon={MdNavigateNext}
           IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
           name="propertymanagment"
-          label="Property managements"
+          label="Property managements / ሽያጭ ወይስ ኪራይ"
           placeholder="Property Managment"
           value={form.propertyManagment}
         />
@@ -274,7 +274,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           ReactIcon={MdNavigateNext}
           IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
           name="currency"
-          label="Currency"
+          label="Currency / ምንዛሬ"
           placeholder="currency"
           value={form.currency}
         />
@@ -282,7 +282,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
 
       <div className="flex gap-5 mb-8 w-full max-mobile:flex-col">
         <CustomeInput
-          label="Year Built"
+          label="Year Built / የተሰራበት አመት"
           name="yearBuilt"
           placeholder="1989"
           divClass="w-full"
@@ -291,7 +291,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           isRequired={false}
         />
         <CustomeInput
-          label="Built up area"
+          label="Built up area / ያረፈበት ቦታ ስፋት"
           name="squareFootage"
           placeholder="e.g. 125 Meter square"
           IconClass={"text-3xl my-auto text-mainBlue rotate-90"}
@@ -302,7 +302,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         />
       </div>
       <CustomeInput
-        label="Construction Status"
+        label="Construction Status / ግንባታው ያለበት ሁኔታ"
         name={"completionStatus"}
         placeholder="Eg. 80% completed"
         divClass="mb-5"
@@ -313,7 +313,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       />
 
       <CustomeInput
-        label="Payment Program"
+        label="Payment Program / የአከፋፈል ሁኔታ"
         name={"paymentProgram"}
         placeholder="payment program"
         divClass="mb-5"
@@ -334,7 +334,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       />
 
       <div className="flex justify-between my-5 mb-8">
-        <div className="text-xl">Facilities</div>
+        <div className="text-xl">Facilities / መገልገያ ክፍሎች</div>
         <MdNavigateNext className="text-3xl my-auto text-mainBlue -rotate-90" />
       </div>
       <div className="grid grid-cols-2 gap-5 mb-8 w-full max-tablet:grid-cols-1">
@@ -478,7 +478,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         <div className="text-xl">Additional Features</div>
         <MdNavigateNext className="text-3xl my-auto text-mainBlue -rotate-90" />
       </div>
-      <div className="text-xl mb-4">Interior</div>
+      <div className="text-xl mb-4">Interior condition / ወስጣዊ ሁኔታ</div>
       <div className="flex tablet:gap-24 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
         <CheckBoxDiv
           label="Fully Furnished"
@@ -532,7 +532,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       <p className="text-lightGray text-sm mt-2">Please select an option.</p>
 
       <div className="text-xl mb-4 mt-8">
-        Property Description (Home Details)
+        Property Description (Home Details) / የቤቱ አጭር ገለፃ
       </div>
       <textarea
         className="w-full bg-white text-lightGray px-5 py-4 rounded-lg"
@@ -552,7 +552,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       />
       <span>{form.description.length}/250</span>
 
-      <div className="text-xl mb-4 mt-8">Utilities</div>
+      <div className="text-xl mb-4 mt-8">Utilities / መገልገያዎች</div>
       <div className="flex tablet:gap-32 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
         <div className="flex flex-col gap-5">
           <CheckBoxDiv

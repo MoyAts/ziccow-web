@@ -100,7 +100,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
       >
         {err}
       </div>
-      <div>Which one of the following apply to you?</div>
+      <div>Which one of the following apply to you? / እርሶ የትኛወ ኖት ?</div>
       <div className="pt-4 flex w-full justify-between max-mobile:flex-col max-mobile:gap-2">
         <Checkboxdiv
           label="I am a real estate agent"
@@ -141,7 +141,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
         />
       </div>
 
-      <div className="text-xl mb-4 mt-8">Community</div>
+      <div className="text-xl mb-4 mt-8">Community / የ አከባቢ ሁኔታ</div>
       <div className="flex gap-5 flex-wrap">
         <CheckBoxDiv
           label="Primary School"
@@ -201,7 +201,9 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
       />
       <span>{form.community.other.length}/250</span>
 
-      <div className="text-xl mb-4 mt-8">About construction material</div>
+      <div className="text-xl mb-4 mt-8">
+        About construction material / የተለየ የተጠቀሙት የግንባታ ግብአት ካለ
+      </div>
       <div className="flex gap-5 flex-wrap">
         <CheckBoxDiv
           label="Ordinary Material"
@@ -233,7 +235,9 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
       </div>
 
       <>
-        <div className="text-xl mb-4 mt-8">Additional Cost Information </div>
+        <div className="text-xl mb-4 mt-8">
+          Additional Cost Information / ተያያዥ ወጪዎች በተመለከተ{" "}
+        </div>
 
         <CustomeInput
           label="Government payment (Ashura)"
@@ -255,7 +259,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
           value={form.leasingPayment}
         />
         <CustomeInput
-          label="Conveyancing payment Birr"
+          label="Bank loans Birr"
           name={"conveyancingPayment"}
           placeholder="Conveyancing payment Birr"
           divClass="mb-5"
