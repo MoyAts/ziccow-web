@@ -185,7 +185,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
       <textarea
         className="w-full bg-white text-lightGray px-5 py-4 rounded-lg h-32"
         onChange={({ target }: any) => {
-          if (target.value.length > 250) return "";
+          if (target.value.length > 300) return "";
           const newData = { ...form.community, other: target.value };
           setForm((data: PropertyDetailInf) => ({
             ...data,
@@ -199,7 +199,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
         rows={10}
         placeholder="your description"
       />
-      <span>{form.community.other.length}/250</span>
+      <span>{form.community.other.length}/300</span>
 
       <div className="text-xl mb-4 mt-8">
         About construction material / የተለየ የተጠቀሙት የግንባታ ግብአት ካለ

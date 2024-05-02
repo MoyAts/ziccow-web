@@ -102,7 +102,7 @@ const Hero = ({ setIsDrawer }: Props) => {
           >
             <Image src={sellImg} width={50} alt="" />
             <p className="text-white text-center  font-semibold">
-              Add New Listing
+              Add New Listing <br /> አዲስ ለማስገባት
             </p>
           </Link>
           <div className="h-10 my-auto bg-gray-200 w-[1px] max-mobile:hidden"></div>

@@ -537,7 +537,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       <textarea
         className="w-full bg-white text-lightGray px-5 py-4 rounded-lg"
         onChange={({ target }: any) => {
-          if (target.value.length > 250) return "";
+          if (target.value.length > 300) return "";
           setForm((data: PropertyDetailInf) => ({
             ...data,
             description: target.value,
@@ -550,7 +550,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         rows={10}
         placeholder="your description"
       />
-      <span>{form.description.length}/250</span>
+      <span>{form.description.length}/300</span>
 
       <div className="text-xl mb-4 mt-8">Utilities / መገልገያዎች</div>
       <div className="flex tablet:gap-32 max-small:gap-3 max-tablet:justify-between max-small:flex-col">
@@ -651,7 +651,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
       <textarea
         className="w-full bg-white text-lightGray px-5 py-4 rounded-lg h-32"
         onChange={({ target }: any) => {
-          if (target.value.length > 250) return "";
+          if (target.value.length > 300) return "";
           const newData = { ...form.utility, other: target.value };
           setForm((data: PropertyDetailInf) => ({ ...data, utility: newData }));
         }}
@@ -662,7 +662,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         rows={10}
         placeholder="your description"
       />
-      <span>{form.utility.other.length}/250</span>
+      <span>{form.utility.other.length}/300</span>
 
       <p className="text-lightGray text-sm mt-2 max-mobile:mt-5">
         Start with a brief overview that describes your item’s finest features.

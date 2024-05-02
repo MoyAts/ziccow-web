@@ -22,10 +22,10 @@ const Hero = () => {
     { name: "$50k and Above", price: [50000, 10000000000] },
   ];
   const areaFilter = [
-    { name: "125 sq ft and Below", price: [0, 125] },
-    { name: "125 sq ft - 250 sq ft", price: [125, 250] },
-    { name: "250 sq ft - 500 sq ft", price: [250, 500] },
-    { name: "500 sq ft and Above", price: [500, 10000000000] },
+    { name: "125 M2", price: [0, 125] },
+    { name: "125 M2 - 250 M2", price: [125, 250] },
+    { name: "250 M2 - 500 M2", price: [250, 500] },
+    { name: "500 M2 and Above", price: [500, 10000000000] },
   ];
   const houseFilter = ["Sell", "Rental"];
   let must: any = {

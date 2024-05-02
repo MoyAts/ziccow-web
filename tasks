@@ -167,11 +167,6 @@ api Integration
     - owner badge on the broker page
     - bed rooms icon
     - mobile search
-  - remaining
-    - is realestate on house type
-    - property type doesn't have apartment in its menu 
-    
-    * New
     - for add new listing page / utilities don't miss any point from pind world document on watsapp 
     - add new property, preview, and final results still have a prblame check it in detail it shuld be exactly the same as the word file I pind on wats app
     - I don't know why but it takes a long time to apload 
@@ -188,32 +183,25 @@ api Integration
     -- owner , agent
     -- SOLED AND ACTIVE
  
- 	
-    * not now
-    - Deactivate my account
+    - is realestate on house type
+    - property type doesn't have apartment in its menu 
     - on add a new property page correct the  message on the answering section 
     - Share icons should go away on click outside
     - allow brokers/ owners to edit there listing info after they post it 
-    * not understood
-    - add text to the propertyt listing form "listing payment prgram" to initial payment or down payment
-    - in my listing page on the check list raw put an option to select all at ones
-    - broker (new page ?)
-    - pliz refer the word file I pind on our watsapp group for add new property form in addition to the cities we need a space to write  pecific location where the property located e.g megenagna ,Addis Ababa or piyasa, hawasa but the name of specific place is not in the form of drop down it shuld be text 
+  - remaining
+    - add text on the home page
+    - the counter change from 250 chars to 300 for description
 
-    - Real estate page needs title to show those are real estates
-    - real estate page  review mifelegew for real estat companies becha new lepropertiwochu ayasfelegim
-    - who verifies the house ?
-    - broker info not visible ?
-    - the notification is not working 
-    - the website don't  upload large pictures 
-    - it posibel to filter high rated agents and real estate based on their ratings right ?? 
-    - on add new property section substitute estimated rental price by financial information with text box  and make it appear on buy property page lebichaw under financial info headline 
-  - questions
-    - overlap in recommendation ?
-    - region memrecha ?
-    - Language yelawem ?
-    - reset password ?
-    - review all the texts ?
+    - filter not working properly
+    - Deactivate my account
+    - bank loan (whatsapp)
+    - popular and descount properties
+    * New
+ 	
+    * not now
+    * not understood
+    
+  
     ====
   
 _______________________________
