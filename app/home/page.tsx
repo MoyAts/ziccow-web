@@ -28,9 +28,9 @@ const Home = () => {
         <Hero setIsDrawer={setIsDrawer} />
         <Enjoy />
         <Difference />
-        <Properties />
-        <View />
+        {/* <View /> */}
         <Realestates fromHome={true} />
+        <Properties />
         <DowloadApp />
         <Join />
         <Footer />
