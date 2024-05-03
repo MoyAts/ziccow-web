@@ -31,9 +31,9 @@ const Properties = () => {
               Popular and <span className="text-blue-500">Discounted</span>{" "}
               Properties
             </div>
-            <p className="text-lightGray text-lg max-mobile:hidden">
+            {/* <p className="text-lightGray text-lg max-mobile:hidden">
               Suggested based on homes you recently viewed
-            </p>
+            </p> */}
           </div>
           <Link
             href={"/properties"}

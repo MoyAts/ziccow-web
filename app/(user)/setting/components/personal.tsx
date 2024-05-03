@@ -350,14 +350,15 @@ const Personal = () => {
             divClass="w-full"
           />
         </div>
-        <CustomeInput
-          isRequired={false}
-          name="bio"
-          value={form.bio}
+        <textarea
+          className="w-full bg-white text-lightGray px-5 py-4 rounded-lg"
           onChange={onChange}
-          label="Bio"
+          value={form.bio}
+          name="bio"
+          id=""
+          cols={30}
+          rows={10}
           placeholder="Enter your bio"
-          divClass="w-full"
         />
 
         <div className="grid place-items-end mt-8">
