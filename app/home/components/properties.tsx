@@ -28,7 +28,8 @@ const Properties = () => {
         <div className="py-5 flex justify-between  ">
           <div className="my-auto flex flex-col">
             <div className="text-[38px] max-mobile:text-center">
-              Properties in <span className="text-blue-500">your area</span>
+              Popular and <span className="text-blue-500">Discounted</span>{" "}
+              Properties
             </div>
             <p className="text-lightGray text-lg max-mobile:hidden">
               Suggested based on homes you recently viewed

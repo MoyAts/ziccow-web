@@ -48,7 +48,8 @@ const MegaMenu = () => {
               href={"/addproperty"}
               className="text-mainBlue font-semibold text-lg capitalize"
             >
-              add new listing{" "}
+              add new listing <br />
+              አዲስ ለማስገባት
             </Link>
 
             <div className="z-50 my-2 w-full h-[1px] bg-slate-400"></div>

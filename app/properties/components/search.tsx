@@ -89,8 +89,8 @@ const Search = ({
     };
   }, []);
   return (
-    <div className="pb-5 relative">
-      <div className="w-full mb-2 mt-2 max-mobile: h-[1px] bg-slate-300"></div>
+    <div className="pb-5 relative max-w-[1700px] mx-auto ">
+      <div className="w-full mb-2 mt-2 max-w-[1700px]  bg-slate-300"></div>
       <div className="flex pt-2 justify-between px-20 max-small:px-5 max-tablet:px-10 max-mobile:flex-col ">
         <div className="flex gap-4 max-mobile:flex-col ">
           <div className="border w-fit flex px-2 rounded-xl font-light max-mobile:w-full bg-white">

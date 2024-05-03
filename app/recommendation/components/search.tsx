@@ -57,7 +57,7 @@ const Search = ({
   }, []);
 
   return (
-    <div className="pb-5 rounded-b-xl ">
+    <div className="pb-5 rounded-b-xl max-w-[1700px] mx-auto ">
       <div className="w-full mb-2 mt-2 max-mobile:hidden h-[1px] bg-slate-300"></div>
       <div className="flex pt-2  justify-between px-20 max-small:px-5 max-tablet:px-10 max-mobile:hidden ">
         <div className="flex gap-4">

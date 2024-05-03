@@ -72,13 +72,6 @@ const Hero = () => {
       let temp = { ...wh.where };
       delete temp["sale_price"];
       delete temp["rental_price"];
-      console.log("Checking...", {
-        ...wh,
-        where: { ...temp },
-      });
-      console.log("From...", {
-        ...wh,
-      });
       return {
         ...wh,
         where: { ...temp },
@@ -88,6 +81,7 @@ const Hero = () => {
   const resetArea = () => {
     setWhere((wh: any) => {
       let temp = { ...wh.where };
+      console.log(temp, "listing_property");
       delete temp["listing_property"];
       return {
         ...wh,
@@ -108,7 +102,8 @@ const Hero = () => {
           },
         };
       } else {
-        price = { sale_price: { _gte: ls, _lte: lg } };
+        //   price = { sale_price: { _gte: ls, _lte: lg } };
+        return data;
       }
       return {
         ...data,
@@ -129,7 +124,11 @@ const Hero = () => {
   };
   const filterByHouseType = (val: string) => {
     setWhere((data: any) => {
-      return { ...data, where: { ...data.where, sale_type: { _eq: val } } };
+      let temp = { ...data.where };
+      if (val == "Sell") {
+        delete temp["rental_price"];
+      }
+      return { ...data, where: { ...temp, sale_type: { _eq: val } } };
     });
   };
   const sort_map = [
@@ -189,15 +188,17 @@ const Hero = () => {
                 // reset={reset}
                 filter={filterByHouseType}
               />
-              <PriceOption
-                list={priceFilter}
-                filter={filterByPrice}
-                name="price"
-                checkbox={true}
-                img={amountIcon}
-                curr={curr}
-                reset={resetPrice}
-              />
+              {where.where?.sale_type?._eq == "Rental" && (
+                <PriceOption
+                  list={priceFilter}
+                  filter={filterByPrice}
+                  name="price"
+                  checkbox={true}
+                  img={amountIcon}
+                  curr={curr}
+                  reset={resetPrice}
+                />
+              )}
               <PriceOption
                 list={areaFilter}
                 filter={filterByArea}
