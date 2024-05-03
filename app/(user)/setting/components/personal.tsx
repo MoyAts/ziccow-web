@@ -350,6 +350,7 @@ const Personal = () => {
             divClass="w-full"
           />
         </div>
+        <p className="pb-3">Write your bio here</p>
         <textarea
           className="w-full bg-white text-lightGray px-5 py-4 rounded-lg"
           onChange={onChange}
