@@ -186,3 +186,14 @@ export const ADD_CONTACT_US = gql`
     }
   }
 `;
+
+
+export const GET_USER_RATING = gql`
+  query A($user_id : uuid){
+      property_review(where :{
+        broker_id :{_eq :$user_id }
+      }){
+        rating
+      }
+  }
+`;

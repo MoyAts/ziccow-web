@@ -15,6 +15,11 @@ import { FaTelegramPlane } from "react-icons/fa";
 import Link from "next/link";
 import ShowImage from "@/app/_components/showImage";
 import { useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_USER_RATING } from "@/graphql/features/user";
+import { useSelector } from "react-redux";
+import { getState } from "@/store/features/auth/authSlice";
+import BuildStar from "./buildstar";
 
 interface Props {
   house: houseInf;
@@ -22,6 +27,29 @@ interface Props {
 const Broker = ({ house }: Props) => {
   const date = new Date(house.created_at);
   const [open, setOpen] = useState(false);
+  const {loading,data,error} = useQuery(GET_USER_RATING,{
+    variables : {
+      user_id : house?.owner?.user_id ?? ""
+    }
+  })
+  const [rating,setRating] = useState(0)
+  if(error){
+    console.log("Error",error)
+  }
+  if(loading){
+    console.log("loading")
+  }
+  if(data && rating == 0 ){
+    const arr = data.property_review
+    let val = 0
+    arr.map((r : any)=>{
+      val += r.rating
+    })
+    let num = Math.floor(val / arr.length)
+    setRating(Math.max(1,num))
+  }
+
+
   return (
     <div className="mt-5 bg-white py-4 px-4 rounded-xl shadow h-fit">
       <div className="flex gap-2 text-xl font-semibold">
@@ -63,6 +91,12 @@ const Broker = ({ house }: Props) => {
               <div className="text-slate-700 capitalize">
                 {house.owner?.first_name} {house.owner?.last_name}
               </div>
+              <div className="flex gap-2 mt-1">
+                {data && <BuildStar num={rating}  />}
+                {loading && "loading broker rating"}
+                {error && "error loading broker rate"}
+              </div>
+
             </div>
           </div>
           <a href={"tel:" + house.owner?.phone_number ?? ""}>

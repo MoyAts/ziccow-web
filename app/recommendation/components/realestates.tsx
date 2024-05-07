@@ -7,7 +7,7 @@ import RentalOption from "./rental_option";
 import rentalIcon from "../../assets/images/rentalIcon.svg";
 import Boxes from "./boxes";
 import { useEffect, useState } from "react";
-import { FILTER_LIST, GET_LISTING } from "@/graphql/features/listing";
+import { FILTER_LIST, FILTER_LIST_LIMITED } from "@/graphql/features/listing";
 import NameSlide from "./name_slide";
 import AddComment from "./addComment";
 import { useSearchParams } from "next/navigation";
@@ -272,7 +272,7 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
           />
         </div>
         <Boxes
-          query={where ? FILTER_LIST : GET_LISTING}
+          query={fromHome ? FILTER_LIST_LIMITED : FILTER_LIST}
           variables={{ ...where, status: { _eq: "ACTIVE" } }}
         />
       </div>

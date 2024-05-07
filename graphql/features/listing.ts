@@ -399,6 +399,113 @@ export const FILTER_LIST = gql`
     }
   }
 `;
+
+export const FILTER_LIST_LIMITED = gql`
+  query get_listings($where: listing_bool_exp, $order_by: [listing_order_by]!) {
+    listing(where: $where, order_by: $order_by,limit : 6) {
+      digital_assets {
+        url
+        type
+      }
+      property_name
+      owner {
+        first_name
+        last_name
+        profile_pic
+        social_twitter
+        social_facebook
+        social_youtube
+        social_instagram
+        social_telegram
+        social_whatsapp
+        phone_number
+        user_id
+      }
+      views_count
+      save_count
+      created_at
+      verified
+      address_data
+      currency
+      real_estate_name
+      build_date
+      description
+      listing_id
+      property_number
+      real_estate_id
+      sale_compare_price
+      rental_price_id
+      sale_price
+      sale_type
+      status
+      house_type {
+        house_type_id
+        icon
+        type_name
+        available
+      }
+      extra_features {
+        applicances
+        lot_features
+        primary_school
+        secondary_school
+        college_and_uni
+        construction_custom
+        hospital
+        supermarket
+        unique_material
+        ordinary_material
+        air_conditioning_system
+        back_yard
+        basement
+        created_at
+        electricity
+        garbage_shutter
+        ground_water
+        other_community
+        parking_feature
+        secondary_electricity
+        security_system
+        service_rooms
+        swimming
+        water
+      }
+      payment_program
+      gov_payment_ashura
+      completion_status
+      matterport_link
+      est_rental_price
+      leasing_payment
+      conveyancing_payment
+      commission_payment
+      real_estate {
+        name
+        real_estate_uuid
+      }
+      rental_price {
+        cycle
+        price
+      }
+      listing_property {
+        bathroom_count
+        bedroom_count
+        created_at
+        gymnasium
+        kitchen_count
+        library
+        listing_property_id
+        living_room_count
+        maids_room
+        square_ft
+        spa
+        praying_room
+        store_rooms
+        praying_room
+      }
+    }
+  }
+`;
+
 export const GET_FEATURED_LISTS = gql`
   query get_lists($_eq: Boolean = true, $limit: Int = 4) {
     listing(
