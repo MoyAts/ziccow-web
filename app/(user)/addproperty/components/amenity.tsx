@@ -1,6 +1,7 @@
 import React from 'react'
 import { PropertyDetailInf } from './interface';
-import { CgAdd } from 'react-icons/cg';
+import { IoMdAdd } from "react-icons/io";
+import { IoCloseOutline } from "react-icons/io5";
 interface Props{
   setForm: Function;
   form: PropertyDetailInf;
@@ -41,13 +42,42 @@ const Amenity = ({ setForm, form } : Props) => {
       return {...form,[ty] : d}
     })
   }
+
+  const deleteBedroom = (num : number,ind : number) => {
+    setForm((form : any) => {
+      let data = form["bedroom"+num].filter((_:any,i :number)=> i != ind)
+      if(data.length == 0){
+        data = ['']
+      }
+      return {...form,["bedroom"+num] : data}
+    })
+  }
+  const deleteShop = (ind : number) => {
+    setForm((form : any) => {
+      let data = form.shop.filter((_:any,i :number)=> i != ind)
+      if(data.length == 0){
+        data = ['']
+      }
+      return {...form,shop : data}
+    })
+  }
+  const deleteCirculation= (ind : number) => {
+    setForm((form : any) => {
+      let data = form.circulation.filter((_:any,i :number)=> i != ind)
+      if(data.length == 0){
+        data = ['']
+      }
+      return {...form,circulation : data}
+    })
+  }
+
   return (
     <div className='w-full my-5'>
       
       <div className='w-full flex flex-col gap-2 bg-white rounded-lg border p-2'>
         <div>Bed Room</div>
 
-        <div className='grid grid-cols-2 gap-4'>
+        <div className='grid grid-cols-2 max-mobile:grid-cols-1 gap-4'>
           
           <div className='flex flex-col  ps-5'>
               <div className='flex gap-5'>
@@ -56,7 +86,7 @@ const Amenity = ({ setForm, form } : Props) => {
                   onClick={()=>addBedroom(0)}
                   className='my-auto'
                 >
-                  {<CgAdd />}
+                  {<IoMdAdd />}
                 </button>
               </div>
               {form.bedroom0.map((val,ind)=>(
@@ -71,6 +101,13 @@ const Amenity = ({ setForm, form } : Props) => {
                       }}
                       value={val}
                     />
+                     { 
+                    (ind > 0 || val.length > 0) && 
+                      <button onClick={()=>deleteBedroom(0,ind)}>
+                          {<IoCloseOutline className='text-red-800' />}
+                      </button>
+                    }
+                   
                   </div>
               ))}
               
@@ -83,7 +120,7 @@ const Amenity = ({ setForm, form } : Props) => {
                 onClick={()=>addBedroom(1)}
                 className='my-auto'
               >
-                {<CgAdd />}
+                {<IoMdAdd />}
               </button>
             </div>
             {form.bedroom1.map((val,ind)=>(
@@ -98,6 +135,12 @@ const Amenity = ({ setForm, form } : Props) => {
                     }}
                     value={val}
                   />
+                  { 
+                  (ind > 0 || val.length > 0) && 
+                    <button onClick={()=>deleteBedroom(1,ind)}>
+                        {<IoCloseOutline className='text-red-800' />}
+                    </button>
+                  }
                 </div>
             ))}
             
@@ -110,7 +153,7 @@ const Amenity = ({ setForm, form } : Props) => {
                 onClick={()=>addBedroom(2)}
                 className='my-auto'
               >
-                {<CgAdd />}
+                {<IoMdAdd />}
               </button>
             </div>
             {form.bedroom2.map((val,ind)=>(
@@ -125,6 +168,13 @@ const Amenity = ({ setForm, form } : Props) => {
                     }}
                     value={val}
                   />
+                  { 
+                  (ind > 0 || val.length > 0) && 
+                    <button onClick={()=>deleteBedroom(2,ind)}>
+                        {<IoCloseOutline className='text-red-800' />}
+                    </button>
+                  }
+                  
                 </div>
             ))}
             
@@ -137,7 +187,7 @@ const Amenity = ({ setForm, form } : Props) => {
                 onClick={()=>addBedroom(3)}
                 className='my-auto'
               >
-                {<CgAdd />}
+                {<IoMdAdd />}
               </button>
             </div>
             {form.bedroom3.map((val,ind)=>(
@@ -152,6 +202,13 @@ const Amenity = ({ setForm, form } : Props) => {
                     }}
                     value={val}
                   />
+                  { 
+                  (ind > 0 || val.length > 0) && 
+                    <button onClick={()=>deleteBedroom(3,ind)}>
+                        {<IoCloseOutline className='text-red-800' />}
+                    </button>
+                  }
+                  
                 </div>
             ))}
             
@@ -164,7 +221,7 @@ const Amenity = ({ setForm, form } : Props) => {
                 onClick={()=>addBedroom(4)}
                 className='my-auto'
               >
-                {<CgAdd />}
+                {<IoMdAdd />}
               </button>
             </div>
             {form.bedroom4.map((val,ind)=>(
@@ -179,6 +236,13 @@ const Amenity = ({ setForm, form } : Props) => {
                     }}
                     value={val}
                   />
+                  { 
+                  (ind > 0 || val.length > 0) && 
+                    <button onClick={()=>deleteBedroom(4,ind)}>
+                        {<IoCloseOutline className='text-red-800' />}
+                    </button>
+                  }
+                  
                 </div>
             ))}
             
@@ -196,7 +260,7 @@ const Amenity = ({ setForm, form } : Props) => {
                   onClick={()=>add("shop")}
                   className='my-auto'
                 >
-                  {<CgAdd />}
+                  {<IoMdAdd />}
                 </button>
               </div>
               {form.shop.map((val,ind)=>(
@@ -211,7 +275,15 @@ const Amenity = ({ setForm, form } : Props) => {
                       }}
                       value={val}
                     />
+                     { 
+                    (ind > 0 || val.length > 0) && 
+                      <button onClick={()=>deleteShop(ind)}>
+                          {<IoCloseOutline className='text-red-800' />}
+                      </button>
+                    }
+                  
                   </div>
+                  
               ))}
               
             </div>
@@ -228,7 +300,7 @@ const Amenity = ({ setForm, form } : Props) => {
                   onClick={()=>add("circulation")}
                   className='my-auto'
                 >
-                  {<CgAdd />}
+                  {<IoMdAdd />}
                 </button>
               </div>
               {form.circulation.map((val,ind)=>(
@@ -243,6 +315,13 @@ const Amenity = ({ setForm, form } : Props) => {
                       }}
                       value={val}
                     />
+                     { 
+                      (ind > 0 || val.length > 0) && 
+                        <button onClick={()=>deleteCirculation(ind)}>
+                            {<IoCloseOutline className='text-red-800' />}
+                        </button>
+                    }
+                  
                   </div>
               ))}
               
