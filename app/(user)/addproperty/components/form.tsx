@@ -10,11 +10,12 @@ import Confirmed from "./confirmed";
 import accept from "../../../assets/images/goAccept.svg";
 import goImg from "../../../assets/images/goBlack.svg";
 import CancelImg from "../../../assets/images/cancelentry.svg";
-import { PropertyDetailInf, initialForm } from "./interface";
+import { PropertyDetailInf, initialForm,Amenity } from "./interface";
 import { useMutation } from "@apollo/client";
 import { Add_LISTING_NEW } from "@/graphql/features/listing";
 import { useSelector } from "react-redux";
 import { getState } from "@/store/features/auth/authSlice";
+import { INSERT_REALESTATE_AMENITY } from "@/graphql/features/realestate";
 
 const Form = () => {
   const state = useSelector(getState);
@@ -24,11 +25,95 @@ const Form = () => {
   const [loading2, setLoading2] = useState(false);
   const [sendList, { loading, error, data, reset }] =
     useMutation(Add_LISTING_NEW);
+  const [insertAmenity,insertAmenityStatus] = useMutation(INSERT_REALESTATE_AMENITY)
 
-  if (data) {
-    page != 4 && setPage(4);
-    console.log(data.insert_listing.returning[0].listing_id, "??");
+  if (page != 4 && insertAmenityStatus.data) {
+    setPage(4);
+    console.log(insertAmenityStatus.data)
+    insertAmenityStatus.reset()
   }
+  if(insertAmenityStatus.error){
+    console.log(insertAmenityStatus.error)
+    alert("Nop")
+  }
+
+  if(data){
+    console.log(data)
+    let listing_id = data.insert_listing.returning[0].listing_id
+    let amenities : Amenity[] = []
+    form.circulation.map((val : string) => {
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "circulation",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    form.shop.map((val : string) => {
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "shop",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    form.bedroom0.map((val : string) => {
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "studio",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    form.bedroom1.map((val : string) => {
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "1bedroom",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    form.bedroom2.map((val : string) => {
+      console.log(val)
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "2bedroom",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    form.bedroom3.map((val : string) => {
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "3bedroom",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    form.bedroom4.map((val : string) => {
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "4bedroom",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    console.log(amenities)
+    insertAmenity({
+      variables : {
+        datas : amenities,
+      }
+    })
+  }
+
+
 
   if (error) {
     console.log("THis form ", form);
@@ -64,7 +149,6 @@ const Form = () => {
     }
     return null;
   };
-  console.log(form.homeType, "KKK");
   const addList = async () => {
     let imgs: any = [];
     setLoading2(true);

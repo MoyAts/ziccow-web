@@ -21,6 +21,7 @@ import OptionInputNew from "./optionInput";
 import OptionInput3 from "./optionInput3";
 import OptionInput4 from "./optionInput4";
 import OptionInput5 from "./optionInput5";
+import Amenity from "./amenity"
 interface MainProps {
   setForm: Function;
   form: PropertyDetailInf;
@@ -51,6 +52,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
     });
   };
 
+ 
   const checkString = (value: string | null) => {
     if (value == null || value.length < 1) {
       return false;
@@ -337,8 +339,9 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         <div className="text-xl">Facilities / መገልገያ ክፍሎች</div>
         <MdNavigateNext className="text-3xl my-auto text-mainBlue -rotate-90" />
       </div>
+      <Amenity setForm={setForm} form={form} />
       <div className="grid grid-cols-2 gap-5 mb-8 w-full max-tablet:grid-cols-1">
-        <CustomeInputNumber
+        {/* <CustomeInputNumber
           onAdd={() =>
             updateFacilities("numOfBedrooms", form.facilities.numOfBedrooms + 1)
           }
@@ -348,7 +351,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
           value={form.facilities.numOfBedrooms}
           preImg={img3}
           label={"No. of Bedrooms"}
-        />
+        /> */}
         <CustomeInputNumber
           onAdd={() =>
             updateFacilities(

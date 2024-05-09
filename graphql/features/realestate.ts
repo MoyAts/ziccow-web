@@ -51,3 +51,13 @@ export const ADD_REALESTATE_REVIEW = gql`
     }
   }
 `;
+
+
+
+export const INSERT_REALESTATE_AMENITY = gql`
+  mutation a($datas : [real_estate_amenity_insert_input!]!) {
+  insert_real_estate_amenity(objects: $datas) {
+    affected_rows
+  }
+}
+`;

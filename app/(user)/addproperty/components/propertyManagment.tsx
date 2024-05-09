@@ -24,7 +24,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
   const [isRental, setIsRental] = useState<boolean | null>(null);
   const errRef = useRef<any>(null);
   const [images, setImages] = useState<any>([]);
-
+  console.log(form.bedroom1)
   const checkNumber = (value: any) => {
     try {
       var x = Math.floor(parseFloat(value));

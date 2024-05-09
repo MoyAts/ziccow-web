@@ -13,6 +13,12 @@ export interface UtilityInf {
   other: string;
 }
 
+export interface Amenity {
+  amenity : string,
+  area : string,
+  listing_id : string,
+}
+
 export interface PropertyDetailInf {
   propertyName: string;
   phone: string;
@@ -22,6 +28,13 @@ export interface PropertyDetailInf {
   realEstateId?: string;
   yearBuilt: string;
   squareFootage: string;
+  shop : string[],
+  circulation : string[],
+  bedroom0 : string[],
+  bedroom1 : string[],
+  bedroom2 : string[],
+  bedroom3 : string[],
+  bedroom4 : string[],
   facilities: {
     numOfLivingrooms: number;
     numOfBathrooms: number;
@@ -81,6 +94,13 @@ export const initialForm: PropertyDetailInf = {
   homeType: "",
   yearBuilt: "",
   squareFootage: "",
+  shop : [""],
+  circulation : [""],
+  bedroom0 : [""],
+  bedroom1 : [""],
+  bedroom4 : [""],
+  bedroom3 : [""],
+  bedroom2 : [""],
   facilities: {
     numOfLivingrooms: 0,
     numOfBathrooms: 0,
