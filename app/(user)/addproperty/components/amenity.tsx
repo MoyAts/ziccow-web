@@ -72,14 +72,14 @@ const Amenity = ({ setForm, form } : Props) => {
   }
 
   return (
-    <div className='w-full my-5'>
+    <div className='w-full my-5 flex flex-col gap-3'>
       
-      <div className='w-full flex flex-col gap-2 bg-white rounded-lg border p-2'>
-        <div>Bed Room</div>
+      <div className='w-full flex flex-col gap-2  rounded-lg '>
+        <div className='font-semibold'>Bed Room</div>
 
-        <div className='grid grid-cols-2 max-mobile:grid-cols-1 gap-4'>
+        <div className='grid grid-cols-2  max-mobile:grid-cols-1 gap-4'>
           
-          <div className='flex flex-col  ps-5'>
+          <div className='flex flex-col bg-white ps-5 border p-1 rounded-lg'>
               <div className='flex gap-5'>
                 <div className=''>Studio</div>
                 <button 
@@ -91,10 +91,10 @@ const Amenity = ({ setForm, form } : Props) => {
               </div>
               {form.bedroom0.map((val,ind)=>(
                   <div key={ind} className='flex gap-5 ps-5 mt-2'>
-                    <div className='my-auto'>Type {ind + 1}</div>
+                    <div className='my-auto text-sm'>Type {ind + 1}</div>
                     <input 
                       type="text" 
-                      className='border w-32 py-1 px-2' 
+                      className='border w-32 py-1 rounded-lg px-2' 
                       placeholder='Area in M2' 
                       onChange={({target}:any) =>{
                         updateBedroom(0,ind,target.value)
@@ -113,7 +113,7 @@ const Amenity = ({ setForm, form } : Props) => {
               
             </div>
 
-          <div className='flex flex-col  ps-5'>
+          <div className='flex flex-col  bg-white ps-5 border p-1 rounded-lg'>
             <div className='flex gap-5'>
               <div className=''>1 Bed room</div>
               <button 
@@ -125,10 +125,10 @@ const Amenity = ({ setForm, form } : Props) => {
             </div>
             {form.bedroom1.map((val,ind)=>(
                 <div key={ind} className='flex gap-5 ps-5 mt-2'>
-                  <div className='my-auto'>Type {ind + 1}</div>
+                  <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
                     type="text" 
-                    className='border w-32 py-1 px-2' 
+                    className='border w-32 py-1 px-2 rounded-lg' 
                     placeholder='Area in M2' 
                     onChange={({target}:any) =>{
                       updateBedroom(1,ind,target.value)
@@ -146,7 +146,7 @@ const Amenity = ({ setForm, form } : Props) => {
             
           </div>
 
-          <div className='flex flex-col  ps-5'>
+          <div className='flex flex-col  bg-white ps-5 border p-1 rounded-lg'>
             <div className='flex gap-5'>
               <div className=''>2 Bed room</div>
               <button 
@@ -158,10 +158,10 @@ const Amenity = ({ setForm, form } : Props) => {
             </div>
             {form.bedroom2.map((val,ind)=>(
                 <div key={ind} className='flex gap-5 ps-5 mt-2'>
-                  <div className='my-auto'>Type {ind + 1}</div>
+                  <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
                     type="text" 
-                    className='border w-32 py-1 px-2' 
+                    className='border w-32 py-1 px-2 rounded-lg' 
                     placeholder='Area in M2' 
                     onChange={({target}:any) =>{
                       updateBedroom(2,ind,target.value)
@@ -180,7 +180,7 @@ const Amenity = ({ setForm, form } : Props) => {
             
           </div>
 
-          <div className='flex flex-col  ps-5'>
+          <div className='flex flex-col  bg-white ps-5 border p-1 rounded-lg'>
             <div className='flex gap-5'>
               <div className=''>3 Bed room</div>
               <button 
@@ -192,10 +192,10 @@ const Amenity = ({ setForm, form } : Props) => {
             </div>
             {form.bedroom3.map((val,ind)=>(
                 <div key={ind} className='flex gap-5 ps-5 mt-2'>
-                  <div className='my-auto'>Type {ind + 1}</div>
+                  <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
                     type="text" 
-                    className='border w-32 py-1 px-2' 
+                    className='border w-32 py-1 px-2 rounded-lg' 
                     placeholder='Area in M2' 
                     onChange={({target}:any) =>{
                       updateBedroom(3,ind,target.value)
@@ -214,7 +214,7 @@ const Amenity = ({ setForm, form } : Props) => {
             
           </div>
 
-          <div className='flex flex-col  ps-5'>
+          <div className='flex flex-col  bg-white ps-5 border p-1 rounded-lg'>
             <div className='flex gap-5'>
               <div className=''>4 Bed room</div>
               <button 
@@ -226,10 +226,10 @@ const Amenity = ({ setForm, form } : Props) => {
             </div>
             {form.bedroom4.map((val,ind)=>(
                 <div key={ind} className='flex gap-5 ps-5 mt-2'>
-                  <div className='my-auto'>Type {ind + 1}</div>
+                  <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
                     type="text" 
-                    className='border w-32 py-1 px-2' 
+                    className='border w-32 py-1 px-2 rounded-lg' 
                     placeholder='Area in M2' 
                     onChange={({target}:any) =>{
                       updateBedroom(4,ind,target.value)
@@ -251,9 +251,10 @@ const Amenity = ({ setForm, form } : Props) => {
         </div>
       </div>
 
-      <div className='w-full flex flex-col gap-2 bg-white rounded-lg border p-2'>
+      <div className='w-full flex flex-col gap-2 '>
+        <div className='font-semibold'>Shop and Circulation</div>
         <div className='grid grid-cols-2 gap-4'>
-          <div className='flex flex-col'>
+          <div className='flex flex-col bg-white rounded-lg border p-2'>
               <div className='flex gap-5'>
                 <div className=''>Shop</div>
                 <button 
@@ -265,10 +266,10 @@ const Amenity = ({ setForm, form } : Props) => {
               </div>
               {form.shop.map((val,ind)=>(
                   <div key={ind} className='flex gap-5 ps-5 mt-2'>
-                    <div className='my-auto'>Type {ind + 1}</div>
+                    <div className='my-auto text-sm'>Type {ind + 1}</div>
                     <input 
                       type="text" 
-                      className='border w-32 py-1 px-2' 
+                      className='border w-32 py-1 px-2 rounded-lg' 
                       placeholder='Area in M2' 
                       onChange={({target}:any) =>{
                         update("shop",ind,target.value)
@@ -287,13 +288,7 @@ const Amenity = ({ setForm, form } : Props) => {
               ))}
               
             </div>
-        </div>
-      
-      </div>
-
-      <div className='w-full flex flex-col gap-2 bg-white rounded-lg border p-2'>
-        <div className='grid grid-cols-2 gap-4'>
-          <div className='flex flex-col'>
+            <div className='flex flex-col bg-white rounded-lg border p-2'>
               <div className='flex gap-5'>
                 <div className=''>Circulation</div>
                 <button 
@@ -305,10 +300,10 @@ const Amenity = ({ setForm, form } : Props) => {
               </div>
               {form.circulation.map((val,ind)=>(
                   <div key={ind} className='flex gap-5 ps-5 mt-2'>
-                    <div className='my-auto'>Type {ind + 1}</div>
+                    <div className='my-auto text-sm'>Type {ind + 1}</div>
                     <input 
                       type="text" 
-                      className='border w-32 py-1 px-2' 
+                      className='border w-32 py-1 px-2 rounded-lg' 
                       placeholder='Area in M2' 
                       onChange={({target}:any) =>{
                         update("circulation",ind,target.value)
@@ -329,6 +324,45 @@ const Amenity = ({ setForm, form } : Props) => {
         </div>
       
       </div>
+
+      {/* <div className='w-full flex flex-col gap-2 '>
+        <div className='grid grid-cols-2 gap-4'>
+          <div className='flex flex-col'>
+              <div className='flex gap-5'>
+                <div className=''>Circulation</div>
+                <button 
+                  onClick={()=>add("circulation")}
+                  className='my-auto'
+                >
+                  {<IoMdAdd />}
+                </button>
+              </div>
+              {form.circulation.map((val,ind)=>(
+                  <div key={ind} className='flex gap-5 ps-5 mt-2'>
+                    <div className='my-auto text-sm'>Type {ind + 1}</div>
+                    <input 
+                      type="text" 
+                      className='border w-32 py-1 px-2 rounded-lg' 
+                      placeholder='Area in M2' 
+                      onChange={({target}:any) =>{
+                        update("circulation",ind,target.value)
+                      }}
+                      value={val}
+                    />
+                     { 
+                      (ind > 0 || val.length > 0) && 
+                        <button onClick={()=>deleteCirculation(ind)}>
+                            {<IoCloseOutline className='text-red-800' />}
+                        </button>
+                    }
+                  
+                  </div>
+              ))}
+              
+            </div>
+        </div>
+      
+      </div> */}
       
     
     </div>

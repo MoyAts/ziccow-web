@@ -21,6 +21,7 @@ export interface Amenity {
 
 export interface PropertyDetailInf {
   propertyName: string;
+  projectName: string;
   phone: string;
   locationDetail: string;
   address: string;
@@ -88,6 +89,7 @@ export interface PropertyDetailInf {
 
 export const initialForm: PropertyDetailInf = {
   propertyName: "",
+  projectName: "",
   phone: "",
   address: "",
   locationDetail: "",

@@ -166,8 +166,20 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         divClass="mb-5"
         isRequired={true}
       />
+      {
+      state.user.internal_agent  && 
+        <CustomeInput
+          value={form.projectName}
+          onChange={setChange}
+          label="Project Name"
+          name={"projectName"}
+          placeholder="Project Name"
+          divClass="mb-5"
+          isRequired={false}
+        />
+      }
 
-      <div className="flex  gap-4">
+      <div className="flex  gap-4 max-md:flex-col">
         <div className="w-full">
           <CustomeInput
             value={form.locationDetail}
@@ -339,19 +351,24 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         <div className="text-xl">Facilities / መገልገያ ክፍሎች</div>
         <MdNavigateNext className="text-3xl my-auto text-mainBlue -rotate-90" />
       </div>
-      <Amenity setForm={setForm} form={form} />
+      { state.user.internal_agent && <Amenity setForm={setForm} form={form} />}
+      <div className="py-3 font-semibold">Other Facilities </div>
       <div className="grid grid-cols-2 gap-5 mb-8 w-full max-tablet:grid-cols-1">
-        {/* <CustomeInputNumber
-          onAdd={() =>
-            updateFacilities("numOfBedrooms", form.facilities.numOfBedrooms + 1)
-          }
-          onSub={() =>
-            updateFacilities("numOfBedrooms", form.facilities.numOfBedrooms - 1)
-          }
-          value={form.facilities.numOfBedrooms}
-          preImg={img3}
-          label={"No. of Bedrooms"}
-        /> */}
+        {
+        state.user.internal_agent == false 
+        && 
+          <CustomeInputNumber
+            onAdd={() =>
+              updateFacilities("numOfBedrooms", form.facilities.numOfBedrooms + 1)
+            }
+            onSub={() =>
+              updateFacilities("numOfBedrooms", form.facilities.numOfBedrooms - 1)
+            }
+            value={form.facilities.numOfBedrooms}
+            preImg={img3}
+            label={"No. of Bedrooms"}
+          />
+        }
         <CustomeInputNumber
           onAdd={() =>
             updateFacilities(

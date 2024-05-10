@@ -36,8 +36,12 @@ const Form = () => {
     console.log(insertAmenityStatus.error)
     alert("Nop")
   }
+  if(data && state.user.internal_agent == false && page != 4){
+    setPage(4)
+  }
 
-  if(data){
+  if(data && state.user.internal_agent){
+    
     console.log(data)
     let listing_id = data.insert_listing.returning[0].listing_id
     let amenities : Amenity[] = []
@@ -167,6 +171,7 @@ const Form = () => {
     const name = state.user.internal_agent
       ? {
           real_estate_id: form.realEstateId ?? null,
+          project_name : form.projectName
         }
       : {
           // real_estate: {
@@ -232,6 +237,7 @@ const Form = () => {
               applicances: form.appliances,
               parking_feature: form.parkingFeature,
               primary_school: form.community.primarySchool,
+              secondary_electricity: form.utility.backupElectricity,
               secondary_school: form.community.secondarySchool,
               college_and_uni: form.community.collegeAndUni,
               hospital: form.community.hospital,

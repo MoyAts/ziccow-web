@@ -13,6 +13,7 @@ const NameSlide = ({
   selected,
   setSelected,
   initialRealestateType,
+  getRealestateReview
 }: any) => {
   const { loading, error, data } = useQuery(GET_REAL_ESTATES, {
     fetchPolicy: "no-cache",
@@ -38,6 +39,12 @@ const NameSlide = ({
     },
   };
   const realEstateSelected = (real_estate_uuid: string, name: string) => {
+    getRealestateReview({
+      variables : {
+        real_estate_id : real_estate_uuid
+      }
+    })
+    console.log("Work")
     setSelected(real_estate_uuid);
     selectedRealEstate(real_estate_uuid, name);
   };

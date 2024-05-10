@@ -13,6 +13,9 @@ import AddComment from "./addComment";
 import { useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import { getState, LogInf } from "@/store/features/auth/authSlice";
+import { useLazyQuery, useMutation } from "@apollo/client";
+import { GET_REALESTATE_RATING } from "@/graphql/features/user";
+import BuildStar from "./buildstar";
 
 const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
   const state = useSelector(getState);
@@ -53,9 +56,14 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
   const houseFilter = ["Sell", "Rental"];
   const [selectedRealEstate, setSelectedRealEstate] = useState("");
 
+  const [getRealestateReview ,{
+    loading,data,error
+  }] = useLazyQuery(GET_REALESTATE_RATING)
+
   const [where, setWhere] = useState<any>(temp);
   const [curr, setCurr] = useState<string | null>(null);
   const [realEstate, setRealEstate] = useState<null | string>(null);
+
 
   const reset = () => {
     setCurr(null);
@@ -124,6 +132,19 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
     });
   };
 
+  error && console.log(error,"AA")
+  data && console.log(data,"DD")
+  loading && console.log(loading,"LL")
+  const[rating,setRating] = useState(0)
+  if(data && rating == 0 ){
+    const arr = data.real_estate_review
+    let val = 0
+    arr.map((r : any)=>{
+      val += r.rating
+    })
+    let num = Math.floor(val / arr.length)
+    setRating(Math.max(1,num))
+  }
   return (
     <div className="w-full bg-lightBg ">
       <div className="h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10">
@@ -132,9 +153,14 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
             <span className="">Real Estates</span>
           </h1>
           {propertyType && (
-            <h1 className="flex gap-2 mt-5 text-2xl max-tablet:text-xl max-tablet:mb-5">
-              <span className="text-mainBlue">{propertyType ?? ""}</span>
-            </h1>
+            <div className="flex gap-2   mt-5 text-2xl max-tablet:text-xl max-tablet:mb-5">
+              <span className="text-mainBlue">{propertyType ?? "Unknown"}</span>
+              <div className="flex gap-2 mt-1 self-center align-middle ">
+                {data && <BuildStar num={3}  />}
+                {loading && "..."}
+                {error && ""}
+              </div>
+            </div>
           )}
 
           <div className="flex justify-between  max-md:flex-col max-md:gap-2 w-full">
@@ -239,6 +265,7 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
                 order_by: {},
               });
             }}
+            getRealestateReview={getRealestateReview}
             initialRealestateType={initialRealestateType}
             setSelected={setSelectedRealEstate}
             selected={selectedRealEstate}

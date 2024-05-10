@@ -197,3 +197,14 @@ export const GET_USER_RATING = gql`
       }
   }
 `;
+
+
+export const GET_REALESTATE_RATING = gql`
+  query A($real_estate_id : uuid){
+    real_estate_review(where :{
+        real_estate_id :{_eq :$real_estate_id }
+      }){
+        rating
+      }
+  }
+`;
