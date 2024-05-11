@@ -128,7 +128,8 @@ const footer = () => {
                 </li>
                 <li className="hover:text-blue-500 cursor-pointer duration-200 flex gap-3">
                   <Image src={phoneImg} alt="" />
-                  <p>+251949688383</p>
+                  <p>Belgium +32471438014</p>
+                  {/* <p>+251949688383</p> */}
                 </li>
               </ul>
             </div>
@@ -159,7 +160,7 @@ const footer = () => {
             <Link href={"https://www.youtube.com/@Zirrow0000"}>
               <FaYoutube className="text-2xl text-blue-500 cursor-pointer hover:text-white duration-200" />
             </Link>
-            <Link href={"https://www.tiktok.com/@zirrow0?_t=8iDeN9loXV0&_r=1"}>
+            <Link href={"https://www.tiktok.com/@zirrow_general_trading?_t=8mEbdkW8fTS&_r=1"}>
               <FaTiktok className="text-2xl text-blue-500 cursor-pointer hover:text-white duration-200" />
             </Link>
           </div>

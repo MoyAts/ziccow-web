@@ -75,7 +75,7 @@ const Amenity = ({ setForm, form } : Props) => {
     <div className='w-full my-5 flex flex-col gap-3'>
       
       <div className='w-full flex flex-col gap-2  rounded-lg '>
-        <div className='font-semibold'>Bed Room</div>
+        <div className='font-semibold'>Home Type</div>
 
         <div className='grid grid-cols-2  max-mobile:grid-cols-1 gap-4'>
           
@@ -94,7 +94,7 @@ const Amenity = ({ setForm, form } : Props) => {
                     <div className='my-auto text-sm'>Type {ind + 1}</div>
                     <input 
                       type="text" 
-                      className='border w-32 py-1 rounded-lg px-2' 
+                      className='outline-none text-gray-600 text-[15px] border w-32 py-1 px-2 rounded-lg ' 
                       placeholder='Area in M2' 
                       onChange={({target}:any) =>{
                         updateBedroom(0,ind,target.value)
@@ -128,7 +128,7 @@ const Amenity = ({ setForm, form } : Props) => {
                   <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
                     type="text" 
-                    className='border w-32 py-1 px-2 rounded-lg' 
+                    className='outline-none text-gray-600 text-[15px] border w-32 py-1 px-2 rounded-lg ' 
                     placeholder='Area in M2' 
                     onChange={({target}:any) =>{
                       updateBedroom(1,ind,target.value)
@@ -161,7 +161,7 @@ const Amenity = ({ setForm, form } : Props) => {
                   <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
                     type="text" 
-                    className='border w-32 py-1 px-2 rounded-lg' 
+                    className='outline-none text-gray-600 text-[15px] border w-32 py-1 px-2 rounded-lg ' 
                     placeholder='Area in M2' 
                     onChange={({target}:any) =>{
                       updateBedroom(2,ind,target.value)
@@ -195,7 +195,7 @@ const Amenity = ({ setForm, form } : Props) => {
                   <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
                     type="text" 
-                    className='border w-32 py-1 px-2 rounded-lg' 
+                    className='outline-none text-gray-600 text-[15px] border w-32 py-1 px-2 rounded-lg ' 
                     placeholder='Area in M2' 
                     onChange={({target}:any) =>{
                       updateBedroom(3,ind,target.value)
@@ -229,7 +229,7 @@ const Amenity = ({ setForm, form } : Props) => {
                   <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
                     type="text" 
-                    className='border w-32 py-1 px-2 rounded-lg' 
+                    className='outline-none text-gray-600 text-[15px] border w-32 py-1 px-2 rounded-lg ' 
                     placeholder='Area in M2' 
                     onChange={({target}:any) =>{
                       updateBedroom(4,ind,target.value)
@@ -269,7 +269,7 @@ const Amenity = ({ setForm, form } : Props) => {
                     <div className='my-auto text-sm'>Type {ind + 1}</div>
                     <input 
                       type="text" 
-                      className='border w-32 py-1 px-2 rounded-lg' 
+                      className='outline-none text-gray-600 text-[15px] border w-32 py-1 px-2 rounded-lg' 
                       placeholder='Area in M2' 
                       onChange={({target}:any) =>{
                         update("shop",ind,target.value)
@@ -303,7 +303,7 @@ const Amenity = ({ setForm, form } : Props) => {
                     <div className='my-auto text-sm'>Type {ind + 1}</div>
                     <input 
                       type="text" 
-                      className='border w-32 py-1 px-2 rounded-lg' 
+                      className='outline-none text-gray-600 text-[15px] border w-32 py-1 px-2 rounded-lg' 
                       placeholder='Area in M2' 
                       onChange={({target}:any) =>{
                         update("circulation",ind,target.value)
@@ -342,7 +342,7 @@ const Amenity = ({ setForm, form } : Props) => {
                     <div className='my-auto text-sm'>Type {ind + 1}</div>
                     <input 
                       type="text" 
-                      className='border w-32 py-1 px-2 rounded-lg' 
+                      className='outline-none text-gray-600 text-[15px] border w-32 py-1 px-2 rounded-lg' 
                       placeholder='Area in M2' 
                       onChange={({target}:any) =>{
                         update("circulation",ind,target.value)
