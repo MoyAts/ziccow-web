@@ -52,7 +52,11 @@ const Requestor = ({ children }: any) => {
     }
     if (data) {
       console.log(data, "myuser");
-      dispatch(userFetched(data.user_by_pk));
+      if(data.user_by_pk?.blocked){
+        dispatch(userNotFound())
+      } else {
+        dispatch(userFetched(data.user_by_pk));
+      }
     }
     if (error) {
       dispatch(userFetchedError(error));

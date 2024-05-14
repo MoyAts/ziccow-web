@@ -35,6 +35,7 @@ export const GET_USER = gql`
       email
       profile_pic
       user_id
+      blocked
       onboarding_complete
       internal_agent
     }

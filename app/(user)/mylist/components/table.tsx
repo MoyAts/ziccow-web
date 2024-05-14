@@ -36,7 +36,9 @@ const Table = () => {
             <th className="py-4 px-4 border-b border-gray-300 text-left">
               Issued date
             </th>
-
+            <th className="py-4 px-4 border-b border-gray-300 text-left">
+              Property Id
+            </th>
             <th className="py-4 px-4 border-b border-gray-300 text-left">
               Property Management
             </th>
@@ -110,6 +112,9 @@ const List = ({
       </td>
       <td className="py-2 px-4 border-b border-gray-300 min-w-[160px] text-left">
         {time} ago
+      </td>
+      <td className="py-2  px-4 border-b border-gray-300 min-w-[160px] text-left">
+        {data.property_number ?? "Unknown"}
       </td>
       <td className="py-2  px-4 border-b border-gray-300 min-w-[160px] text-left">
         {data.sale_type ?? "Sell"}

@@ -23,8 +23,8 @@ const LoginPage = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [temp, setTemp] = useState(false);
-  const [login, { loading, error, data }] = useMutation(LOGIN_GQL, {
+  const [err, seterr] = useState('');
+  const [login, { loading, error, data,reset }] = useMutation(LOGIN_GQL, {
     fetchPolicy: "no-cache",
   });
   const [login2, responses] = useMutation(LOGIN_SOCIAL_MEDIA, {
@@ -41,10 +41,15 @@ const LoginPage = () => {
   };
   if (responses.data) {
     const { socialLogin } = responses.data;
-    dispatch(
-      loginUser({ token: socialLogin.token, userId: socialLogin.user.user_id }),
-    );
-    location.href = "/";
+    if(socialLogin.user.blocked){
+      seterr("Please contact support at zirrowproperties@gmail.com!")
+      reset()
+    } else {
+      dispatch(
+        loginUser({ token: socialLogin.token, userId: socialLogin.user.user_id }),
+      );
+      location.href = "/";
+    }
   }
   if (responses.error) {
     console.log(responses.error);
@@ -55,13 +60,18 @@ const LoginPage = () => {
   }
   if (data) {
     console.log(data);
-    dispatch(
-      loginUser({
-        token: data.loginEmail.token,
-        userId: data.loginEmail.user.user_id,
-      }),
-    );
-    location.href = "/";
+    if(data.loginEmail.user.blocked){
+      seterr("Please contact support at zirrowproperties@gmail.com!")
+      reset()
+    } else {
+      dispatch(
+        loginUser({
+          token: data.loginEmail.token,
+          userId: data.loginEmail.user.user_id,
+        }),
+      );
+      location.href = "/";
+    }
   }
   const submit = () => {
     login({ variables: { email, password } });
@@ -98,9 +108,11 @@ const LoginPage = () => {
             to move forward.
           </p>
           <h3 className="capitalize text-xl my-5 font-semibold">Sign in</h3>
-          {(error || responses.error) && (
+          {(error || responses.error || err) && (
             <div className="w-full rounded-xl border-2 my-3 ps-3 py-2  border-red-400 bg-red-400 bg-opacity-40">
-              {error
+              {err 
+              ? err 
+              : error
                 ? error.graphQLErrors[0].message
                 : responses.error
                   ? responses.error.graphQLErrors[0].message

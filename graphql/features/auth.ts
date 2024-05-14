@@ -9,6 +9,7 @@ export const LOGIN_GQL = gql`
         user_id
         first_name
         last_name
+        blocked
       }
     }
   }
@@ -73,6 +74,7 @@ export const LOGIN_SOCIAL_MEDIA = gql`
         last_name
         phone_number
         email
+        blocked
         user_id
       }
     }

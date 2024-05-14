@@ -315,6 +315,12 @@ const Features = ({ form }: { form: PropertyDetailInf }) => {
             <div className="text-lg  font-semibold my">
               Other informations
             </div>  
+            <div className="mt-2">Circulation</div>
+            <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+              <li  className="before:content-['\2022'] capitalize  before:mr-2">
+                {form.circulation}
+              </li>
+            </ul>
             <div className="mt-2">Studio</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             {form.bedroom0.map((data,ind)=>(
