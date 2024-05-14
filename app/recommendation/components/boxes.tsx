@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const Boxes = ({ query, variables }: any) => {
   let newWhere = { where: variables.where ?? {}, order_by: variables.order_by };
-  newWhere.where["status"] = { _eq: "ACTIVE" };
+  newWhere.where["status"] = { _neq: "PENDING" };
   const { loading, error, data } = useQuery(query, {
     variables,
   });

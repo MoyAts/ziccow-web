@@ -300,7 +300,7 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
         </div>
         <Boxes
           query={fromHome ? FILTER_LIST_LIMITED : FILTER_LIST}
-          variables={{ ...where, status: { _eq: "ACTIVE" } }}
+          variables={{ ...where, status: { _neq: "PENDING" } }}
         />
       </div>
       {!fromHome && realEstate && state.isLogedIn == LogInf.LOGED_IN && (

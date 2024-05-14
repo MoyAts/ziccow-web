@@ -152,11 +152,17 @@ const Detail = ({ house, list_id }: Props) => {
       <div className="flex justify-between mt-5">
         <div className="flex gap-7">
           <h1 className="text-[35px] max-tablet:text-[25px]">{propertName}</h1>
+          
           {owner && (
             <div className="my-auto px-2 py-1 rounded-lg bg-mainBlue text-white text-xs shadow-lg">
               You are the owner
             </div>
           )}
+          {house.status == "SOLED" && 
+          <div className="my-auto px-2 py-1 rounded-lg bg-red-500 text-white text-xs shadow-lg">
+              Soled
+            </div>
+          }
           {house?.verified && (
             <div className="flex gap-1 m-auto">
               <Image src={img} width={25} alt="" />
@@ -319,13 +325,13 @@ const Detail = ({ house, list_id }: Props) => {
         <div className="w-5/12 flex flex-col">
           <GeneralInformation house={house} />
           <Price house={house} />
-          {house?.owner && (
+          {house?.owner && house.status != "SOLED" && (
             <TimeLine
               list_id={house?.listing_id}
               owner_id={house?.owner.user_id}
             />
           )}
-          {house?.owner && <Broker house={house} />}
+          {house?.owner &&  house.status != "SOLED" && <Broker house={house} />}
           <AddComment
             listing_id={house?.listing_id}
             broker_id={house.owner?.user_id}
@@ -341,13 +347,13 @@ const Detail = ({ house, list_id }: Props) => {
         )}
         <GeneralInformation house={house} />
         <Price house={house} />
-        {house?.owner && (
+        {house?.owner && house.status != "SOLED" && (
           <TimeLine
             list_id={house?.listing_id}
             owner_id={house?.owner.user_id}
           />
         )}
-        {house?.owner && <Broker house={house} />}
+        {house?.owner && house.status != "SOLED" && <Broker house={house} />}
         <Features amenityData={amenityStatus?.data?.real_estate_amenity ?? []} house={house} />
         <AddComment
           listing_id={house?.listing_id}

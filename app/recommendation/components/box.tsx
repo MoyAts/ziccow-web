@@ -29,9 +29,11 @@ const box = ({ house }: { house: houseInf }) => {
           className="w-full hover:scale-105 object-cover duration-200 h-[300px] rounded-lg"
           alt=""
         />
-        {/* <div className="absolute top-5 flex gap-1 px-2 py-1 rounded-xl right-5 bg-gray-100 bg-opacity-40">
-                <BuildStar num={3} />
-            </div> */}
+        {house.status == "SOLED" && 
+          <div className="absolute top-5 flex gap-1 px-2 py-1 rounded-xl right-5 bg-red-500 bg-opacity-40">
+            Soled
+          </div>
+        }
       </div>
       <h1 className="font-semibold">
         {house?.real_estate?.name ?? "Real state"}
