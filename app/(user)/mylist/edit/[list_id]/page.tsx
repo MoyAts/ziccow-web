@@ -17,7 +17,7 @@ const Page = ({ params: { list_id } }: { params: { list_id: string } }) => {
       list_id,
     },
   });
-
+  
   if (error) {
     router.replace("/properties");
   }

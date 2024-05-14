@@ -21,7 +21,7 @@ const Form = () => {
   const state = useSelector(getState);
   const errRef = useRef<any>(null);
   const [form, setForm] = useState(initialForm);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(3);
   const [loading2, setLoading2] = useState(false);
   const [sendList, { loading, error, data, reset }] =
     useMutation(Add_LISTING_NEW);
@@ -39,21 +39,24 @@ const Form = () => {
   if(data && state.user.internal_agent == false && page != 4){
     setPage(4)
   }
+  let [ch,setCh] = useState(true)
 
-  if(data && state.user.internal_agent){
-    
+  if(data && state.user.internal_agent && ch){
+    console.log("AAAAAAA",data && state.user.internal_agent && ch)
+    setCh(false)
     console.log(data)
     let listing_id = data.insert_listing.returning[0].listing_id
     let amenities : Amenity[] = []
-    form.circulation.map((val : string) => {
-      if(val.trim().length < 1) return
+
+    if(form.circulation.trim().length > 0) {
       let data : Amenity = {
         amenity : "circulation",
-        area : val,
+        area : form.circulation,
         listing_id,
       }
       amenities.push(data)
-    })
+    }
+  
     form.shop.map((val : string) => {
       if(val.trim().length < 1) return
       let data : Amenity = {

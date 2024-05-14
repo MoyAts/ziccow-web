@@ -19,6 +19,8 @@ export interface Amenity {
   listing_id : string,
 }
 
+
+
 export interface PropertyDetailInf {
   propertyName: string;
   projectName: string;
@@ -30,7 +32,7 @@ export interface PropertyDetailInf {
   yearBuilt: string;
   squareFootage: string;
   shop : string[],
-  circulation : string[],
+  circulation : string,
   bedroom0 : string[],
   bedroom1 : string[],
   bedroom2 : string[],
@@ -97,7 +99,7 @@ export const initialForm: PropertyDetailInf = {
   yearBuilt: "",
   squareFootage: "",
   shop : [""],
-  circulation : [""],
+  circulation : "",
   bedroom0 : [""],
   bedroom1 : [""],
   bedroom4 : [""],

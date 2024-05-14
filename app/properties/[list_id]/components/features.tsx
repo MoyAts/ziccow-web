@@ -1,13 +1,40 @@
 "use client";
+import { Amenity } from "@/app/(user)/addproperty/components/interface";
 import { houseInf } from "@/utils/interfaces";
+import { useState,useEffect } from "react";
 import { FaCheck } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 
 interface Props {
   house: houseInf;
+  amenityData : Amenity[];
 }
 
-const features = ({ house }: Props) => {
+const Features = ({ house, amenityData }: Props) => {
+  
+  const [amenityUpdate,setAmenityUpdate] = useState([])
+
+  useEffect(()=>{
+    function work(){
+        let arr : any = []
+        let last = amenityData.length > 0 ? amenityData[0].amenity : ""
+        let all : any = []
+        amenityData.map((data : any)=> {
+          if(data.amenity != last) {
+            all.push(arr)
+            last = data.amenity
+            arr = []
+          }
+          arr.push(data)
+        })
+        all.push(arr)
+        console.log(all)
+        setAmenityUpdate(all)
+    }
+    work()
+
+  },[amenityData])
+
   return (
     <div className="mt-8 h-fit ">
       <div className="text-3xl font-semibold">what's available ?</div>
@@ -249,6 +276,28 @@ const features = ({ house }: Props) => {
               </li>
             )} */}
           </ul>
+          {house.real_estate_id && 
+            <div className="w-full ">
+              <div className="text-lg mt-5 font-semibold mb-2">
+                Additional Features
+              </div>
+              {amenityUpdate.map((cata : any,ind : number) => ( 
+                cata.length > 0 &&
+                <div key={ind}>
+                      <div>{cata[0].amenity}</div>
+                      
+                      {cata.map((data : any,ind : number)=>(
+                        <ul key={ind} className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+                            <li className="before:content-['\2022']  before:mr-2 capitalize">
+                              {"circulation" == cata[0].amenity ? data.area : `Type ${ind + 1} Area ${data.area}`}
+                            </li>
+                        </ul>
+                    ))}
+                </div>
+              ))}
+
+            </div>
+          }
         </div>
       </div>
 
@@ -356,4 +405,5 @@ const features = ({ house }: Props) => {
   );
 };
 
-export default features;
+export default Features;
+

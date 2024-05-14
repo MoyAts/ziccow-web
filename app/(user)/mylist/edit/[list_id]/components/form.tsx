@@ -11,7 +11,7 @@ import accept from "../../../../../assets/images/goAccept.svg";
 import goImg from "../../../../../assets/images/goBlack.svg";
 import CancelImg from "../../../../../assets/images/cancelentry.svg";
 import { PropertyDetailInf, initialForm, toLocalInf } from "./interface";
-import { useMutation } from "@apollo/client";
+import { useMutation,useQuery } from "@apollo/client";
 import {
   Add_LISTING_NEW,
   UPDATE_EXTRA_FEATURE,
@@ -21,6 +21,8 @@ import {
 import { useSelector } from "react-redux";
 import { getState } from "@/store/features/auth/authSlice";
 import { houseInf } from "@/utils/interfaces";
+import { Amenity } from "@/app/(user)/addproperty/components/interface";
+import { DELETE_REALESTATE_AMENITY, GET_REALESTATE_AMENITY, INSERT_REALESTATE_AMENITY } from "@/graphql/features/realestate";
 
 interface Props {
   house: houseInf;
@@ -33,27 +35,176 @@ const Form = ({ house, list_id }: Props) => {
   const [form, setForm] = useState(toLocalInf(house));
   const [page, setPage] = useState(1);
   const [loading2, setLoading2] = useState(false);
+  let mp : any = {
+    "shop" : "shop",
+    "circulation" : "circulation",
+    "studio" : "bedroom0",
+    "1bedroom" : "bedroom1",
+    "2bedroom" : "bedroom2",
+    "3bedroom" : "bedroom3",
+    "4bedroom" : "bedroom4",
+  }
+  const [amenityNewData,setAmenityNewData] = useState({
+    shop : [""],
+    circulation : "",
+    bedroom0 : [""],
+    bedroom1 : [""],
+    bedroom4 : [""],
+    bedroom3 : [""],
+    bedroom2 : [""],
+  })
+  const [insertAmenity,insertAmenityStatus] = useMutation(INSERT_REALESTATE_AMENITY)
+
   const [updateExtraFeature, extraFeatureStatus] =
     useMutation(UPDATE_EXTRA_FEATURE);
+  
   const [updateListingProperty, listingPropertyStatus] = useMutation(
     UPDATE_LISTING_PROPERTY,
   );
+
+  const [deleteAmenity, deleteAmenityStatus] = useMutation(
+    DELETE_REALESTATE_AMENITY,{
+      variables : {
+        list_id,
+      },
+      onCompleted () {
+        updateAmenity()
+      }
+    },
+    
+  );
+
+  const getAmenityStatus = useQuery(GET_REALESTATE_AMENITY,{
+    variables :{
+      list_id,
+    },
+   
+  })  
+
+
+  const updateAmenity = () => {
+    let amenities : Amenity[] = []
+    let listing_id = list_id
+    if(amenityNewData.circulation.trim().length > 0) {
+      let data : Amenity = {
+        amenity : "circulation",
+        area : amenityNewData.circulation,
+        listing_id,
+      }
+      amenities.push(data)
+    }
+  
+    amenityNewData.shop.map((val : string) => {
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "shop",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    amenityNewData.bedroom0.map((val : string) => {
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "studio",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    amenityNewData.bedroom1.map((val : string) => {
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "1bedroom",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    amenityNewData.bedroom2.map((val : string) => {
+      console.log(val)
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "2bedroom",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    amenityNewData.bedroom3.map((val : string) => {
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "3bedroom",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    amenityNewData.bedroom4.map((val : string) => {
+      if(val.trim().length < 1) return
+      let data : Amenity = {
+        amenity : "4bedroom",
+        area : val,
+        listing_id,
+      }
+      amenities.push(data)
+    })
+    insertAmenity({
+      variables : {
+        datas : amenities,
+      }
+    })
+  }
+
+  console.log(amenityNewData,"************")
+
+  
+  const [checked,setChecked] = useState(true)
+ 
+  if(getAmenityStatus.data && checked){
+    setChecked(false)  
+    if(getAmenityStatus.data.real_estate_amenity.length > 0){
+      let newData : any = amenityNewData
+      getAmenityStatus.data.real_estate_amenity.map((d : any)=>{
+        if(d.amenity == 'circulation'){
+          newData[mp[d.amenity]] = d.area
+        } else if(newData[mp[d.amenity]][0] == ""){
+          newData[mp[d.amenity]][0] = d.area
+        } else{
+          newData[mp[d.amenity]].push(d.area) 
+        }
+      })
+      console.log("LLLL+++++LLL",newData)
+      setAmenityNewData(newData)
+    } 
+  }
+
+  
   const [sendList, { loading, error, data, reset }] = useMutation(UPDATE_LIST);
 
-  if (data && extraFeatureStatus.data && listingPropertyStatus.data) {
+  if (data && extraFeatureStatus.data && listingPropertyStatus.data && ((!form.realEstateId) || insertAmenityStatus.data)) {
     reset();
     extraFeatureStatus.reset();
     alert("Listing updated successfully!!!");
     // page != 3 && setPage(3);
   }
+
+  
+
   if (loading || extraFeatureStatus.loading) {
     console.log("Loading");
   }
 
   if (error) {
-    console.log(error);
     alert(error?.graphQLErrors[0]?.message ?? "Something goes Wrong");
     reset();
+  }
+  if(deleteAmenityStatus.error){
+    alert(deleteAmenityStatus.error?.graphQLErrors[0]?.message ?? "Something goes Wrong while deleting");
+
+  }
+  if(insertAmenityStatus.error){
+    alert(insertAmenityStatus.error?.graphQLErrors[0]?.message ?? "Something goes Wrong while inserting data");
   }
 
   if (extraFeatureStatus.error) {
@@ -198,6 +349,7 @@ const Form = ({ house, list_id }: Props) => {
         },
       },
     });
+    form.realEstateId && deleteAmenity()
     setLoading2(false);
   };
 
@@ -260,9 +412,15 @@ const Form = ({ house, list_id }: Props) => {
             updateList={updateList}
             setForm={setForm}
             form={form}
+            amenityNewData={amenityNewData} 
+            setAmenityNewData={setAmenityNewData} 
           />
         ) : page == 2 ? (
-          <PropertyManagment setPage={() => {}} setForm={setForm} form={form} />
+          <PropertyManagment 
+            setPage={() => {}} 
+            setForm={setForm} 
+            form={form} 
+          />
         ) : (
           <Confirmed listing_id={data.insert_listing.returning[0].listing_id} />
         )}

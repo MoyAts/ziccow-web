@@ -61,3 +61,27 @@ export const INSERT_REALESTATE_AMENITY = gql`
   }
 }
 `;
+
+
+export const GET_REALESTATE_AMENITY = gql`
+  query a($list_id : uuid!) {
+    real_estate_amenity(where: {listing_id: {_eq: $list_id}}, order_by: {created_at: asc}) {
+      amenity
+      area
+      uuid
+      listing {
+        listing_id
+        property_name
+      }
+      created_at
+    }
+}
+`;
+
+
+export const DELETE_REALESTATE_AMENITY = gql`
+  mutation A($list_id : uuid!){
+  delete_real_estate_amenity(where :{listing_id :{ _eq : $list_id}}) {
+ 		affected_rows
+  }}
+`;

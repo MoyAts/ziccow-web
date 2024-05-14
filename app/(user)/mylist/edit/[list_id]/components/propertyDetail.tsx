@@ -22,13 +22,17 @@ import OptionInput3 from "./optionInput3";
 import OptionInput4 from "./optionInput4";
 import OptionInput5 from "./optionInput5";
 import PropertyManagment from "./propertyManagment";
+import AmenityEdit from "./amenityEdit";
 interface MainProps {
   setForm: Function;
   form: PropertyDetailInf;
   updateList: any;
+  amenityNewData : any; 
+  setAmenityNewData : any; 
+
 }
 
-const PropertyDetail = ({ form, setForm, updateList }: MainProps) => {
+const PropertyDetail = ({ form, setForm, updateList, amenityNewData, setAmenityNewData }: MainProps) => {
   const state = useSelector(getState);
   const [err, setErr] = useState<string | null>(null);
   const errRef = useRef<any>(null);
@@ -199,6 +203,12 @@ const PropertyDetail = ({ form, setForm, updateList }: MainProps) => {
           placeholder="Property Managment"
           value={form.propertyManagment}
         />
+        {state.user.internal_agent && 
+          <AmenityEdit 
+            amenityNewData={amenityNewData} 
+            setAmenityNewData={setAmenityNewData} 
+          />
+        }
         {form.propertyManagment == "Rental" ? (
           <div className="flex justify-between gap-5">
             <CustomeInput

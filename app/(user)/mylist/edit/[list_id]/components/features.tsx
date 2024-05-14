@@ -5,7 +5,7 @@ import { PropertyDetailInf } from "./interface";
 import { FaCheck } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 
-const features = ({ form }: { form: PropertyDetailInf }) => {
+const Features = ({ form }: { form: PropertyDetailInf }) => {
   return (
     <div className="mt-8 h-fit text-lightGray ">
       <div className="text-2xl  font-semibold">Facts & Features</div>
@@ -309,4 +309,4 @@ const features = ({ form }: { form: PropertyDetailInf }) => {
   );
 };
 
-export default features;
+export default Features;

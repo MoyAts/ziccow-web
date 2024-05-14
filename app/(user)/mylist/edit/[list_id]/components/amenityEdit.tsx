@@ -3,24 +3,27 @@ import { PropertyDetailInf } from './interface';
 import { IoMdAdd } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import CustomeInput from '@/app/_components/customeInput';
+import { Amenity } from '@/app/(user)/addproperty/components/interface';
+
 interface Props{
-  setForm: Function;
-  form: PropertyDetailInf;
+    setAmenityNewData: Function;
+    amenityNewData: any;
 }
 
-const Amenity = ({ setForm, form } : Props) => {
-
+const AmenityEdit = ({ setAmenityNewData, amenityNewData } : Props) => {
+ 
   const addBedroom = (ind : 0 | 1 | 2 | 3 | 4)=>{
-    setForm((form : any) => {
-      let d = [...form["bedroom"+ind],""]
+    setAmenityNewData((data : any) => {
+      let d = [...data["bedroom"+ind],""]
       if(d.length >= 5){
-        return form
+        return d
       }
-      return {...form,["bedroom"+ind] : d}
+      console.log({...d,["bedroom"+ind] : d})
+      return {...data,["bedroom"+ind] : d}
     })
   }
   const updateBedroom = (ind : 0 | 1 | 2 | 3 | 4,ind2 : number,value : any)=>{
-    setForm((form : any) => {
+    setAmenityNewData((form : any) => {
       let d = [...form["bedroom"+ind]]
       d[ind2] = value
       console.log(d,value)
@@ -28,7 +31,7 @@ const Amenity = ({ setForm, form } : Props) => {
     })
   }
   const add = (value : string)=>{
-    setForm((form : any) => {
+    setAmenityNewData((form : any) => {
       let d = [...form[value],""]
       if(d.length >= 5){
         return form
@@ -37,7 +40,7 @@ const Amenity = ({ setForm, form } : Props) => {
     })
   }
   const update = (ty : string,ind : number,value : any)=>{
-    setForm((form : any) => {
+    setAmenityNewData((form : any) => {
       let d = [...form[ty]]
       d[ind] = value
       return {...form,[ty] : d}
@@ -45,7 +48,7 @@ const Amenity = ({ setForm, form } : Props) => {
   }
 
   const deleteBedroom = (num : number,ind : number) => {
-    setForm((form : any) => {
+    setAmenityNewData((form : any) => {
       let data = form["bedroom"+num].filter((_:any,i :number)=> i != ind)
       if(data.length == 0){
         data = ['']
@@ -54,7 +57,7 @@ const Amenity = ({ setForm, form } : Props) => {
     })
   }
   const deleteShop = (ind : number) => {
-    setForm((form : any) => {
+    setAmenityNewData((form : any) => {
       let data = form.shop.filter((_:any,i :number)=> i != ind)
       if(data.length == 0){
         data = ['']
@@ -63,7 +66,7 @@ const Amenity = ({ setForm, form } : Props) => {
     })
   }
   const deleteCirculation= (ind : number) => {
-    setForm((form : any) => {
+    setAmenityNewData((form : any) => {
       let data = form.circulation.filter((_:any,i :number)=> i != ind)
       if(data.length == 0){
         data = ['']
@@ -77,7 +80,6 @@ const Amenity = ({ setForm, form } : Props) => {
       
       <div className='w-full flex flex-col gap-2  rounded-lg '>
         <div className='font-semibold'>Home Type</div>
-
         <div className='grid grid-cols-2  max-mobile:grid-cols-1 gap-4'>
           
           <div className='flex flex-col bg-white ps-5 border p-1 rounded-lg'>
@@ -90,7 +92,7 @@ const Amenity = ({ setForm, form } : Props) => {
                   {<IoMdAdd />}
                 </button>
               </div>
-              {form.bedroom0.map((val,ind)=>(
+              {amenityNewData.bedroom0.map((val : any,ind : any)=>(
                   <div key={ind} className='flex gap-5 ps-5 mt-2'>
                     <div className='my-auto text-sm'>Type {ind + 1}</div>
                     <input 
@@ -124,7 +126,7 @@ const Amenity = ({ setForm, form } : Props) => {
                 {<IoMdAdd />}
               </button>
             </div>
-            {form.bedroom1.map((val,ind)=>(
+            {amenityNewData.bedroom1.map((val : any,ind : any)=>(
                 <div key={ind} className='flex gap-5 ps-5 mt-2'>
                   <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
@@ -157,7 +159,7 @@ const Amenity = ({ setForm, form } : Props) => {
                 {<IoMdAdd />}
               </button>
             </div>
-            {form.bedroom2.map((val,ind)=>(
+            {amenityNewData.bedroom2.map((val : any,ind : any)=>(
                 <div key={ind} className='flex gap-5 ps-5 mt-2'>
                   <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
@@ -191,7 +193,7 @@ const Amenity = ({ setForm, form } : Props) => {
                 {<IoMdAdd />}
               </button>
             </div>
-            {form.bedroom3.map((val,ind)=>(
+            {amenityNewData.bedroom3.map((val : any,ind : any)=>(
                 <div key={ind} className='flex gap-5 ps-5 mt-2'>
                   <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
@@ -225,7 +227,7 @@ const Amenity = ({ setForm, form } : Props) => {
                 {<IoMdAdd />}
               </button>
             </div>
-            {form.bedroom4.map((val,ind)=>(
+            {amenityNewData.bedroom4.map((val : any,ind : any)=>(
                 <div key={ind} className='flex gap-5 ps-5 mt-2'>
                   <div className='my-auto text-sm'>Type {ind + 1}</div>
                   <input 
@@ -265,7 +267,7 @@ const Amenity = ({ setForm, form } : Props) => {
                   {<IoMdAdd />}
                 </button>
               </div>
-              {form.shop.map((val,ind)=>(
+              {amenityNewData.shop.map((val : any,ind : any)=>(
                   <div key={ind} className='flex gap-5 ps-5 mt-2'>
                     <div className='my-auto text-sm'>Type {ind + 1}</div>
                     <input 
@@ -295,9 +297,9 @@ const Amenity = ({ setForm, form } : Props) => {
       </div>
       
       <CustomeInput
-          value={form.circulation}
+          value={amenityNewData.circulation}
           onChange={({ target } : any)=>{
-            setForm((d : any) => ({...d,"circulation"  : target.value}))
+            setAmenityNewData((d : any) => ({...d,"circulation"  : target.value}))
           }}
           label="Circulation"
           name={"locationDetail"}
@@ -317,7 +319,7 @@ const Amenity = ({ setForm, form } : Props) => {
                   {<IoMdAdd />}
                 </button>
               </div>
-              {form.circulation.map((val,ind)=>(
+              {form.circulation.map((val : any,ind : any)=>(
                   <div key={ind} className='flex gap-5 ps-5 mt-2'>
                     <div className='my-auto text-sm'>Type {ind + 1}</div>
                     <input 
@@ -349,4 +351,4 @@ const Amenity = ({ setForm, form } : Props) => {
   )
 }
 
-export default Amenity
+export default AmenityEdit

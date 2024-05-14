@@ -257,3 +257,8 @@ export const toLocalInf = (house: houseInf): PropertyDetailInf => {
     description: house.description,
   };
 };
+
+
+export const toLocalAmenityInf = () =>{
+
+}

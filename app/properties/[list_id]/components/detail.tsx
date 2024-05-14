@@ -41,6 +41,7 @@ import {
 import { useSelector } from "react-redux";
 import { AuthInf, getState } from "@/store/features/auth/authSlice";
 import Notification from "@/app/_components/notification";
+import { GET_REALESTATE_AMENITY } from "@/graphql/features/realestate";
 interface Props {
   house: houseInf;
   list_id: string;
@@ -69,6 +70,23 @@ const Detail = ({ house, list_id }: Props) => {
     },
     fetchPolicy: "no-cache",
   });
+
+  const amenityStatus = useQuery(GET_REALESTATE_AMENITY,{
+    variables : { 
+      list_id,
+    },
+  })
+
+  if(amenityStatus.data){
+    console.log("AAAAAAAA",amenityStatus.data)
+    // real_estate_amenity
+  }
+  if(amenityStatus.loading){
+    console.log("KKKKK")
+  }
+  if(amenityStatus.error){
+    console.error(amenityStatus.error)
+  }
 
   const saveQueryStatus = useQuery(GET_NUMBER_OF_SAVES, {
     variables: {
@@ -295,7 +313,7 @@ const Detail = ({ house, list_id }: Props) => {
           {house?.matterport_link && (
             <MatterPortEmbed link={house?.matterport_link} height={400} />
           )}
-          <Features house={house} />
+          <Features amenityData={amenityStatus?.data?.real_estate_amenity ?? []} house={house} />
           {/* <Nearby /> */}
         </div>
         <div className="w-5/12 flex flex-col">
@@ -330,7 +348,7 @@ const Detail = ({ house, list_id }: Props) => {
           />
         )}
         {house?.owner && <Broker house={house} />}
-        <Features house={house} />
+        <Features amenityData={amenityStatus?.data?.real_estate_amenity ?? []} house={house} />
         <AddComment
           listing_id={house?.listing_id}
           broker_id={house.owner?.user_id}

@@ -12,6 +12,7 @@ import CheckBoxDiv from "./checkboxdiv";
 import ImagePicker from "./imagePicker";
 import { PropertyDetailInf, initialForm } from "./interface";
 import Checkboxdiv from "./checkboxdiv";
+import AmenityEdit from "./amenityEdit"
 
 interface Props {
   setForm: Function;
@@ -19,7 +20,8 @@ interface Props {
   setPage: any;
 }
 
-const PropertyManagment = ({ form, setForm, setPage }: Props) => {
+const PropertyManagment = ({ form, setForm, setPage}: Props) => {
+  
   const [err, setErr] = useState<null | string>(null);
   const [isRental, setIsRental] = useState<boolean | null>(null);
   const errRef = useRef<any>(null);
@@ -114,6 +116,8 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
             }))
           }
         />
+
+        {/* {JSON.stringify(amenityNewData)} */}
 
         <Checkboxdiv
           label="I am the owner"
@@ -271,6 +275,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
         isRequired={false}
         value={form.commission}
       />
+
 
       {/* <div className="text-xl mb-4 mt-8">Upload Image(s)</div>
       <div className="mt-5 grid grid-cols-2 max-mobile:grid-cols-1  max-mobile:h-fit gap-5">
