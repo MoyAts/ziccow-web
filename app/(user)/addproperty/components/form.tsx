@@ -21,7 +21,7 @@ const Form = () => {
   const state = useSelector(getState);
   const errRef = useRef<any>(null);
   const [form, setForm] = useState(initialForm);
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(0);
   const [loading2, setLoading2] = useState(false);
   const [sendList, { loading, error, data, reset }] =
     useMutation(Add_LISTING_NEW);
