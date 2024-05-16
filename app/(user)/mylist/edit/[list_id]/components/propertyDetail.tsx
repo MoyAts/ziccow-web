@@ -170,6 +170,18 @@ const PropertyDetail = ({ form, setForm, updateList, amenityNewData, setAmenityN
         divClass="mb-5"
         isRequired={true}
       />
+    {
+      state.user.internal_agent  && 
+        <CustomeInput
+          value={form.projectName}
+          onChange={setChange}
+          label="Project Name"
+          name={"projectName"}
+          placeholder="Project Name"
+          divClass="mb-5"
+          isRequired={false}
+        />
+      }
 
       <OptionInput5
         label="Select the Home Address you’re going to sell/rent."
@@ -666,8 +678,8 @@ const PropertyDetail = ({ form, setForm, updateList, amenityNewData, setAmenityN
       </p>
       <PropertyManagment form={form} setForm={setForm} setPage={() => {}} />
 
-      <div className="flex mt-0 justify-between ">
-        <button
+      <div className="flex mt-0 flex-row-reverse ">
+        {/* <button
           onClick={() => {
             const result = confirm(
               "Every thing you added will be removed. Are you sure you want to cancel All!",
@@ -680,13 +692,13 @@ const PropertyDetail = ({ form, setForm, updateList, amenityNewData, setAmenityN
           className="text-mainBlue"
         >
           Cancel
-        </button>
+        </button> */}
         <button
           onClick={validate}
           className="px-5 py-3 rounded-lg bg-mainBlue hover:bg-blue-500 text-white flex gap-3"
         >
           <Image src={goImg} className="my-auto" alt="" />
-          <p>Next Step</p>
+          <p>Save</p>
         </button>
       </div>
     </div>

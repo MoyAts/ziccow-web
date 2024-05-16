@@ -31,6 +31,14 @@ const generalInformation = ({ house }: Props) => {
           <Image src={hashTagImg} className="w-5  my-auto mt-1" alt="" />
           <p>Property Id: {house.property_number ?? " N/A"}</p>
         </div>
+        
+        {house.real_estate_id && (
+          <div className="flex gap-5 border-b px-2 pb-4 ">
+            <Image src={propertyImg} className="w-5  my-auto mt-1" alt="" />
+            <p>Project {house.project_name}</p>
+          </div>
+        )}
+
         {house.house_type?.type_name && (
           <div className="flex gap-5 border-b px-2 pb-4 ">
             <Image src={propertyImg} className="w-5  my-auto mt-1" alt="" />
@@ -49,6 +57,8 @@ const generalInformation = ({ house }: Props) => {
           </div>
         )}
 
+       
+
         <div className="flex gap-5 border-b px-2 pb-4 ">
           <Image src={img5} className="w-5  my-auto mt-1" alt="" />
           <p>
@@ -56,15 +66,18 @@ const generalInformation = ({ house }: Props) => {
           </p>
         </div>
 
-        <div className="flex gap-5 border-b px-2 pb-4 ">
+        <div className="flex gap-5  px-2  ">
           <Image src={img4} className="w-5  my-auto mt-1" alt="" />
           <p>{house.listing_property.bathroom_count} Bathroom</p>
         </div>
 
-        <div className="flex gap-5 px-2 pb-4 ">
-          <Image src={img3} className="w-5  my-auto mt-1" alt="" />
-          <p>{house.listing_property.bedroom_count} Bedroom</p>
-        </div>
+        {!house.real_estate_id && 
+          <div className="flex gap-5 border-t px-2 pt-4 ">
+            <Image src={img3} className="w-5  my-auto mt-1" alt="" />
+            <p>{house.listing_property.bedroom_count} Bedroom</p>
+          </div>
+        }
+        
       </div>
     </div>
   );

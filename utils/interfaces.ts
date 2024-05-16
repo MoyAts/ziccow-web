@@ -8,6 +8,7 @@ export interface houseInf {
   created_at: string;
   sale_price: string;
   sale_type: string;
+  project_name : string;
   status: string;
   description: string;
   property_number: string;

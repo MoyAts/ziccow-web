@@ -39,7 +39,27 @@ const Features = ({ house, amenityData }: Props) => {
     <div className="mt-8 h-fit ">
       <div className="text-3xl font-semibold">what's available ?</div>
       <div className="flex justify-between max-sm:flex-col max-sm:gap-2  mt-5">
-        <div className="w-full ">
+       
+       {house.real_estate_id && 
+            <div className="w-full ">
+              <div className="text-lg mt-5 font-semibold mb-2">
+                Additional Features
+              </div>
+              {amenityUpdate.map((cata : any,ind : number) => ( 
+                cata.length > 0 &&
+                <div key={ind}>
+                      <div>{cata[0].amenity}</div>
+                      
+                      {cata.map((data : any,ind : number)=>(
+                        <ul key={ind} className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+                            <li className="before:content-['\2022']  before:mr-2 capitalize">
+                              {"circulation" == cata[0].amenity ? data.area : `Type ${ind + 1} Area ${data.area}`}
+                            </li>
+                        </ul>
+                    ))}
+                </div>
+              ))}
+               {/* <div className="w-full "> */}
           <div className="text-lg mt-5 font-semibold my">Interior</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             <li className="before:content-['\2022']  before:mr-2">
@@ -78,16 +98,11 @@ const Features = ({ house, amenityData }: Props) => {
                     </li> */}
           </ul>
 
-          <div className="text-lg mt-5 font-semibold my">
-            Other interior features
-          </div>
-          <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            <li className="before:content-['\2022']  before:mr-2">
-              Built-up area: {house.listing_property.square_ft} M<sup>2</sup>
-            </li>
-          </ul>
-        </div>
+          
+        {/* </div> */}
 
+            </div>
+          }
         <div className="w-full ">
           <div className="text-lg mt-5 font-semibold my">Type & style</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
@@ -105,7 +120,7 @@ const Features = ({ house, amenityData }: Props) => {
             </li>
           </ul>
 
-          <div className="text-lg mt-5 font-semibold my">Payments</div>
+          <div className="text-lg mt-5 font-semibold my">Financial Information</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             <li className="before:content-['\2022']  before:mr-2">
               Conveyancing payment : {house.conveyancing_payment} Birr
@@ -276,28 +291,88 @@ const Features = ({ house, amenityData }: Props) => {
               </li>
             )} */}
           </ul>
-          {house.real_estate_id && 
-            <div className="w-full ">
-              <div className="text-lg mt-5 font-semibold mb-2">
-                Additional Features
-              </div>
-              {amenityUpdate.map((cata : any,ind : number) => ( 
-                cata.length > 0 &&
-                <div key={ind}>
-                      <div>{cata[0].amenity}</div>
-                      
-                      {cata.map((data : any,ind : number)=>(
-                        <ul key={ind} className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-                            <li className="before:content-['\2022']  before:mr-2 capitalize">
-                              {"circulation" == cata[0].amenity ? data.area : `Type ${ind + 1} Area ${data.area}`}
-                            </li>
-                        </ul>
-                    ))}
-                </div>
-              ))}
+          
+          {/* <div className="text-lg mt-5 font-semibold my">
+            Other interior features
+          </div> */}
+          {/* <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+            <li className="before:content-['\2022']  before:mr-2">
+              Built-up area: {house.listing_property.square_ft} M<sup>2</sup>
+            </li>
+          </ul> */}
+         
+         {/* <div className="w-full "> */}
+          {/* <div className="text-lightGray font-semibold text-xl">Community & neighborhood</div> */}
+          <div className="text-lg  font-semibold  mt-5">
+            Community and neighborhood
+          </div>
+          <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+            {/* <li className="before:content-['\2022']  before:mr-2">
+                            Near a local park
+                        </li> */}
 
+            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+              <p>College and Universities :</p>
+              {house.extra_features?.college_and_uni ? (
+                <FaCheck className="my-auto text-green-600" />
+              ) : (
+                <IoCloseSharp className="my-auto text-red-600" />
+              )}
+            </li>
+            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+              <p>hospital :</p>
+              {house.extra_features?.hospital ? (
+                <FaCheck className="my-auto text-green-600" />
+              ) : (
+                <IoCloseSharp className="my-auto text-red-600" />
+              )}
+            </li>
+            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+              <p>Secondary School :</p>
+              {house.extra_features?.secondary_school ? (
+                <FaCheck className="my-auto text-green-600" />
+              ) : (
+                <IoCloseSharp className="my-auto text-red-600" />
+              )}
+            </li>
+            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+              <p>Primary School :</p>
+              {house.extra_features?.primary_school ? (
+                <FaCheck className="my-auto text-green-600" />
+              ) : (
+                <IoCloseSharp className="my-auto text-red-600" />
+              )}
+            </li>
+            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+              <p>Supermarket :</p>
+              {house.extra_features?.supermarket ? (
+                <FaCheck className="my-auto text-green-600" />
+              ) : (
+                <IoCloseSharp className="my-auto text-red-600" />
+              )}
+            </li>
+            {/* <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
+              <p>Unique Material :</p>
+              {house.extra_features?.unique_material ? (
+                <FaCheck className="my-auto text-green-600" />
+              ) : (
+                <IoCloseSharp className="my-auto text-red-600" />
+              )}
+            </li> */}
+          </ul>
+          {house.extra_features?.other_community && (
+            <div className=" mt-5 flex gap-2 flex-wrap">
+              <p className="font-semibold">Other community specifications</p>
+              <ul className="ps-5">
+                <li className="text-lightGray">
+                  {house.extra_features?.other_community}
+                </li>
+              </ul>
             </div>
-          }
+          )}
+        {/* </div> */}
+          
+          
         </div>
       </div>
 

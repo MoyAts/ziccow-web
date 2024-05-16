@@ -5,6 +5,8 @@ import Features from "./features";
 import goImg from "../../../../../assets/images/go.svg";
 import dropimg from "../../../../../assets/images/dropimg.svg";
 import { PropertyDetailInf } from "./interface";
+import { useSelector } from "react-redux";
+import { getState } from "@/store/features/auth/authSlice";
 interface MainProps {
   addList: any;
   setForm: Function;
@@ -14,6 +16,7 @@ interface MainProps {
 
 const Confirmation = ({ addList, setForm, form, loading }: MainProps) => {
   const ref = useRef<any>();
+  const state = useSelector(getState)
   useEffect(() => {
     ref &&
       ref.current &&
@@ -57,11 +60,14 @@ const Confirmation = ({ addList, setForm, form, loading }: MainProps) => {
 
       <div className="mt-5 flex flex-col gap-3">
         <div className="text-3xl max-mobile:text-xl text-lightGray">
-          About the Property
+          About the Propertys
         </div>
-        <Info detail="Apartment, High rise" topic="Home Type" />
+        {/* <Info detail="Apartment, High rise" topic="Home Type" /> */}
         <Info detail={form.address ?? ""} topic="Address" />
         <Info detail={form.yearBuilt} topic="Year Built" />
+       
+        {JSON.stringify(state.user.internal_agent)}
+
         <Info
           detail={form.propertyManagment ?? ""}
           topic="Property Management"

@@ -181,6 +181,7 @@ export const GET_LIST_BY_ID = gql`
       real_estate_id
       listing_property_id
       property_name
+      project_name
       type_of_person
       extra_features_id
       owner {

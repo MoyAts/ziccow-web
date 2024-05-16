@@ -17,9 +17,11 @@ const Features = ({ form }: { form: PropertyDetailInf }) => {
           <div className="text-lightGray font-semibold text-xl">Interior</div>
           <div className="text-lg mt-5 font-semibold my">Facilities</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            <li className="before:content-['\2022'] capitalize  before:mr-2">
-              Bedrooms: {form.facilities.numOfBedrooms}
-            </li>
+            {state.user.internal_agent == false && 
+              <li className="before:content-['\2022'] capitalize  before:mr-2">
+                Bedrooms: {form.facilities.numOfBedrooms}
+              </li>
+            }
             <li className="before:content-['\2022'] capitalize  before:mr-2">
               Bathrooms: {form.facilities.numOfBathrooms}
             </li>

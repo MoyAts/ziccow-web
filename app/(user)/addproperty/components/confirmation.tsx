@@ -5,6 +5,8 @@ import Features from "./features";
 import goImg from "../../../assets/images/go.svg";
 import dropimg from "../../../assets/images/dropimg.svg";
 import { PropertyDetailInf } from "./interface";
+import { useSelector } from "react-redux";
+import { getState } from "@/store/features/auth/authSlice";
 interface MainProps {
   addList: any;
   setForm: Function;
@@ -13,6 +15,8 @@ interface MainProps {
 }
 
 const Confirmation = ({ addList, setForm, form, loading }: MainProps) => {
+  
+  const state = useSelector(getState)
   const ref = useRef<any>();
   useEffect(() => {
     ref &&
@@ -67,6 +71,9 @@ const Confirmation = ({ addList, setForm, form, loading }: MainProps) => {
           topic="Property Management"
         />
         <Info detail={form.currency ?? ""} topic="Currency" />
+        { 
+         state.user.internal_agent && <Info detail={form.projectName} topic={"Project Name"} />
+        }
         {form.propertyManagment == "Rental" ? (
           <Info
             detail={

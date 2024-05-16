@@ -77,16 +77,6 @@ const Detail = ({ house, list_id }: Props) => {
     },
   })
 
-  if(amenityStatus.data){
-    console.log("AAAAAAAA",amenityStatus.data)
-    // real_estate_amenity
-  }
-  if(amenityStatus.loading){
-    console.log("KKKKK")
-  }
-  if(amenityStatus.error){
-    console.error(amenityStatus.error)
-  }
 
   const saveQueryStatus = useQuery(GET_NUMBER_OF_SAVES, {
     variables: {
