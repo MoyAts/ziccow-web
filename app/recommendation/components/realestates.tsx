@@ -135,16 +135,29 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
   error && console.log(error,"AA")
   data && console.log(data,"DD")
   loading && console.log(loading,"LL")
-  const[rating,setRating] = useState(0)
-  if(data && rating == 0 ){
-    const arr = data.real_estate_review
+  const[rating,setRating] = useState(-1)
+  // if(data && rating == -1 ){
+  //   const arr = data.real_estate_review
+  //   let val = 0
+  //   arr.map((r : any)=>{
+  //     val += r.rating
+  //   })
+  //   alert(arr.length)
+
+  //   let num = Math.floor(val / arr.length)
+  //   setRating(num)
+  // }
+
+  useEffect(()=>{
+    const arr = data?.real_estate_review ?? []
     let val = 0
     arr.map((r : any)=>{
       val += r.rating
     })
     let num = Math.floor(val / arr.length)
-    setRating(Math.max(1,num))
-  }
+    setRating(num)
+  },[data])
+
   return (
     <div className="w-full bg-lightBg ">
       <div className="h-fit w-full max-w-[1700px] pb-20 mx-auto px-20  max-tablet:px-5 pt-10">
