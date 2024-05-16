@@ -188,7 +188,6 @@ api Integration
     - on add a new property page correct the  message on the answering section 
     - Share icons should go away on click outside
     - allow brokers/ owners to edit there listing info after they post it 
-  - remaining
    
    
     - Circulation and shop
@@ -207,12 +206,25 @@ api Integration
       7,hulum bota yalu text and photowoch yistekskelu based on the document I pin on the top
       8,crm lay yetesetut comentoch yistekskelu
    
+  - remaining
+    - preview
+    - bedroom for project name
+    - On real estate page when u try to go back after u see a specific listing it doesn't u wedeneberkibet bota
+    -Today's meeting was about 
+    1. Correction on search engine including cancel search condition fitures 
+    2. Soled / rented on normal listing 
+    3. On buy property page in  aria filter add below next to 125m2 . "125m2 -below 
+    4.real estate search for real estate page and my listing page
+    5. Aria filter for real estate page is in sq ft change it to m2
+    6. On real estate page site filter is not working or substitute it with another filter 
+    7. Real estate resting not working on both website and crm 
+    8.on crm, property listing put a link to see details about property before chagening the status 
+    9. Correction on the property info list on both real estate and normal listing
+
+
+
+
     - edit
-   
-   
-   
-   
-   
     - add text on the home page
     - the counter change from 250 chars to 300 for description
 
@@ -221,7 +233,6 @@ api Integration
     - bank loan (whatsapp)
     - popular and descount properties
     * New
- 	
     * not now
     * not understood
     

@@ -156,7 +156,7 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
             <div className="flex gap-2   mt-5 text-2xl max-tablet:text-xl max-tablet:mb-5">
               <span className="text-mainBlue">{propertyType ?? "Unknown"}</span>
               <div className="flex gap-2 mt-1 self-center align-middle ">
-                {data && <BuildStar num={3}  />}
+                {data && <BuildStar num={rating}  />}
                 {loading && "..."}
                 {error && ""}
               </div>
