@@ -347,17 +347,18 @@ const PropertyDetail = ({ form, setForm, updateList, amenityNewData, setAmenityN
         <MdNavigateNext className="text-3xl my-auto text-mainBlue -rotate-90" />
       </div>
       <div className="grid grid-cols-2 gap-5 mb-8 w-full max-tablet:grid-cols-1">
-        <CustomeInputNumber
-          onAdd={() =>
-            updateFacilities("numOfBedrooms", form.facilities.numOfBedrooms + 1)
-          }
-          onSub={() =>
-            updateFacilities("numOfBedrooms", form.facilities.numOfBedrooms - 1)
-          }
-          value={form.facilities.numOfBedrooms}
-          preImg={img3}
-          label={"No. of Bedrooms"}
-        />
+        {!form.realEstateId && 
+          <CustomeInputNumber
+            onAdd={() =>
+              updateFacilities("numOfBedrooms", form.facilities.numOfBedrooms + 1)
+            }
+            onSub={() =>
+              updateFacilities("numOfBedrooms", form.facilities.numOfBedrooms - 1)
+            }
+            value={form.facilities.numOfBedrooms}
+            preImg={img3}
+            label={"No. of Bedrooms"}
+        />}
         <CustomeInputNumber
           onAdd={() =>
             updateFacilities(

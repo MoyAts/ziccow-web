@@ -296,10 +296,10 @@ const Features = ({ form }: { form: PropertyDetailInf }) => {
               Government Payment : {form.govPaymentAshura}
             </li>
             <li className="before:content-['\2022'] capitalize  before:mr-2">
-              Leasing payment : {form.leasingPayment}
+              Leasing/Property Tax : {form.leasingPayment}
             </li>
             <li className="before:content-['\2022'] capitalize  before:mr-2">
-              Conveyancing Payment : {form.conveyancingPayment}
+              Bank Loan : {form.conveyancingPayment}
             </li>
             <li className="before:content-['\2022'] capitalize  before:mr-2">
               Commission Payment: {form.commission} %
@@ -317,15 +317,16 @@ const Features = ({ form }: { form: PropertyDetailInf }) => {
             <div className="text-lg  font-semibold my">
               Other informations
             </div>  
-            <div className="mt-2">Circulation</div>
+           {form.circulation && <> <div className="mt-2">Circulation</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
               <li  className="before:content-['\2022'] capitalize  before:mr-2">
                 {form.circulation}
               </li>
-            </ul>
+            </ul></>}
             <div className="mt-2">Studio</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {form.bedroom0.map((data,ind)=>(
+            {(form.bedroom0[0] != "" || form.bedroom0.length > 1) &&
+             form.bedroom0.map((data,ind)=>(
               data.length > 1 &&
                 <li key={ind} className="before:content-['\2022'] capitalize  before:mr-2">
                   Type {ind + 1} : {data} M2
@@ -334,7 +335,8 @@ const Features = ({ form }: { form: PropertyDetailInf }) => {
             </ul>
             <div className="mt-2">1 Bedroom</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {form.bedroom1.map((data,ind)=>(
+            {(form.bedroom1[0] != "" || form.bedroom1.length > 1) && 
+            form.bedroom1.map((data,ind)=>(
               data.length > 1 &&
                 <li key={ind} className="before:content-['\2022'] capitalize  before:mr-2">
                   Type {ind + 1} : {data} M2
@@ -344,7 +346,8 @@ const Features = ({ form }: { form: PropertyDetailInf }) => {
 
             <div className="mt-2">2 Bedroom</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {form.bedroom2.map((data,ind)=>(
+            {(form.bedroom2[0] != "" || form.bedroom2.length > 1) &&
+            form.bedroom2.map((data,ind)=>(
               data.length > 1 &&
                 <li key={ind} className="before:content-['\2022'] capitalize  before:mr-2">
                   Type {ind + 1} : {data} M2
@@ -354,7 +357,8 @@ const Features = ({ form }: { form: PropertyDetailInf }) => {
 
             <div className="mt-2">3 Bedroom</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {form.bedroom3.map((data,ind)=>(
+            {(form.bedroom3[0] != "" || form.bedroom3.length > 1) && 
+              form.bedroom3.map((data,ind)=>(
               data.length > 1 &&
                 <li key={ind} className="before:content-['\2022'] capitalize  before:mr-2">
                   Type {ind + 1} : {data} M2
@@ -364,7 +368,8 @@ const Features = ({ form }: { form: PropertyDetailInf }) => {
 
             <div className="mt-2">4 Bedroom</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {form.bedroom4.map((data,ind)=>(
+            {(form.bedroom4[0] != "" || form.bedroom4.length > 1) && 
+            form.bedroom4.map((data,ind)=>(
               data.length > 1 &&
                 <li key={ind} className="before:content-['\2022'] capitalize  before:mr-2">
                   Type {ind + 1} : {data} M2

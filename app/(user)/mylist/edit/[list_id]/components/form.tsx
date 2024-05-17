@@ -331,7 +331,7 @@ const Form = ({ house, list_id }: Props) => {
           property_number: form.phone,
           property_name: form.propertyName ?? "",
           address_data: form.address,
-        build_date: form.yearBuilt,
+          build_date: form.yearBuilt,
           description: form.description,
           sale_type: form.propertyManagment,
           currency: form.currency,

@@ -43,7 +43,7 @@ const Features = ({ house, amenityData }: Props) => {
        {house.real_estate_id && 
             <div className="w-full ">
               <div className="text-lg mt-5 font-semibold mb-2">
-                Additional Features
+                Avelebel Home Type
               </div>
               {amenityUpdate.map((cata : any,ind : number) => ( 
                 cata.length > 0 &&
@@ -62,9 +62,9 @@ const Features = ({ house, amenityData }: Props) => {
                {/* <div className="w-full "> */}
           <div className="text-lg mt-5 font-semibold my">Interior</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            <li className="before:content-['\2022']  before:mr-2">
+           {!house.real_estate_id && <li className="before:content-['\2022']  before:mr-2">
               Bedrooms: {house.listing_property.bedroom_count}
-            </li>
+            </li>}
             <li className="before:content-['\2022']  before:mr-2">
               Bathrooms: {house.listing_property.bathroom_count}
             </li>
@@ -123,14 +123,14 @@ const Features = ({ house, amenityData }: Props) => {
           <div className="text-lg mt-5 font-semibold my">Financial Information</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
             <li className="before:content-['\2022']  before:mr-2">
-              Conveyancing payment : {house.conveyancing_payment} Birr
+              Bank Loan : {house.conveyancing_payment} Birr
             </li>
 
             <li className="before:content-['\2022']  before:mr-2">
               Goverment Payment ( Ashura ) : {house.gov_payment_ashura} Birr
             </li>
             <li className="before:content-['\2022']  before:mr-2">
-              Leasing Payment : {house.leasing_payment} Birr
+              Leasing / Property tax : {house.leasing_payment} Birr
             </li>
             <li className="before:content-['\2022']  before:mr-2">
               Commission Payment : {house.commission_payment} %
@@ -377,76 +377,7 @@ const Features = ({ house, amenityData }: Props) => {
       </div>
 
       <div className="flex justify-between max-sm:flex-col max-sm:gap-2  ">
-        <div className="w-full ">
-          {/* <div className="text-lightGray font-semibold text-xl">Community & neighborhood</div> */}
-          <div className="text-lg  font-semibold my">
-            Community and neighborhood
-          </div>
-          <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {/* <li className="before:content-['\2022']  before:mr-2">
-                            Near a local park
-                        </li> */}
-
-            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
-              <p>College and Universities :</p>
-              {house.extra_features?.college_and_uni ? (
-                <FaCheck className="my-auto text-green-600" />
-              ) : (
-                <IoCloseSharp className="my-auto text-red-600" />
-              )}
-            </li>
-            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
-              <p>hospital :</p>
-              {house.extra_features?.hospital ? (
-                <FaCheck className="my-auto text-green-600" />
-              ) : (
-                <IoCloseSharp className="my-auto text-red-600" />
-              )}
-            </li>
-            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
-              <p>Secondary School :</p>
-              {house.extra_features?.secondary_school ? (
-                <FaCheck className="my-auto text-green-600" />
-              ) : (
-                <IoCloseSharp className="my-auto text-red-600" />
-              )}
-            </li>
-            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
-              <p>Primary School :</p>
-              {house.extra_features?.primary_school ? (
-                <FaCheck className="my-auto text-green-600" />
-              ) : (
-                <IoCloseSharp className="my-auto text-red-600" />
-              )}
-            </li>
-            <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
-              <p>Supermarket :</p>
-              {house.extra_features?.supermarket ? (
-                <FaCheck className="my-auto text-green-600" />
-              ) : (
-                <IoCloseSharp className="my-auto text-red-600" />
-              )}
-            </li>
-            {/* <li className="before:content-['\2022']  before:mr-2 flex gap-2 flex-wrap">
-              <p>Unique Material :</p>
-              {house.extra_features?.unique_material ? (
-                <FaCheck className="my-auto text-green-600" />
-              ) : (
-                <IoCloseSharp className="my-auto text-red-600" />
-              )}
-            </li> */}
-          </ul>
-          {house.extra_features?.other_community && (
-            <div className=" mt-5 flex gap-2 flex-wrap">
-              <p className="font-semibold">Other community specifications</p>
-              <ul className="ps-5">
-                <li className="text-lightGray">
-                  {house.extra_features?.other_community}
-                </li>
-              </ul>
-            </div>
-          )}
-        </div>
+        
 
         <div className="w-full ">
           {/* <div className="text-lg mt-5 font-semibold my">Property Location</div>

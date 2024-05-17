@@ -35,7 +35,7 @@ const generalInformation = ({ house }: Props) => {
         {house.real_estate_id && (
           <div className="flex gap-5 border-b px-2 pb-4 ">
             <Image src={propertyImg} className="w-5  my-auto mt-1" alt="" />
-            <p>Project {house.project_name}</p>
+            <p>Project: {house.project_name}</p>
           </div>
         )}
 
@@ -47,7 +47,7 @@ const generalInformation = ({ house }: Props) => {
         )}
         <div className="flex gap-5 border-b px-2 pb-4 ">
           <Image src={builtImg} className="w-5  my-auto mt-1" alt="" />
-          <p>Property built on {house.build_date}</p>
+          <p>Property built on: {house.build_date}</p>
         </div>
 
         {house.extra_features?.applicances && (
@@ -62,7 +62,7 @@ const generalInformation = ({ house }: Props) => {
         <div className="flex gap-5 border-b px-2 pb-4 ">
           <Image src={img5} className="w-5  my-auto mt-1" alt="" />
           <p>
-            Built up area {house.listing_property?.square_ft ?? 0} m<sup>2</sup>
+            Built up area: {house.listing_property?.square_ft ?? 0} m<sup>2</sup>
           </p>
         </div>
 
