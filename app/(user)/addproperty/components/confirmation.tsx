@@ -15,8 +15,7 @@ interface MainProps {
 }
 
 const Confirmation = ({ addList, setForm, form, loading }: MainProps) => {
-  
-  const state = useSelector(getState)
+  const state = useSelector(getState);
   const ref = useRef<any>();
   useEffect(() => {
     ref &&
@@ -71,9 +70,9 @@ const Confirmation = ({ addList, setForm, form, loading }: MainProps) => {
           topic="Property Management"
         />
         <Info detail={form.currency ?? ""} topic="Currency" />
-        { 
-         state.user.internal_agent && <Info detail={form.projectName} topic={"Project Name"} />
-        }
+        {state.user.internal_agent && (
+          <Info detail={form.projectName} topic={"Project Name"} />
+        )}
         {form.propertyManagment == "Rental" ? (
           <Info
             detail={

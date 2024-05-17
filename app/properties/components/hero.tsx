@@ -153,6 +153,12 @@ const Hero = () => {
             address_data: { _ilike: region.trim() ? `%${region}%` : "" },
           },
           {
+            property_name: { _ilike: region.trim() ? `%${region}%` : "" },
+          },
+          {
+            project_name: { _ilike: region.trim() ? `%${region}%` : "" },
+          },
+          {
             house_type: {
               type_name: {
                 _ilike: propertyType.trim() ? `%${propertyType}%` : "",

@@ -27,12 +27,17 @@ interface MainProps {
   setForm: Function;
   form: PropertyDetailInf;
   updateList: any;
-  amenityNewData : any; 
-  setAmenityNewData : any; 
-
+  amenityNewData: any;
+  setAmenityNewData: any;
 }
 
-const PropertyDetail = ({ form, setForm, updateList, amenityNewData, setAmenityNewData }: MainProps) => {
+const PropertyDetail = ({
+  form,
+  setForm,
+  updateList,
+  amenityNewData,
+  setAmenityNewData,
+}: MainProps) => {
   const state = useSelector(getState);
   const [err, setErr] = useState<string | null>(null);
   const errRef = useRef<any>(null);
@@ -170,8 +175,7 @@ const PropertyDetail = ({ form, setForm, updateList, amenityNewData, setAmenityN
         divClass="mb-5"
         isRequired={true}
       />
-    {
-      state.user.internal_agent  && 
+      {state.user.internal_agent && (
         <CustomeInput
           value={form.projectName}
           onChange={setChange}
@@ -181,7 +185,7 @@ const PropertyDetail = ({ form, setForm, updateList, amenityNewData, setAmenityN
           divClass="mb-5"
           isRequired={false}
         />
-      }
+      )}
 
       <OptionInput5
         label="Select the Home Address you’re going to sell/rent."
@@ -215,12 +219,12 @@ const PropertyDetail = ({ form, setForm, updateList, amenityNewData, setAmenityN
           placeholder="Property Managment"
           value={form.propertyManagment}
         />
-        {state.user.internal_agent && 
-          <AmenityEdit 
-            amenityNewData={amenityNewData} 
-            setAmenityNewData={setAmenityNewData} 
+        {state.user.internal_agent && (
+          <AmenityEdit
+            amenityNewData={amenityNewData}
+            setAmenityNewData={setAmenityNewData}
           />
-        }
+        )}
         {form.propertyManagment == "Rental" ? (
           <div className="flex justify-between gap-5">
             <CustomeInput
@@ -347,18 +351,25 @@ const PropertyDetail = ({ form, setForm, updateList, amenityNewData, setAmenityN
         <MdNavigateNext className="text-3xl my-auto text-mainBlue -rotate-90" />
       </div>
       <div className="grid grid-cols-2 gap-5 mb-8 w-full max-tablet:grid-cols-1">
-        {!form.realEstateId && 
+        {!form.realEstateId && (
           <CustomeInputNumber
             onAdd={() =>
-              updateFacilities("numOfBedrooms", form.facilities.numOfBedrooms + 1)
+              updateFacilities(
+                "numOfBedrooms",
+                form.facilities.numOfBedrooms + 1,
+              )
             }
             onSub={() =>
-              updateFacilities("numOfBedrooms", form.facilities.numOfBedrooms - 1)
+              updateFacilities(
+                "numOfBedrooms",
+                form.facilities.numOfBedrooms - 1,
+              )
             }
             value={form.facilities.numOfBedrooms}
             preImg={img3}
             label={"No. of Bedrooms"}
-        />}
+          />
+        )}
         <CustomeInputNumber
           onAdd={() =>
             updateFacilities(

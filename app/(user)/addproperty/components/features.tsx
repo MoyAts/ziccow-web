@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { getState } from "@/store/features/auth/authSlice";
 
 const Features = ({ form }: { form: PropertyDetailInf }) => {
-  const state = useSelector(getState)
+  const state = useSelector(getState);
   return (
     <div className="mt-8 h-fit text-lightGray ">
       <div className="text-2xl  font-semibold">Facts & Features</div>
@@ -17,11 +17,11 @@ const Features = ({ form }: { form: PropertyDetailInf }) => {
           <div className="text-lightGray font-semibold text-xl">Interior</div>
           <div className="text-lg mt-5 font-semibold my">Facilities</div>
           <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {state.user.internal_agent == false && 
+            {state.user.internal_agent == false && (
               <li className="before:content-['\2022'] capitalize  before:mr-2">
                 Bedrooms: {form.facilities.numOfBedrooms}
               </li>
-            }
+            )}
             <li className="before:content-['\2022'] capitalize  before:mr-2">
               Bathrooms: {form.facilities.numOfBathrooms}
             </li>
@@ -310,79 +310,102 @@ const Features = ({ form }: { form: PropertyDetailInf }) => {
           </ul>
         </div>
       </div>
-      
-      {state.user.internal_agent && 
+
+      {state.user.internal_agent && (
         <div className="flex justify-between mt-5">
           <div className="w-full">
-            <div className="text-lg  font-semibold my">
-              Other informations
-            </div>  
-           {form.circulation && <> <div className="mt-2">Circulation</div>
-            <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-              <li  className="before:content-['\2022'] capitalize  before:mr-2">
-                {form.circulation}
-              </li>
-            </ul></>}
+            <div className="text-lg  font-semibold my">Other informations</div>
+            {form.circulation && (
+              <>
+                <div className="mt-2">Circulation</div>
+                <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
+                  <li className="before:content-['\2022'] capitalize  before:mr-2">
+                    {form.circulation}
+                  </li>
+                </ul>
+              </>
+            )}
             <div className="mt-2">Studio</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {(form.bedroom0[0] != "" || form.bedroom0.length > 1) &&
-             form.bedroom0.map((data,ind)=>(
-              data.length > 1 &&
-                <li key={ind} className="before:content-['\2022'] capitalize  before:mr-2">
-                  Type {ind + 1} : {data} M2
-                </li>
-              ))}
+              {(form.bedroom0[0] != "" || form.bedroom0.length > 1) &&
+                form.bedroom0.map(
+                  (data, ind) =>
+                    data.length > 1 && (
+                      <li
+                        key={ind}
+                        className="before:content-['\2022'] capitalize  before:mr-2"
+                      >
+                        Type {ind + 1} : {data} M2
+                      </li>
+                    ),
+                )}
             </ul>
             <div className="mt-2">1 Bedroom</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {(form.bedroom1[0] != "" || form.bedroom1.length > 1) && 
-            form.bedroom1.map((data,ind)=>(
-              data.length > 1 &&
-                <li key={ind} className="before:content-['\2022'] capitalize  before:mr-2">
-                  Type {ind + 1} : {data} M2
-                </li>
-              ))}
+              {(form.bedroom1[0] != "" || form.bedroom1.length > 1) &&
+                form.bedroom1.map(
+                  (data, ind) =>
+                    data.length > 1 && (
+                      <li
+                        key={ind}
+                        className="before:content-['\2022'] capitalize  before:mr-2"
+                      >
+                        Type {ind + 1} : {data} M2
+                      </li>
+                    ),
+                )}
             </ul>
 
             <div className="mt-2">2 Bedroom</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {(form.bedroom2[0] != "" || form.bedroom2.length > 1) &&
-            form.bedroom2.map((data,ind)=>(
-              data.length > 1 &&
-                <li key={ind} className="before:content-['\2022'] capitalize  before:mr-2">
-                  Type {ind + 1} : {data} M2
-                </li>
-              ))}
+              {(form.bedroom2[0] != "" || form.bedroom2.length > 1) &&
+                form.bedroom2.map(
+                  (data, ind) =>
+                    data.length > 1 && (
+                      <li
+                        key={ind}
+                        className="before:content-['\2022'] capitalize  before:mr-2"
+                      >
+                        Type {ind + 1} : {data} M2
+                      </li>
+                    ),
+                )}
             </ul>
 
             <div className="mt-2">3 Bedroom</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {(form.bedroom3[0] != "" || form.bedroom3.length > 1) && 
-              form.bedroom3.map((data,ind)=>(
-              data.length > 1 &&
-                <li key={ind} className="before:content-['\2022'] capitalize  before:mr-2">
-                  Type {ind + 1} : {data} M2
-                </li>
-              ))}
+              {(form.bedroom3[0] != "" || form.bedroom3.length > 1) &&
+                form.bedroom3.map(
+                  (data, ind) =>
+                    data.length > 1 && (
+                      <li
+                        key={ind}
+                        className="before:content-['\2022'] capitalize  before:mr-2"
+                      >
+                        Type {ind + 1} : {data} M2
+                      </li>
+                    ),
+                )}
             </ul>
 
             <div className="mt-2">4 Bedroom</div>
             <ul className="flex flex-col mt-1 ps-5 gap-1 text-lightGray">
-            {(form.bedroom4[0] != "" || form.bedroom4.length > 1) && 
-            form.bedroom4.map((data,ind)=>(
-              data.length > 1 &&
-                <li key={ind} className="before:content-['\2022'] capitalize  before:mr-2">
-                  Type {ind + 1} : {data} M2
-                </li>
-              ))}
+              {(form.bedroom4[0] != "" || form.bedroom4.length > 1) &&
+                form.bedroom4.map(
+                  (data, ind) =>
+                    data.length > 1 && (
+                      <li
+                        key={ind}
+                        className="before:content-['\2022'] capitalize  before:mr-2"
+                      >
+                        Type {ind + 1} : {data} M2
+                      </li>
+                    ),
+                )}
             </ul>
-            
-            
           </div>
-        
         </div>
-      }
-    
+      )}
     </div>
   );
 };

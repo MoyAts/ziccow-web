@@ -101,28 +101,28 @@ const Search = ({
               value={region}
               onChange={update}
               name={"search region"}
-              placeholder={"search with region"}
+              placeholder={"search here"}
               onFocus={onFocus}
               onBlur={onBlur}
               className={"py-2 ps-2 w-full outline-none rounded-lg "}
             />
             {
-              <div
-                className={`${!focused && "h-0 hidden"} absolute z-[4353] max-h-[300px] overflow-auto top-14 w-fit duration-1000 shadow-xl bg-white  rounded-lg border  flex flex-col gap-2`}
-              >
-                {lists.map((val) => (
-                  <div
-                    key={val}
-                    onMouseDown={() => {
-                      setFocused(false);
-                      setRegion(val);
-                    }}
-                    className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
-                  >
-                    {val}
-                  </div>
-                ))}
-              </div>
+              // <div
+              //   className={`${!focused && "h-0 hidden"} absolute z-[4353] max-h-[300px] overflow-auto top-14 w-fit duration-1000 shadow-xl bg-white  rounded-lg border  flex flex-col gap-2`}
+              // >
+              //   {lists.map((val) => (
+              //     <div
+              //       key={val}
+              //       onMouseDown={() => {
+              //         setFocused(false);
+              //         setRegion(val);
+              //       }}
+              //       className="py-2 px-6 hover:bg-slate-100 cursor-pointer rounded-lg border-b"
+              //     >
+              //       {val}
+              //     </div>
+              //   ))}
+              // </div>
             }
           </div>
           <div className="border max-mobile:w-full relative w-fit flex px-2 rounded-xl font-light bg-white">

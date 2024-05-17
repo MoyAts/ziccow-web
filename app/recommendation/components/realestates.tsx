@@ -56,18 +56,24 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
   const houseFilter = ["Sell", "Rental"];
   const [selectedRealEstate, setSelectedRealEstate] = useState("");
 
-  const [getRealestateReview ,{
-    loading,data,error
-  }] = useLazyQuery(GET_REALESTATE_RATING)
+  const [getRealestateReview, { loading, data, error, refetch }] = useLazyQuery(
+    GET_REALESTATE_RATING,
+  );
 
   const [where, setWhere] = useState<any>(temp);
   const [curr, setCurr] = useState<string | null>(null);
   const [realEstate, setRealEstate] = useState<null | string>(null);
 
-
   const reset = () => {
-    setCurr(null);
-    setWhere(temp);
+    // setCurr(null);
+    reset_where("listing_property");
+    reset_where("_or");
+    reset_where("real_estate");
+    // setWhere(temp)
+    setPropertyType("");
+    setRating(-1);
+    setRealEstate(null);
+    setSelectedRealEstate("");
   };
 
   const reset_where = (name: string) => {
@@ -132,10 +138,10 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
     });
   };
 
-  error && console.log(error,"AA")
-  data && console.log(data,"DD")
-  loading && console.log(loading,"LL")
-  const[rating,setRating] = useState(-1)
+  error && console.log(error, "AA");
+  data && console.log(data, "DD");
+  loading && console.log(loading, "LL");
+  const [rating, setRating] = useState(-1);
   // if(data && rating == -1 ){
   //   const arr = data.real_estate_review
   //   let val = 0
@@ -148,15 +154,25 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
   //   setRating(num)
   // }
 
-  useEffect(()=>{
-    const arr = data?.real_estate_review ?? []
-    let val = 0
-    arr.map((r : any)=>{
-      val += r.rating
-    })
-    let num = Math.floor(val / arr.length)
-    setRating(num)
-  },[data])
+  useEffect(() => {
+    const arr = data?.real_estate_review ?? [];
+    let val = 0;
+    arr.map((r: any) => {
+      val += r.rating;
+    });
+    let num = Math.floor(val / arr.length);
+    setRating(num);
+  }, [data]);
+
+  useEffect(() => {
+    // if(initialRealestateType){
+    //   getRealestateReview({
+    //     variables : {
+    //       real_estate_id : initialRealestateType
+    //     }
+    //   })
+    // }
+  }, []);
 
   return (
     <div className="w-full bg-lightBg ">
@@ -169,7 +185,7 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
             <div className="flex gap-2   mt-5 text-2xl max-tablet:text-xl max-tablet:mb-5">
               <span className="text-mainBlue">{propertyType ?? "Unknown"}</span>
               <div className="flex gap-2 mt-1 self-center align-middle ">
-                {data && <BuildStar num={rating}  />}
+                {rating != -1 && <BuildStar num={rating} />}
                 {loading && "..."}
                 {error && ""}
               </div>
@@ -217,6 +233,7 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
                     name="price"
                     checkbox={true}
                     img={amountIcon}
+                    value={where.where["_or"]}
                     reset={() => reset_where("_or")}
                   />
                 )}
@@ -226,8 +243,12 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
                   name="Area"
                   checkbox={true}
                   img={amountIcon}
+                  value={where.where["listing_property"]}
                   reset={() => reset_where("listing_property")}
                 />
+                <button className="text-red-600 ms-5 " onClick={() => reset()}>
+                  Reset
+                </button>
               </div>
             </div>
             <div className="flex gap-2 my-auto text-lightGray me-12  max-mobile:mt-5">
@@ -297,6 +318,7 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
               list={priceFilter}
               filter={filterByPrice}
               name="price"
+              value={where.where["_or"]}
               checkbox={true}
               img={amountIcon}
               reset={() => reset_where("_or")}
@@ -306,10 +328,14 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
             list={areaFilter}
             filter={filterByArea}
             name="Area"
+            value={where.where["listing_property"]}
             checkbox={true}
             img={amountIcon}
             reset={() => reset_where("listing_property")}
           />
+          <button className="text-red-600 ms-5 " onClick={() => reset()}>
+            Reset
+          </button>
         </div>
         <Boxes
           query={fromHome ? FILTER_LIST_LIMITED : FILTER_LIST}

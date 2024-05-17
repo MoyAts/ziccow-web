@@ -6,7 +6,7 @@ import { GET_LIST_BY_ID } from "@/graphql/features/listing";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/navigation";
 import Drawer from "@/app/_components/drawer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import loadingImg from "@/app/assets/images/loading.svg";
 import Image from "next/image";
@@ -24,6 +24,9 @@ const Page = ({ params: { list_id } }: { params: { list_id: string } }) => {
   }
 
   const [isDrawer, setIsDrawer] = useState(false);
+
+  
+  
   return (
     <div>
       {isDrawer && <Drawer setIsDrawer={setIsDrawer} />}
