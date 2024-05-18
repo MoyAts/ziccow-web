@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { IoIosArrowBack as ListIcon } from "react-icons/io";
 
 interface Props {
@@ -8,12 +8,13 @@ interface Props {
   img: any;
   checkbox?: boolean;
   name?: string;
+  value?: any;
   filter: Function;
   curr: null | string;
   reset: Function;
 }
 
-const PriceOption = ({ list, img, name, filter, curr, reset }: Props) => {
+const PriceOption = ({ list, img, name, value,filter, curr, reset }: Props) => {
   const [selectedValue, setSelectedValue] = useState("");
   const handleCheck = (data: any) => {
     setSelectedValue(data.name);
@@ -23,6 +24,14 @@ const PriceOption = ({ list, img, name, filter, curr, reset }: Props) => {
     setSelectedValue("");
     reset();
   };
+  
+  useEffect(()=>{
+    if(!value){
+      clear()
+    }
+  },[value])
+
+
   return (
     <div className="relative flex flex-col gap-2 w-fit  py-1 group rounded-lg  ">
       <div className="flex justify-between bg-white py-1 rounded px-2">

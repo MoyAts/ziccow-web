@@ -142,6 +142,11 @@ const Hero = () => {
       return { ...data, order_by: order };
     });
   };
+
+  const reset = () => {
+    setWhere(initialData);
+  };
+
   const search = (region: string, propertyType: string) => {
     setWhere((data: any) => {
       if (!region.trim() && !propertyType.trim()) {
@@ -200,6 +205,7 @@ const Hero = () => {
                   filter={filterByPrice}
                   name="price"
                   checkbox={true}
+                  value={where.where["rental_price"]}
                   img={amountIcon}
                   curr={curr}
                   reset={resetPrice}
@@ -209,11 +215,15 @@ const Hero = () => {
                 list={areaFilter}
                 filter={filterByArea}
                 name="Area"
+                value={where.where["listing_property"]}
                 checkbox={true}
                 img={amountIcon}
                 curr={curr}
                 reset={resetArea}
               />
+              <button className="text-red-600 ps-5" onClick={reset}>
+                Reset
+              </button>
             </div>
             <div className="flex gap-2 my-auto text-lightGray me-12 place-self-end max-mobile:mt-5">
               <p>Sort:</p>
