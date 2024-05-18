@@ -143,7 +143,7 @@ const Search = ({
               show && (
                 <div
                   ref={dropdownRef}
-                  className="absolute top-12 shadow-xl rounded-lg z-40 bg-white w-fit  overflow-scroll"
+                  className="absolute top-12 shadow-xl rounded-lg z-40 bg-white w-fit  overflow-scroll max-h-[350px]"
                 >
                   {data.house_type.map((e: any) => (
                     <>

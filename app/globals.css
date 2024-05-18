@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 @layer utilities {
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar { */
     /* height: 1px; */
-    width: 0px;
-  }
+    /* width: 0px; */
+  /* } */
   /* 
   ::-webkit-scrollbar-track {
     background:transparent;
@@ -17,22 +17,22 @@
     border-radius: 100vh;
   } */
 
-  .scroller::-webkit-scrollbar {
-    width: 10px;
+  ::-webkit-scrollbar {
+    width: 8px;
   }
 
-  .scroller::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track {
     border-radius: 100vh;
-    background: transparent;
+    /* background: transparent; */
   }
-  .scroller::-webkit-scrollbar-thumb {
-    background: #6d6c6e;
+  ::-webkit-scrollbar-thumb {
+    background: rgb(59 130 246);
     border-radius: 100vh;
-    border: 3px solid rgb(243, 239, 245);
+    border: 1px solid rgb(243, 239, 245);
   }
 
-  .scroller::-webkit-scrollbar-thumb:hover {
-    background: #5b595c;
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(59 190 246);
   }
 
   html {

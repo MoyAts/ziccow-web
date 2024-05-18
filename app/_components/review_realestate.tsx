@@ -48,6 +48,7 @@ const ReviewRealestate = ({
       },
     },
   );
+  console.log("Created",created_at)
   const time = created_at ? calculateTimeDifference(created_at) : "1 sec";
   const [showAll, setShowAll] = useState(false);
   const [isOpen, setIsOpen] = useState(false);

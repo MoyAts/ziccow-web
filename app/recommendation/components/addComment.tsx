@@ -141,15 +141,15 @@ const AddComment = ({ realEstate }: any) => {
         </div>
       </div>
       <div className="flex flex-col gap-4 ps-5 max-w-[500px]">
-        {comments.map((data: any, ind: number) => (
+        {comments.map((d: any, ind: number) => (
           <Review
             key={ind}
-            created_at={data.created_at}
-            rating={data.rating}
-            message={data.comment}
-            user={data.user}
-            likes={data.review_likes}
-            review_id={data.uuid}
+            created_at={d.create_at}
+            rating={d.rating}
+            message={d.comment}
+            user={d.user}
+            likes={d.review_likes}
+            review_id={d.uuid}
           />
         ))}
       </div>

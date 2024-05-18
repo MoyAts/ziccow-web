@@ -79,8 +79,7 @@ const Search = ({
               onClick={() => setShow((d) => !d)}
               className={`px-3 w-full py-2 my-auto  ${propertyType == "" && "text-gray-400"}`}
             >
-              {" "}
-              {propertyType != "" ? propertyType : "select property type"}
+              {propertyType != "" ? propertyType : "Select property type"}
             </button>
             {loading ? (
               <div>Loading</div>
