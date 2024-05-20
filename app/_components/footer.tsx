@@ -129,7 +129,7 @@ const footer = () => {
                 <li className="hover:text-blue-500 cursor-pointer duration-200 flex gap-3">
                   <Image src={phoneImg} alt="" />
                   <p>Belgium +32471438014</p>
-                  {/* <p>+251949688383</p> */}
+                  <p>Ethiopia +251949688383 </p>
                 </li>
               </ul>
             </div>

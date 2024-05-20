@@ -15,12 +15,14 @@ const Hero = () => {
   const searchDataParam = searchParams.get("search");
   const saleTypeDataParam = searchParams.get("propertyManagment");
 
+ 
   const priceFilter = [
     { name: "$15k and Below", price: [0, 15000] },
     { name: "$15k and 30k", price: [15000, 30000] },
     { name: "$30k and 50k", price: [30000, 50000] },
     { name: "$50k and Above", price: [50000, 10000000000] },
   ];
+  
   const areaFilter = [
     { name: "125 M2 and Below", price: [0, 125] },
     { name: "125 M2 - 250 M2", price: [125, 250] },
@@ -145,6 +147,8 @@ const Hero = () => {
 
   const reset = () => {
     setWhere(initialData);
+    setRegion("")
+    setpropertyType("")
   };
 
   const search = (region: string, propertyType: string) => {

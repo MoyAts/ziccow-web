@@ -26,6 +26,7 @@ interface Props {
 const Drawer = ({ setIsDrawer }: Props) => {
   const state = useSelector(getState);
   const [toggle, setToggle] = useState(false);
+  const [listToggle, setListToggle] = useState(false);
   const [open, setOpen] = useState(false);
   const isLogedIn = state.isLogedIn == LogInf.LOGED_IN;
   const dispatch = useDispatch();
@@ -65,11 +66,18 @@ const Drawer = ({ setIsDrawer }: Props) => {
             </Link>
           )}
           {isLogedIn ? (
-            <div
+            <div 
+              className="flex gap-5"
               onClick={() => setShowProfile((data) => !data)}
-              className="font-semibold capitalize text-g my-auto"
             >
-              {state.user?.firstName ? state.user.firstName : "Name"}
+              <div
+                className="font-semibold capitalize text-g my-auto"
+                >
+                {state.user?.firstName ? state.user.firstName : "Name"}
+              </div>
+              <ListIcon
+                className={`text-xl my-auto duration-200  ${showProfile ? "-" : ""}rotate-90 text-blue-500`}
+                />
             </div>
           ) : (
             <Link href={"/"} className="font-semibold text-g my-auto">

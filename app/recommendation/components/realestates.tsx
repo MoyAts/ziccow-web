@@ -42,11 +42,13 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
   }
 
   const priceFilter = [
-    { name: "$15k and Below", price: [0, 15000] },
-    { name: "$15k and 30k", price: [15000, 30000] },
-    { name: "$30k and 50k", price: [30000, 50000] },
-    { name: "$50k and Above", price: [50000, 10000000000] },
+    { name: "$50k and Below", price: [0, 50000] },
+    { name: "$50k and 70k", price: [50000, 70000] },
+    { name: "$70k and 90k", price: [70000, 90000] },
+    { name: "$90k and 120k", price: [90000, 120000] },
+    { name: "$120k and Above", price: [120000, 10000000000] },
   ];
+
   const areaFilter = [
     { name: "125 M2 and Below", price: [0, 125] },
     { name: "125 M2 - 250 M2", price: [125, 250] },
@@ -219,13 +221,13 @@ const Realestates = ({ fromHome = false }: { fromHome?: boolean }) => {
               </label>
 
               <div className="flex gap-2 max-md:hidden">
-                <RentalOption
+                {/* <RentalOption
                   list={["Gerji", "Bisrate Gebriel", "Ayer Tena", "Bulbula"]}
                   name="Sites"
                   img={rentalIcon}
                   reset={() => {}}
                   filter={() => {}}
-                />
+                /> */}
                 {selectedRealEstate != "" && (
                   <PriceOption
                     list={priceFilter}

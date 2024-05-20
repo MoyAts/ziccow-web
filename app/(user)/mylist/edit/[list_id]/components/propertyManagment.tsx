@@ -258,9 +258,9 @@ const PropertyManagment = ({ form, setForm, setPage}: Props) => {
         value={form.leasingPayment}
       />
       <CustomeInput
-        label="Conveyancing payment Birr"
+        label="Bank Loan payment"
         name={"conveyancingPayment"}
-        placeholder="Conveyancing payment Birr"
+        placeholder="Bank Loan"
         divClass="mb-5"
         onChange={setChange}
         isRequired={false}
