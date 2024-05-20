@@ -55,19 +55,19 @@ const Table = () => {
       <div className="flex my-2 ">
         <div className="w-fit px-2 py-1 rounded-lg border flex gap-2 bg-white">
           <div
-            className={`${PM == "both" && "bg-mainBlue text-white"} cursor-pointer hover:bg-blue-100 duration-200  px-2 py-1 rounded-lg`}
+            className={`${PM == "both" ? "bg-mainBlue text-white" : "hover:bg-blue-100"} cursor-pointer  duration-200  px-2 py-1 rounded-lg`}
             onClick={() => changePM("both")}
           >
             Both
           </div>
           <div
-            className={`${PM == "Sell" && "bg-mainBlue text-white"} cursor-pointer hover:bg-blue-100 duration-200  px-2 py-1 rounded-lg`}
+            className={`${PM == "Sell" ? "bg-mainBlue text-white" : "hover:bg-blue-100"} cursor-pointer  duration-200  px-2 py-1 rounded-lg`}
             onClick={() => changePM("Sell")}
           >
             Sell
           </div>
           <div
-            className={`${PM == "Rental" && "bg-mainBlue text-white"} cursor-pointer hover:bg-blue-100 duration-200  px-2 py-1 rounded-lg`}
+            className={`${PM == "Rental" ? "bg-mainBlue text-white" : "hover:bg-blue-100"} cursor-pointer  duration-200  px-2 py-1 rounded-lg`}
             onClick={() => changePM("Rental")}
           >
             Rental
