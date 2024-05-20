@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import deleteImg from "../../../assets/images/delete.svg";
 import { useMutation, useQuery } from "@apollo/client";
 import {
@@ -13,20 +13,69 @@ import { useSelector } from "react-redux";
 import { calculateTimeDifference, getUser } from "@/lib/auth";
 import { houseInf } from "@/utils/interfaces";
 import { MdUpdate, MdEdit } from "react-icons/md";
+
 const Table = () => {
   const state = useSelector(getUser);
   const [showStatus, setShowStatus] = useState<null | string>();
-
+  const [variables, setVariables] = useState<any>({
+    owner_id: { _eq: state?.userId },
+  });
   const { loading, error, data, refetch } = useQuery(GET_MY_LISTING, {
-    variables: {
-      userId: state?.userId,
-    },
-    // fetchPolicy : "no-cache"
+    variables: { where: variables },
+    fetchPolicy: "network-only",
   });
 
+  const [PM, setPM] = useState<"Sell" | "Rental" | "both">("both");
+  // const u
+  const changePM = (value: "Sell" | "Rental" | "both") => {
+    setPM(value);
+    if (value == "both") {
+      setVariables((data: any) => {
+        let newData = { ...data };
+        delete newData.sale_type;
+        return newData;
+      });
+    } else {
+      setVariables((data: any) => {
+        let newData = { ...data };
+        newData.sale_type = { _eq: value };
+        return newData;
+      });
+    }
+  };
+
+  useEffect(() => {
+    refetch({
+      variables: { where: variables },
+    });
+  }, [variables]);
+
   return (
-    <div className="w-full overflow-x-auto  max-tablet:px-10 max-mobile:px-5">
-      <table className=" bg-white mt-10 min-w-full rounded-t-lg">
+    <div className="w-full overflow-x-auto mt-5  max-tablet:px-10 max-mobile:px-5">
+      <div className="flex my-2 ">
+        <div className="w-fit px-2 py-1 rounded-lg border flex gap-2 bg-white">
+          <div
+            className={`${PM == "both" && "bg-mainBlue text-white"} cursor-pointer hover:bg-blue-100 duration-200  px-2 py-1 rounded-lg`}
+            onClick={() => changePM("both")}
+          >
+            Both
+          </div>
+          <div
+            className={`${PM == "Sell" && "bg-mainBlue text-white"} cursor-pointer hover:bg-blue-100 duration-200  px-2 py-1 rounded-lg`}
+            onClick={() => changePM("Sell")}
+          >
+            Sell
+          </div>
+          <div
+            className={`${PM == "Rental" && "bg-mainBlue text-white"} cursor-pointer hover:bg-blue-100 duration-200  px-2 py-1 rounded-lg`}
+            onClick={() => changePM("Rental")}
+          >
+            Rental
+          </div>
+          
+        </div>
+      </div>
+      <table className=" bg-white mt-5 min-w-full rounded-t-lg">
         <thead>
           <tr>
             <th className="py-4 px-4 border-b border-gray-300 text-left"></th>

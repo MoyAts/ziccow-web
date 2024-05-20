@@ -670,8 +670,8 @@ export const GET_RECOMMENDATION_FOR_HOME_PAGE = gql`
   }
 `;
 export const GET_MY_LISTING = gql`
-  query get_listings($userId: uuid!) {
-    listing(where: { owner_id: { _eq: $userId } }) {
+  query get_listings($where: listing_bool_exp) {
+    listing(where: $where) {
       digital_assets {
         url
         type
