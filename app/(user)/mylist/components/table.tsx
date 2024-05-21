@@ -26,7 +26,8 @@ const Table = () => {
   });
 
   const [PM, setPM] = useState<"Sell" | "Rental" | "both">("both");
-  // const u
+  const [search, setSearch] = useState<string>("");
+
   const changePM = (value: "Sell" | "Rental" | "both") => {
     setPM(value);
     if (value == "both") {
@@ -44,6 +45,22 @@ const Table = () => {
     }
   };
 
+  const searchIt = (val : string) => {
+    setVariables((data: any) => {
+      let newData = { ...data };
+      newData._or = [
+        {real_estate :{ name :{ _ilike :`%${val}%`}}},
+        {project_name :{ _ilike :`%${val}%`}},
+        {address_data :{ _ilike :`%${val}%`}},
+      ]
+      return newData;
+    });
+  }
+
+  const resetSearch = () => {
+
+  }
+
   useEffect(() => {
     refetch({
       variables: { where: variables },
@@ -52,7 +69,7 @@ const Table = () => {
 
   return (
     <div className="w-full overflow-x-auto mt-5  max-tablet:px-10 max-mobile:px-5">
-      <div className="flex my-2 ">
+      <div className="flex my-2 gap-5">
         <div className="w-fit px-2 py-1 rounded-lg border flex gap-2 bg-white">
           <div
             className={`${PM == "both" ? "bg-mainBlue text-white" : "hover:bg-blue-100"} cursor-pointer  duration-200  px-2 py-1 rounded-lg`}
@@ -74,6 +91,22 @@ const Table = () => {
           </div>
           
         </div>
+
+        <div className="w-full flex gap-5 ">
+          <input 
+            type="search" 
+            placeholder="search"
+            className="py-2 rounded-lg px-2 border"
+            onChange={({ target })=>searchIt(target.value)}
+          />
+          {/* <button 
+            onClick={searchIt}
+            className="bg-mainBlue py-2 rounded-lg text-white px-2"
+          >
+            Search
+          </button> */}
+        </div>
+
       </div>
       <table className=" bg-white mt-5 min-w-full rounded-t-lg">
         <thead>
