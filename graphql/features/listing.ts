@@ -790,7 +790,6 @@ export const GET_HOME_TYPES = gql`
   query {
     house_type(where: { 
       available: { _eq: true },
-      is_realestate: { _eq: true }
     }) {
       type_name
       available

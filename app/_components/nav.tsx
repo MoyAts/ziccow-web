@@ -158,6 +158,7 @@ const Nav = ({ withsearch, setIsDrawer }: Props) => {
                     dispatch(logoutUser());
                   }}
                   show={showProfile}
+                  setShow={setShowProfile}
                   state={state}
                 />
               </div>

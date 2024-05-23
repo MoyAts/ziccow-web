@@ -2,17 +2,34 @@
 import Link from "next/link";
 
 import style from "../css/propertiesCard.module.css";
+import { useEffect, useRef } from "react";
 
 interface Props {
   show: boolean;
+  setShow: Function;
   logoutUser: Function;
   state: any;
   mobile?: boolean;
 }
 
-const ProfileCard = ({ show, logoutUser, state, mobile }: Props) => {
+const ProfileCard = ({ show,setShow, logoutUser, state, mobile }: Props) => {
+  
+  const ref = useRef<any>(null);
+  const handleClickOutside = (event: any) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setShow(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <div
+      ref={ref}
       className={`${show ? style.showPopup : "hidden"} ${mobile ? "w-full top-4" : "absolute right-0 top-12 "} duration-0 w-fit flex min-w-[200px] shadow text-lightGray flex-col text-sm  bg-white rounded-lg  z-[3000] `}
     >
       <div className="px-3 py-2 mt-2 ">

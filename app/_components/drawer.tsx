@@ -97,6 +97,7 @@ const Drawer = ({ setIsDrawer }: Props) => {
             }}
             mobile={true}
             show={showProfile}
+            setShow={setShowProfile}
             state={state}
           />
         )}

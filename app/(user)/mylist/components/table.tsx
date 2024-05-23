@@ -51,6 +51,7 @@ const Table = () => {
       newData._or = [
         {real_estate :{ name :{ _ilike :`%${val}%`}}},
         {project_name :{ _ilike :`%${val}%`}},
+        {property_name :{ _ilike :`%${val}%`}},
         {address_data :{ _ilike :`%${val}%`}},
       ]
       return newData;

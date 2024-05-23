@@ -45,12 +45,14 @@ const OptionInput = ({
   const [show, setShow] = useState(false);
 
   const { loading, error, data } = useQuery(GET_HOME_TYPES, {
+    
     fetchPolicy: "no-cache",
   });
   const state = useSelector(getState);
   const check_IA =
     state.isLogedIn == LogInf.LOGED_IN && state.user.internal_agent;
   let m: any = {};
+  console.log("kkk",check_IA)
   if (data) {
     for (let x = 0; x < data.house_type.length; x++) {
       const item = data.house_type[x];
