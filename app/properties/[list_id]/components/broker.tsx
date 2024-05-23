@@ -89,7 +89,7 @@ const Broker = ({ house }: Props) => {
                 {date.getMonth()}/{date.getDate()}/{date.getFullYear()}
               </div> */}
               <div className="text-slate-700 capitalize">
-                {house.owner?.first_name} {house.owner?.last_name}
+                {house.owner?.first_name} {house.owner?.last_name} 
               </div>
               <div className="flex gap-2 mt-1">
                 {data && <BuildStar num={rating}  />}
@@ -103,6 +103,13 @@ const Broker = ({ house }: Props) => {
             <Image src={phoneImg} className="w-7 my-auto" alt="" />
           </a>
         </div>
+        {house.owner?.phone_number && 
+        <div className="flex gap-2">
+          <div className="font-semibold">Phone Number</div>
+          <div>{house.owner?.phone_number}</div>
+        </div>
+        }
+        
         <p className="break-words">{house.owner?.bio ?? "No Bio"}</p>
 
         <div className={"flex flex-col gap-2 capitalize "}>
