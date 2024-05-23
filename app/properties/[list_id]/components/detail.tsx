@@ -182,7 +182,7 @@ const Detail = ({ house, list_id }: Props) => {
               </div>
             </div>
           )}
-          <div ref={ref} className="flex gap-2">
+          <div  className="flex gap-2">
             <Image src={shareImg} alt="" className="my-auto" />
             <p
               role="button"
@@ -192,12 +192,11 @@ const Detail = ({ house, list_id }: Props) => {
               share
             </p>
             <div
+              ref={ref}
               className={`absolute ${showShare ? "scale-100" : "scale-0"} duration-150 flex flex-col gap-3 top-12 left-0 w-fit px-5 py-3 bg-white rounded-lg shadow-2xl`}
             >
-              {/* <div className="text-sm">
-                  Share This property
-                </div> */}
-              <div className="flex gap-3">
+             
+              <div className="flex gap-3 ">
                 <div
                   onClick={() => {
                     navigator.clipboard.writeText(currentUrl);
@@ -261,7 +260,7 @@ const Detail = ({ house, list_id }: Props) => {
               </div>
             </div>
           )}
-          <div ref={ref} className="flex gap-2">
+          <div  className="flex gap-2">
             <Image src={shareImg} alt="" className="my-auto" />
             <p
               role="button"
