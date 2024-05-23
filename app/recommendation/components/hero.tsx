@@ -113,8 +113,7 @@ const Content = () => {
     <>
       <div className="ps-14 max-md:ps-6">
         <h1 className="text-[45px] max-sm:text-[30px] max-md:text-[40px]  text-white ps-12 max-mobile:px-5  flex flex-col gap-2  pe-10">
-          <span>This place is for promotion</span>
-          <span>YOUR COMAPNY</span>
+          <span className="capitalize">This place is for promotion</span>
           <p className=" text-lg md:max-w-[80%] max-md:w-full  mt-8  flex gap-2 flex-wrap font-light">
             Here we are focused on getting your name and business in front of
             millions

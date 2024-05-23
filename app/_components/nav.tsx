@@ -139,12 +139,19 @@ const Nav = ({ withsearch, setIsDrawer }: Props) => {
                     </div>
                   )}
 
-                  <p
+                  <div
+                    className="cursor-pointer flex gap-1"
                     onClick={() => setShowProfile((data) => !data)}
-                    className="cursor-pointer my-auto text-lightGray"
                   >
-                    {state.user?.firstName}
-                  </p>
+                    <p
+                      className="cursor-pointer my-auto text-lightGray"
+                    >
+                      {state.user?.firstName}
+                    </p>
+                    <ListIcon
+                      className={`text-xl my-auto duration-200  ${showProfile ? "-" : ""}rotate-90 text-blue-500`}
+                    />
+                  </div>
                 </div>
                 <ProfileCard
                   logoutUser={() => {

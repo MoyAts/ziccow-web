@@ -8,8 +8,8 @@ const join = () => {
     <div className="w-full bg-mainDark flex justify-center ">
       <div className="w-full border-b-[1px]  border-gray-600  max-w-[1560px] max-tablet:px-10 px-20 bg-mainDark flex max-tablet:flex-col max-tablet:gap-8 max-mobile:px-5 gap-12 py-24 text-white">
         <div className="basis-2/3 max-tablet:basis-1">
-          <div className="text-[45px] max-tablet:text-center max-tablet:text-[35px]  flex-col max-tablet:mb-4 mb-10">
-            <span>Want to talk to become a &nbsp;</span>
+          <div className="text-[47px] max-tablet:text-center max-tablet:text-[35px]  flex-col max-tablet:mb-4 mb-10">
+            <span>Want to talk to a &nbsp;</span>
             <span className="text-mainBlue leading-[12px]">
               real estate agent
               <span className="text-white"> ?</span>
