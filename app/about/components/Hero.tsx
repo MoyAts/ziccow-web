@@ -19,7 +19,7 @@ const Hero = ({ setIsDrawer }: any) => {
           Zirrow General Trading
         </h1>
         <p className="text-center font-light">
-          Making it simpler when moving forward.
+          Meet founding members of Zirrow General Trading PLC
         </p>
       </div>
     </div>

@@ -11,11 +11,12 @@ const about = () => {
           <span className="leading-[20px]">and sell property.</span>
         </h1>
         <p className="text-sm w-10/12  max-mobile:w-full text-center text-onDark">
-          Our company has roots that go back many years and enriching history
-          that shapes our current mission. With us around you can expect
-          commitment, professionalism, and long-term relationships based on
-          trust. Our goal is to provide high-quality services that meet and
-          exceed the expectations of our clients.
+          The company is founded by group of diverse entrepreneurs with a wealth
+          of industry experience. This technology-driven private limited company
+          is committed to transforming Ethiopia's property marketing and
+          administration sector by offering a cutting-edge, dependable, and
+          comprehensive system for real estate developers, property sellers,
+          buyers, and lessees.
         </p>
         <h6 className="mt-12 text-onDark">
           Trusted by our clients in the industry

@@ -19,7 +19,7 @@ const difference = () => {
             <span className="text-blue-500 ms-2 ">dream homes.</span>
           </div>
           <p className="text-lg w-4/5  max-mobile:hidden text-gray-700 mt-3 max-tablet:text-center">
-            Our agents will guide you through the entire buying process, from
+            Our agents will guide you through the entire buying process, of
             property.
           </p>
         </div>
@@ -29,7 +29,7 @@ const difference = () => {
           </div>
         </div>
         <p className="text-lg w-4/5 px-5 text-center  max-mobile:w-full mobile:hidden text-gray-700 mt-7 max-tablet:text-center">
-          Our agents will guide you through the entire buying process, from
+          Our agents will guide you through the entire buying process, of
           property.
         </p>
       </div>

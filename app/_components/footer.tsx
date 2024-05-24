@@ -45,7 +45,7 @@ const footer = () => {
             </p>
             <h4 className="mt-6 mb-2">Recent Region</h4>
             <div className="w-full bg-white py-4 flex justify-between rounded-xl cursor-pointer ps-5 pe-3">
-              <div className="text-lightGray">Piyassa</div>
+              <div className="text-lightGray">Addis Ababa, Ethiopia</div>
               <LeftIcon className="text-mainBlue -rotate-90 my-auto" />
             </div>
           </div>

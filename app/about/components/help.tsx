@@ -38,7 +38,8 @@ const help = () => {
             />
             <h1 className="text-center text-lg font-semibold">Quality First</h1>
             <p className="m-auto w-4/5 text-center text-gray-600">
-              All projects are backed by our fantastic support and 100%
+              All buying and selling processes at Zirrow General Trading PLC are
+              supported by our exceptional customer service and come with a 100%
               satisfaction guarantee.
             </p>
           </div>
@@ -53,8 +54,8 @@ const help = () => {
               Competitive Pricing
             </h1>
             <p className="m-auto w-4/5 text-center text-gray-600">
-              Offering you a very competitive price without compromising on
-              quality.
+              We strive to provide you with a highly competitive price without
+              compromising on your needs and budget requirements.
             </p>
           </div>
         </div>

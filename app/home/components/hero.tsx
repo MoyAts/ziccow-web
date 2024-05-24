@@ -48,7 +48,7 @@ const Hero = ({ setIsDrawer }: Props) => {
               onChange={({ target }: any) => setSearch(target.value)}
               className="outline-none my-auto w-full py-3"
               style={{ color: "#6D6C6E" }}
-              placeholder="Enter a location, property type or budget"
+              placeholder="Enter a location, property type or and property management"
             />
           </div>
           <Link
