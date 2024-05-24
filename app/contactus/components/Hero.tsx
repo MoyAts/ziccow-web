@@ -41,7 +41,9 @@ const Hero = ({ setIsDrawer }: any) => {
             </p>
             <p className="text-sm mt-2 font-light max-tablet:text-center">
               Get in touch today to see why our approach makes all the
-              difference!{" "}
+              difference! Stay connected with us and be the first to know about
+              exciting updates and promotions by following our social media
+              channels below! Thank you for your support
             </p>
           </div>
 
