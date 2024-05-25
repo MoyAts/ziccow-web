@@ -109,6 +109,7 @@ export interface houseFeaturedInf {
   is_discounted: boolean;
   digital_assets: Array<{ url: string }>;
   address_data: string;
+  property_name : string;
   listing_id: string;
   currency: string;
   build_date: string;

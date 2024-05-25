@@ -50,7 +50,7 @@ const Box = ({ house }: Props) => {
       <div className="flex flex-col capitalize">
         <div className="flex justify-between mt-2 ">
           <div className="text-xl">
-            {house.real_estate?.name ?? "Realestate"}
+            {house.real_estate?.name ?? house.property_name ?? ""}
           </div>
           <div
             className="px-2 text-normal my-auto  rounded-xl capitalize"

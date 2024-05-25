@@ -524,6 +524,7 @@ export const GET_FEATURED_LISTS = gql`
       listing_id
       is_popular
       is_featured
+      property_name
       is_discounted
       digital_assets {
         url

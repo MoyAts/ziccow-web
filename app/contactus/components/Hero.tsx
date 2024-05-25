@@ -14,6 +14,7 @@ import { FaYoutube } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa6";
 import { CiFacebook } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
+import phoneImg from "../../assets/images/phoneFooter.svg";
 
 const Hero = ({ setIsDrawer }: any) => {
   const [send, { loading, error, data }] = useMutation(ADD_CONTACT_US, {
@@ -52,6 +53,10 @@ const Hero = ({ setIsDrawer }: any) => {
               exciting updates and promotions by following our social media
               channels below! Thank you for your support
             </p>
+              <div className="mt-auto cursor-pointer duration-200 flex flex-col gap-3">
+                  <p>Belgium +32471438014</p>
+                  <p>Ethiopia +251949688383 </p>
+                </div>
             <div className="flex gap-8 w-full mt-auto ">
               <Link
                 href={
