@@ -40,6 +40,7 @@ const Nav = ({ withsearch, setIsDrawer }: Props) => {
   const url =
     state.isLogedIn == LogInf.LOGED_IN ? "/addproperty/" : "/auth/signup";
   const [open, setOpen] = useState(false);
+  const [temp,setTemp] = useState(0)
   const zoomRef = useRef(null);
 
   return (
@@ -141,7 +142,11 @@ const Nav = ({ withsearch, setIsDrawer }: Props) => {
 
                   <div
                     className="cursor-pointer flex gap-1"
-                    onClick={() => setShowProfile((data) => !data)}
+                    onClick={() => {
+                      setShowProfile((data) => true)
+                      // console.log("Nav")
+                      // setTemp(d => d + 1)
+                    }}
                   >
                     <p
                       className="cursor-pointer my-auto text-lightGray"

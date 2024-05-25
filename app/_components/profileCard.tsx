@@ -16,6 +16,8 @@ const ProfileCard = ({ show,setShow, logoutUser, state, mobile }: Props) => {
   
   const ref = useRef<any>(null);
   const handleClickOutside = (event: any) => {
+    console.log("Profile")
+
     if (ref.current && !ref.current.contains(event.target)) {
       setShow(false);
     }

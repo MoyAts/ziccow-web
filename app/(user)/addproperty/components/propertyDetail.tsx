@@ -209,7 +209,7 @@ const PropertyDetail = ({ form, setForm, setPage }: MainProps) => {
         label="Property Types / የቤቱ አይነት"
         name="homeType"
         onChange={setForm}
-        placeholder="Apartment, High rise"
+        placeholder="Apartment, Condominium"
         divClass="mb-5"
         ReactIcon={MdNavigateNext}
         IconClass={"text-3xl my-auto text-mainBlue rotate-90"}

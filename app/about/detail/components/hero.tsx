@@ -61,7 +61,16 @@ const hero = ({ id }: any) => {
             legal   strategist,   offering
             unparalleled   expertise   in
             navigating   the   complexities
-            of the legal landscape.`,
+            of the legal landscape.
+            CREDENTIALS AND EXPERTISE: 
+            Federally Licensed Powerhouse: Mr. Adi is a federally licensed attorney consultant, bringing a wealth of legal acumen to the table. 
+            Distinguished Lecturer: Beyond the courtroom, Mr. Adi is a distinguished lecturer, sharing his knowledge and insights with the legal community. 
+            Representing Excellence: He represents major companies and individuals, offering consultancy services that transcend expectations. 
+            Versatility in Litigation: With a focus on civil, commercial, and criminal litigations, Mr. Adi stands as a beacon of legal prowess. 
+            Real Estate Maestro: His extensive experience extends to the real estate and construction sectors, making him a go-to expert in the field. 
+            EDUCATIONAL ACHIEVEMENTS: 
+            Mr. Adi earned his law degree (LLB) with distinction from Haramaya University, setting the foundation for his illustrious career. His pursuit of excellence continued with a 'Very Great Distinction' in his LLM degree at Addis Ababa University. Mr. Adi's commitment to academic excellence culminated in a second master’s degree with cum-laude from the University of the Western Cape in collaboration with the Humboldt University of Berlin. 
+            `,
     },
   ];
   return (

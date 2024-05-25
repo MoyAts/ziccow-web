@@ -223,7 +223,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
           <CustomeInput
             label="Describe material if it's unique"
             name={"constructionCustom"}
-            placeholder="add % completed Eg. 80% completed"
+            placeholder="Material Description"
             divClass="mb-5"
             onChange={setChange}
             Icon={searachImg}
@@ -242,17 +242,17 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
         <CustomeInput
           label="Government payment (Ashura)"
           name={"govPaymentAshura"}
-          placeholder="Government payment"
+          placeholder="6% of estimated property price"
           divClass="mb-5"
           onChange={setChange}
           value={form.govPaymentAshura}
           isRequired={false}
         />
 
-        <CustomeInput
+     <CustomeInput
           label=" leasing / property tax"
           name={"leasingPayment"}
-          placeholder="Leasing payment"
+          placeholder="5% of estimated property price"
           divClass="mb-5"
           onChange={setChange}
           isRequired={false}
@@ -261,7 +261,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
         <CustomeInput
           label="Bank loans Birr"
           name={"conveyancingPayment"}
-          placeholder="Conveyancing payment Birr"
+          placeholder="Amount of loan "
           divClass="mb-5"
           onChange={setChange}
           isRequired={false}
@@ -270,7 +270,7 @@ const PropertyManagment = ({ form, setForm, setPage }: Props) => {
         <CustomeInput
           label="Commission payment %"
           name={"commission"}
-          placeholder="Commission payment eg: 45%"
+          placeholder="commission payment eg: 2%"
           divClass="mb-5"
           onChange={setChange}
           isRequired={false}

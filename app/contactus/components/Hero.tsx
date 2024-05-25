@@ -99,7 +99,7 @@ const Hero = ({ setIsDrawer }: any) => {
                     },
                   });
                 }}
-                className={`w-full capitalize ${loading ? "bg-blue-500" : "bg-mainBlue"} ${data && "bg-green-600"} py-2 rounded-lg text-white hover:bg-blue-700 duration-200`}
+                className={`w-full capitalize ${loading ? "bg-blue-500" : data ? "bg-green-600" : "bg-mainBlue"} py-2 rounded-lg text-white hover:bg-blue-700 duration-200`}
               >
                 {loading ? "loading" : data ? "Sent" : "submit"}
               </button>
