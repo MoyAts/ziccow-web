@@ -14,8 +14,8 @@ const teams = () => {
       <div className="h-fit w-full max-w-[1700px] max-tablet:max-h-fit   max-h-[1500px] mx-auto pb-16 px-20 max-tablet:px-10  max-small:px-5">
         <h4 className="text-center pt-5 text-mainBlue">Strategic Partners</h4>
         <h1 className="text-[35px] text-center">
-          <span>Meet the</span>
-          <span className="text-mainBlue">Zirrow General Strategic Partners.</span>
+          <span>Meet </span>
+          <span className="text-mainBlue"> Zirrow Strategic Partners.</span>
         </h1>
         <p className="text-center text-gray-500 text-sm px-20  mt-5 max-tablet:px-0">
           We believe in the power of strategic partnerships to drive innovation

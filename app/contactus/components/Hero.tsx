@@ -8,6 +8,13 @@ import CustomeInput from "../../_components/customeInput";
 import { useMutation } from "@apollo/client";
 import { ADD_CONTACT_US } from "@/graphql/features/user";
 import { useState } from "react";
+
+import { FaXTwitter } from "react-icons/fa6";
+import { FaYoutube } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa6";
+import { CiFacebook } from "react-icons/ci";
+import { FaInstagram } from "react-icons/fa";
+
 const Hero = ({ setIsDrawer }: any) => {
   const [send, { loading, error, data }] = useMutation(ADD_CONTACT_US, {
     fetchPolicy: "no-cache",
@@ -45,6 +52,35 @@ const Hero = ({ setIsDrawer }: any) => {
               exciting updates and promotions by following our social media
               channels below! Thank you for your support
             </p>
+            <div className="flex gap-8 w-full mt-auto ">
+              <Link
+                href={
+                  "https://x.com/Zirrowprop43444?t=MNpJsJT9cR9j3w2nn-Heuw&s=08"
+                }
+              >
+                <FaXTwitter className="text-3xl text-slate-50 hover:scale-110  cursor-pointer hover:text-white duration-200" />
+              </Link>
+              <Link href={"https://ww.w.instagram.com/zirrow2024"}>
+                <FaInstagram className="text-3xl text-slate-50 hover:scale-110  cursor-pointer hover:text-white duration-200" />
+              </Link>
+              <Link
+                href={
+                  "https://www.facebook.com/profile.php?id=100065515388888&mibextid=ZbWKwL"
+                }
+              >
+                <CiFacebook className="text-3xl text-slate-50 hover:scale-110  cursor-pointer hover:text-white duration-200" />
+              </Link>
+              <Link href={"https://www.youtube.com/@Zirrow0000"}>
+                <FaYoutube className="text-3xl text-slate-50 hover:scale-110  cursor-pointer hover:text-white duration-200" />
+              </Link>
+              <Link
+                href={
+                  "https://www.tiktok.com/@zirrow_general_trading?_t=8mEbdkW8fTS&_r=1"
+                }
+              >
+                <FaTiktok className="text-3xl text-slate-50 hover:scale-110  cursor-pointer hover:text-white duration-200" />
+              </Link>
+            </div>
           </div>
 
           <div className="h-fit mt-1 w-fit max-tablet:w-full shadow-xl px-5 py-5 rounded-lg bg-lightBg text-black">
