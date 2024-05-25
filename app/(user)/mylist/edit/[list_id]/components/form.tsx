@@ -22,7 +22,7 @@ import { useSelector } from "react-redux";
 import { getState } from "@/store/features/auth/authSlice";
 import { houseInf } from "@/utils/interfaces";
 import { Amenity } from "@/app/(user)/addproperty/components/interface";
-import { DELETE_REALESTATE_AMENITY, GET_REALESTATE_AMENITY, INSERT_REALESTATE_AMENITY } from "@/graphql/features/realestate";
+import { DELETE_REALESTATE_AMENITY, GET_REALESTATE_AMENITY, INSERT_REALESTATE_AMENITY, UPDATE_RENTAL_PRICE } from "@/graphql/features/realestate";
 
 interface Props {
   house: houseInf;
@@ -61,6 +61,10 @@ const Form = ({ house, list_id }: Props) => {
   const [updateListingProperty, listingPropertyStatus] = useMutation(
     UPDATE_LISTING_PROPERTY,
   );
+  const [updateRentalPrice, updateRentalPriceStatus] = useMutation(
+    UPDATE_RENTAL_PRICE,
+  );
+  
 
   const [deleteAmenity, deleteAmenityStatus] = useMutation(
     DELETE_REALESTATE_AMENITY,{
@@ -251,26 +255,33 @@ const Form = ({ house, list_id }: Props) => {
     return null;
   };
 
+  const update_rp = () =>{
+    updateRentalPrice({
+      variables:{
+        cycle : form.cycle,
+        price : form.rentalPrice,
+        rental_price_id : house.rental_price.rental_price_id
+      }
+    })
+  }
+
   const updateList = async () => {
     const name = state.user.internal_agent
       ? {
           real_estate_id: form.realEstateId ?? null,
         }
       : {};
+    if(form.propertyManagment == "Rental"){
+      update_rp()
+    }
     const sellType =
       form.propertyManagment != "Sell"
         ? {
             sale_price: null,
-            rental_price: {
-              data: {
-                cycle: form.cycle,
-                price: form.rentalPrice,
-              },
-            },
           }
         : {
             sale_price: form.sellingPrice,
-            rental_price: null,
+            rental_price_id: null,
           };
     updateExtraFeature({
       variables: {
@@ -325,7 +336,7 @@ const Form = ({ house, list_id }: Props) => {
         listing_id: list_id,
         _set: {
           ...name,
-          // ...sellType,
+          ...sellType,
           project_name: form.projectName ?? "",
           house_type_id: form.homeType,
           property_number: form.phone,

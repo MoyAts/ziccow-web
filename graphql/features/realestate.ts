@@ -86,3 +86,20 @@ export const DELETE_REALESTATE_AMENITY = gql`
  		affected_rows
   }}
 `;
+
+
+export const UPDATE_RENTAL_PRICE = gql`
+  mutation a($rental_price_id : uuid!,$price:bigint!,$cycle:String!){
+    update_rental_price(where:{
+      rental_price_id :{_eq :$rental_price_id},
+    },_set:{
+      price : $price,
+      cycle : $cycle,
+    }){
+      affected_rows
+      returning{
+        rental_price_id
+      }
+    }
+  }
+`;

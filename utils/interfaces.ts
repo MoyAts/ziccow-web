@@ -37,6 +37,7 @@ export interface houseInf {
   rental_price: {
     cycle: string;
     price: string;
+    rental_price_id: string;
   };
   real_estate: {
     name: string;

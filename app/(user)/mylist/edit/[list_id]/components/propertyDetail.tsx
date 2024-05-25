@@ -210,7 +210,7 @@ const PropertyDetail = ({
       />
 
       <div className="flex flex-col my-5 gap-3">
-        <OptionInputNew
+        {/* <OptionInputNew
           onChange={setForm}
           ReactIcon={MdNavigateNext}
           IconClass={"m-auto text-3xl rotate-90 text-mainBlue"}
@@ -218,7 +218,7 @@ const PropertyDetail = ({
           label="Property managements"
           placeholder="Property Managment"
           value={form.propertyManagment}
-        />
+        /> */}
         {state.user.internal_agent && (
           <AmenityEdit
             amenityNewData={amenityNewData}

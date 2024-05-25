@@ -245,7 +245,7 @@ export const toLocalInf = (house: houseInf): PropertyDetailInf => {
           : "none",
     timeToSell: "now",
     propertyManagment: house.sale_type,
-    sellingPrice: house.sale_price,
+    sellingPrice: house.sale_price ? house.sale_price.slice(1) : "",
     rentalPrice: String(house.rental_price?.price) ?? null,
     urls: null,
     parkingFeature: false,

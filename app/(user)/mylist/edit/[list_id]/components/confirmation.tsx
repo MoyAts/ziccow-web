@@ -66,7 +66,6 @@ const Confirmation = ({ addList, setForm, form, loading }: MainProps) => {
         <Info detail={form.address ?? ""} topic="Address" />
         <Info detail={form.yearBuilt} topic="Year Built" />
        
-        {JSON.stringify(state.user.internal_agent)}
 
         <Info
           detail={form.propertyManagment ?? ""}

@@ -261,6 +261,7 @@ export const GET_LIST_BY_ID = gql`
         real_estate_uuid
       }
       rental_price {
+        rental_price_id
         cycle
         price
       }
