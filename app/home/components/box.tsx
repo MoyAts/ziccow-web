@@ -52,12 +52,12 @@ const Box = ({ house }: Props) => {
           <div className="text-xl">
             {house.real_estate?.name ?? house.property_name ?? ""}
           </div>
-          <div
+          {/* <div
             className="px-2 text-normal my-auto  rounded-xl capitalize"
             style={{ background: "#CCE3FC" }}
           >
             {house.status}
-          </div>
+          </div> */}
         </div>
 
         <div className="flex mt-2 gap-2 text-lightGray">
