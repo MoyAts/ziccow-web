@@ -5,7 +5,7 @@ import {
   ApolloLink,
   concat,
 } from "@apollo/client";
-const httpLink = new HttpLink({ uri: "https://graphql.ziccow.com/v1/graphql" });
+const httpLink = new HttpLink({ uri: "https://graphql.zirrowproperties.com/v1/graphql" });
 import { getUser } from "@/lib/auth";
 
 const head =
